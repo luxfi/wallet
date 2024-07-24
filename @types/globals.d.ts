@@ -94,6 +94,9 @@ declare global {
     extJsBridgeUiToBg: JsBridgeBase;
     extJsBridgeOffscreenToBg: JsBridgeBase;
     ONEKEY_DESKTOP_DEEP_LINKS: any[];
+
+    extJsBridgeOffscreenToBg: any;
+    desktopApi: any;
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
