@@ -1,4 +1,5 @@
-# OneKey - Open Source Crypto Wallet
+# wallet
+Lux Wallet - Open Source Crypto Wallet
 
 [![Github Stars](https://img.shields.io/github/stars/OneKeyHQ/app-monorepo?t&logo=github&style=for-the-badge&labelColor=000)](https://github.com/OneKeyHQ/app-monorepo/stargazers)
 [![Version](https://img.shields.io/github/release/OneKeyHQ/app-monorepo.svg?style=for-the-badge&labelColor=000)](https://github.com/OneKeyHQ/app-monorepo/releases)
@@ -22,12 +23,6 @@
 
 - 🏡 🧔🏻‍♂️ For Community Edition. It will always remain FREE FOREVER for open-source projects by individuals and communities.
 - 🏦 💼 For Enterprise Edition. We've got this plan on the radar, but we're not quite ready yet. Just star our repo, and you'll be pinged as soon as we're all set.
-
-
-
-
-
-
 
 ## Support
 
