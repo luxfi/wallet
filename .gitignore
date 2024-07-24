@@ -11,7 +11,7 @@ __generated__
 dist
 build-electron
 .next
-build
+# build
 *.tsbuildinfo
 yarn-error.log
 /apps/mobile/.env
