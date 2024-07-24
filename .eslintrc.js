@@ -3,6 +3,7 @@ const jsRules = {
   // eslint-disable-next-line global-require
   'prettier/prettier': ['error', require('./.prettierrc.js')],
   'no-unused-vars': 'off',
+  'endOfLine': 'auto',
   'no-use-before-define': 'off',
   'no-shadow': 'off',
   'import/no-extraneous-dependencies': 'off',
