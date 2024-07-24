@@ -10,6 +10,13 @@ module.exports = async () => {
     // ts-jest, react-native, jest-expo, jest-expo/web,
     preset: 'jest-expo/web', // require *.web.ts, do not require *.native.ts
     coverageProvider: 'v8',
+    globals: {
+      'ts-jest': {
+        tsconfig: {
+          jsx: 'react-jsx',
+        },
+      },
+    },
     cacheDirectory: `${cacheDirectory}/.app-mono-jest-cache`,
     setupFilesAfterEnv: [
       './jest-setup.js',
