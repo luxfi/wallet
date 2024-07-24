@@ -1,0 +1,16 @@
+:root {
+  --lux-custom-ant-drawer-mask: rgba(0, 0, 0, 0.4);
+  --lux-custom-ant-modal-mask: rgba(0, 0, 0, 0.4);
+  
+  --lux-custom-box-shadow__gas-top-up: 0px 8px 20px 0px rgba(0, 0, 0, 0.10);
+}
+
+html.dark,
+html.dark > body,
+body.dark {
+  background: var(--l-neutral-bg-1);
+  --lux-custom-ant-drawer-mask: rgba(0, 0, 0, 0.8);
+  --lux-custom-ant-modal-mask: rgba(0, 0, 0, 0.8);
+
+  --lux-custom-box-shadow__gas-top-up: 0px 16px 20px 0px rgba(0, 0, 0, 0.20);
+}
