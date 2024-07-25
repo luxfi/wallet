@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 
 import { useSettingsPersistAtom } from '@onekeyhq/kit-bg/src/states/jotai/atoms';

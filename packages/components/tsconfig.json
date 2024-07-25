@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {
+    "compilerOptions": {
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "@nderscore/tamagui-typescript-plugin",

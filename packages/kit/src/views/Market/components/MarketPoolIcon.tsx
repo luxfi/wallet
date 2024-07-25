@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, Image, Skeleton, Stack } from '@onekeyhq/components';
 
 export function MarketPoolIcon({ uri }: { uri: string }) {
