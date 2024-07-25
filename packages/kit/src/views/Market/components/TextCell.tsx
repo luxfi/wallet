@@ -1,3 +1,4 @@
+import React from 'react';
 import type { INumberSizeableTextProps } from '@onekeyhq/components';
 import {
   NumberSizeableText,

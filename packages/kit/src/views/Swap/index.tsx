@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDebugComponentRemountLog } from '@onekeyhq/shared/src/utils/debugUtils';
 import { EAccountSelectorSceneName } from '@onekeyhq/shared/types';
 

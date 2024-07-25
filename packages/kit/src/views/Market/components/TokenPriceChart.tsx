@@ -1,3 +1,4 @@
+import React from 'react';
 import type { MutableRefObject } from 'react';
 import { memo, useEffect, useMemo, useState } from 'react';
 

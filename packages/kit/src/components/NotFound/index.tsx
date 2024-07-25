@@ -1,3 +1,4 @@
+import React from 'react';
 import { SizableText } from '@onekeyhq/components';
 
 function NotFound() {
