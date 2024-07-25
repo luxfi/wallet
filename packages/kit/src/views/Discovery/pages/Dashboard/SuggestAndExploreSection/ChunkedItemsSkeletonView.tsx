@@ -1,3 +1,4 @@
+import React from 'react';
 import { Skeleton, Stack, XStack } from '@onekeyhq/components';
 
 import {

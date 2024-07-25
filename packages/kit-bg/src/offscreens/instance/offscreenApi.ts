@@ -1,4 +1,5 @@
 /* eslint-disable new-cap */
+import React from 'react';
 import { INTERNAL_METHOD_PREFIX } from '@onekeyhq/shared/src/background/backgroundDecorators';
 import { memoizee } from '@onekeyhq/shared/src/utils/cacheUtils';
 
