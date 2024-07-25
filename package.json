@@ -19,7 +19,7 @@
     "app:ext:proxy": "yarn workspace @onekeyhq/ext start:v3:proxy",
     "app:ext:build": "yarn workspace @onekeyhq/ext build:v3",
     "app:ext:build:all": "yarn workspace @onekeyhq/ext build:all:v3",
-    "app:web": "yarn workspace @luxwallet/monorepo build:dev",
+    "app:web": "yarn workspace @onekeyhq/web start",
     "app:web:3030": "WEB_PORT=3030 yarn app:web:no-proxy",
     "app:web:proxy": "yarn workspace @onekeyhq/web start:proxy",
     "app:web:no-proxy": "yarn workspace @onekeyhq/web start",
