@@ -2,6 +2,7 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 
 import useAppNavigation from '../../hooks/useAppNavigation';
 import { JotaiContextRootProvidersAutoMount } from '../../states/jotai/utils/JotaiContextStoreMirrorTracker';
+import { LuxKitProvider } from '../../components/WalletConnect/LuxKitProvider';
 
 import { AppStateLockContainer } from './AppStateLockContainer';
 import { CloudBackupContainer } from './CloudBackupContainer';
@@ -10,6 +11,7 @@ import { FlipperPluginsContainer } from './FlipperPluginsContainer';
 import { ForceFirmwareUpdateContainer } from './ForceFirmwareUpdateContainer';
 import { FullWindowOverlayContainer } from './FullWindowOverlayContainer';
 import { GlobalWalletConnectModalContainer } from './GlobalWalletConnectModalContainer';
+import { GlobalLuxKitModalContainerWrapper } from './GlobalLuxKitModalContainer';
 import { HardwareUiStateContainer } from './HardwareUiStateContainer';
 import { KeyboardContainer } from './KeyboardContainer';
 import { NavigationContainer } from './NavigationContainer';
@@ -24,8 +26,9 @@ function GlobalRootAppNavigationUpdate() {
 
 export function Container() {
   return (
-    <RootSiblingParent>
-      <AppStateLockContainer>
+    <LuxKitProvider>
+      <RootSiblingParent>
+        <AppStateLockContainer>
         <KeyboardContainer />
         <NavigationContainer>
           <GlobalRootAppNavigationUpdate />
@@ -44,7 +47,9 @@ export function Container() {
           ) : null}
         </NavigationContainer>
         <GlobalWalletConnectModalContainer />
-      </AppStateLockContainer>
-    </RootSiblingParent>
+        <GlobalLuxKitModalContainerWrapper />
+        </AppStateLockContainer>
+      </RootSiblingParent>
+    </LuxKitProvider>
   );
 }
