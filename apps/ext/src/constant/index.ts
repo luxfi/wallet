@@ -180,6 +180,9 @@ import IconImKey, {
 import IconUtila, {
   ReactComponent as RCIconUtila,
 } from 'ui/assets/walletlogo/utila.svg';
+import IconRabby, {
+  ReactComponent as RcIconRabby,
+} from 'ui/assets/walletlogo/rabby.svg';
 import {
   ensureChainHashValid,
   ensureChainListValid,
@@ -542,6 +545,7 @@ export enum WALLET_BRAND_TYPES {
   Coinbase = 'Coinbase',
   IMKEY = 'IMKEY',
   Utila = 'Utila',
+  RABBY = 'Rabby',
 }
 
 export enum WALLET_BRAND_CATEGORY {
@@ -931,6 +935,18 @@ export const WALLET_BRAND_CONTENT: {
     rcSvg: RCIconUtila,
     connectType: BRAND_WALLET_CONNECT_TYPE.WalletConnect,
     category: WALLET_BRAND_CATEGORY.INSTITUTIONAL,
+  },
+  [WALLET_BRAND_TYPES.RABBY]: {
+    id: 31,
+    name: 'Rabby Wallet',
+    brand: WALLET_BRAND_TYPES.RABBY,
+    icon: IconRabby,
+    lightIcon: IconRabby,
+    image: IconRabby,
+    rcSvg: RcIconRabby,
+    maybeSvg: IconRabby,
+    connectType: BRAND_WALLET_CONNECT_TYPE.WalletConnect,
+    category: WALLET_BRAND_CATEGORY.MOBILE,
   },
 };
 

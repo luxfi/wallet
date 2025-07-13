@@ -73,8 +73,10 @@
     "@tamagui/static": "1.79.19",
     "@tamagui/themes": "1.79.19",
     "@tamagui/toast": "1.79.19",
+    "@tanstack/react-query": "^5.0.0",
     "@ungap/structured-clone": "^1.2.0",
     "@vespaiach/axios-fetch-adapter": "^0.3.1",
+    "@wagmi/connectors": "^4.1.14",
     "@wagmi/core": "2.6.9",
     "@walletconnect/modal": "2.6.2",
     "@walletconnect/universal-provider": "2.11.2",
@@ -94,6 +96,7 @@
     "jotai": "^2.5.0",
     "lightweight-charts": "^3.8.0",
     "long": "^5.2.1",
+    "luxkit": "file:../kit/packages/luxkit",
     "memoizee": "^0.4.15",
     "mipd": "^0.0.7",
     "mobile-detect": "^1.4.5",
@@ -113,7 +116,8 @@
     "superagent": "6.1.0",
     "tamagui": "1.79.19",
     "use-suspender": "^2.0.0-beta.0",
-    "viem": "^2.9.2"
+    "viem": "^2.9.2",
+    "wagmi": "^2.12.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-static-block": "^7.21.0",
