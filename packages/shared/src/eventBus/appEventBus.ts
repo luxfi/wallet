@@ -32,6 +32,7 @@ export enum EAppEventBusNames {
   WalletConnectOpenModal = 'WalletConnectOpenModal',
   WalletConnectCloseModal = 'WalletConnectCloseModal',
   WalletConnectModalState = 'WalletConnectModalState',
+  WalletConnected = 'WalletConnected',
   ShowToast = 'ShowToast',
   ShowQrcode = 'ShowQrcode',
   RealmInit = 'RealmInit',
@@ -90,6 +91,11 @@ export interface IAppEventBusPayload {
   [EAppEventBusNames.WalletConnectCloseModal]: undefined;
   [EAppEventBusNames.WalletConnectModalState]: {
     open: boolean;
+  };
+  [EAppEventBusNames.WalletConnected]: {
+    address: string;
+    chainId?: number;
+    connector: string;
   };
   [EAppEventBusNames.ShowToast]: {
     // IToastProps

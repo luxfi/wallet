@@ -15,7 +15,12 @@ type IExternalWalletLogoKeys =
   | 'fireblocks'
   | 'amber'
   | 'cobowallet'
-  | 'jadewallet';
+  | 'jadewallet'
+  | 'rabbywallet'
+  | 'luxwallet'
+  | 'bridgewallet'
+  | 'coronawallet'
+  | 'xchainwallet';
 
 type IExternalWalletLogoInfo = {
   name: string;
@@ -76,6 +81,26 @@ const map: Record<IExternalWalletLogoKeys, IExternalWalletLogoInfo> = {
   'jadewallet': {
     name: 'Jade Wallet',
     logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_jade.png'),
+  },
+  'rabbywallet': {
+    name: 'Rabby Wallet',
+    logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_rabby.png'),
+  },
+  'luxwallet': {
+    name: 'Lux Wallet',
+    logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_lux.png'),
+  },
+  'bridgewallet': {
+    name: 'Bridge Wallet',
+    logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_bridge.png'),
+  },
+  'coronawallet': {
+    name: 'Corona Wallet',
+    logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_corona.png'),
+  },
+  'xchainwallet': {
+    name: 'X-Chain Wallet',
+    logo: require('@onekeyhq/shared/src/assets/wallet/external/logo/logo_xchain.png'),
   },
 };
 

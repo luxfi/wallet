@@ -4,6 +4,7 @@ import type { IExternalConnectionInfo } from '@onekeyhq/shared/types/externalWal
 
 import { ExternalControllerEvm } from './chains/evm/ExternalControllerEvm';
 import { ExternalControllerWalletConnect } from './chains/walletconnect/ExternalControllerWalletConnect';
+import { createLuxKitConnector } from './luxkit/LuxKitConnector';
 
 import type { ExternalControllerBase } from './base/ExternalControllerBase';
 import type { IBackgroundApi } from '../apis/IBackgroundApi';
