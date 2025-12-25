@@ -1,0 +1,142 @@
+---
+title: Getting Started
+description: Setup and configuration guide for Lux Wallet development
+---
+
+# Getting Started
+
+This guide covers setting up your development environment for Lux Wallet.
+
+## Prerequisites
+
+### Required Software
+
+1. **Node.js LTS** (v18 or later)
+   ```bash
+   # Using nvm (recommended)
+   nvm install --lts
+   nvm use --lts
+   ```
+
+2. **Yarn Package Manager**
+   ```bash
+   npm install -g yarn
+   ```
+
+3. **Git LFS** (for large binary assets)
+   ```bash
+   # macOS
+   brew install git-lfs
+
+   # Ubuntu/Debian
+   apt install git-lfs
+
+   # Windows
+   # Download from https://git-lfs.github.com/
+
+   # Initialize
+   git lfs install
+   ```
+
+### Platform-Specific Requirements
+
+#### iOS Development
+
+- macOS with Xcode >= 13.3
+- iOS Simulator or physical device
+- CocoaPods: `sudo gem install cocoapods`
+
+#### Android Development
+
+- JDK >= 11
+- Android Studio with SDK
+- Android Emulator or physical device
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/luxfi/wallet.git
+cd wallet
+```
+
+### Install Dependencies
+
+```bash
+yarn
+```
+
+This installs all dependencies for the monorepo using Yarn workspaces.
+
+## Development Commands
+
+### Web Application
+
+```bash
+# Start development server on port 3000
+yarn app:web
+```
+
+### Desktop Application
+
+```bash
+# Start Electron development
+yarn app:desktop
+```
+
+### Mobile Applications
+
+```bash
+# iOS (requires macOS)
+yarn app:ios
+
+# Android
+yarn app:android
+```
+
+### Browser Extension
+
+```bash
+# Build extension
+yarn app:ext
+```
+
+## Environment Configuration
+
+Create `.env` file in the root directory:
+
+```bash
+# Copy example environment
+cp .env.example .env
+```
+
+Configure required environment variables for your development needs.
+
+## Troubleshooting
+
+### Common Issues
+
+**Node modules issues**
+```bash
+rm -rf node_modules
+yarn cache clean
+yarn
+```
+
+**iOS build fails**
+```bash
+cd apps/mobile/ios
+pod install --repo-update
+```
+
+**Android build fails**
+```bash
+cd apps/mobile/android
+./gradlew clean
+```
+
+## Next Steps
+
+- [Architecture](/docs/architecture) - Understand the codebase structure
+- [Development](/docs/development) - Development workflow

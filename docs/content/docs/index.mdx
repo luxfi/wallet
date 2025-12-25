@@ -1,0 +1,92 @@
+---
+title: Introduction
+description: Open source multi-chain crypto wallet for Web, Desktop, Mobile, and Browser Extension
+---
+
+# Lux Wallet
+
+An open source multi-chain crypto wallet supporting Web, Desktop, iOS, Android, and Browser Extensions.
+
+## Features
+
+- **Multi-Platform**: Web, Desktop (macOS, Windows, Linux), Mobile (iOS, Android), Browser Extension
+- **Multi-Chain**: Support for multiple blockchain networks
+- **Open Source**: Fully open source and auditable
+- **Hardware Wallet Support**: Integration with hardware wallets
+- **DeFi Ready**: Built-in DeFi integrations
+
+## Quick Start
+
+### Prerequisites
+
+1. Install [Node.js LTS](https://nodejs.org/)
+2. Install [Yarn](https://yarnpkg.com/)
+3. Install [Git LFS](https://git-lfs.github.com/)
+4. For iOS: XCode >= 13.3
+5. For Android: JDK >= 11
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/luxfi/wallet.git
+cd wallet
+
+# Install dependencies
+yarn
+```
+
+### Development
+
+```bash
+# Web development (port 3000)
+yarn app:web
+
+# iOS development
+yarn app:ios
+
+# Android development
+yarn app:android
+
+# Desktop development
+yarn app:desktop
+```
+
+## Architecture
+
+```
+wallet/
+  apps/           # Application targets
+    web/          # Web application
+    desktop/      # Desktop application (Electron)
+    mobile/       # iOS and Android (React Native)
+    ext/          # Browser extension
+  packages/       # Shared packages
+    core/         # Core wallet logic
+    ui/           # UI components
+    sdk/          # SDK utilities
+  development/    # Development utilities
+```
+
+## Platforms
+
+| Platform | Technology | Status |
+|----------|------------|--------|
+| Web | React, Next.js | Production |
+| Desktop | Electron | Production |
+| iOS | React Native | Production |
+| Android | React Native | Production |
+| Browser Extension | WebExtension | Production |
+
+## Security
+
+- Never share your seed phrase or private keys
+- Always verify transaction details before signing
+- Report security vulnerabilities to security@lux.network
+
+## Next Steps
+
+- [Getting Started](/docs/getting-started) - Setup and configuration
+- [Architecture](/docs/architecture) - Technical architecture overview
+- [Development](/docs/development) - Development guide
+- [Security](/docs/security) - Security best practices
