@@ -1,0 +1,133 @@
+---
+title: Architecture
+description: Technical architecture overview of Lux Wallet
+---
+
+# Architecture
+
+Lux Wallet is a monorepo containing multiple applications and shared packages.
+
+## Repository Structure
+
+```
+wallet/
+  apps/
+    web/            # Web application (Next.js)
+    desktop/        # Desktop app (Electron)
+    mobile/         # Mobile apps (React Native)
+    ext/            # Browser extension
+  packages/
+    core/           # Core wallet logic
+    ui/             # Shared UI components
+    sdk/            # SDK utilities
+  development/      # Dev tools and scripts
+  @types/           # TypeScript definitions
+  patches/          # Dependency patches
+```
+
+## Application Targets
+
+### Web Application
+
+The web application uses Next.js with React for a responsive web wallet experience.
+
+**Key Technologies:**
+- Next.js for SSR and routing
+- React for UI components
+- Web3 libraries for blockchain interaction
+
+### Desktop Application
+
+Desktop builds use Electron to package the web application as native desktop apps.
+
+**Platforms:**
+- macOS (Intel and Apple Silicon)
+- Windows (x64)
+- Linux (AppImage, Snap)
+
+### Mobile Applications
+
+Mobile apps are built with React Native for cross-platform native experience.
+
+**Platforms:**
+- iOS (iPhone and iPad)
+- Android (Phone and Tablet)
+
+### Browser Extension
+
+The browser extension supports multiple browsers:
+- Chrome
+- Firefox
+- Edge
+- Brave
+
+## Core Packages
+
+### packages/core
+
+Core wallet functionality:
+- Key management and derivation
+- Transaction building and signing
+- Chain-specific logic
+- State management
+
+### packages/ui
+
+Shared UI components:
+- Design system components
+- Common layouts
+- Reusable patterns
+
+### packages/sdk
+
+SDK utilities:
+- API clients
+- Helper functions
+- Type definitions
+
+## Data Flow
+
+```
+User Action
+    |
+    v
+UI Component
+    |
+    v
+Core Logic (packages/core)
+    |
+    v
+Blockchain RPC
+    |
+    v
+Network
+```
+
+## State Management
+
+The wallet uses a centralized state management approach with:
+- Local state for UI components
+- Global state for wallet data
+- Persistent storage for settings and accounts
+
+## Security Architecture
+
+### Key Storage
+
+- Keys are encrypted at rest
+- Hardware wallet integration for cold storage
+- Secure enclave usage on supported devices
+
+### Transaction Signing
+
+- All signing happens locally
+- Clear transaction preview before signing
+- Support for hardware wallet signing
+
+## Build System
+
+The monorepo uses:
+- Yarn workspaces for package management
+- TypeScript for type safety
+- ESLint for code quality
+- Jest for testing

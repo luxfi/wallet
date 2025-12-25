@@ -1,0 +1,169 @@
+---
+title: Development
+description: Development workflow and guidelines for Lux Wallet
+---
+
+# Development
+
+This guide covers the development workflow for contributing to Lux Wallet.
+
+## Development Workflow
+
+### Starting Development
+
+1. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+2. Start the development server for your target platform:
+   ```bash
+   # Web
+   yarn app:web
+
+   # Desktop
+   yarn app:desktop
+
+   # Mobile
+   yarn app:ios
+   yarn app:android
+   ```
+
+3. Make your changes and test locally
+
+### Code Style
+
+The project uses ESLint and Prettier for consistent code style:
+
+```bash
+# Run linter
+yarn lint
+
+# Fix linting issues
+yarn lint --fix
+```
+
+### Testing
+
+```bash
+# Run all tests
+yarn test
+
+# Run tests with coverage
+yarn test --coverage
+
+# Run specific test file
+yarn test path/to/test.spec.ts
+```
+
+## Project Structure
+
+### Adding a New Feature
+
+1. **Core Logic**: Add to `packages/core/`
+2. **UI Components**: Add to `packages/ui/`
+3. **Platform-specific**: Add to respective `apps/` directory
+
+### Creating Components
+
+```tsx
+// packages/ui/src/components/Button.tsx
+import React from 'react'
+
+interface ButtonProps {
+  children: React.ReactNode
+  onClick?: () => void
+  variant?: 'primary' | 'secondary'
+}
+
+export function Button({ children, onClick, variant = 'primary' }: ButtonProps) {
+  return (
+    <button
+      className={`btn btn-${variant}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  )
+}
+```
+
+### Adding Chain Support
+
+To add support for a new blockchain:
+
+1. Create chain configuration in `packages/core/chains/`
+2. Implement chain-specific transaction logic
+3. Add UI components for chain-specific features
+4. Update tests
+
+## Debugging
+
+### Web
+
+Use browser DevTools with React Developer Tools extension.
+
+### Mobile
+
+```bash
+# iOS
+npx react-native log-ios
+
+# Android
+npx react-native log-android
+
+# React Native Debugger
+# Open http://localhost:8081/debugger-ui
+```
+
+### Desktop
+
+```bash
+# Enable DevTools in Electron
+# Press Cmd+Opt+I (macOS) or Ctrl+Shift+I (Windows/Linux)
+```
+
+## Building for Production
+
+### Web
+
+```bash
+yarn build:web
+```
+
+### Desktop
+
+```bash
+# macOS
+yarn build:desktop:mac
+
+# Windows
+yarn build:desktop:win
+
+# Linux
+yarn build:desktop:linux
+```
+
+### Mobile
+
+```bash
+# iOS
+yarn build:ios
+
+# Android
+yarn build:android
+```
+
+### Browser Extension
+
+```bash
+yarn build:ext
+```
+
+## Pull Request Guidelines
+
+1. Keep PRs focused on a single feature or fix
+2. Include tests for new functionality
+3. Update documentation as needed
+4. Ensure all CI checks pass
+5. Request review from maintainers

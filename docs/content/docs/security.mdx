@@ -1,0 +1,115 @@
+---
+title: Security
+description: Security best practices and guidelines for Lux Wallet
+---
+
+# Security
+
+Security is paramount for a cryptocurrency wallet. This document covers security best practices and the security architecture of Lux Wallet.
+
+## User Security Guidelines
+
+### Seed Phrase Protection
+
+- **Never share** your seed phrase with anyone
+- **Never enter** your seed phrase on websites or apps you don't trust
+- **Store offline** - write it down on paper, never digitally
+- **Use multiple backups** stored in separate secure locations
+
+### Transaction Safety
+
+- Always **verify recipient addresses** before sending
+- **Double-check amounts** before confirming transactions
+- Be aware of **gas fees** and network conditions
+- Use **hardware wallets** for large holdings
+
+### Account Security
+
+- Use a **strong password** for wallet encryption
+- Enable **biometric authentication** where available
+- Keep your device **software updated**
+- Avoid using wallet on **public or shared devices**
+
+## Security Architecture
+
+### Key Management
+
+```
+Seed Phrase (BIP-39)
+    |
+    v
+Master Key (BIP-32)
+    |
+    v
+Derived Keys (per chain/account)
+    |
+    v
+Encrypted Storage
+```
+
+### Encryption
+
+- Keys are encrypted using AES-256-GCM
+- Password-based key derivation using Argon2
+- Secure random number generation from platform CSPRNG
+
+### Secure Storage
+
+| Platform | Storage Method |
+|----------|----------------|
+| iOS | Keychain Services |
+| Android | Android Keystore |
+| Desktop | Encrypted file with OS keyring |
+| Web | IndexedDB with encryption |
+
+## Hardware Wallet Support
+
+Lux Wallet supports hardware wallets for enhanced security:
+
+- **Ledger** - Nano S, Nano X
+- **Trezor** - Model T, Model One
+
+Hardware wallets keep private keys isolated from the connected device.
+
+## Reporting Vulnerabilities
+
+If you discover a security vulnerability:
+
+1. **Do not** create public issues
+2. Email security@lux.network
+3. Include:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Potential impact
+   - Suggested fix (if any)
+
+### Bug Bounty
+
+We offer rewards for responsible disclosure of security vulnerabilities. Severity levels:
+
+| Severity | Description | Reward |
+|----------|-------------|--------|
+| Critical | Fund theft, key exposure | Up to $50,000 |
+| High | Significant security bypass | Up to $10,000 |
+| Medium | Limited security impact | Up to $2,500 |
+| Low | Minor issues | Up to $500 |
+
+## Audit Status
+
+The wallet codebase undergoes regular security audits:
+
+- Smart contract interactions audited
+- Cryptographic implementations reviewed
+- Mobile and desktop security assessed
+
+## Security Checklist
+
+For developers contributing to the wallet:
+
+- [ ] No sensitive data in logs
+- [ ] No hardcoded credentials
+- [ ] Input validation on all user inputs
+- [ ] Secure random number generation
+- [ ] Proper error handling without information leakage
+- [ ] Dependencies regularly updated
+- [ ] No eval() or dynamic code execution
