@@ -1,0 +1,17 @@
+{
+  "name": "@luxwallet/monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:extension": "pnpm --dir apps/extension dev",
+    "dev:mobile": "pnpm --dir apps/mobile start",
+    "build:extension": "pnpm --dir apps/extension build",
+    "build:mobile": "pnpm --dir apps/mobile build",
+    "clean": "find . -name node_modules -type d -prune -exec rm -rf {} +",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@9.15.9"
+}
