@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+dist
+build
+*.tsbuildinfo
+.turbo
+.env*.local
+.expo
+.cache
+.wxt
+.output
+Pods/
+coverage
+test-results
+*.log
+.DS_Store

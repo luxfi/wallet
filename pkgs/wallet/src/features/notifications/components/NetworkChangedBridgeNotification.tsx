@@ -1,0 +1,41 @@
+import { Flex, Text } from '@l.x/ui/src'
+import { Shuffle } from '@l.x/ui/src/components/icons/Shuffle'
+import { iconSizes } from '@l.x/ui/src/theme'
+import { NetworkLogo } from '@l.x/lx/src/components/CurrencyLogo/NetworkLogo'
+import { NotificationToast } from '@l.x/lx/src/components/notifications/NotificationToast'
+import { getChainLabel } from '@l.x/lx/src/features/chains/utils'
+import { NetworkChangedBridgeNotification as NetworkChangedBridgeNotificationType } from '@l.x/lx/src/features/notifications/slice/types'
+
+export function NetworkChangedBridgeNotification({
+  notification,
+}: {
+  notification: NetworkChangedBridgeNotificationType
+}): JSX.Element {
+  const fromNetwork = getChainLabel(notification.fromChainId)
+  const toNetwork = getChainLabel(notification.toChainId)
+
+  return (
+    <NotificationToast
+      smallToast
+      hideDelay={notification.hideDelay}
+      title=""
+      contentOverride={
+        <Flex row alignItems="center" gap="$spacing8" justifyContent="center">
+          <Flex row centered gap="$spacing4">
+            <NetworkLogo chainId={notification.fromChainId} size={iconSizes.icon20} />
+            <Text variant="body2" color="$neutral1">
+              {fromNetwork}
+            </Text>
+          </Flex>
+          <Shuffle color="$neutral2" size="$icon.16" />
+          <Flex row centered gap="$spacing4">
+            <NetworkLogo chainId={notification.toChainId} size={iconSizes.icon20} />
+            <Text variant="body2" color="$neutral1">
+              {toNetwork}
+            </Text>
+          </Flex>
+        </Flex>
+      }
+    />
+  )
+}

@@ -1,0 +1,163 @@
+import { CurrencyAmount, TradeType } from '@luxamm/sdk-core'
+import { FeatureFlags, useFeatureFlag } from '@l.x/gating'
+import { useCallback, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+import { Button, Flex, Separator, Text, useIsShortMobileDevice } from '@l.x/ui/src'
+import { AlertTriangleFilled } from '@l.x/ui/src/components/icons'
+import { SwapTransactionDetails } from '@l.x/lx/src/components/activity/details/transactions/SwapTransactionDetails'
+import { isSwapTransactionInfo } from '@l.x/lx/src/components/activity/details/types'
+import { Modal } from '@l.x/lx/src/components/modals/Modal'
+import { LearnMoreLink } from '@l.x/lx/src/components/text/LearnMoreLink'
+import { lxUrls } from '@l.x/lx/src/constants/urls'
+import { AssetType, TradeableAsset } from '@l.x/lx/src/entities/assets'
+import { ModalName } from '@l.x/lx/src/features/telemetry/constants'
+import { useCurrencyInfo } from '@l.x/lx/src/features/tokens/useCurrencyInfo'
+import {
+  ErroredQueuedOrderStatus,
+  useErroredQueuedOrders,
+} from '@l.x/lx/src/features/transactions/hooks/useErroredQueuedOrder'
+import { updateTransaction } from '@l.x/lx/src/features/transactions/slice'
+import {
+  QueuedOrderStatus,
+  TransactionDetails,
+  TransactionStatus,
+} from '@l.x/lx/src/features/transactions/types/transactionDetails'
+import { TransactionState } from '@l.x/lx/src/features/transactions/types/transactionState'
+import { CurrencyField } from '@l.x/lx/src/types/currency'
+import { currencyAddress } from '@l.x/lx/src/utils/currencyId'
+import { isMobileApp, isWebPlatform } from '@l.x/utils/src/platform'
+import { ErrorBoundary } from '@luxfi/wallet/src/components/ErrorBoundary/ErrorBoundary'
+import { useWalletNavigation } from '@luxfi/wallet/src/contexts/WalletNavigationContext'
+import { useActiveSignerAccount } from '@luxfi/wallet/src/features/wallet/hooks'
+
+export function QueuedOrderModal(): JSX.Element | null {
+  const { t } = useTranslation()
+  const lxOrderEnabled = useFeatureFlag(FeatureFlags.LX)
+  const isShortMobileDevice = useIsShortMobileDevice()
+
+  const account = useActiveSignerAccount()
+  const erroredQueuedOrders = useErroredQueuedOrders({ evmAddress: account?.address })
+  const currentFailedOrder = erroredQueuedOrders?.[0]
+
+  const dispatch = useDispatch()
+  const onCancel = useCallback(() => {
+    if (!currentFailedOrder) {
+      return
+    }
+    dispatch(updateTransaction({ ...currentFailedOrder, status: TransactionStatus.Canceled }))
+  }, [dispatch, currentFailedOrder])
+
+  const { navigateToSwapFlow } = useWalletNavigation()
+  const transactionState = useTransactionState(currentFailedOrder)
+  const onRetry = useCallback(() => {
+    if (transactionState) {
+      navigateToSwapFlow({ initialState: transactionState })
+      onCancel()
+    }
+  }, [transactionState, navigateToSwapFlow, onCancel])
+
+  // If there are no failed orders tracked in state, return nothing.
+  if (!lxOrderEnabled || !currentFailedOrder || !isSwapTransactionInfo(currentFailedOrder.typeInfo)) {
+    return null
+  }
+
+  const QUEUE_STATUS_TO_MESSAGE = {
+    [QueuedOrderStatus.AppClosed]: t('swap.warning.queuedOrder.appClosed'),
+    [QueuedOrderStatus.ApprovalFailed]: t('swap.warning.queuedOrder.approvalFailed'),
+    [QueuedOrderStatus.SubmissionFailed]: t('swap.warning.queuedOrder.submissionFailed'),
+    [QueuedOrderStatus.Stale]: t('swap.warning.queuedOrder.stale'),
+  } as const satisfies Record<ErroredQueuedOrderStatus, string>
+  const reason = QUEUE_STATUS_TO_MESSAGE[currentFailedOrder.queueStatus]
+
+  const buttonSize = isShortMobileDevice ? 'small' : 'medium'
+
+  const platformButtonStyling = isWebPlatform ? { flex: 1, flexBasis: 1 } : undefined
+
+  return (
+    <ErrorBoundary showNotification fallback={null} name={ModalName.QueuedOrderModal} onError={onCancel}>
+      <Modal isDismissible alignment="top" name={ModalName.TransactionDetails} onClose={onCancel}>
+        <Flex gap="$spacing12" pb={isWebPlatform ? '$none' : '$spacing12'} px={isWebPlatform ? '$none' : '$spacing24'}>
+          <Flex centered gap="$spacing8">
+            <Flex centered backgroundColor="$surface2" borderRadius="$rounded12" mb="$spacing8" p="$spacing12">
+              <AlertTriangleFilled color="$black" size="$icon.24" />
+            </Flex>
+
+            <Text textAlign="center" variant="subheading1">
+              {t('swap.warning.queuedOrder.title')}
+            </Text>
+            <Text color="$neutral2" textAlign="center" variant="body3">
+              {reason}
+            </Text>
+            <LearnMoreLink
+              textColor="$neutral1"
+              textVariant="buttonLabel2"
+              url={lxUrls.helpArticleUrls.lxOrderFailure}
+            />
+          </Flex>
+          <Separator />
+          <SwapTransactionDetails disableClick={isMobileApp} typeInfo={currentFailedOrder.typeInfo} />
+          <Flex gap="$spacing8" row={isWebPlatform}>
+            <Flex row>
+              <Button
+                isDisabled={!transactionState}
+                variant="branded"
+                {...platformButtonStyling}
+                size={buttonSize}
+                onPress={onRetry}
+              >
+                {t('common.button.retry')}
+              </Button>
+            </Flex>
+            <Flex row>
+              <Button {...platformButtonStyling} size={buttonSize} emphasis="secondary" onPress={onCancel}>
+                {t('common.button.cancel')}
+              </Button>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Modal>
+    </ErrorBoundary>
+  )
+}
+
+function useTransactionState(transaction: TransactionDetails | undefined): TransactionState | undefined {
+  const { typeInfo } = transaction ?? {}
+  const isSwap = typeInfo && isSwapTransactionInfo(typeInfo)
+
+  const inputCurrency = useCurrencyInfo(isSwap ? typeInfo.inputCurrencyId : undefined)?.currency
+  const outputCurrency = useCurrencyInfo(isSwap ? typeInfo.outputCurrencyId : undefined)?.currency
+
+  return useMemo(() => {
+    if (!isSwap || !inputCurrency || !outputCurrency) {
+      return undefined
+    }
+
+    const input: TradeableAsset = {
+      address: currencyAddress(inputCurrency),
+      chainId: inputCurrency.chainId,
+      type: AssetType.Currency,
+    }
+
+    const output: TradeableAsset = {
+      address: currencyAddress(outputCurrency),
+      chainId: inputCurrency.chainId,
+      type: AssetType.Currency,
+    }
+
+    const exactCurrency = typeInfo.tradeType === TradeType.EXACT_INPUT ? inputCurrency : outputCurrency
+    const exactCurrencyField = typeInfo.tradeType === TradeType.EXACT_INPUT ? CurrencyField.INPUT : CurrencyField.OUTPUT
+    const exactAmountTokenRaw =
+      typeInfo.tradeType === TradeType.EXACT_INPUT ? typeInfo.inputCurrencyAmountRaw : typeInfo.outputCurrencyAmountRaw
+
+    const exactAmountToken = CurrencyAmount.fromRawAmount(exactCurrency, exactAmountTokenRaw).toExact()
+
+    return {
+      input,
+      output,
+      exactCurrencyField,
+      exactAmountToken,
+      customSlippageTolerance: typeInfo.slippageTolerance,
+    }
+  }, [isSwap, typeInfo, inputCurrency, outputCurrency])
+}
