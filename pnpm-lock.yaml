@@ -10,6 +10,9 @@ catalogs:
       specifier: npm:@hanzogui/react-native@0.79.5-fork.1
       version: 0.79.5-fork.1
 
+overrides:
+  '@hanzogui/fake-react-native': 4.3.1
+
 importers:
 
   .:
@@ -91,7 +94,7 @@ importers:
         version: 9.0.1
       '@wxt-dev/module-react':
         specifier: 1.1.3
-        version: 1.1.3(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))(wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3))
+        version: 1.1.3(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3))
       dotenv-webpack:
         specifier: 8.0.1
         version: 8.0.1(webpack@5.90.0)
@@ -166,7 +169,7 @@ importers:
         version: 1.0.37
       wxt:
         specifier: 0.20.8
-        version: 0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3)
+        version: 0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3)
       zod:
         specifier: 4.3.6
         version: 4.3.6
@@ -820,9 +823,6 @@ importers:
 
   apps/web:
     dependencies:
-      next:
-        specifier: ^15.0.0
-        version: 15.5.15(@opentelemetry/api@1.9.1)(@playwright/test@1.58.2)(react-dom@19.0.3(react@19.0.3))(react@19.0.3)
       react:
         specifier: ^19.0.0
         version: 19.0.3
@@ -833,9 +833,18 @@ importers:
       '@types/react':
         specifier: ^19.0.0
         version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.0.6(@types/react@19.0.10)
+      '@vitejs/plugin-react':
+        specifier: ^4.4.1
+        version: 4.7.0(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       typescript:
         specifier: ^5.7.0
         version: 5.8.3
+      vite:
+        specifier: ^8.0.8
+        version: 8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/analytics:
     dependencies:
@@ -957,7 +966,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitest/coverage-v8':
         specifier: 3.2.1
-        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       depcheck:
         specifier: 1.4.7
         version: 1.4.7
@@ -978,7 +987,7 @@ importers:
         version: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10)
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
       zod:
         specifier: npm:@hanzogui/zod@4.3.6-fork.1
         version: '@hanzogui/zod@4.3.6-fork.1'
@@ -1015,7 +1024,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: ^4.0.16
-        version: 4.1.4(@edge-runtime/vm@5.0.0)(@opentelemetry/api@1.9.1)(@types/node@22.13.1)(happy-dom@20.0.10)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 4.1.4(@edge-runtime/vm@5.0.0)(@opentelemetry/api@1.9.1)(@types/node@22.13.1)(happy-dom@20.0.10)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
 
   pkgs/eslint-config:
     dependencies:
@@ -1214,8 +1223,8 @@ importers:
         specifier: 5.2.8
         version: 5.2.8(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(@types/react@19.0.10)(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzo/gui':
-        specifier: 4.3.0
-        version: 4.3.0(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+        specifier: 4.3.1
+        version: 4.3.1(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@l.x/api':
         specifier: workspace:^
         version: link:../api
@@ -1513,7 +1522,7 @@ importers:
         version: 7.0.0-dev.20260108.1
       '@vitejs/plugin-react':
         specifier: 4.7.0
-        version: 4.7.0(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 4.7.0(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@walletconnect/types':
         specifier: 2.23.0
         version: 2.23.0(@react-native-async-storage/async-storage@1.24.0(@hanzogui/react-native@0.79.5-fork.1))
@@ -1555,7 +1564,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/notifications:
     dependencies:
@@ -1595,7 +1604,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitest/coverage-v8':
         specifier: 3.2.1
-        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       depcheck:
         specifier: 1.4.7
         version: 1.4.7
@@ -1607,7 +1616,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/prices:
     dependencies:
@@ -1638,7 +1647,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitest/coverage-v8':
         specifier: 3.2.1
-        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       depcheck:
         specifier: 1.4.7
         version: 1.4.7
@@ -1653,7 +1662,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/sessions:
     dependencies:
@@ -1705,7 +1714,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitest/coverage-v8':
         specifier: 3.2.1
-        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       depcheck:
         specifier: 1.4.7
         version: 1.4.7
@@ -1723,7 +1732,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/ui:
     dependencies:
@@ -1731,8 +1740,8 @@ importers:
         specifier: 5.2.8
         version: 5.2.8(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(@types/react@19.0.10)(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzo/gui':
-        specifier: 4.3.0
-        version: 4.3.0(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+        specifier: 4.3.1
+        version: 4.3.1(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/adapt':
         specifier: 3.0.2
         version: 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -1886,7 +1895,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitejs/plugin-react':
         specifier: 4.7.0
-        version: 4.7.0(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 4.7.0(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       camelcase:
         specifier: 6.3.0
         version: 6.3.0
@@ -1913,7 +1922,7 @@ importers:
         version: 3.0.0
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/utilities:
     dependencies:
@@ -2046,7 +2055,7 @@ importers:
         version: 7.0.0-dev.20260311.1
       '@vitest/coverage-v8':
         specifier: 3.2.1
-        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+        version: 3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -2055,7 +2064,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: 3.2.1
-        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+        version: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
   pkgs/wallet:
     dependencies:
@@ -3422,8 +3431,14 @@ packages:
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
     engines: {node: '>=0.8.0'}
 
+  '@emnapi/core@1.9.2':
+    resolution: {integrity: sha512-UC+ZhH3XtczQYfOlu3lNEkdW/p4dsJ1r/bP7H8+rhao3TTTMO1ATq/4DdIi23XuGoFY+Cz0JmCbdVl0hz9jZcA==}
+
   '@emnapi/runtime@1.9.2':
     resolution: {integrity: sha512-3U4+MIWHImeyu1wnmVygh5WlgfYDtyf0k8AbLhMFxOipihf6nrWC4syIm/SwEeec0mNSafiiNnMJwbza/Is6Lw==}
+
+  '@emnapi/wasi-threads@1.2.1':
+    resolution: {integrity: sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==}
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -4753,8 +4768,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  '@hanzo/gui@4.3.0':
-    resolution: {integrity: sha512-sNAGZj//3ZDDLafsINr9e4+jy3c/hBpuOO0Dabb2crgOk0kNSd2fSyfOB5ortXLDuS5T7cbfhA4OcBFz/4zFFA==}
+  '@hanzo/gui@4.3.1':
+    resolution: {integrity: sha512-4BSmNr9gslGNR7LUXeynYPicO1FfFRaBuV2NiWJZMwNraP2RxayOs/tT/RUN67sE+WK//7Blv5bqzAjqEyQZBw==}
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -5080,8 +5095,8 @@ packages:
     peerDependencies:
       react: '>=19'
 
-  '@hanzogui/fake-react-native@3.0.6':
-    resolution: {integrity: sha512-J+RCh0LWXUNlSc+Xu3+ZX/NYBxzDTjCPQIpjx5x6RbVLqRRLVeeogGs2BY6YaSzx2lkGbNNhUiOGCwxaKhOh/g==}
+  '@hanzogui/fake-react-native@4.3.1':
+    resolution: {integrity: sha512-KsqYysZXidl0fenmDfOLd30Ya7q399bRsHlltYmxo5njWjG0I8NdCwX26ncwyFr0x59p7JLC9gxTrIuGgkgp1A==}
 
   '@hanzogui/floating@3.0.0':
     resolution: {integrity: sha512-k9Qaf95BHphp+XkNLUeByVNbd+UXn5WDZIWjHQ8MpkteSYNVAAC4qTB2z9t1/1sjELRfEGm70lJFXVoo3ky9dg==}
@@ -6168,143 +6183,6 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@img/colour@1.1.0':
-    resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
-    engines: {node: '>=18'}
-
-  '@img/sharp-darwin-arm64@0.34.5':
-    resolution: {integrity: sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@img/sharp-darwin-x64@0.34.5':
-    resolution: {integrity: sha512-YNEFAF/4KQ/PeW0N+r+aVVsoIY0/qxxikF2SWdp+NRkmMB7y9LBZAVqQ4yhGCm/H3H270OSykqmQMKLBhBJDEw==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [x64]
-    os: [darwin]
-
-  '@img/sharp-libvips-darwin-arm64@1.2.4':
-    resolution: {integrity: sha512-zqjjo7RatFfFoP0MkQ51jfuFZBnVE2pRiaydKJ1G/rHZvnsrHAOcQALIi9sA5co5xenQdTugCvtb1cuf78Vf4g==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@img/sharp-libvips-darwin-x64@1.2.4':
-    resolution: {integrity: sha512-1IOd5xfVhlGwX+zXv2N93k0yMONvUlANylbJw1eTah8K/Jtpi15KC+WSiaX/nBmbm2HxRM1gZ0nSdjSsrZbGKg==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@img/sharp-libvips-linux-arm64@1.2.4':
-    resolution: {integrity: sha512-excjX8DfsIcJ10x1Kzr4RcWe1edC9PquDRRPx3YVCvQv+U5p7Yin2s32ftzikXojb1PIFc/9Mt28/y+iRklkrw==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@img/sharp-libvips-linux-arm@1.2.4':
-    resolution: {integrity: sha512-bFI7xcKFELdiNCVov8e44Ia4u2byA+l3XtsAj+Q8tfCwO6BQ8iDojYdvoPMqsKDkuoOo+X6HZA0s0q11ANMQ8A==}
-    cpu: [arm]
-    os: [linux]
-
-  '@img/sharp-libvips-linux-ppc64@1.2.4':
-    resolution: {integrity: sha512-FMuvGijLDYG6lW+b/UvyilUWu5Ayu+3r2d1S8notiGCIyYU/76eig1UfMmkZ7vwgOrzKzlQbFSuQfgm7GYUPpA==}
-    cpu: [ppc64]
-    os: [linux]
-
-  '@img/sharp-libvips-linux-riscv64@1.2.4':
-    resolution: {integrity: sha512-oVDbcR4zUC0ce82teubSm+x6ETixtKZBh/qbREIOcI3cULzDyb18Sr/Wcyx7NRQeQzOiHTNbZFF1UwPS2scyGA==}
-    cpu: [riscv64]
-    os: [linux]
-
-  '@img/sharp-libvips-linux-s390x@1.2.4':
-    resolution: {integrity: sha512-qmp9VrzgPgMoGZyPvrQHqk02uyjA0/QrTO26Tqk6l4ZV0MPWIW6LTkqOIov+J1yEu7MbFQaDpwdwJKhbJvuRxQ==}
-    cpu: [s390x]
-    os: [linux]
-
-  '@img/sharp-libvips-linux-x64@1.2.4':
-    resolution: {integrity: sha512-tJxiiLsmHc9Ax1bz3oaOYBURTXGIRDODBqhveVHonrHJ9/+k89qbLl0bcJns+e4t4rvaNBxaEZsFtSfAdquPrw==}
-    cpu: [x64]
-    os: [linux]
-
-  '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
-    resolution: {integrity: sha512-FVQHuwx1IIuNow9QAbYUzJ+En8KcVm9Lk5+uGUQJHaZmMECZmOlix9HnH7n1TRkXMS0pGxIJokIVB9SuqZGGXw==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@img/sharp-libvips-linuxmusl-x64@1.2.4':
-    resolution: {integrity: sha512-+LpyBk7L44ZIXwz/VYfglaX/okxezESc6UxDSoyo2Ks6Jxc4Y7sGjpgU9s4PMgqgjj1gZCylTieNamqA1MF7Dg==}
-    cpu: [x64]
-    os: [linux]
-
-  '@img/sharp-linux-arm64@0.34.5':
-    resolution: {integrity: sha512-bKQzaJRY/bkPOXyKx5EVup7qkaojECG6NLYswgktOZjaXecSAeCWiZwwiFf3/Y+O1HrauiE3FVsGxFg8c24rZg==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [arm64]
-    os: [linux]
-
-  '@img/sharp-linux-arm@0.34.5':
-    resolution: {integrity: sha512-9dLqsvwtg1uuXBGZKsxem9595+ujv0sJ6Vi8wcTANSFpwV/GONat5eCkzQo/1O6zRIkh0m/8+5BjrRr7jDUSZw==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [arm]
-    os: [linux]
-
-  '@img/sharp-linux-ppc64@0.34.5':
-    resolution: {integrity: sha512-7zznwNaqW6YtsfrGGDA6BRkISKAAE1Jo0QdpNYXNMHu2+0dTrPflTLNkpc8l7MUP5M16ZJcUvysVWWrMefZquA==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [ppc64]
-    os: [linux]
-
-  '@img/sharp-linux-riscv64@0.34.5':
-    resolution: {integrity: sha512-51gJuLPTKa7piYPaVs8GmByo7/U7/7TZOq+cnXJIHZKavIRHAP77e3N2HEl3dgiqdD/w0yUfiJnII77PuDDFdw==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [riscv64]
-    os: [linux]
-
-  '@img/sharp-linux-s390x@0.34.5':
-    resolution: {integrity: sha512-nQtCk0PdKfho3eC5MrbQoigJ2gd1CgddUMkabUj+rBevs8tZ2cULOx46E7oyX+04WGfABgIwmMC0VqieTiR4jg==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [s390x]
-    os: [linux]
-
-  '@img/sharp-linux-x64@0.34.5':
-    resolution: {integrity: sha512-MEzd8HPKxVxVenwAa+JRPwEC7QFjoPWuS5NZnBt6B3pu7EG2Ge0id1oLHZpPJdn3OQK+BQDiw9zStiHBTJQQQQ==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [x64]
-    os: [linux]
-
-  '@img/sharp-linuxmusl-arm64@0.34.5':
-    resolution: {integrity: sha512-fprJR6GtRsMt6Kyfq44IsChVZeGN97gTD331weR1ex1c1rypDEABN6Tm2xa1wE6lYb5DdEnk03NZPqA7Id21yg==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [arm64]
-    os: [linux]
-
-  '@img/sharp-linuxmusl-x64@0.34.5':
-    resolution: {integrity: sha512-Jg8wNT1MUzIvhBFxViqrEhWDGzqymo3sV7z7ZsaWbZNDLXRJZoRGrjulp60YYtV4wfY8VIKcWidjojlLcWrd8Q==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [x64]
-    os: [linux]
-
-  '@img/sharp-wasm32@0.34.5':
-    resolution: {integrity: sha512-OdWTEiVkY2PHwqkbBI8frFxQQFekHaSSkUIJkwzclWZe64O1X4UlUjqqqLaPbUpMOQk6FBu/HtlGXNblIs0huw==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [wasm32]
-
-  '@img/sharp-win32-arm64@0.34.5':
-    resolution: {integrity: sha512-WQ3AgWCWYSb2yt+IG8mnC6Jdk9Whs7O0gxphblsLvdhSpSTtmu69ZG1Gkb6NuvxsNACwiPV6cNSZNzt0KPsw7g==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [arm64]
-    os: [win32]
-
-  '@img/sharp-win32-ia32@0.34.5':
-    resolution: {integrity: sha512-FV9m/7NmeCmSHDD5j4+4pNI8Cp3aW+JvLoXcTUo0IqyjSfAZJ8dIUmijx1qaJsIiU+Hosw6xM5KijAWRJCSgNg==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [ia32]
-    os: [win32]
-
-  '@img/sharp-win32-x64@0.34.5':
-    resolution: {integrity: sha512-+29YMsqY2/9eFEiW93eqWnuLcWcufowXewwSNIT6UwZdUUCrM3oFjMWH/Z6/TMmb4hlFenmfAVbpWeup2jryCw==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-    cpu: [x64]
-    os: [win32]
-
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -6816,56 +6694,11 @@ packages:
     resolution: {integrity: sha512-xJIPs+bYuc9ASBl+cvGsKbGrJmS6fAKaSZCnT0lhahT5rhA2VVy9/EcIgd2JhtEuFOJNx7UHNn/qiTPTY4nrQw==}
     engines: {node: '>= 10'}
 
-  '@next/env@15.5.15':
-    resolution: {integrity: sha512-vcmyu5/MyFzN7CdqRHO3uHO44p/QPCZkuTUXroeUmhNP8bL5PHFEhik22JUazt+CDDoD6EpBYRCaS2pISL+/hg==}
-
-  '@next/swc-darwin-arm64@15.5.15':
-    resolution: {integrity: sha512-6PvFO2Tzt10GFK2Ro9tAVEtacMqRmTarYMFKAnV2vYMdwWc73xzmDQyAV7SwEdMhzmiRoo7+m88DuiXlJlGeaw==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@next/swc-darwin-x64@15.5.15':
-    resolution: {integrity: sha512-G+YNV+z6FDZTp/+IdGyIMFqalBTaQSnvAA+X/hrt+eaTRFSznRMz9K7rTmzvM6tDmKegNtyzgufZW0HwVzEqaQ==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@next/swc-linux-arm64-gnu@15.5.15':
-    resolution: {integrity: sha512-eVkrMcVIBqGfXB+QUC7jjZ94Z6uX/dNStbQFabewAnk13Uy18Igd1YZ/GtPRzdhtm7QwC0e6o7zOQecul4iC1w==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@next/swc-linux-arm64-musl@15.5.15':
-    resolution: {integrity: sha512-RwSHKMQ7InLy5GfkY2/n5PcFycKA08qI1VST78n09nN36nUPqCvGSMiLXlfUmzmpQpF6XeBYP2KRWHi0UW3uNg==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@next/swc-linux-x64-gnu@15.5.15':
-    resolution: {integrity: sha512-nplqvY86LakS+eeiuWsNWvfmK8pFcOEW7ZtVRt4QH70lL+0x6LG/m1OpJ/tvrbwjmR8HH9/fH2jzW1GlL03TIg==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-
-  '@next/swc-linux-x64-musl@15.5.15':
-    resolution: {integrity: sha512-eAgl9NKQ84/sww0v81DQINl/vL2IBxD7sMybd0cWRw6wqgouVI53brVRBrggqBRP/NWeIAE1dm5cbKYoiMlqDQ==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-
-  '@next/swc-win32-arm64-msvc@15.5.15':
-    resolution: {integrity: sha512-GJVZC86lzSquh0MtvZT+L7G8+jMnJcldloOjA8Kf3wXvBrvb6OGe2MzPuALxFshSm/IpwUtD2mIoof39ymf52A==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@next/swc-win32-x64-msvc@15.5.15':
-    resolution: {integrity: sha512-nFucjVdwlFqxh/JG3hWSJ4p8+YJV7Ii8aPDuBQULB6DzUF4UNZETXLfEUk+oI2zEznWWULPt7MeuTE6xtK1HSA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [win32]
+  '@napi-rs/wasm-runtime@1.1.3':
+    resolution: {integrity: sha512-xK9sGVbJWYb08+mTJt3/YV24WxvxpXcXtP6B172paPZ+Ts69Re9dAr7lKwJoeIx8OoeuimEiRZ7umkiUVClmmQ==}
+    peerDependencies:
+      '@emnapi/core': ^1.7.1
+      '@emnapi/runtime': ^1.7.1
 
   '@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1':
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -7037,6 +6870,9 @@ packages:
 
   '@openzeppelin/contracts@5.0.2':
     resolution: {integrity: sha512-ytPc6eLGcHHnapAZ9S+5qsdomhjo6QBHTDRRBFfTxXIpsicMhVPouPgmUPebZZZGX7vt9USA+Z+0M0dSVtSUEA==}
+
+  '@oxc-project/types@0.124.0':
+    resolution: {integrity: sha512-VBFWMTBvHxS11Z5Lvlr3IWgrwhMTXV+Md+EQF0Xf60+wAdsGFTBx7X7K/hP4pi8N7dcm1RvcHwDxZ16Qx8keUg==}
 
   '@parcel/watcher-android-arm64@2.5.6':
     resolution: {integrity: sha512-YQxSS34tPF/6ZG7r/Ih9xy+kP/WwediEUsqmtf0cuCV5TPPKw/PQHRhueUo6JdeFJaqV3pyjm0GdYjZotbRt/A==}
@@ -7594,8 +7430,100 @@ packages:
   '@repeaterjs/repeater@3.0.6':
     resolution: {integrity: sha512-Javneu5lsuhwNCryN+pXH93VPQ8g0dBX7wItHFgYiwQmzE1sVdg5tWHiOgHywzL2W21XQopa7IwIEnNbmeUJYA==}
 
+  '@rolldown/binding-android-arm64@1.0.0-rc.15':
+    resolution: {integrity: sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [android]
+
+  '@rolldown/binding-darwin-arm64@1.0.0-rc.15':
+    resolution: {integrity: sha512-oArR/ig8wNTPYsXL+Mzhs0oxhxfuHRfG7Ikw7jXsw8mYOtk71W0OkF2VEVh699pdmzjPQsTjlD1JIOoHkLP1Fg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@rolldown/binding-darwin-x64@1.0.0-rc.15':
+    resolution: {integrity: sha512-YzeVqOqjPYvUbJSWJ4EDL8ahbmsIXQpgL3JVipmN+MX0XnXMeWomLN3Fb+nwCmP/jfyqte5I3XRSm7OfQrbyxw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rolldown/binding-freebsd-x64@1.0.0-rc.15':
+    resolution: {integrity: sha512-9Erhx956jeQ0nNTyif1+QWAXDRD38ZNjr//bSHrt6wDwB+QkAfl2q6Mn1k6OBPerznjRmbM10lgRb1Pli4xZPw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@rolldown/binding-linux-arm-gnueabihf@1.0.0-rc.15':
+    resolution: {integrity: sha512-cVwk0w8QbZJGTnP/AHQBs5yNwmpgGYStL88t4UIaqcvYJWBfS0s3oqVLZPwsPU6M0zlW4GqjP0Zq5MnAGwFeGA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [linux]
+
+  '@rolldown/binding-linux-arm64-gnu@1.0.0-rc.15':
+    resolution: {integrity: sha512-eBZ/u8iAK9SoHGanqe/jrPnY0JvBN6iXbVOsbO38mbz+ZJsaobExAm1Iu+rxa4S1l2FjG0qEZn4Rc6X8n+9M+w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rolldown/binding-linux-arm64-musl@1.0.0-rc.15':
+    resolution: {integrity: sha512-ZvRYMGrAklV9PEkgt4LQM6MjQX2P58HPAuecwYObY2DhS2t35R0I810bKi0wmaYORt6m/2Sm+Z+nFgb0WhXNcQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rolldown/binding-linux-ppc64-gnu@1.0.0-rc.15':
+    resolution: {integrity: sha512-VDpgGBzgfg5hLg+uBpCLoFG5kVvEyafmfxGUV0UHLcL5irxAK7PKNeC2MwClgk6ZAiNhmo9FLhRYgvMmedLtnQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [ppc64]
+    os: [linux]
+
+  '@rolldown/binding-linux-s390x-gnu@1.0.0-rc.15':
+    resolution: {integrity: sha512-y1uXY3qQWCzcPgRJATPSOUP4tCemh4uBdY7e3EZbVwCJTY3gLJWnQABgeUetvED+bt1FQ01OeZwvhLS2bpNrAQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [s390x]
+    os: [linux]
+
+  '@rolldown/binding-linux-x64-gnu@1.0.0-rc.15':
+    resolution: {integrity: sha512-023bTPBod7J3Y/4fzAN6QtpkSABR0rigtrwaP+qSEabUh5zf6ELr9Nc7GujaROuPY3uwdSIXWrvhn1KxOvurWA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+
+  '@rolldown/binding-linux-x64-musl@1.0.0-rc.15':
+    resolution: {integrity: sha512-witB2O0/hU4CgfOOKUoeFgQ4GktPi1eEbAhaLAIpgD6+ZnhcPkUtPsoKKHRzmOoWPZue46IThdSgdo4XneOLYw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+
+  '@rolldown/binding-openharmony-arm64@1.0.0-rc.15':
+    resolution: {integrity: sha512-UCL68NJ0Ud5zRipXZE9dF5PmirzJE4E4BCIOOssEnM7wLDsxjc6Qb0sGDxTNRTP53I6MZpygyCpY8Aa8sPfKPg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [openharmony]
+
+  '@rolldown/binding-wasm32-wasi@1.0.0-rc.15':
+    resolution: {integrity: sha512-ApLruZq/ig+nhaE7OJm4lDjayUnOHVUa77zGeqnqZ9pn0ovdVbbNPerVibLXDmWeUZXjIYIT8V3xkT58Rm9u5Q==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+
+  '@rolldown/binding-win32-arm64-msvc@1.0.0-rc.15':
+    resolution: {integrity: sha512-KmoUoU7HnN+Si5YWJigfTws1jz1bKBYDQKdbLspz0UaqjjFkddHsqorgiW1mxcAj88lYUE6NC/zJNwT+SloqtA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [win32]
+
+  '@rolldown/binding-win32-x64-msvc@1.0.0-rc.15':
+    resolution: {integrity: sha512-3P2A8L+x75qavWLe/Dll3EYBJLQmtkJN8rfh+U/eR3MqMgL/h98PhYI+JFfXuDPgPeCB7iZAKiqii5vqOvnA0g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [win32]
+
   '@rolldown/pluginutils@1.0.0-beta.27':
     resolution: {integrity: sha512-+d0F4MKMCbeVUJwG96uQ4SgAznZNSq93I3V+9NHA4OpvqG8mRCpGdKmK8l/dl02h2CCDHwW2FqilnTyDcAnqjA==}
+
+  '@rolldown/pluginutils@1.0.0-rc.15':
+    resolution: {integrity: sha512-UromN0peaE53IaBRe9W7CjrZgXl90fqGpK+mIZbA3qSTeYqg3pqpROBdIPvOG3F5ereDHNwoHBI2e50n1BDr1g==}
 
   '@rollup/rollup-android-arm-eabi@4.60.1':
     resolution: {integrity: sha512-d6FinEBLdIiK+1uACUttJKfgZREXrF0Qc2SmLII7W2AD8FfiZ9Wjd+rD/iRuf5s5dWrr1GgwXCvPqOuDquOowA==}
@@ -8477,9 +8405,6 @@ packages:
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
-  '@swc/helpers@0.5.15':
-    resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
-
   '@swc/types@0.1.26':
     resolution: {integrity: sha512-lyMwd7WGgG79RS7EERZV3T8wMdmPq3xwyg+1nmAM64kIhx5yl+juO2PYIHb7vTiPgPCj8LYjsNV2T5wiQHUEaw==}
 
@@ -8613,6 +8538,9 @@ packages:
     resolution: {integrity: sha512-1XUUyWW0W6FTSqGEhU8RHVqb2wP1SPkr7hIvBlMEwH9jr+sJQK5kqeosLJ/QaUv4ecSAd1ZhIrLoW7qslAzT4A==}
     cpu: [arm64]
     os: [win32]
+
+  '@tybys/wasm-util@0.10.1':
+    resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
   '@typechain/ethers-v5@7.2.0':
     resolution: {integrity: sha512-jfcmlTvaaJjng63QsT49MT6R1HFhtO/TBMWbyzPFSzMmVIqb2tL6prnKBs4ZJrSvmgIXWy+ttSjpaxCTq8D/Tw==}
@@ -10674,9 +10602,6 @@ packages:
   cli-width@3.0.0:
     resolution: {integrity: sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==}
     engines: {node: '>= 10'}
-
-  client-only@0.0.1:
-    resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
 
   clipanion@3.2.1:
     resolution: {integrity: sha512-dYFdjLb7y1ajfxQopN05mylEpK9ZX0sO1/RfMXdfmwjlIsPkbh4p7A682x++zFPLDCo1x3p82dtljHf5cW2LKA==}
@@ -14181,8 +14106,20 @@ packages:
   lighthouse-logger@2.0.2:
     resolution: {integrity: sha512-vWl2+u5jgOQuZR55Z1WM0XDdrJT6mzMP8zHUct7xTlWhuQs+eV0g+QL0RQdFjT54zVmbhLCP8vIVpy1wGn/gCg==}
 
+  lightningcss-android-arm64@1.32.0:
+    resolution: {integrity: sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [android]
+
   lightningcss-darwin-arm64@1.27.0:
     resolution: {integrity: sha512-Gl/lqIXY+d+ySmMbgDf0pgaWSqrWYxVHoc88q+Vhf2YNzZ8DwoRzGt5NZDVqqIW5ScpSnmmjcgXP87Dn2ylSSQ==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  lightningcss-darwin-arm64@1.32.0:
+    resolution: {integrity: sha512-RzeG9Ju5bag2Bv1/lwlVJvBE3q6TtXskdZLLCyfg5pt+HLz9BqlICO7LZM7VHNTTn/5PRhHFBSjk5lc4cmscPQ==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [darwin]
@@ -14193,8 +14130,20 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  lightningcss-darwin-x64@1.32.0:
+    resolution: {integrity: sha512-U+QsBp2m/s2wqpUYT/6wnlagdZbtZdndSmut/NJqlCcMLTWp5muCrID+K5UJ6jqD2BFshejCYXniPDbNh73V8w==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
   lightningcss-freebsd-x64@1.27.0:
     resolution: {integrity: sha512-n1sEf85fePoU2aDN2PzYjoI8gbBqnmLGEhKq7q0DKLj0UTVmOTwDC7PtLcy/zFxzASTSBlVQYJUhwIStQMIpRA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+
+  lightningcss-freebsd-x64@1.32.0:
+    resolution: {integrity: sha512-JCTigedEksZk3tHTTthnMdVfGf61Fky8Ji2E4YjUTEQX14xiy/lTzXnu1vwiZe3bYe0q+SpsSH/CTeDXK6WHig==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [freebsd]
@@ -14205,8 +14154,20 @@ packages:
     cpu: [arm]
     os: [linux]
 
+  lightningcss-linux-arm-gnueabihf@1.32.0:
+    resolution: {integrity: sha512-x6rnnpRa2GL0zQOkt6rts3YDPzduLpWvwAF6EMhXFVZXD4tPrBkEFqzGowzCsIWsPjqSK+tyNEODUBXeeVHSkw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm]
+    os: [linux]
+
   lightningcss-linux-arm64-gnu@1.27.0:
     resolution: {integrity: sha512-cPsxo1QEWq2sfKkSq2Bq5feQDHdUEwgtA9KaB27J5AX22+l4l0ptgjMZZtYtUnteBofjee+0oW1wQ1guv04a7A==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  lightningcss-linux-arm64-gnu@1.32.0:
+    resolution: {integrity: sha512-0nnMyoyOLRJXfbMOilaSRcLH3Jw5z9HDNGfT/gwCPgaDjnx0i8w7vBzFLFR1f6CMLKF8gVbebmkUN3fa/kQJpQ==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
@@ -14217,8 +14178,20 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  lightningcss-linux-arm64-musl@1.32.0:
+    resolution: {integrity: sha512-UpQkoenr4UJEzgVIYpI80lDFvRmPVg6oqboNHfoH4CQIfNA+HOrZ7Mo7KZP02dC6LjghPQJeBsvXhJod/wnIBg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
   lightningcss-linux-x64-gnu@1.27.0:
     resolution: {integrity: sha512-Dk/jovSI7qqhJDiUibvaikNKI2x6kWPN79AQiD/E/KeQWMjdGe9kw51RAgoWFDi0coP4jinaH14Nrt/J8z3U4A==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  lightningcss-linux-x64-gnu@1.32.0:
+    resolution: {integrity: sha512-V7Qr52IhZmdKPVr+Vtw8o+WLsQJYCTd8loIfpDaMRWGUZfBOYEJeyJIkqGIDMZPwPx24pUMfwSxxI8phr/MbOA==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
@@ -14229,8 +14202,20 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  lightningcss-linux-x64-musl@1.32.0:
+    resolution: {integrity: sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
   lightningcss-win32-arm64-msvc@1.27.0:
     resolution: {integrity: sha512-/wXegPS1hnhkeG4OXQKEMQeJd48RDC3qdh+OA8pCuOPCyvnm/yEayrJdJVqzBsqpy1aJklRCVxscpFur80o6iQ==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
+  lightningcss-win32-arm64-msvc@1.32.0:
+    resolution: {integrity: sha512-8SbC8BR40pS6baCM8sbtYDSwEVQd4JlFTOlaD3gWGHfThTcABnNDBda6eTZeqbofalIJhFx0qKzgHJmcPTnGdw==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [win32]
@@ -14241,8 +14226,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  lightningcss-win32-x64-msvc@1.32.0:
+    resolution: {integrity: sha512-Amq9B/SoZYdDi1kFrojnoqPLxYhQ4Wo5XiL8EVJrVsB8ARoC1PWW6VGtT0WKCemjy8aC+louJnjS7U18x3b06Q==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [win32]
+
   lightningcss@1.27.0:
     resolution: {integrity: sha512-8f7aNmS1+etYSLHht0fQApPc2kNO8qGRutifN5rVIc6Xo6ABsEbqOr758UwI7ALVbTt4x1fllKt0PYgzD9S3yQ==}
+    engines: {node: '>= 12.0.0'}
+
+  lightningcss@1.32.0:
+    resolution: {integrity: sha512-NXYBzinNrblfraPGyrbPoD19C1h9lfI/1mzgWYvXUTe414Gz/X1FD2XBZSZM7rRTrMA8JL3OtAaGifrIKhQ5yQ==}
     engines: {node: '>= 12.0.0'}
 
   lines-and-columns@1.2.4:
@@ -14845,27 +14840,6 @@ packages:
   netmask@2.1.1:
     resolution: {integrity: sha512-eonl3sLUha+S1GzTPxychyhnUzKyeQkZ7jLjKrBagJgPla13F+uQ71HgpFefyHgqrjEbCPkDArxYsjY8/+gLKA==}
     engines: {node: '>= 0.4.0'}
-
-  next@15.5.15:
-    resolution: {integrity: sha512-VSqCrJwtLVGwAVE0Sb/yikrQfkwkZW9p+lL/J4+xe+G3ZA+QnWPqgcfH1tDUEuk9y+pthzzVFp4L/U8JerMfMQ==}
-    engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@opentelemetry/api': ^1.1.0
-      '@playwright/test': ^1.51.1
-      babel-plugin-react-compiler: '*'
-      react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
-      react-dom: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
-      sass: ^1.3.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-      '@playwright/test':
-        optional: true
-      babel-plugin-react-compiler:
-        optional: true
-      sass:
-        optional: true
 
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
@@ -15568,10 +15542,6 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       postcss: ^8.2.9
-
-  postcss@8.4.31:
-    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
-    engines: {node: ^10 || ^12 || >=14}
 
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
@@ -16665,6 +16635,11 @@ packages:
     peerDependencies:
       react-native: '>=0.55'
 
+  rolldown@1.0.0-rc.15:
+    resolution: {integrity: sha512-Ff31guA5zT6WjnGp0SXw76X6hzGRk/OQq2hE+1lcDe+lJdHSgnSX6nK3erbONHyCbpSj9a9E+uX/OvytZoWp2g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+
   rollup@4.60.1:
     resolution: {integrity: sha512-VmtB2rFU/GroZ4oL8+ZqXgSA38O6GR8KSIvWmEFv63pQ0G6KaBH9s07PO8XTXP4vI+3UJUEypOfjkGfmSBBR0w==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -16874,10 +16849,6 @@ packages:
   sharp@0.32.6:
     resolution: {integrity: sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==}
     engines: {node: '>=14.15.0'}
-
-  sharp@0.34.5:
-    resolution: {integrity: sha512-Ou9I5Ft9WNcCbXrU9cMgPBcCK8LiwLqcbywW3t4oDV37n1pzpuNLsYiAV8eODnjbtQlSDwZ2cUEeQz4E54Hltg==}
-    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -17332,19 +17303,6 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
-
-  styled-jsx@5.1.6:
-    resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
-    engines: {node: '>= 12.0.0'}
-    peerDependencies:
-      '@babel/core': '*'
-      babel-plugin-macros: '*'
-      react: '>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      babel-plugin-macros:
-        optional: true
 
   styleq@0.1.3:
     resolution: {integrity: sha512-3ZUifmCDCQanjeej1f6kyl/BeP/Vae5EYkQ9iJfUm/QwZvlgnZzyflqAsAWYURdtea8Vkvswu2GrC57h3qffcA==}
@@ -18220,6 +18178,49 @@ packages:
       less:
         optional: true
       lightningcss:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
+  vite@8.0.8:
+    resolution: {integrity: sha512-dbU7/iLVa8KZALJyLOBOQ88nOXtNG8vxKuOT4I2mD+Ya70KPceF4IAmDsmU0h1Qsn5bPrvsY9HJstCRh3hG6Uw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^20.19.0 || >=22.12.0
+      '@vitejs/devtools': ^0.1.0
+      esbuild: ^0.27.0 || ^0.28.0
+      jiti: '>=1.21.0'
+      less: ^4.0.0
+      sass: ^1.70.0
+      sass-embedded: ^1.70.0
+      stylus: '>=0.54.8'
+      sugarss: ^5.0.0
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      '@vitejs/devtools':
+        optional: true
+      esbuild:
+        optional: true
+      jiti:
+        optional: true
+      less:
         optional: true
       sass:
         optional: true
@@ -21256,7 +21257,18 @@ snapshots:
     dependencies:
       '@types/hammerjs': 2.0.46
 
+  '@emnapi/core@1.9.2':
+    dependencies:
+      '@emnapi/wasi-threads': 1.2.1
+      tslib: 2.8.1
+    optional: true
+
   '@emnapi/runtime@1.9.2':
+    dependencies:
+      tslib: 2.8.1
+    optional: true
+
+  '@emnapi/wasi-threads@1.2.1':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -23160,7 +23172,7 @@ snapshots:
   '@graphql-tools/optimize@1.4.0(graphql@16.6.0)':
     dependencies:
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   '@graphql-tools/prisma-loader@7.2.72(@types/node@22.13.1)(bufferutil@4.1.0)(graphql@16.6.0)(utf-8-validate@5.0.10)':
     dependencies:
@@ -23195,7 +23207,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.0(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -23256,7 +23268,7 @@ snapshots:
   '@graphql-tools/utils@8.13.1(graphql@16.6.0)':
     dependencies:
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   '@graphql-tools/utils@9.2.1(graphql@16.6.0)':
     dependencies:
@@ -23301,7 +23313,7 @@ snapshots:
       protobufjs: 7.5.4
       yargs: 17.7.2
 
-  '@hanzo/gui@4.3.0(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+  '@hanzo/gui@4.3.1(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/accordion': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/adapt': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -23314,6 +23326,7 @@ snapshots:
       '@hanzogui/checkbox-headless': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/collection': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/compose-refs': 3.0.6(react@19.0.3)
+      '@hanzogui/config-default': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/constants': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/context-menu': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/core': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -23323,7 +23336,7 @@ snapshots:
       '@hanzogui/dismissable': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/element': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/elements': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
-      '@hanzogui/fake-react-native': 3.0.6
+      '@hanzogui/fake-react-native': 4.3.1
       '@hanzogui/focus-guard': 3.0.2(react@19.0.3)
       '@hanzogui/focus-scope': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/focusable': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -23354,6 +23367,7 @@ snapshots:
       '@hanzogui/separator': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/shapes': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/sheet': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/shorthands': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/slider': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/spacer': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/spinner': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -23364,6 +23378,7 @@ snapshots:
       '@hanzogui/tabs-headless': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/text': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/theme': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/theme-builder': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/toast': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/toggle-group': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/tooltip': 3.0.2(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -23670,6 +23685,29 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
+  '@hanzogui/animations-css@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/animation-helpers': 3.0.6
+      '@hanzogui/constants': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
+      '@hanzogui/cubic-bezier-animator': 3.0.6
+      '@hanzogui/use-presence': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      react: 19.0.3
+      react-dom: 19.0.3(react@19.0.3)
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
   '@hanzogui/animations-css@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/animation-helpers': 3.0.6
@@ -23786,6 +23824,28 @@ snapshots:
       '@hanzogui/constants': 3.0.1(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/use-presence': 3.0.1(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/web': 3.0.1(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      react: 19.0.3
+      react-native: '@hanzogui/react-native@0.79.5-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.0.3)(utf-8-validate@5.0.10)'
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react-dom
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
+  '@hanzogui/animations-react-native@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/animation-helpers': 3.0.6
+      '@hanzogui/constants': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
+      '@hanzogui/use-presence': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       react: 19.0.3
       react-native: '@hanzogui/react-native@0.79.5-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.0.3)(utf-8-validate@5.0.10)'
     transitivePeerDependencies:
@@ -24192,6 +24252,29 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
+  '@hanzogui/config-default@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/animations-css': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/animations-react-native': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/core': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/shorthands': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react
+      - react-dom
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
   '@hanzogui/config-default@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/animations-css': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -24511,6 +24594,25 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
+  '@hanzogui/create-theme@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react
+      - react-dom
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
   '@hanzogui/create-theme@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -24691,7 +24793,7 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
-  '@hanzogui/fake-react-native@3.0.6': {}
+  '@hanzogui/fake-react-native@4.3.1': {}
 
   '@hanzogui/floating@3.0.0(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react@19.0.3)':
     dependencies:
@@ -26745,6 +26847,25 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
+  '@hanzogui/shorthands@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react
+      - react-dom
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
   '@hanzogui/shorthands@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -27047,7 +27168,7 @@ snapshots:
       '@hanzogui/cli-color': 3.0.6
       '@hanzogui/config-default': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/core': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
-      '@hanzogui/fake-react-native': 3.0.6
+      '@hanzogui/fake-react-native': 4.3.1
       '@hanzogui/generate-themes': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(esbuild@0.27.7)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
       '@hanzogui/helpers': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3)
       '@hanzogui/helpers-node': 3.0.6
@@ -27102,7 +27223,7 @@ snapshots:
       '@hanzogui/cli-color': 3.0.6
       '@hanzogui/config-default': 3.0.6(c64av5w3y7xmyxdjlqya4xtvne)
       '@hanzogui/core': 3.0.6(c64av5w3y7xmyxdjlqya4xtvne)
-      '@hanzogui/fake-react-native': 3.0.6
+      '@hanzogui/fake-react-native': 4.3.1
       '@hanzogui/generate-themes': 3.0.6(r6ecvifmw2yuk47fut6su6w5oi)
       '@hanzogui/helpers': 3.0.6(react-native@0.79.5(@babel/core@7.26.0)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.0.3)(utf-8-validate@5.0.10))(react@19.0.3)
       '@hanzogui/helpers-node': 3.0.6
@@ -27323,6 +27444,27 @@ snapshots:
       - zeego
 
   '@hanzogui/theme-base@3.0.2': {}
+
+  '@hanzogui/theme-builder@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/create-theme': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      color2k: 2.0.3
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react
+      - react-dom
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
 
   '@hanzogui/theme-builder@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
@@ -27677,6 +27819,25 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
+  '@hanzogui/use-presence@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
+    dependencies:
+      '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.29.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
+      react: 19.0.3
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react-dom
+      - react-native
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
   '@hanzogui/use-presence@3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)':
     dependencies:
       '@hanzogui/web': 3.0.6(@hanzogui/react-native@0.79.5-fork.1)(react-dom@19.0.3(react@19.0.3))(react-native-gesture-handler@2.24.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react-native-keyboard-controller@1.17.5(@hanzogui/react-native@0.79.5-fork.1)(react-native-reanimated@3.19.3(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.0.3))(react@19.0.3)
@@ -27981,103 +28142,6 @@ snapshots:
   '@humanwhocodes/object-schema@2.0.3': {}
 
   '@humanwhocodes/retry@0.4.3': {}
-
-  '@img/colour@1.1.0':
-    optional: true
-
-  '@img/sharp-darwin-arm64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-darwin-arm64': 1.2.4
-    optional: true
-
-  '@img/sharp-darwin-x64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-darwin-x64': 1.2.4
-    optional: true
-
-  '@img/sharp-libvips-darwin-arm64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-darwin-x64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-arm64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-arm@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-ppc64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-riscv64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-s390x@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linux-x64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
-    optional: true
-
-  '@img/sharp-libvips-linuxmusl-x64@1.2.4':
-    optional: true
-
-  '@img/sharp-linux-arm64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-arm64': 1.2.4
-    optional: true
-
-  '@img/sharp-linux-arm@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-arm': 1.2.4
-    optional: true
-
-  '@img/sharp-linux-ppc64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-ppc64': 1.2.4
-    optional: true
-
-  '@img/sharp-linux-riscv64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-riscv64': 1.2.4
-    optional: true
-
-  '@img/sharp-linux-s390x@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-s390x': 1.2.4
-    optional: true
-
-  '@img/sharp-linux-x64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-x64': 1.2.4
-    optional: true
-
-  '@img/sharp-linuxmusl-arm64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-arm64': 1.2.4
-    optional: true
-
-  '@img/sharp-linuxmusl-x64@0.34.5':
-    optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-x64': 1.2.4
-    optional: true
-
-  '@img/sharp-wasm32@0.34.5':
-    dependencies:
-      '@emnapi/runtime': 1.9.2
-    optional: true
-
-  '@img/sharp-win32-arm64@0.34.5':
-    optional: true
-
-  '@img/sharp-win32-ia32@0.34.5':
-    optional: true
-
-  '@img/sharp-win32-x64@0.34.5':
-    optional: true
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -28931,30 +28995,11 @@ snapshots:
       '@napi-rs/nice-win32-x64-msvc': 1.1.1
     optional: true
 
-  '@next/env@15.5.15': {}
-
-  '@next/swc-darwin-arm64@15.5.15':
-    optional: true
-
-  '@next/swc-darwin-x64@15.5.15':
-    optional: true
-
-  '@next/swc-linux-arm64-gnu@15.5.15':
-    optional: true
-
-  '@next/swc-linux-arm64-musl@15.5.15':
-    optional: true
-
-  '@next/swc-linux-x64-gnu@15.5.15':
-    optional: true
-
-  '@next/swc-linux-x64-musl@15.5.15':
-    optional: true
-
-  '@next/swc-win32-arm64-msvc@15.5.15':
-    optional: true
-
-  '@next/swc-win32-x64-msvc@15.5.15':
+  '@napi-rs/wasm-runtime@1.1.3(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)':
+    dependencies:
+      '@emnapi/core': 1.9.2
+      '@emnapi/runtime': 1.9.2
+      '@tybys/wasm-util': 0.10.1
     optional: true
 
   '@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1':
@@ -29091,6 +29136,8 @@ snapshots:
   '@openzeppelin/contracts@4.7.0': {}
 
   '@openzeppelin/contracts@5.0.2': {}
+
+  '@oxc-project/types@0.124.0': {}
 
   '@parcel/watcher-android-arm64@2.5.6':
     optional: true
@@ -30328,7 +30375,58 @@ snapshots:
 
   '@repeaterjs/repeater@3.0.6': {}
 
+  '@rolldown/binding-android-arm64@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-darwin-arm64@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-darwin-x64@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-freebsd-x64@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-arm-gnueabihf@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-arm64-gnu@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-arm64-musl@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-ppc64-gnu@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-s390x-gnu@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-x64-gnu@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-linux-x64-musl@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-openharmony-arm64@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-wasm32-wasi@1.0.0-rc.15':
+    dependencies:
+      '@emnapi/core': 1.9.2
+      '@emnapi/runtime': 1.9.2
+      '@napi-rs/wasm-runtime': 1.1.3(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
+    optional: true
+
+  '@rolldown/binding-win32-arm64-msvc@1.0.0-rc.15':
+    optional: true
+
+  '@rolldown/binding-win32-x64-msvc@1.0.0-rc.15':
+    optional: true
+
   '@rolldown/pluginutils@1.0.0-beta.27': {}
+
+  '@rolldown/pluginutils@1.0.0-rc.15': {}
 
   '@rollup/rollup-android-arm-eabi@4.60.1':
     optional: true
@@ -31514,10 +31612,6 @@ snapshots:
 
   '@swc/counter@0.1.3': {}
 
-  '@swc/helpers@0.5.15':
-    dependencies:
-      tslib: 2.8.1
-
   '@swc/types@0.1.26':
     dependencies:
       '@swc/counter': 0.1.3
@@ -31641,6 +31735,11 @@ snapshots:
     optional: true
 
   '@turbo/windows-arm64@2.9.6':
+    optional: true
+
+  '@tybys/wasm-util@0.10.1':
+    dependencies:
+      tslib: 2.8.1
     optional: true
 
   '@typechain/ethers-v5@7.2.0(@ethersproject/abi@5.8.0)(@ethersproject/bytes@5.8.0)(@ethersproject/providers@5.7.2(bufferutil@4.1.0)(utf-8-validate@5.0.10))(ethers@5.7.2(bufferutil@4.1.0)(utf-8-validate@5.0.10))(typechain@5.2.0(typescript@5.8.3))(typescript@5.8.3)':
@@ -32473,7 +32572,7 @@ snapshots:
       '@urql/core': 5.2.0(graphql@16.6.0)
       wonka: 6.3.6
 
-  '@vitejs/plugin-react@4.7.0(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))':
+  '@vitejs/plugin-react@4.7.0(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.29.0)
@@ -32481,11 +32580,11 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.27
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))':
+  '@vitest/coverage-v8@3.2.1(vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
@@ -32500,7 +32599,7 @@ snapshots:
       std-env: 3.10.0
       test-exclude: 7.0.2
       tinyrainbow: 2.0.0
-      vitest: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vitest: 3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -32528,21 +32627,21 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))':
+  '@vitest/mocker@3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
       '@vitest/spy': 3.2.1
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
 
-  '@vitest/mocker@4.1.4(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))':
+  '@vitest/mocker@4.1.4(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
       '@vitest/spy': 4.1.4
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
 
   '@vitest/pretty-format@2.0.5':
     dependencies:
@@ -33628,10 +33727,10 @@ snapshots:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
 
-  '@wxt-dev/module-react@1.1.3(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))(wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3))':
+  '@wxt-dev/module-react@1.1.3(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))(wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3))':
     dependencies:
-      '@vitejs/plugin-react': 4.7.0(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
-      wxt: 0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3)
+      '@vitejs/plugin-react': 4.7.0(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
+      wxt: 0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -34734,7 +34833,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   camelcase@4.1.0: {}
 
@@ -34757,7 +34856,7 @@ snapshots:
   capital-case@1.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
       upper-case-first: 2.0.2
 
   centra@2.7.0:
@@ -34839,7 +34938,7 @@ snapshots:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   char-regex@1.0.2: {}
 
@@ -34991,8 +35090,6 @@ snapshots:
       string-width: 7.2.0
 
   cli-width@3.0.0: {}
-
-  client-only@0.0.1: {}
 
   clipanion@3.2.1(typanion@3.14.0):
     dependencies:
@@ -35200,7 +35297,7 @@ snapshots:
   constant-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
       upper-case: 2.0.2
 
   constants-browserify@1.0.0: {}
@@ -37328,7 +37425,7 @@ snapshots:
 
   extension-port-stream@3.0.0:
     dependencies:
-      readable-stream: 3.6.2
+      readable-stream: 4.7.0
       webextension-polyfill: 0.10.0
 
   external-editor@3.1.0:
@@ -38175,7 +38272,7 @@ snapshots:
   header-case@2.0.4:
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   hermes-estree@0.25.1: {}
 
@@ -38619,7 +38716,7 @@ snapshots:
 
   is-lower-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   is-map@2.0.3: {}
 
@@ -38723,7 +38820,7 @@ snapshots:
 
   is-upper-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   is-url-superb@4.0.0: {}
 
@@ -39545,34 +39642,67 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  lightningcss-android-arm64@1.32.0:
+    optional: true
+
   lightningcss-darwin-arm64@1.27.0:
+    optional: true
+
+  lightningcss-darwin-arm64@1.32.0:
     optional: true
 
   lightningcss-darwin-x64@1.27.0:
     optional: true
 
+  lightningcss-darwin-x64@1.32.0:
+    optional: true
+
   lightningcss-freebsd-x64@1.27.0:
+    optional: true
+
+  lightningcss-freebsd-x64@1.32.0:
     optional: true
 
   lightningcss-linux-arm-gnueabihf@1.27.0:
     optional: true
 
+  lightningcss-linux-arm-gnueabihf@1.32.0:
+    optional: true
+
   lightningcss-linux-arm64-gnu@1.27.0:
+    optional: true
+
+  lightningcss-linux-arm64-gnu@1.32.0:
     optional: true
 
   lightningcss-linux-arm64-musl@1.27.0:
     optional: true
 
+  lightningcss-linux-arm64-musl@1.32.0:
+    optional: true
+
   lightningcss-linux-x64-gnu@1.27.0:
+    optional: true
+
+  lightningcss-linux-x64-gnu@1.32.0:
     optional: true
 
   lightningcss-linux-x64-musl@1.27.0:
     optional: true
 
+  lightningcss-linux-x64-musl@1.32.0:
+    optional: true
+
   lightningcss-win32-arm64-msvc@1.27.0:
     optional: true
 
+  lightningcss-win32-arm64-msvc@1.32.0:
+    optional: true
+
   lightningcss-win32-x64-msvc@1.27.0:
+    optional: true
+
+  lightningcss-win32-x64-msvc@1.32.0:
     optional: true
 
   lightningcss@1.27.0:
@@ -39589,6 +39719,22 @@ snapshots:
       lightningcss-linux-x64-musl: 1.27.0
       lightningcss-win32-arm64-msvc: 1.27.0
       lightningcss-win32-x64-msvc: 1.27.0
+
+  lightningcss@1.32.0:
+    dependencies:
+      detect-libc: 2.1.2
+    optionalDependencies:
+      lightningcss-android-arm64: 1.32.0
+      lightningcss-darwin-arm64: 1.32.0
+      lightningcss-darwin-x64: 1.32.0
+      lightningcss-freebsd-x64: 1.32.0
+      lightningcss-linux-arm-gnueabihf: 1.32.0
+      lightningcss-linux-arm64-gnu: 1.32.0
+      lightningcss-linux-arm64-musl: 1.32.0
+      lightningcss-linux-x64-gnu: 1.32.0
+      lightningcss-linux-x64-musl: 1.32.0
+      lightningcss-win32-arm64-msvc: 1.32.0
+      lightningcss-win32-x64-msvc: 1.32.0
 
   lines-and-columns@1.2.4: {}
 
@@ -39757,11 +39903,11 @@ snapshots:
 
   lower-case-first@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   lru-cache@10.4.3: {}
 
@@ -40315,35 +40461,10 @@ snapshots:
 
   netmask@2.1.1: {}
 
-  next@15.5.15(@opentelemetry/api@1.9.1)(@playwright/test@1.58.2)(react-dom@19.0.3(react@19.0.3))(react@19.0.3):
-    dependencies:
-      '@next/env': 15.5.15
-      '@swc/helpers': 0.5.15
-      caniuse-lite: 1.0.30001787
-      postcss: 8.4.31
-      react: 19.0.3
-      react-dom: 19.0.3(react@19.0.3)
-      styled-jsx: 5.1.6(react@19.0.3)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 15.5.15
-      '@next/swc-darwin-x64': 15.5.15
-      '@next/swc-linux-arm64-gnu': 15.5.15
-      '@next/swc-linux-arm64-musl': 15.5.15
-      '@next/swc-linux-x64-gnu': 15.5.15
-      '@next/swc-linux-x64-musl': 15.5.15
-      '@next/swc-win32-arm64-msvc': 15.5.15
-      '@next/swc-win32-x64-msvc': 15.5.15
-      '@opentelemetry/api': 1.9.1
-      '@playwright/test': 1.58.2
-      sharp: 0.34.5
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   no-yolo-signatures@0.0.2(bufferutil@4.1.0)(utf-8-validate@5.0.10):
     dependencies:
@@ -40830,7 +40951,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   parent-module@1.0.1:
     dependencies:
@@ -40905,14 +41026,14 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   path-browserify@1.0.1: {}
 
   path-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   path-dirname@1.0.2: {}
 
@@ -41157,12 +41278,6 @@ snapshots:
       is-url-superb: 4.0.0
       postcss: 8.5.9
       quote-unquote: 1.0.0
-
-  postcss@8.4.31:
-    dependencies:
-      nanoid: 3.3.11
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
 
   postcss@8.4.49:
     dependencies:
@@ -42585,6 +42700,27 @@ snapshots:
     dependencies:
       react-native: '@hanzogui/react-native@0.79.5-fork.1(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.8.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.0.3)(utf-8-validate@5.0.10)'
 
+  rolldown@1.0.0-rc.15:
+    dependencies:
+      '@oxc-project/types': 0.124.0
+      '@rolldown/pluginutils': 1.0.0-rc.15
+    optionalDependencies:
+      '@rolldown/binding-android-arm64': 1.0.0-rc.15
+      '@rolldown/binding-darwin-arm64': 1.0.0-rc.15
+      '@rolldown/binding-darwin-x64': 1.0.0-rc.15
+      '@rolldown/binding-freebsd-x64': 1.0.0-rc.15
+      '@rolldown/binding-linux-arm-gnueabihf': 1.0.0-rc.15
+      '@rolldown/binding-linux-arm64-gnu': 1.0.0-rc.15
+      '@rolldown/binding-linux-arm64-musl': 1.0.0-rc.15
+      '@rolldown/binding-linux-ppc64-gnu': 1.0.0-rc.15
+      '@rolldown/binding-linux-s390x-gnu': 1.0.0-rc.15
+      '@rolldown/binding-linux-x64-gnu': 1.0.0-rc.15
+      '@rolldown/binding-linux-x64-musl': 1.0.0-rc.15
+      '@rolldown/binding-openharmony-arm64': 1.0.0-rc.15
+      '@rolldown/binding-wasm32-wasi': 1.0.0-rc.15
+      '@rolldown/binding-win32-arm64-msvc': 1.0.0-rc.15
+      '@rolldown/binding-win32-x64-msvc': 1.0.0-rc.15
+
   rollup@4.60.1:
     dependencies:
       '@types/estree': 1.0.8
@@ -42757,7 +42893,7 @@ snapshots:
   sentence-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.4.1
+      tslib: 2.8.1
       upper-case-first: 2.0.2
 
   serialize-error@2.1.0: {}
@@ -42882,38 +43018,6 @@ snapshots:
       - bare-abort-controller
       - bare-buffer
       - react-native-b4a
-
-  sharp@0.34.5:
-    dependencies:
-      '@img/colour': 1.1.0
-      detect-libc: 2.1.2
-      semver: 7.7.4
-    optionalDependencies:
-      '@img/sharp-darwin-arm64': 0.34.5
-      '@img/sharp-darwin-x64': 0.34.5
-      '@img/sharp-libvips-darwin-arm64': 1.2.4
-      '@img/sharp-libvips-darwin-x64': 1.2.4
-      '@img/sharp-libvips-linux-arm': 1.2.4
-      '@img/sharp-libvips-linux-arm64': 1.2.4
-      '@img/sharp-libvips-linux-ppc64': 1.2.4
-      '@img/sharp-libvips-linux-riscv64': 1.2.4
-      '@img/sharp-libvips-linux-s390x': 1.2.4
-      '@img/sharp-libvips-linux-x64': 1.2.4
-      '@img/sharp-libvips-linuxmusl-arm64': 1.2.4
-      '@img/sharp-libvips-linuxmusl-x64': 1.2.4
-      '@img/sharp-linux-arm': 0.34.5
-      '@img/sharp-linux-arm64': 0.34.5
-      '@img/sharp-linux-ppc64': 0.34.5
-      '@img/sharp-linux-riscv64': 0.34.5
-      '@img/sharp-linux-s390x': 0.34.5
-      '@img/sharp-linux-x64': 0.34.5
-      '@img/sharp-linuxmusl-arm64': 0.34.5
-      '@img/sharp-linuxmusl-x64': 0.34.5
-      '@img/sharp-wasm32': 0.34.5
-      '@img/sharp-win32-arm64': 0.34.5
-      '@img/sharp-win32-ia32': 0.34.5
-      '@img/sharp-win32-x64': 0.34.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -43164,7 +43268,7 @@ snapshots:
 
   sponge-case@1.0.1:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   sprintf-js@1.0.3: {}
 
@@ -43457,11 +43561,6 @@ snapshots:
     dependencies:
       webpack: 5.90.0(@swc/core@1.15.24)(esbuild@0.27.7)(webpack-cli@5.1.4)
 
-  styled-jsx@5.1.6(react@19.0.3):
-    dependencies:
-      client-only: 0.0.1
-      react: 19.0.3
-
   styleq@0.1.3: {}
 
   stylus-lookup@3.0.2:
@@ -43535,7 +43634,7 @@ snapshots:
 
   swap-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   swc-loader@0.2.6(@swc/core@1.15.24)(webpack@5.90.0):
     dependencies:
@@ -43756,7 +43855,7 @@ snapshots:
 
   title-case@3.0.3:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   tldts-core@6.1.86: {}
 
@@ -44158,11 +44257,11 @@ snapshots:
 
   upper-case-first@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   upper-case@2.0.2:
     dependencies:
-      tslib: 2.4.1
+      tslib: 2.8.1
 
   uppercamelcase@3.0.0:
     dependencies:
@@ -44323,13 +44422,13 @@ snapshots:
       - utf-8-validate
       - zod
 
-  vite-node@3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3):
+  vite-node@3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3(supports-color@8.1.1)
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -44344,13 +44443,13 @@ snapshots:
       - tsx
       - yaml
 
-  vite-node@3.2.4(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3):
+  vite-node@3.2.4(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       cac: 6.7.14
       debug: 4.4.3(supports-color@8.1.1)
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -44365,7 +44464,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3):
+  vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
@@ -44377,15 +44476,30 @@ snapshots:
       '@types/node': 22.13.1
       fsevents: 2.3.3
       jiti: 2.6.1
-      lightningcss: 1.27.0
+      lightningcss: 1.32.0
       terser: 5.46.1
       yaml: 2.8.3
 
-  vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3):
+  vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3):
+    dependencies:
+      lightningcss: 1.32.0
+      picomatch: 4.0.4
+      postcss: 8.5.9
+      rolldown: 1.0.0-rc.15
+      tinyglobby: 0.2.16
+    optionalDependencies:
+      '@types/node': 22.13.1
+      esbuild: 0.27.7
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      terser: 5.46.1
+      yaml: 2.8.3
+
+  vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@20.0.3(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.1
-      '@vitest/mocker': 3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+      '@vitest/mocker': 3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       '@vitest/pretty-format': 3.2.4
       '@vitest/runner': 3.2.1
       '@vitest/snapshot': 3.2.1
@@ -44403,8 +44517,8 @@ snapshots:
       tinyglobby: 0.2.16
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
-      vite-node: 3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
+      vite-node: 3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@edge-runtime/vm': 5.0.0
@@ -44426,11 +44540,11 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3):
+  vitest@3.2.1(@edge-runtime/vm@5.0.0)(@types/debug@4.1.13)(@types/node@22.13.1)(happy-dom@20.0.10)(jiti@2.6.1)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/expect': 3.2.1
-      '@vitest/mocker': 3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+      '@vitest/mocker': 3.2.1(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3))
       '@vitest/pretty-format': 3.2.4
       '@vitest/runner': 3.2.1
       '@vitest/snapshot': 3.2.1
@@ -44448,8 +44562,8 @@ snapshots:
       tinyglobby: 0.2.16
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
-      vite-node: 3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
+      vite-node: 3.2.1(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@edge-runtime/vm': 5.0.0
@@ -44471,10 +44585,10 @@ snapshots:
       - tsx
       - yaml
 
-  vitest@4.1.4(@edge-runtime/vm@5.0.0)(@opentelemetry/api@1.9.1)(@types/node@22.13.1)(happy-dom@20.0.10)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)):
+  vitest@4.1.4(@edge-runtime/vm@5.0.0)(@opentelemetry/api@1.9.1)(@types/node@22.13.1)(happy-dom@20.0.10)(jsdom@26.1.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)):
     dependencies:
       '@vitest/expect': 4.1.4
-      '@vitest/mocker': 4.1.4(vite@7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3))
+      '@vitest/mocker': 4.1.4(vite@8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3))
       '@vitest/pretty-format': 4.1.4
       '@vitest/runner': 4.1.4
       '@vitest/snapshot': 4.1.4
@@ -44491,7 +44605,7 @@ snapshots:
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 8.0.8(@types/node@22.13.1)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.1)(yaml@2.8.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@edge-runtime/vm': 5.0.0
@@ -44995,7 +45109,7 @@ snapshots:
     dependencies:
       is-wsl: 3.1.1
 
-  wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3):
+  wxt@0.20.8(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(terser@5.46.1)(yaml@2.8.3):
     dependencies:
       '@1natsu/wait-element': 4.2.0
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.60.1)
@@ -45039,8 +45153,8 @@ snapshots:
       publish-browser-extension: 3.0.3
       scule: 1.3.0
       unimport: 5.7.0
-      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
-      vite-node: 3.2.4(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.27.0)(terser@5.46.1)(yaml@2.8.3)
+      vite: 7.3.2(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
+      vite-node: 3.2.4(@types/node@22.13.1)(jiti@2.6.1)(lightningcss@1.32.0)(terser@5.46.1)(yaml@2.8.3)
       web-ext-run: 0.2.4
     transitivePeerDependencies:
       - '@types/node'
