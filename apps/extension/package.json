@@ -109,8 +109,6 @@
     "lint:eslint:fix": "nx lint:eslint:fix extension",
     "lint": "nx lint extension",
     "lint:fix": "nx lint:fix extension",
-    "postinstall": "nx postinstall extension",
-    "prepare": "nx prepare extension",
     "snapshots": "nx snapshots extension",
     "start": "nx start extension",
     "start:absolute": "nx start:absolute extension",
