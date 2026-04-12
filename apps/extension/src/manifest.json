@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Uniswap Extension",
-  "description": "The Uniswap Extension is a self-custody crypto wallet that's built for swapping.",
+  "name": "Lux Wallet",
+  "description": "Lux Wallet is a self-custody crypto wallet for swapping, bridging, and managing digital assets.",
   "version": "1.69.0",
   "minimum_chrome_version": "116",
   "icons": {
