@@ -1,4 +1,4 @@
-import { SharedEventName } from '@uniswap/analytics-events'
+import { SharedEventName } from '@luxamm/analytics-events'
 import { memo, useCallback } from 'react'
 import { Flex } from 'ui/src'
 // This is intentionally imported from the native file as only the web app requires a web specific implementation
