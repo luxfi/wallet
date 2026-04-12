@@ -7,8 +7,8 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'wxt'
-const BASE_NAME = process.env.BRAND_EXTENSION_NAME || 'Lux Wallet'
-const BASE_DESCRIPTION = process.env.BRAND_EXTENSION_DESC || 'Lux Wallet is a self-custody crypto wallet for swapping, bridging, and managing digital assets.'
+const BASE_NAME = process.env.BRAND_EXTENSION_NAME || '▼ Wallet'
+const BASE_DESCRIPTION = process.env.BRAND_EXTENSION_DESC || 'Self-custody crypto wallet for swapping, bridging, and managing digital assets.'
 const BASE_VERSION = '1.69.0'
 
 const BUILD_NUM = parseInt(process.env.BUILD_NUM || '0')
