@@ -1,8 +1,8 @@
 /* oxlint-disable max-lines */
 import { RankingType } from '@universe/api'
-import { FiatCurrency } from 'uniswap/src/features/fiatCurrency/constants'
-import { Language } from 'uniswap/src/features/language/constants'
-import { ModalName } from 'uniswap/src/features/telemetry/constants'
+import { FiatCurrency } from '@l.x/lx/src/features/fiatCurrency/constants'
+import { Language } from '@l.x/lx/src/features/language/constants'
+import { ModalName } from '@l.x/lx/src/features/telemetry/constants'
 import { SwapProtectionSetting } from 'wallet/src/features/wallet/slice'
 
 // only add fields that are persisted

@@ -43,15 +43,15 @@ import {
   WalletSwitchEthereumChainRequest,
   WalletSwitchEthereumChainRequestSchema,
 } from 'src/contentScript/WindowEthereumRequestTypes'
-import { UniverseChainId } from 'uniswap/src/features/chains/types'
-import { chainIdToHexadecimalString, toSupportedChainId } from 'uniswap/src/features/chains/utils'
-import { DappRequestType, DappResponseType, EthMethod } from 'uniswap/src/features/dappRequests/types'
-import { isSelfCallWithData } from 'uniswap/src/features/dappRequests/utils'
-import { Platform } from 'uniswap/src/features/platforms/types/Platform'
-import { InstrumentedJsonRpcProvider } from 'uniswap/src/features/providers/observability/InstrumentedJsonRpcProvider'
-import { getRpcObserver } from 'uniswap/src/features/providers/observability/rpcObserver'
-import { areAddressesEqual } from 'uniswap/src/utils/addresses'
-import { extractBaseUrl } from 'utilities/src/format/urls'
+import { UniverseChainId } from '@l.x/lx/src/features/chains/types'
+import { chainIdToHexadecimalString, toSupportedChainId } from '@l.x/lx/src/features/chains/utils'
+import { DappRequestType, DappResponseType, EthMethod } from '@l.x/lx/src/features/dappRequests/types'
+import { isSelfCallWithData } from '@l.x/lx/src/features/dappRequests/utils'
+import { Platform } from '@l.x/lx/src/features/platforms/types/Platform'
+import { InstrumentedJsonRpcProvider } from '@l.x/lx/src/features/providers/observability/InstrumentedJsonRpcProvider'
+import { getRpcObserver } from '@l.x/lx/src/features/providers/observability/rpcObserver'
+import { areAddressesEqual } from '@l.x/lx/src/utils/addresses'
+import { extractBaseUrl } from '@l.x/utils/src/format/urls'
 
 export class ExtensionEthMethodHandler extends BaseMethodHandler<WindowEthereumRequest> {
   private readonly requestIdToSourceMap: Map<string, PendingResponseInfo> = new Map()

@@ -5,7 +5,7 @@ import {
   getOnboardingTimestamp,
   setOnboardingTimestamp,
 } from 'src/features/analytics/onboardingTimestamp'
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { selectFinishedOnboarding } from 'wallet/src/features/wallet/selectors'
 
 /**

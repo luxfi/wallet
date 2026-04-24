@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import { Flex, Text } from 'ui/src'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
+import { Flex, Text } from '@l.x/ui/src'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
 
 export function NoDappConnections(): JSX.Element {
   const { t } = useTranslation()

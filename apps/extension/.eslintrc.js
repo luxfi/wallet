@@ -1,6 +1,6 @@
 const restrictedGlobals = require('confusing-browser-globals')
 const rulesDirPlugin = require('eslint-plugin-rulesdir')
-rulesDirPlugin.RULES_DIR = '../../pkgs/lx/eslint_rules'
+rulesDirPlugin.RULES_DIR = '../../node_modules/@l.x/lx/eslint_rules'
 
 module.exports = {
   root: true,

@@ -1,22 +1,22 @@
 import { TradingApi } from '@universe/api'
 import { Dispatch } from 'redux'
-import { TradingApiClient } from 'uniswap/src/data/apiClients/tradingApi/TradingApiClient'
-import { isUniverseChainId } from 'uniswap/src/features/chains/utils'
-import { transactionActions } from 'uniswap/src/features/transactions/slice'
+import { TradingApiClient } from '@l.x/lx/src/data/apiClients/tradingApi/TradingApiClient'
+import { isUniverseChainId } from '@l.x/lx/src/features/chains/utils'
+import { transactionActions } from '@l.x/lx/src/features/transactions/slice'
 import {
   QueuedOrderStatus,
   TransactionOriginType,
   TransactionType,
   UniswapXOrderDetails,
-} from 'uniswap/src/features/transactions/types/transactionDetails'
+} from '@l.x/lx/src/features/transactions/types/transactionDetails'
 import {
   convertOrderStatusToTransactionStatus,
   convertOrderTypeToRouting,
-} from 'uniswap/src/features/transactions/utils/uniswapX.utils'
-import { buildCurrencyId } from 'uniswap/src/utils/currencyId'
-import { logger } from 'utilities/src/logger/logger'
-import { ONE_SECOND_MS } from 'utilities/src/time/time'
-import { sleep } from 'utilities/src/time/timing'
+} from '@l.x/lx/src/features/transactions/utils/uniswapX.utils'
+import { buildCurrencyId } from '@l.x/lx/src/utils/currencyId'
+import { logger } from '@l.x/utils/src/logger/logger'
+import { ONE_SECOND_MS } from '@l.x/utils/src/time/time'
+import { sleep } from '@l.x/utils/src/time/timing'
 
 /**
  * Factory function that creates a handler for externally submitted UniswapX orders.

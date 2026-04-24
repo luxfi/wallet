@@ -3,10 +3,10 @@ import { Actions, V4BaseActionsParser, type V4RouterCall } from '@luxamm/v4-sdk'
 import { EthSendTransactionRPCActions } from 'src/app/features/dappRequests/types/DappRequestTypes'
 import { parseCalldata as parseNfPMCalldata } from 'src/app/features/dappRequests/types/NonfungiblePositionManager'
 import { type NonfungiblePositionManagerCall } from 'src/app/features/dappRequests/types/NonfungiblePositionManagerTypes'
-import { type UniverseChainId } from 'uniswap/src/features/chains/types'
-import { wrappedNativeCurrency } from 'uniswap/src/utils/currency'
-import methodHashToFunctionSignature from 'utilities/src/calldata/methodHashToFunctionSignature'
-import { noop } from 'utilities/src/react/noop'
+import { type UniverseChainId } from '@l.x/lx/src/features/chains/types'
+import { wrappedNativeCurrency } from '@l.x/lx/src/utils/currency'
+import methodHashToFunctionSignature from '@l.x/utils/src/calldata/methodHashToFunctionSignature'
+import { noop } from '@l.x/utils/src/react/noop'
 
 interface GetCalldataInfoFromTransactionReturnValue {
   functionSignature?: string

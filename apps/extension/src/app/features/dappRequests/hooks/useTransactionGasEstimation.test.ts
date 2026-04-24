@@ -2,17 +2,17 @@ import { TransactionRequest } from '@ethersproject/providers'
 import { renderHook } from '@testing-library/react'
 import { GasFeeResult } from '@universe/api'
 import { useTransactionGasEstimation } from 'src/app/features/dappRequests/hooks/useTransactionGasEstimation'
-import { PollingInterval } from 'uniswap/src/constants/misc'
-import { UniverseChainId } from 'uniswap/src/features/chains/types'
-import { useTransactionGasFee } from 'uniswap/src/features/gas/hooks'
-import { logger } from 'utilities/src/logger/logger'
+import { PollingInterval } from '@l.x/lx/src/constants/misc'
+import { UniverseChainId } from '@l.x/lx/src/features/chains/types'
+import { useTransactionGasFee } from '@l.x/lx/src/features/gas/hooks'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 // Mock dependencies
-jest.mock('uniswap/src/features/gas/hooks', () => ({
+jest.mock('@l.x/lx/src/features/gas/hooks', () => ({
   useTransactionGasFee: jest.fn(),
 }))
 
-jest.mock('utilities/src/logger/logger', () => ({
+jest.mock('@l.x/utils/src/logger/logger', () => ({
   logger: {
     error: jest.fn(),
   },

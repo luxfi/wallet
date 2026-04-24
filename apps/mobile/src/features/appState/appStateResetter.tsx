@@ -9,8 +9,8 @@ import { resetModals } from 'src/features/modals/modalSlice'
 import { resetPushNotifications } from 'src/features/notifications/slice'
 import { resetTweaks } from 'src/features/tweaks/slice'
 import { resetWalletConnect } from 'src/features/walletConnect/walletConnectSlice'
-import { type AppStateResetter } from 'uniswap/src/state/createAppStateResetter'
-import { createLogger } from 'utilities/src/logger/logger'
+import { type AppStateResetter } from '@l.x/lx/src/state/createAppStateResetter'
+import { createLogger } from '@l.x/utils/src/logger/logger'
 import { createWalletStateResetter } from 'wallet/src/state/createWalletStateResetter'
 
 /**

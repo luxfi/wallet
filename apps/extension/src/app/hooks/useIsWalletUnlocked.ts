@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { Keyring } from 'wallet/src/features/wallet/Keyring/Keyring'
 import { ENCRYPTION_KEY_STORAGE_KEY, PersistedStorage } from 'wallet/src/utils/persistedStorage'
 

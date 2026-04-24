@@ -4,7 +4,7 @@ import { type BrowserContext, test as base } from '@playwright/test'
 import { createExtensionContext } from 'e2e/fixtures/extension-context'
 import { completeOnboarding } from 'e2e/utils/onboarding-helpers'
 import { waitForExtensionLoad } from 'e2e/utils/wait-for-extension'
-import { ONE_SECOND_MS } from 'utilities/src/time/time'
+import { ONE_SECOND_MS } from '@l.x/utils/src/time/time'
 
 interface OnboardedExtensionFixtures {
   context: BrowserContext

@@ -4,8 +4,8 @@ import { useBiometricUnlockDisableMutation } from 'src/app/features/biometricUnl
 import { useChangePasswordWithBiometricMutation } from 'src/app/features/biometricUnlock/useChangePasswordWithBiometricMutation'
 import { useHasBiometricUnlockCredential } from 'src/app/features/biometricUnlock/useShouldShowBiometricUnlock'
 import { PasswordResetFlowState, usePasswordResetFlow } from 'src/app/features/settings/password/usePasswordResetFlow'
-import { pushNotification } from 'uniswap/src/features/notifications/slice/slice'
-import { AppNotificationType } from 'uniswap/src/features/notifications/slice/types'
+import { pushNotification } from '@l.x/lx/src/features/notifications/slice/slice'
+import { AppNotificationType } from '@l.x/lx/src/features/notifications/slice/types'
 
 // Mock dependencies
 jest.mock('react-redux', () => ({
@@ -24,11 +24,11 @@ jest.mock('src/app/features/biometricUnlock/useBiometricUnlockDisableMutation', 
   useBiometricUnlockDisableMutation: jest.fn(),
 }))
 
-jest.mock('uniswap/src/features/notifications/slice/slice', () => ({
+jest.mock('@l.x/lx/src/features/notifications/slice/slice', () => ({
   pushNotification: jest.fn(),
 }))
 
-jest.mock('utilities/src/react/hooks', () => ({
+jest.mock('@l.x/utils/src/react/hooks', () => ({
   useEvent: jest.fn((fn) => fn),
 }))
 

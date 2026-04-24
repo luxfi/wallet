@@ -24,11 +24,11 @@ import {
   isSignMessageRequest,
   isSignTypedDataRequest,
 } from 'src/app/features/dappRequests/types/DappRequestTypes'
-import { AnimatePresence, Flex, Text, TouchableArea, useSporeColors } from 'ui/src'
-import { ReceiptText, RotatableChevron } from 'ui/src/components/icons'
-import { zIndexes } from 'ui/src/theme'
-import { Modal } from 'uniswap/src/components/modals/Modal'
-import { ModalName } from 'uniswap/src/features/telemetry/constants'
+import { AnimatePresence, Flex, Text, TouchableArea, useSporeColors } from '@l.x/ui/src'
+import { ReceiptText, RotatableChevron } from '@l.x/ui/src/components/icons'
+import { zIndexes } from '@l.x/ui/src/theme'
+import { Modal } from '@l.x/lx/src/components/modals/Modal'
+import { ModalName } from '@l.x/lx/src/features/telemetry/constants'
 
 const REJECT_MESSAGE_HEIGHT = 48
 

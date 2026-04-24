@@ -1,1 +1,0 @@
-export { lxIdentifierQuery } from './luxIdentifierQuery'

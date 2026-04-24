@@ -1,4 +1,4 @@
-import { MessageSchema } from 'uniswap/src/extension/messagePassing/messageTypes'
+import { MessageSchema } from '@l.x/lx/src/extension/messagePassing/messageTypes'
 import { z } from 'zod'
 
 export enum OnboardingMessageType {

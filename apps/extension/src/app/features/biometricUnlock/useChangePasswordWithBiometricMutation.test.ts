@@ -3,7 +3,7 @@ import { waitFor } from '@testing-library/react'
 import { BiometricUnlockStorage } from 'src/app/features/biometricUnlock/BiometricUnlockStorage'
 import { useChangePasswordWithBiometricMutation } from 'src/app/features/biometricUnlock/useChangePasswordWithBiometricMutation'
 import { renderHookWithProviders } from 'src/test/render'
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { encodeForStorage, encrypt, generateNew256BitRandomBuffer } from 'wallet/src/features/wallet/Keyring/crypto'
 import { Keyring } from 'wallet/src/features/wallet/Keyring/Keyring'
 
@@ -14,7 +14,7 @@ jest.mock('wallet/src/features/wallet/Keyring/Keyring', () => ({
     changePassword: jest.fn(),
   },
 }))
-jest.mock('utilities/src/logger/logger', () => ({
+jest.mock('@l.x/utils/src/logger/logger', () => ({
   logger: {
     error: jest.fn(),
   },

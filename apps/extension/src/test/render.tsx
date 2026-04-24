@@ -12,9 +12,9 @@ import { GraphQLApi } from '@universe/api'
 import React, { PropsWithChildren } from 'react'
 import { ExtensionState, extensionReducer } from 'src/store/extensionReducer'
 import { AppStore } from 'src/store/store'
-import { UniswapProvider } from 'uniswap/src/contexts/UniswapContext'
-import { AutoMockedApolloProvider } from 'uniswap/src/test/mocks'
-import { mockUniswapContext } from 'uniswap/src/test/render'
+import { UniswapProvider } from '@l.x/lx/src/contexts/UniswapContext'
+import { AutoMockedApolloProvider } from '@l.x/lx/src/test/mocks'
+import { mockUniswapContext } from '@l.x/lx/src/test/render'
 import { SharedWalletProvider } from 'wallet/src/providers/SharedWalletProvider'
 
 // This type extends the default options for render from RTL, as well

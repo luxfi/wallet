@@ -10,25 +10,25 @@ import { useOnboardingSteps } from 'src/app/features/onboarding/OnboardingStepsC
 import { OnboardingRoutes, TopLevelRoutes } from 'src/app/navigation/constants'
 import { navigate } from 'src/app/navigation/state'
 import { bringWindowToFront, closeWindow, openPopupWindow } from 'src/app/navigation/utils'
-import { Button, Flex, IconButton, SpinningLoader, Text } from 'ui/src'
-import { X } from 'ui/src/components/icons'
-import { UniswapLogo } from 'ui/src/components/icons/UniswapLogo'
-import { EmbeddedWalletApiClient } from 'uniswap/src/data/rest/embeddedWallet/requests'
-import { parseMessage } from 'uniswap/src/extension/messagePassing/platform'
+import { Button, Flex, IconButton, SpinningLoader, Text } from '@l.x/ui/src'
+import { X } from '@l.x/ui/src/components/icons'
+import { UniswapLogo } from '@l.x/ui/src/components/icons/UniswapLogo'
+import { EmbeddedWalletApiClient } from '@l.x/lx/src/data/rest/embeddedWallet/requests'
+import { parseMessage } from '@l.x/lx/src/extension/messagePassing/platform'
 import {
   ExtensionToInterfaceRequestType,
   PasskeyCredentialRetrievedSchema,
   PasskeyRequest,
   PasskeySignInFlowOpenedSchema,
-} from 'uniswap/src/extension/messagePassing/types/requests'
-import { EXTENSION_PASSKEY_AUTH_PATH } from 'uniswap/src/features/passkey/constants'
-import { getPrivyEnums } from 'uniswap/src/features/passkey/embeddedWallet'
-import { useEmbeddedWalletBaseUrl } from 'uniswap/src/features/passkey/hooks/useEmbeddedWalletBaseUrl'
-import Trace from 'uniswap/src/features/telemetry/Trace'
-import { ExtensionOnboardingFlow, ExtensionOnboardingScreens } from 'uniswap/src/types/screens/extension'
-import { logger } from 'utilities/src/logger/logger'
-import { useEvent } from 'utilities/src/react/hooks'
-import { useInterval } from 'utilities/src/time/timing'
+} from '@l.x/lx/src/extension/messagePassing/types/requests'
+import { EXTENSION_PASSKEY_AUTH_PATH } from '@l.x/lx/src/features/passkey/constants'
+import { getPrivyEnums } from '@l.x/lx/src/features/passkey/embeddedWallet'
+import { useEmbeddedWalletBaseUrl } from '@l.x/lx/src/features/passkey/hooks/useEmbeddedWalletBaseUrl'
+import Trace from '@l.x/lx/src/features/telemetry/Trace'
+import { ExtensionOnboardingFlow, ExtensionOnboardingScreens } from '@l.x/lx/src/types/screens/extension'
+import { logger } from '@l.x/utils/src/logger/logger'
+import { useEvent } from '@l.x/utils/src/react/hooks'
+import { useInterval } from '@l.x/utils/src/time/timing'
 import { v4 as uuid } from 'uuid'
 
 /**************************************************************************************************************

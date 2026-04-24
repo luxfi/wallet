@@ -3,9 +3,9 @@ import { getCurrentTabAndWindowId } from 'src/app/navigation/utils'
 import { onboardingMessageChannel } from 'src/background/messagePassing/messageChannels'
 import { OnboardingMessageType } from 'src/background/messagePassing/types/ExtensionMessages'
 import { openSidePanel } from 'src/background/utils/chromeSidePanelUtils'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
-import { logger } from 'utilities/src/logger/logger'
-import { useBooleanState } from 'utilities/src/react/useBooleanState'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
+import { logger } from '@l.x/utils/src/logger/logger'
+import { useBooleanState } from '@l.x/utils/src/react/useBooleanState'
 
 export function useOpenSidebar() {
   const { value: openedSideBar, setTrue: openSideBar } = useBooleanState(false)

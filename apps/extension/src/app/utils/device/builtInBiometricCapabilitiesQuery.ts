@@ -1,12 +1,12 @@
 import { queryOptions } from '@tanstack/react-query'
 import { TFunction } from 'i18next'
-import { GeneratedIcon } from 'ui/src'
-import { Fingerprint } from 'ui/src/components/icons'
-import { getChromeRuntimeWithThrow } from 'utilities/src/chrome/chrome'
-import { logger } from 'utilities/src/logger/logger'
-import { ReactQueryCacheKey } from 'utilities/src/reactQuery/cache'
-import { QueryOptionsResult } from 'utilities/src/reactQuery/queryOptions'
-import { MAX_REACT_QUERY_CACHE_TIME_MS, ONE_SECOND_MS } from 'utilities/src/time/time'
+import { GeneratedIcon } from '@l.x/ui/src'
+import { Fingerprint } from '@l.x/ui/src/components/icons'
+import { getChromeRuntimeWithThrow } from '@l.x/utils/src/chrome/chrome'
+import { logger } from '@l.x/utils/src/logger/logger'
+import { ReactQueryCacheKey } from '@l.x/utils/src/reactQuery/cache'
+import { QueryOptionsResult } from '@l.x/utils/src/reactQuery/queryOptions'
+import { MAX_REACT_QUERY_CACHE_TIME_MS, ONE_SECOND_MS } from '@l.x/utils/src/time/time'
 
 type BuiltInBiometricCapabilities = {
   name: string

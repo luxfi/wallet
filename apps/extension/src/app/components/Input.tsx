@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
-import { Input as TamaguiInput, InputProps as TamaguiInputProps } from 'ui/src'
-import { inputStyles } from 'ui/src/components/input/utils'
-import { fonts } from 'ui/src/theme/fonts'
+import { Input as TamaguiInput, InputProps as TamaguiInputProps } from '@l.x/ui/src'
+import { inputStyles } from '@l.x/ui/src/components/input/utils'
+import { fonts } from '@l.x/ui/src/theme/fonts'
 
 export type InputProps = {
   large?: boolean

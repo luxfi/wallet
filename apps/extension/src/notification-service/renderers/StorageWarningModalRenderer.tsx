@@ -6,10 +6,10 @@ import { ONBOARDING_CONTENT_WIDTH } from 'src/app/features/onboarding/utils'
 import { AppRoutes, SettingsRoutes } from 'src/app/navigation/constants'
 import { useExtensionNavigation } from 'src/app/navigation/utils'
 import { getIsOnboardingFromNotification } from 'src/notification-service/data-sources/reactive/storageWarningCondition'
-import { spacing } from 'ui/src/theme'
-import { WarningSeverity } from 'uniswap/src/components/modals/WarningModal/types'
-import { WarningModal } from 'uniswap/src/components/modals/WarningModal/WarningModal'
-import { ModalName } from 'uniswap/src/features/telemetry/constants'
+import { spacing } from '@l.x/ui/src/theme'
+import { WarningSeverity } from '@l.x/lx/src/components/modals/WarningModal/types'
+import { WarningModal } from '@l.x/lx/src/components/modals/WarningModal/WarningModal'
+import { ModalName } from '@l.x/lx/src/features/telemetry/constants'
 
 interface StorageWarningModalRendererProps {
   notification: InAppNotification
