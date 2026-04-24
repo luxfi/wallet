@@ -8,7 +8,7 @@ import { ContentStyle, type InAppNotification, OnClickAction } from '@universe/a
 import { type ReactiveCondition } from '@universe/notifications'
 import { GlobalErrorEvent } from 'src/app/events/constants'
 import { globalEventEmitter } from 'src/app/events/global'
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 /**
  * Storage threshold in bytes (500KB).

@@ -63,10 +63,10 @@ import {
 } from 'src/app/features/dappRequests/types/DappRequestTypes'
 import { dappResponseMessageChannel } from 'src/background/messagePassing/messageChannels'
 import { call, put, select, takeEvery } from 'typed-redux-saga'
-import { DappRequestType, DappResponseType } from 'uniswap/src/features/dappRequests/types'
-import { Platform } from 'uniswap/src/features/platforms/types/Platform'
-import { getEnabledChainIdsSaga } from 'uniswap/src/features/settings/saga'
-import { logger } from 'utilities/src/logger/logger'
+import { DappRequestType, DappResponseType } from '@l.x/lx/src/features/dappRequests/types'
+import { Platform } from '@l.x/lx/src/features/platforms/types/Platform'
+import { getEnabledChainIdsSaga } from '@l.x/lx/src/features/settings/saga'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 function* dappRequestApproval({
   type,

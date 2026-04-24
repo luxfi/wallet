@@ -7,10 +7,10 @@ import { MainContentWrapper } from 'src/app/features/onboarding/intro/MainConten
 import { KeyboardKey } from 'src/app/features/onboarding/KeyboardKey'
 import { useOpeningKeyboardShortCut } from 'src/app/hooks/useOpeningKeyboardShortCut'
 import { terminateStoreSynchronization } from 'src/store/storeSynchronization'
-import { Flex, Image, Text } from 'ui/src'
-import { UNISWAP_LOGO } from 'ui/src/assets'
-import { iconSizes } from 'ui/src/theme'
-import { ExtensionOnboardingFlow } from 'uniswap/src/types/screens/extension'
+import { Flex, Image, Text } from '@l.x/ui/src'
+import { UNISWAP_LOGO } from '@l.x/ui/src/assets'
+import { iconSizes } from '@l.x/ui/src/theme'
+import { ExtensionOnboardingFlow } from '@l.x/lx/src/types/screens/extension'
 import { useOnboardingContext } from 'wallet/src/features/onboarding/OnboardingContext'
 
 export function Complete({

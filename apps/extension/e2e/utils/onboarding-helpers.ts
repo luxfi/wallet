@@ -1,6 +1,6 @@
 import type { BrowserContext, Page } from '@playwright/test'
-import { ONE_SECOND_MS } from 'utilities/src/time/time'
-import { sleep } from 'utilities/src/time/timing'
+import { ONE_SECOND_MS } from '@l.x/utils/src/time/time'
+import { sleep } from '@l.x/utils/src/time/timing'
 
 const TEST_PASSWORD = 'TestPassword123!'
 

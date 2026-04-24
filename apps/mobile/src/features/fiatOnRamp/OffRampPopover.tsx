@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { Popover, Text } from 'ui/src'
-import { isAndroid } from 'utilities/src/platform'
+import { Popover, Text } from '@l.x/ui/src'
+import { isAndroid } from '@l.x/utils/src/platform'
 import { selectHasViewedOffRampTooltip } from 'wallet/src/features/behaviorHistory/selectors'
 import { setHasViewedOffRampTooltip } from 'wallet/src/features/behaviorHistory/slice'
 

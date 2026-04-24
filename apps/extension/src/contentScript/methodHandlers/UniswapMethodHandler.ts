@@ -12,8 +12,8 @@ import {
   UniswapOpenSidebarRequest,
   UniswapOpenSidebarRequestSchema,
 } from 'src/contentScript/WindowEthereumRequestTypes'
-import { DappRequestType, DappResponseType } from 'uniswap/src/features/dappRequests/types'
-import { logger } from 'utilities/src/logger/logger'
+import { DappRequestType, DappResponseType } from '@l.x/lx/src/features/dappRequests/types'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 /**
  * Handles all uniswap-specific requests

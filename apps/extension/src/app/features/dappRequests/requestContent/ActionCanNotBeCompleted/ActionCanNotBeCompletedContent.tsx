@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { DappRequestContent } from 'src/app/features/dappRequests/DappRequestContent'
-import { Flex, Text } from 'ui/src'
-import { AlertTriangleFilled } from 'ui/src/components/icons'
-import { LearnMoreLink } from 'uniswap/src/components/text/LearnMoreLink'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
-import { WalletEventName } from 'uniswap/src/features/telemetry/constants'
-import Trace from 'uniswap/src/features/telemetry/Trace'
+import { Flex, Text } from '@l.x/ui/src'
+import { AlertTriangleFilled } from '@l.x/ui/src/components/icons'
+import { LearnMoreLink } from '@l.x/lx/src/components/text/LearnMoreLink'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
+import { WalletEventName } from '@l.x/lx/src/features/telemetry/constants'
+import Trace from '@l.x/lx/src/features/telemetry/Trace'
 
 export function ActionCanNotBeCompletedContent(): JSX.Element {
   const { t } = useTranslation()

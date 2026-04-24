@@ -29,14 +29,14 @@ import { extensionNotificationStore } from 'src/notification-service/notificatio
 import { getNotificationTelemetry } from 'src/notification-service/notification-telemetry/getNotificationTelemetry'
 import { createExtensionLocalTriggerDataSource } from 'src/notification-service/triggers/createExtensionLocalTriggerDataSource'
 import { getReduxStore } from 'src/store/store'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
-import { mapLocaleToBackendLocale } from 'uniswap/src/features/language/constants'
-import { getLocale } from 'uniswap/src/features/language/navigatorLocale'
-import { selectCurrentLanguage } from 'uniswap/src/features/settings/selectors'
-import { getLogger } from 'utilities/src/logger/logger'
-import { REQUEST_SOURCE } from 'utilities/src/platform/requestSource'
-import { ReactQueryCacheKey } from 'utilities/src/reactQuery/cache'
-import { type QueryOptionsResult } from 'utilities/src/reactQuery/queryOptions'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
+import { mapLocaleToBackendLocale } from '@l.x/lx/src/features/language/constants'
+import { getLocale } from '@l.x/lx/src/features/language/navigatorLocale'
+import { selectCurrentLanguage } from '@l.x/lx/src/features/settings/selectors'
+import { getLogger } from '@l.x/utils/src/logger/logger'
+import { REQUEST_SOURCE } from '@l.x/utils/src/platform/requestSource'
+import { ReactQueryCacheKey } from '@l.x/utils/src/reactQuery/cache'
+import { type QueryOptionsResult } from '@l.x/utils/src/reactQuery/queryOptions'
 
 /**
  * Checks if the session has been initialized by looking at the React Query cache.

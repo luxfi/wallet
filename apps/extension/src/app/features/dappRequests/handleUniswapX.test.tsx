@@ -1,15 +1,15 @@
 import { TradingApi } from '@universe/api'
 import { createExternallySubmittedUniswapXOrder } from 'src/app/features/dappRequests/handleUniswapX'
-import { UniverseChainId } from 'uniswap/src/features/chains/types'
+import { UniverseChainId } from '@l.x/lx/src/features/chains/types'
 import {
   QueuedOrderStatus,
   TransactionOriginType,
   TransactionStatus,
   TransactionType,
-} from 'uniswap/src/features/transactions/types/transactionDetails'
-import { logger } from 'utilities/src/logger/logger'
+} from '@l.x/lx/src/features/transactions/types/transactionDetails'
+import { logger } from '@l.x/utils/src/logger/logger'
 
-jest.mock('utilities/src/logger/logger', () => ({
+jest.mock('@l.x/utils/src/logger/logger', () => ({
   logger: {
     error: jest.fn(),
   },

@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGet5792DappInfo } from 'src/app/hooks/useGet5792DappInfo'
-import { ModalName, ModalNameType } from 'uniswap/src/features/telemetry/constants'
-import { extractUrlHost } from 'utilities/src/format/urls'
-import { useEvent } from 'utilities/src/react/hooks'
-import { ONE_DAY_MS } from 'utilities/src/time/time'
+import { ModalName, ModalNameType } from '@l.x/lx/src/features/telemetry/constants'
+import { extractUrlHost } from '@l.x/utils/src/format/urls'
+import { useEvent } from '@l.x/utils/src/react/hooks'
+import { ONE_DAY_MS } from '@l.x/utils/src/time/time'
 import {
   SmartWalletDelegationAction,
   useSmartWalletDelegationStatus,

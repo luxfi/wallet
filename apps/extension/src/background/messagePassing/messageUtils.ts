@@ -1,5 +1,5 @@
 import { isSandboxedFrame } from 'src/contentScript/isSandboxedFrame'
-import { Message } from 'uniswap/src/extension/messagePassing/messageTypes'
+import { Message } from '@l.x/lx/src/extension/messagePassing/messageTypes'
 
 type MessageValidator<T extends Message> = (message: unknown) => message is T
 
