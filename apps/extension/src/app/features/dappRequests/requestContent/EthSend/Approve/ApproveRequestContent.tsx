@@ -8,16 +8,16 @@ import {
   ApproveSendTransactionRequest,
   DappRequest as DappRequestBaseType,
 } from 'src/app/features/dappRequests/types/DappRequestTypes'
-import { Flex, Text } from 'ui/src'
-import { iconSizes } from 'ui/src/theme'
-import { CurrencyLogo } from 'uniswap/src/components/CurrencyLogo/CurrencyLogo'
-import { LearnMoreLink } from 'uniswap/src/components/text/LearnMoreLink'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
-import { DappRequestType } from 'uniswap/src/features/dappRequests/types'
-import { CurrencyInfo } from 'uniswap/src/features/dataApi/types'
-import { useCurrencyInfo } from 'uniswap/src/features/tokens/useCurrencyInfo'
-import { TransactionType, TransactionTypeInfo } from 'uniswap/src/features/transactions/types/transactionDetails'
-import { buildCurrencyId } from 'uniswap/src/utils/currencyId'
+import { Flex, Text } from '@l.x/ui/src'
+import { iconSizes } from '@l.x/ui/src/theme'
+import { CurrencyLogo } from '@l.x/lx/src/components/CurrencyLogo/CurrencyLogo'
+import { LearnMoreLink } from '@l.x/lx/src/components/text/LearnMoreLink'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
+import { DappRequestType } from '@l.x/lx/src/features/dappRequests/types'
+import { CurrencyInfo } from '@l.x/lx/src/features/dataApi/types'
+import { useCurrencyInfo } from '@l.x/lx/src/features/tokens/useCurrencyInfo'
+import { TransactionType, TransactionTypeInfo } from '@l.x/lx/src/features/transactions/types/transactionDetails'
+import { buildCurrencyId } from '@l.x/lx/src/utils/currencyId'
 import { useNoYoloParser } from 'wallet/src/utils/useNoYoloParser'
 
 function useDappRequestTokenRecipientInfo(request: DappRequestBaseType, dappUrl: string): Maybe<CurrencyInfo> {

@@ -13,9 +13,9 @@ import {
   type ParsedCall,
   type SendCallsRequest,
 } from 'src/app/features/dappRequests/types/DappRequestTypes'
-import { type UniverseChainId } from 'uniswap/src/features/chains/types'
-import { TransactionType, type TransactionTypeInfo } from 'uniswap/src/features/transactions/types/transactionDetails'
-import { useBooleanState } from 'utilities/src/react/useBooleanState'
+import { type UniverseChainId } from '@l.x/lx/src/features/chains/types'
+import { TransactionType, type TransactionTypeInfo } from '@l.x/lx/src/features/transactions/types/transactionDetails'
+import { useBooleanState } from '@l.x/utils/src/react/useBooleanState'
 import { BatchedRequestDetailsContent } from 'wallet/src/components/BatchedTransactions/BatchedTransactionDetails'
 import { DappSendCallsScanningContent } from 'wallet/src/components/dappRequests/DappSendCallsScanningContent'
 import { type TransactionRiskLevel } from 'wallet/src/features/dappRequests/types'

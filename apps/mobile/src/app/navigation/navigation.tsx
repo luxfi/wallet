@@ -103,18 +103,18 @@ import { SettingsCloudBackupPasswordCreateScreen } from 'src/screens/SettingsClo
 import { SettingsCloudBackupProcessingScreen } from 'src/screens/SettingsCloudBackupProcessingScreen'
 import { SettingsCloudBackupStatus } from 'src/screens/SettingsCloudBackupStatus'
 import { SettingsFiatCurrencyModal } from 'src/screens/SettingsFiatCurrencyModal'
-import { useSporeColors } from 'ui/src'
-import { spacing } from 'ui/src/theme'
-import { ModalName } from 'uniswap/src/features/telemetry/constants'
-import { useAppInsets } from 'uniswap/src/hooks/useAppInsets'
-import { OnboardingEntryPoint } from 'uniswap/src/types/onboarding'
+import { useSporeColors } from '@l.x/ui/src'
+import { spacing } from '@l.x/ui/src/theme'
+import { ModalName } from '@l.x/lx/src/features/telemetry/constants'
+import { useAppInsets } from '@l.x/lx/src/hooks/useAppInsets'
+import { OnboardingEntryPoint } from '@l.x/lx/src/types/onboarding'
 import {
   FiatOnRampScreens,
   MobileScreens,
   OnboardingScreens,
   UnitagScreens,
   type UnitagStackParamList,
-} from 'uniswap/src/types/screens/mobile'
+} from '@l.x/lx/src/types/screens/mobile'
 import { OnboardingContextProvider } from 'wallet/src/features/onboarding/OnboardingContext'
 import { selectFinishedOnboarding } from 'wallet/src/features/wallet/selectors'
 

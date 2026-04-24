@@ -11,9 +11,9 @@ import { AppRatingModalRenderer } from 'src/notification-service/renderers/AppRa
 import { StorageWarningModalRenderer } from 'src/notification-service/renderers/StorageWarningModalRenderer'
 import { isAppRatingNotification } from 'src/notification-service/triggers/appRatingTrigger'
 import { isLocalTriggerNotification } from 'src/notification-service/triggers/createExtensionLocalTriggerDataSource'
-import { ModalNotification } from 'uniswap/src/components/notifications/ModalNotification'
-import { getLogger } from 'utilities/src/logger/logger'
-import { useEvent } from 'utilities/src/react/hooks'
+import { ModalNotification } from '@l.x/lx/src/components/notifications/ModalNotification'
+import { getLogger } from '@l.x/utils/src/logger/logger'
+import { useEvent } from '@l.x/utils/src/react/hooks'
 import { type IntroCardProps } from 'wallet/src/components/introCards/IntroCard'
 import { IntroCardStack } from 'wallet/src/components/introCards/IntroCardStack'
 import {

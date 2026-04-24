@@ -1,6 +1,6 @@
 import { useTokenDetailsContext } from 'src/components/TokenDetails/TokenDetailsContext'
-import { useBalances } from 'uniswap/src/data/balances/hooks/useBalances'
-import { PortfolioBalance } from 'uniswap/src/features/dataApi/types'
+import { useBalances } from '@l.x/lx/src/data/balances/hooks/useBalances'
+import { PortfolioBalance } from '@l.x/lx/src/features/dataApi/types'
 import { useActiveAccountAddressWithThrow } from 'wallet/src/features/wallet/hooks'
 
 export function useTokenDetailsCurrentChainBalance(): PortfolioBalance | null {

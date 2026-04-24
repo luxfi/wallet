@@ -9,9 +9,9 @@ import {
 import { BackgroundType, ContentStyle, type InAppNotification, OnClickAction } from '@universe/api'
 import { DynamicConfigs, ForceUpgradeConfigKey, type ForceUpgradeStatus, getDynamicConfigValue } from '@universe/gating'
 import { createIntervalNotificationDataSource, type NotificationDataSource } from '@universe/notifications'
-import { UNISWAP_LOGO } from 'ui/src/assets'
-import i18n from 'uniswap/src/i18n'
-import { ONE_SECOND_MS } from 'utilities/src/time/time'
+import { UNISWAP_LOGO } from '@l.x/ui/src/assets'
+import i18n from '@l.x/lx/src/i18n'
+import { ONE_SECOND_MS } from '@l.x/utils/src/time/time'
 import { MOBILE_APP_STORE_LINK } from 'wallet/src/constants/urls'
 
 // Using 'local:' prefix to indicate these are client-only notifications

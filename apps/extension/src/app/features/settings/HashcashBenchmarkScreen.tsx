@@ -9,8 +9,8 @@ import {
   type LogEntry,
   useHashcashBenchmarkStore,
 } from 'src/app/features/settings/stores/hashcashBenchmarkStore'
-import { Button, Flex, ScrollView, Text, TouchableArea } from 'ui/src'
-import { logger } from 'utilities/src/logger/logger'
+import { Button, Flex, ScrollView, Text, TouchableArea } from '@l.x/ui/src'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { useShallow } from 'zustand/shallow'
 
 function formatTime(date: Date): string {

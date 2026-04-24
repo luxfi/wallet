@@ -12,7 +12,7 @@ import { ThemeToggleWithLabel } from 'src/app/features/settings/ThemeToggle'
 import { AppRoutes, SettingsRoutes } from 'src/app/navigation/constants'
 import { useExtensionNavigation } from 'src/app/navigation/utils'
 import { getIsDefaultProviderFromStorage, setIsDefaultProviderToStorage } from 'src/app/utils/provider'
-import { Button, Flex, ScrollView, Text } from 'ui/src'
+import { Button, Flex, ScrollView, Text } from '@l.x/ui/src'
 import {
   ArrowUpRight,
   Chart,
@@ -26,29 +26,29 @@ import {
   Settings,
   Sliders,
   Wrench,
-} from 'ui/src/components/icons'
-import { uniswapUrls } from 'uniswap/src/constants/urls'
-import { resetUniswapBehaviorHistory } from 'uniswap/src/features/behaviorHistory/slice'
-import { useEnabledChains } from 'uniswap/src/features/chains/hooks/useEnabledChains'
-import { FiatCurrency, ORDERED_CURRENCIES } from 'uniswap/src/features/fiatCurrency/constants'
-import { getFiatCurrencyName, useAppFiatCurrencyInfo } from 'uniswap/src/features/fiatCurrency/hooks'
-import { Language, WALLET_SUPPORTED_LANGUAGES } from 'uniswap/src/features/language/constants'
-import { getLanguageInfo, useCurrentLanguageInfo } from 'uniswap/src/features/language/hooks'
-import { PasskeyManagementModal } from 'uniswap/src/features/passkey/PasskeyManagementModal'
+} from '@l.x/ui/src/components/icons'
+import { uniswapUrls } from '@l.x/lx/src/constants/urls'
+import { resetUniswapBehaviorHistory } from '@l.x/lx/src/features/behaviorHistory/slice'
+import { useEnabledChains } from '@l.x/lx/src/features/chains/hooks/useEnabledChains'
+import { FiatCurrency, ORDERED_CURRENCIES } from '@l.x/lx/src/features/fiatCurrency/constants'
+import { getFiatCurrencyName, useAppFiatCurrencyInfo } from '@l.x/lx/src/features/fiatCurrency/hooks'
+import { Language, WALLET_SUPPORTED_LANGUAGES } from '@l.x/lx/src/features/language/constants'
+import { getLanguageInfo, useCurrentLanguageInfo } from '@l.x/lx/src/features/language/hooks'
+import { PasskeyManagementModal } from '@l.x/lx/src/features/passkey/PasskeyManagementModal'
 import {
   setCurrentFiatCurrency,
   setCurrentLanguage,
   setIsTestnetModeEnabled,
-} from 'uniswap/src/features/settings/slice'
-import { WalletEventName } from 'uniswap/src/features/telemetry/constants'
-import { sendAnalyticsEvent } from 'uniswap/src/features/telemetry/send'
-import Trace from 'uniswap/src/features/telemetry/Trace'
-import { TestnetModeModal } from 'uniswap/src/features/testnets/TestnetModeModal'
-import { changeLanguage } from 'uniswap/src/i18n'
-import { TestID } from 'uniswap/src/test/fixtures/testIDs'
-import { ExtensionScreens } from 'uniswap/src/types/screens/extension'
-import { isDevEnv } from 'utilities/src/environment/env'
-import { logger } from 'utilities/src/logger/logger'
+} from '@l.x/lx/src/features/settings/slice'
+import { WalletEventName } from '@l.x/lx/src/features/telemetry/constants'
+import { sendAnalyticsEvent } from '@l.x/lx/src/features/telemetry/send'
+import Trace from '@l.x/lx/src/features/telemetry/Trace'
+import { TestnetModeModal } from '@l.x/lx/src/features/testnets/TestnetModeModal'
+import { changeLanguage } from '@l.x/lx/src/i18n'
+import { TestID } from '@l.x/lx/src/test/fixtures/testIDs'
+import { ExtensionScreens } from '@l.x/lx/src/types/screens/extension'
+import { isDevEnv } from '@l.x/utils/src/environment/env'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { PermissionsModal } from 'wallet/src/components/settings/permissions/PermissionsModal'
 import { PortfolioBalanceModal } from 'wallet/src/components/settings/portfolioBalance/PortfolioBalanceModal'
 import { SmartWalletAdvancedSettingsModal } from 'wallet/src/components/smartWallet/modals/SmartWalletAdvancedSettingsModal'

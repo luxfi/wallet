@@ -17,7 +17,7 @@ jest.mock('src/background/messagePassing/messageUtils', () => ({
   removeWindowMessageListener: jest.fn(),
 }))
 
-jest.mock('utilities/src/logger/logger', () => ({
+jest.mock('@l.x/utils/src/logger/logger', () => ({
   logger: {
     debug: jest.fn(),
     error: jest.fn(),

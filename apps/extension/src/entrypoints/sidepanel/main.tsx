@@ -19,9 +19,9 @@ import { initializePortfolioQueryOverrides } from '@l.x/lx/src/data/rest/portfol
 import { logger } from '@l.x/utils/src/logger/logger'
 // biome-ignore lint/suspicious/noExplicitAny: Global polyfill cleanup requires any type for runtime modification
 =======
-import { initializeScrollWatcher } from 'uniswap/src/components/modals/ScrollLock'
-import { initializePortfolioQueryOverrides } from 'uniswap/src/data/rest/portfolioBalanceOverrides'
-import { logger } from 'utilities/src/logger/logger'
+import { initializeScrollWatcher } from '@l.x/lx/src/components/modals/ScrollLock'
+import { initializePortfolioQueryOverrides } from '@l.x/lx/src/data/rest/portfolioBalanceOverrides'
+import { logger } from '@l.x/utils/src/logger/logger'
 // oxlint-disable-next-line typescript/no-explicit-any -- Global polyfill cleanup requires any type for runtime modification
 ;(globalThis as any).regeneratorRuntime = undefined
 
