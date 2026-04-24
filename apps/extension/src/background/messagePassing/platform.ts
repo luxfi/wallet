@@ -1,6 +1,6 @@
 /* oxlint-disable typescript/no-explicit-any -- Chrome extension message passing requires flexible typing for arbitrary message payloads */
-import { MessageParsers } from 'uniswap/src/extension/messagePassing/platform'
-import { logger } from 'utilities/src/logger/logger'
+import { MessageParsers } from '@l.x/lx/src/extension/messagePassing/platform'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 const EXTENSION_CONTEXT_INVALIDATED_CHROMIUM_ERROR = 'Extension context invalidated.'
 

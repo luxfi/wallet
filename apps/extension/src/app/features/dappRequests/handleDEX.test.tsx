@@ -9,7 +9,7 @@ import {
 } from '@l.x/lx/src/features/transactions/types/transactionDetails'
 import { logger } from '@l.x/utils/src/logger/logger'
 
-jest.mock('utilities/src/logger/logger', () => ({
+jest.mock('@l.x/utils/src/logger/logger', () => ({
   logger: {
     error: jest.fn(),
   },

@@ -13,7 +13,7 @@ import { restoreMnemonicCompleteWatcher } from 'src/features/wallet/saga'
 import { walletConnectSaga } from 'src/features/walletConnect/saga'
 import { signWcRequestSaga } from 'src/features/walletConnect/signWcRequestSaga'
 import { call, fork, join, spawn } from 'typed-redux-saga'
-import { waitForRehydration } from 'uniswap/src/utils/saga'
+import { waitForRehydration } from '@l.x/lx/src/utils/saga'
 import { apolloClientRef } from 'wallet/src/data/apollo/usePersistedApolloClient'
 import { transactionWatcher } from 'wallet/src/features/transactions/watcher/transactionWatcherSaga'
 

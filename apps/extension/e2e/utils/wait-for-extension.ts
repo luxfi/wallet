@@ -1,6 +1,6 @@
 /* oxlint-disable typescript/no-explicit-any -- e2e test file */
 import type { BrowserContext } from '@playwright/test'
-import { sleep } from 'utilities/src/time/timing'
+import { sleep } from '@l.x/utils/src/time/timing'
 
 export async function waitForExtensionLoad(
   context: BrowserContext,
