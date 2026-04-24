@@ -8,15 +8,15 @@ import {
   NotificationPermission,
   useNotificationOSPermissionsEnabled,
 } from 'src/features/notifications/hooks/useNotificationOSPermissionsEnabled'
-import { Flex } from 'ui/src'
-import { PUSH_NOTIFICATIONS_CARD_BANNER } from 'ui/src/assets'
-import { Buy } from 'ui/src/components/icons'
-import { AccountType } from 'uniswap/src/features/accounts/types'
-import { ElementName, ModalName, WalletEventName } from 'uniswap/src/features/telemetry/constants'
-import { sendAnalyticsEvent } from 'uniswap/src/features/telemetry/send'
-import { OnboardingCardLoggingName } from 'uniswap/src/features/telemetry/types'
-import { ImportType, OnboardingEntryPoint } from 'uniswap/src/types/onboarding'
-import { MobileScreens, OnboardingScreens, UnitagScreens } from 'uniswap/src/types/screens/mobile'
+import { Flex } from '@l.x/ui/src'
+import { PUSH_NOTIFICATIONS_CARD_BANNER } from '@l.x/ui/src/assets'
+import { Buy } from '@l.x/ui/src/components/icons'
+import { AccountType } from '@l.x/lx/src/features/accounts/types'
+import { ElementName, ModalName, WalletEventName } from '@l.x/lx/src/features/telemetry/constants'
+import { sendAnalyticsEvent } from '@l.x/lx/src/features/telemetry/send'
+import { OnboardingCardLoggingName } from '@l.x/lx/src/features/telemetry/types'
+import { ImportType, OnboardingEntryPoint } from '@l.x/lx/src/types/onboarding'
+import { MobileScreens, OnboardingScreens, UnitagScreens } from '@l.x/lx/src/types/screens/mobile'
 import {
   CardType,
   IntroCardGraphicType,

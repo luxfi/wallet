@@ -1,4 +1,4 @@
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { ScantasticParams } from 'wallet/src/features/scantastic/types'
 
 export const KEY_PARAMS = {

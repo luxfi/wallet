@@ -3,9 +3,9 @@ import { SharedQueryClient } from '@universe/api'
 import { StatsigCustomAppValue, StatsigUser } from '@universe/gating'
 import { useEffect, useState } from 'react'
 import { makeStatsigUser } from 'src/app/core/initStatSigForBrowserScripts'
-import { StatsigProviderWrapper } from 'uniswap/src/features/gating/StatsigProviderWrapper'
-import { initializeDatadog } from 'uniswap/src/utils/datadog'
-import { uniqueIdQuery } from 'utilities/src/device/uniqueIdQuery'
+import { StatsigProviderWrapper } from '@l.x/lx/src/features/gating/StatsigProviderWrapper'
+import { initializeDatadog } from '@l.x/lx/src/utils/datadog'
+import { uniqueIdQuery } from '@l.x/utils/src/device/uniqueIdQuery'
 
 export function ExtensionStatsigProvider({
   children,

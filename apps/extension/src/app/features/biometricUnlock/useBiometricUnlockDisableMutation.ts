@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query'
 import { biometricUnlockCredentialQuery } from 'src/app/features/biometricUnlock/biometricUnlockCredentialQuery'
 import { BiometricUnlockStorage } from 'src/app/features/biometricUnlock/BiometricUnlockStorage'
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 
 export function useBiometricUnlockDisableMutation(): UseMutationResult<void, Error, void> {
   const queryClient = useQueryClient()

@@ -1,4 +1,4 @@
-import { logger } from 'utilities/src/logger/logger'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { SecretPayload } from 'wallet/src/features/wallet/Keyring/crypto'
 import { PersistedStorage } from 'wallet/src/utils/persistedStorage'
 

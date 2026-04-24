@@ -65,7 +65,7 @@ import {
   resetTokensOrderBy,
   resetTokensOrderByAndMetadataDisplayType,
   restructureTransactionsAndNotifications,
-} from 'uniswap/src/state/uniswapMigrations'
+} from '@l.x/lx/src/state/uniswapMigrations'
 import {
   activatePendingAccounts,
   addBatchedTransactions,

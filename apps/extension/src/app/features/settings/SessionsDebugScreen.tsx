@@ -9,10 +9,10 @@ import {
 import { memo, useCallback, useEffect, useRef } from 'react'
 import { ScreenHeader } from 'src/app/components/layout/ScreenHeader'
 import { type LogEntry, useSessionsDebugStore } from 'src/app/features/settings/stores/sessionsDebugStore'
-import { Button, Flex, ScrollView, Text, TouchableArea } from 'ui/src'
-import { CopyAlt } from 'ui/src/components/icons'
-import { setClipboard } from 'utilities/src/clipboard/clipboard'
-import { logger } from 'utilities/src/logger/logger'
+import { Button, Flex, ScrollView, Text, TouchableArea } from '@l.x/ui/src'
+import { CopyAlt } from '@l.x/ui/src/components/icons'
+import { setClipboard } from '@l.x/utils/src/clipboard/clipboard'
+import { logger } from '@l.x/utils/src/logger/logger'
 import { useShallow } from 'zustand/shallow'
 
 // Storage keys (must match session storage)

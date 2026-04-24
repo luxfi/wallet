@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { Button, Flex } from 'ui/src'
-import { ArrowRight } from 'ui/src/components/icons/ArrowRight'
+import { Button, Flex } from '@l.x/ui/src'
+import { ArrowRight } from '@l.x/ui/src/components/icons/ArrowRight'
 
 export function OpenSidebarButton({
   openedSideBar,
