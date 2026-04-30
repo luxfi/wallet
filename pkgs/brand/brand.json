@@ -1,0 +1,69 @@
+{
+  "brand": {
+    "name": "Lux Wallet",
+    "title": "Lux Wallet",
+    "description": "Self-custodial wallet for the Lux Network",
+    "shortName": "LUX",
+    "labsName": "Lux Industries",
+    "legalEntity": "Lux Industries Inc.",
+    "walletName": "Lux Wallet",
+    "copyrightHolder": "Lux Industries Inc.",
+    "appDomain": "wallet.lux.network",
+    "docsDomain": "docs.lux.network",
+    "gatewayDomain": "api.lux.network",
+    "helpUrl": "https://docs.lux.network/wallet",
+    "termsUrl": "https://lux.network/terms",
+    "privacyUrl": "https://lux.network/privacy",
+    "downloadUrl": "https://wallet.lux.network/download",
+    "complianceEmail": "compliance@lux.network",
+    "supportEmail": "hi@lux.network",
+    "twitter": "https://x.com/luxfi",
+    "github": "https://github.com/luxfi",
+    "discord": "https://discord.gg/lux",
+    "logoUrl": "/logo.svg",
+    "faviconUrl": "/favicon.ico",
+    "primaryColor": "#FFFFFF",
+    "defaultChainId": 96369,
+    "supportedChainIds": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114],
+    "walletConnectProjectId": "",
+    "insightsHost": "",
+    "insightsApiKey": "",
+    "theme": {
+      "light": {
+        "accent1": "#000000",
+        "surface1": "#FFFFFF",
+        "surface2": "#F9F9F9",
+        "neutral1": "#131313",
+        "neutral2": "rgba(19, 19, 19, 0.63)"
+      },
+      "dark": {
+        "accent1": "#FFFFFF",
+        "surface1": "#000000",
+        "surface2": "#1A1A1A",
+        "neutral1": "#FFFFFF",
+        "neutral2": "rgba(255, 255, 255, 0.65)"
+      }
+    }
+  },
+  "chains": {
+    "defaultChainId": 96369,
+    "supported": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114]
+  },
+  "rpc": {
+    "96369": "https://api.lux.network/mainnet/ext/bc/C/rpc",
+    "96368": "https://api.lux.network/testnet/ext/bc/C/rpc",
+    "200200": "https://api.zoo.network/rpc",
+    "1": "https://eth.llamarpc.com",
+    "42161": "https://arb1.arbitrum.io/rpc",
+    "8453": "https://mainnet.base.org",
+    "137": "https://polygon-rpc.com",
+    "43114": "https://api.avax.network/ext/bc/C/rpc"
+  },
+  "api": {
+    "gateway": "https://api.lux.network",
+    "insights": "https://insights.hanzo.ai"
+  },
+  "walletConnect": {
+    "projectId": ""
+  }
+}
