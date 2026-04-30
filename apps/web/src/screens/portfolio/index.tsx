@@ -1,24 +1,30 @@
 /**
- * Portfolio screen — Foundation placeholder.
+ * Portfolio module entry. Two integration shapes are supported:
  *
- * Owned by Auth-Portfolio Blue. This stub renders so the router builds clean
- * before that Blue merges. Replace this file with the full SCREENS.md §1
- * Account / Portfolio implementation.
+ *   1. Foundation router with `path: "portfolio"`. The default export
+ *      renders <Portfolio> directly. Asset detail at `/portfolio/:address`
+ *      is reachable when foundation upgrades to `path: "portfolio/*"`.
+ *
+ *   2. Foundation router with `path: "portfolio/*"`. The nested <Routes>
+ *      picks up the index + detail.
+ *
+ * Either way, this module stays self-contained.
  */
-import { useBrand } from "../../hooks/useBrand"
-import { useAccount } from "../../hooks/useAccount"
+import { Route, Routes } from "react-router-dom"
+import Portfolio from "./Portfolio"
+import AssetDetail from "./AssetDetail"
 
-export default function Portfolio(): React.JSX.Element {
-  const brand = useBrand()
-  const account = useAccount()
+export default function PortfolioRoutes() {
   return (
-    <section>
-      <h1 style={{ fontSize: 24, marginBottom: 8 }}>Portfolio</h1>
-      <p style={{ color: "var(--neutral2, #888)" }}>
-        {account.connected
-          ? `Connected: ${account.address}`
-          : `Welcome to ${brand.walletName || "Lux Wallet"}. Foundation placeholder — Auth-Portfolio Blue ships the real screen.`}
-      </p>
-    </section>
+    <Routes>
+      <Route index element={<Portfolio />} />
+      <Route path=":address" element={<AssetDetail />} />
+      <Route path="*" element={<Portfolio />} />
+    </Routes>
   )
 }
+
+export { Portfolio, AssetDetail }
+export { useChainBalances, CHAINS } from "./useChainBalances"
+export { useTotalUSD } from "./useTotalUSD"
+export { usePerLLMTokens } from "./usePerLLMTokens"
