@@ -76,7 +76,7 @@ luxfi/wallet (this repo)
 White-label deployments pin `UPSTREAM_REF` to a `luxfi/wallet@<sha>`:
 
 ```dockerfile
-# In a downstream wallet repo/Dockerfile (in-flight elsewhere)
+# In ~/work/liquidity/wallet/Dockerfile (in-flight elsewhere)
 ARG UPSTREAM_REF=<sha-from-this-repo>
 RUN git clone --depth 1 https://github.com/luxfi/wallet.git \
  && cd wallet \
@@ -84,7 +84,7 @@ RUN git clone --depth 1 https://github.com/luxfi/wallet.git \
  && git checkout "$UPSTREAM_REF"
 ```
 
-The same pattern as `a downstream swap repo` shimming `luxfi/exchange`.
+The same pattern as `~/work/liquidity/swap` shimming `luxfi/exchange`.
 
 ## Archival action items (NOT performed by this Blue)
 
