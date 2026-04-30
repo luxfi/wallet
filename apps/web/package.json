@@ -1,16 +1,24 @@
 {
   "name": "@luxfi/wallet-web",
   "version": "0.1.0",
+  "license": "GPL-3.0-or-later",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@noble/curves": "^1.6.0",
+    "@noble/hashes": "^1.5.0",
+    "@scure/bip32": "^1.5.0",
+    "@scure/bip39": "^1.4.0",
+    "qrcode.react": "^4.1.0",
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
