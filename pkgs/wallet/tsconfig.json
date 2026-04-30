@@ -1,5 +1,5 @@
 {
-  "extends": "../../config/tsconfig/app.json",
+  "extends": "../../tsconfig.base.json",
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
@@ -7,33 +7,17 @@
     "src/**/*.json",
     "env.d.ts"
   ],
-  "references": [
-    {
-      "path": "../config"
-    },
-    {
-      "path": "../utilities"
-    },
-    {
-      "path": "../lx"
-    },
-    {
-      "path": "../ui"
-    },
-    {
-      "path": "../sessions"
-    },
-    {
-      "path": "../gating"
-    },
-    {
-      "path": "../api"
-    },
-    {
-      "path": "../eslint-config"
-    }
-  ],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "src/test/**"],
   "compilerOptions": {
-    "types": ["chrome", "jest"]
+    "moduleResolution": "Bundler",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": [],
+    "paths": {
+      "src/*": ["./src/*"]
+    }
   }
 }
