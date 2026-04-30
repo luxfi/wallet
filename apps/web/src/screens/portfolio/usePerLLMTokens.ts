@@ -66,7 +66,7 @@ export function usePerLLMTokens(chainId: number, address: Address | undefined): 
       }),
     ).then((results) => {
       if (cancelled) return
-      setTokens(results.filter((r): r is TokenBalance => r !== null && Number(r.balance) > 0))
+      setTokens(results.filter((r): r is NonNullable<typeof r> => r !== null && Number(r.balance) > 0) as TokenBalance[])
     })
 
     return () => {
