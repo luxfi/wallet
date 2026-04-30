@@ -60,9 +60,8 @@ export default function ConfirmSend() {
 
   const onConfirm = async () => {
     setAuthError(null)
-    const validation = validatePin(pin)
-    if (validation) {
-      setAuthError(validation)
+    if (!validatePin(pin)) {
+      setAuthError("PIN must be 6 digits")
       return
     }
     setAuthPending(true)

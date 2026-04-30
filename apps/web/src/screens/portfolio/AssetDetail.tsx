@@ -5,7 +5,7 @@
  * to the indexer in a later slice; here we render "No recent activity"
  * rather than a fake feed.
  */
-import { Button, Card, Text, XStack, YStack } from "@hanzo/gui/web"
+import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
 import { useNavigate, useParams } from "react-router-dom"
 import { usePortfolio, type TokenBalance } from "../../store/portfolio"
 

@@ -7,7 +7,7 @@
  */
 import { useState } from "react"
 import { useNavigate, Navigate } from "react-router-dom"
-import { Button, Card, Input, Stack, Text, YStack } from "@hanzo/gui/web"
+import { Button, Card, Input, YStack, Text } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
 import { useMnemonicDraft } from "./mnemonicDraft"
 
@@ -54,7 +54,7 @@ export default function SetPIN() {
       </Text>
 
       <Card p="$4">
-        <Stack gap="$3">
+        <YStack gap="$3">
           <Input
             inputMode="numeric"
             secureTextEntry
@@ -86,7 +86,7 @@ export default function SetPIN() {
               {error}
             </Text>
           ) : null}
-        </Stack>
+        </YStack>
       </Card>
 
       <Button disabled={!valid || busy} onPress={onSubmit} theme="active">

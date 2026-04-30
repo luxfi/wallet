@@ -9,7 +9,7 @@
  */
 import { useState } from "react"
 import { useNavigate, Navigate } from "react-router-dom"
-import { Button, Card, Input, Stack, Text, YStack } from "@hanzo/gui/web"
+import { Button, Card, Input, YStack, Text } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
 
 const PIN_RE = /^\d{6}$/
@@ -82,7 +82,7 @@ export default function Unlock() {
       </Text>
 
       <Card p="$5" maxWidth={360} width="100%">
-        <Stack gap="$3">
+        <YStack gap="$3">
           <Input
             inputMode="numeric"
             secureTextEntry
@@ -103,7 +103,7 @@ export default function Unlock() {
           <Button variant="outlined" onPress={onBiometric}>
             Use device biometrics
           </Button>
-        </Stack>
+        </YStack>
       </Card>
     </YStack>
   )

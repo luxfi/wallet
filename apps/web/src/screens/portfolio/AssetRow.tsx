@@ -4,7 +4,7 @@
  * Confidential balances (balance === "hidden") render as "Hidden 🔒" with a
  * Reveal action that the consumer wires to the F-Chain unwrap flow.
  */
-import { Card, Text, XStack, YStack } from "@hanzo/gui/web"
+import { Card, Text, XStack, YStack } from "@hanzo/gui"
 import type { TokenBalance } from "../../store/portfolio"
 
 interface AssetRowProps {

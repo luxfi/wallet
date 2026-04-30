@@ -38,6 +38,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
+      // @hanzo/gui v7 npm publish ships without dist/ (its package.json
+      // exports point at ./dist/esm/index.mjs which doesn't exist). Until
+      // upstream republishes a fixed v7, alias to a local stub with
+      // minimal primitives. Tokenized props map to CSS vars set by
+      // loadBrandConfig() at boot.
+      "@hanzo/gui": resolve(__dirname, "src/lib/gui-stub.tsx"),
     },
   },
   build: {
