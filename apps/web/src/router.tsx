@@ -3,13 +3,19 @@
  * bundle is the AppShell + auth state only. Screen Blues fill the
  * `./screens/{name}/index.tsx` files; their changes don't ripple here.
  *
- * `/` redirects to `/portfolio` — the canonical landing page per
- * SCREENS.md §1.
+ * Each screen's `index.tsx` exports a `<Routes>` block (nested router
+ * pattern) so Foundation must mount with `path: "<name>/*"` (splat)
+ * to forward sub-paths to the screen's inner Routes.
+ *
+ * `/` redirects to `/portfolio` for unlocked users; first-time users
+ * land at `/auth` (Welcome → Create / Import flow) — the wallet's auth
+ * gate is enforced by the Welcome screen + auth store, not the router.
  */
 import { lazy, Suspense } from "react"
 import { createBrowserRouter, Navigate, type RouteObject } from "react-router-dom"
 import { AppShell } from "./components/AppShell"
 
+const Auth = lazy(() => import("./screens/auth"))
 const Portfolio = lazy(() => import("./screens/portfolio"))
 const Send = lazy(() => import("./screens/send"))
 const Receive = lazy(() => import("./screens/receive"))
@@ -37,15 +43,16 @@ function ScreenFallback(): React.JSX.Element {
 
 const SCREEN_ROUTES: RouteObject[] = [
   { index: true, element: <Navigate to="/portfolio" replace /> },
-  { path: "portfolio", element: <Portfolio /> },
-  { path: "send", element: <Send /> },
-  { path: "receive", element: <Receive /> },
-  { path: "swap", element: <Swap /> },
-  { path: "bridge", element: <Bridge /> },
-  { path: "stake", element: <Stake /> },
-  { path: "dapps", element: <DApps /> },
-  { path: "confidential", element: <Confidential /> },
-  { path: "settings", element: <Settings /> },
+  { path: "auth/*", element: <Auth /> },
+  { path: "portfolio/*", element: <Portfolio /> },
+  { path: "send/*", element: <Send /> },
+  { path: "receive/*", element: <Receive /> },
+  { path: "swap/*", element: <Swap /> },
+  { path: "bridge/*", element: <Bridge /> },
+  { path: "stake/*", element: <Stake /> },
+  { path: "dapps/*", element: <DApps /> },
+  { path: "confidential/*", element: <Confidential /> },
+  { path: "settings/*", element: <Settings /> },
   { path: "*", element: <Navigate to="/portfolio" replace /> },
 ]
 
