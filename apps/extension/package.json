@@ -4,7 +4,6 @@
   "browserslist": "last 2 chrome versions",
   "dependencies": {
     "@apollo/client": "3.11.10",
-    "@datadog/browser-rum": "5.23.3",
     "@ethersproject/bignumber": "5.7.0",
     "@ethersproject/providers": "5.7.2",
     "@ethersproject/strings": "5.7.0",
@@ -51,6 +50,8 @@
     "typed-redux-saga": "1.5.0",
     "ua-parser-js": "1.0.37",
     "@luxfi/wallet": "workspace:^",
+    "@luxfi/wallet-analytics": "workspace:^",
+    "@luxfi/wallet-brand": "workspace:^",
     "wxt": "0.20.8",
     "zod": "4.3.6",
     "zustand": "5.0.6"
