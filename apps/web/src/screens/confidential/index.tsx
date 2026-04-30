@@ -78,3 +78,6 @@ export function confidentialRouteElements() {
     <Route key="confidential-zk-claim" path="/confidential/zk/:claimType" element={<ZKProofGenerator />} />,
   ]
 }
+
+
+export default ConfidentialRoutes

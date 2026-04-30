@@ -69,7 +69,7 @@ export async function verifyPIN(pin: string, expected: PinHash): Promise<boolean
 }
 
 async function importAesKey(raw: Uint8Array): Promise<CryptoKey> {
-  return crypto.subtle.importKey("raw", raw, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"])
+  return crypto.subtle.importKey("raw", raw as BufferSource, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"])
 }
 
 export async function encryptMnemonic(mnemonic: string, pin: string): Promise<EncryptedEnvelope> {
@@ -78,7 +78,7 @@ export async function encryptMnemonic(mnemonic: string, pin: string): Promise<En
   const key = await importAesKey(keyBytes)
   const nonce = randomBytes(12)
   const plaintext = new TextEncoder().encode(mnemonic)
-  const ct = await crypto.subtle.encrypt({ name: "AES-GCM", iv: nonce }, key, plaintext)
+  const ct = await crypto.subtle.encrypt({ name: "AES-GCM", iv: nonce as BufferSource }, key, plaintext as BufferSource)
   return {
     ciphertext: bytesToHex(new Uint8Array(ct)),
     nonce: bytesToHex(nonce),
@@ -93,7 +93,7 @@ export async function decryptMnemonic(env: EncryptedEnvelope, pin: string): Prom
     const key = await importAesKey(keyBytes)
     const nonce = hexToBytes(env.nonce)
     const ct = hexToBytes(env.ciphertext)
-    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: nonce }, key, ct)
+    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: nonce as BufferSource }, key, ct as BufferSource)
     return new TextDecoder().decode(pt)
   } catch {
     // Auth tag mismatch (wrong PIN) or any subtle-crypto failure → reject.
