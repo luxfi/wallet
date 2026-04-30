@@ -1,13 +1,31 @@
 /**
- * DApps screen — Foundation placeholder.
+ * dApps screen routes.
  *
- * Owned by Stake-DApps Blue. Includes the WalletConnect / dapp browser.
+ * Routes:
+ *   /dapps           → DApps landing
+ *   /dapps/connect   → Connect (paste wc:// or scan QR)
+ *   /dapps/sessions  → ActiveSessions list
+ *
+ * Mounted by Foundation under
+ * `<Route path="/dapps/*" element={<DAppsRoutes />} />`.
  */
-export default function DApps(): React.JSX.Element {
+
+import { Route, Routes } from "react-router-dom"
+import { ActiveSessions } from "./ActiveSessions"
+import { Connect } from "./Connect"
+import { DApps } from "./DApps"
+
+export function DAppsRoutes() {
   return (
-    <section>
-      <h1 style={{ fontSize: 24, marginBottom: 8 }}>DApps</h1>
-      <p style={{ color: "var(--neutral2, #888)" }}>Stake-DApps Blue: replace this file.</p>
-    </section>
+    <Routes>
+      <Route index element={<DApps />} />
+      <Route path="connect" element={<Connect />} />
+      <Route path="sessions" element={<ActiveSessions />} />
+    </Routes>
   )
 }
+
+export default DAppsRoutes
+export { DApps, Connect, ActiveSessions }
+export { useWalletConnect } from "./useWalletConnect"
+export { useTrustedDApps } from "./useTrustedDApps"
