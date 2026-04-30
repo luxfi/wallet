@@ -34,35 +34,6 @@ packages still upstream-shaped (`@universe/*`, `wallet/*` direct paths) and
 will not type-check or build until refactored to consume the npm-published
 `@l.x/*` and the workspace `@luxfi/wallet`. Track in this file when fixed.
 
-## Foundation slice (apps/web shell)
-
-`apps/web` is the Vite SPA shell. Provider tree:
-
-```
-GuiProvider → QueryClientProvider → WagmiProvider → RouterProvider
-```
-
-- `src/main.tsx` — awaits `loadBrandConfig()` before first render.
-- `src/App.tsx` — wraps the four providers above.
-- `src/router.tsx` — react-router-dom v7 with lazy-loaded screen modules.
-- `src/components/AppShell.tsx` — top bar + side drawer + Outlet.
-- `src/components/ChainSwitcher.tsx` — native `<select>` over `brand.supportedChainIds`.
-- `src/components/GuiProvider.tsx` — passthrough today; swap to `HanzoguiProvider`
-  once `@hanzo/gui@7` republishes its missing `dist/` artifact.
-- `src/config/wagmi.ts` — `buildWagmiConfig()` reads `brand.supportedChainIds`
-  and resolves transports via `getBootnodeRpcUrl(chainId)`. Chains without a
-  resolvable RPC are dropped — never `http("")`.
-- `src/config/queryClient.ts` — 30 s stale, retries off, no focus refetch.
-- `src/store/index.ts` — zustand `account` / `chain` / `ui` slices owned by
-  Foundation. Other slices (`auth`, `send`, `swap`, `stake`) are sibling files
-  owned by other Blues.
-- `src/hooks/useAccount.ts` — wagmi + zustand union; the only `useAccount`
-  screens should import.
-- `src/hooks/useBrand.ts` — `() => brand` for React-friendly typing.
-
-Screen Blues fill `src/screens/{name}/index.tsx`; today each is a labelled
-placeholder so the build is clean and merges are pure file replacements.
-
 ## White-label brand pattern (canonical)
 
 Brand config flows at runtime, not build time. Same pattern as

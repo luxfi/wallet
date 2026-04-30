@@ -109,7 +109,7 @@ Sign and broadcast outbound transactions; show receive address with QR.
 │  Privacy: ○ off                          │
 │  Finality:                               │
 │   ✓ BLS classical fast-path              │
-│   ⏱ Ringtail PQ threshold                │
+│   ⏱ Corona PQ threshold                │
 │   ⏱ ML-DSA identity                      │
 │                                          │
 │           [   Sign & Send   ]            │
@@ -123,7 +123,7 @@ Sign and broadcast outbound transactions; show receive address with QR.
 3. Amount entry with USD quote.
 4. Privacy toggle (re-routes via F-Chain Confidential ERC-20 if enabled).
 5. Tap Sign & Send: local signing, broadcast, show progress modal.
-6. Progress modal shows triple-consensus state: BLS first (~50ms), Ringtail second (~200ms), ML-DSA third (~500ms). Three checkmarks = full QuasarCert.
+6. Progress modal shows triple-consensus state: BLS first (~50ms), Corona second (~200ms), ML-DSA third (~500ms). Three checkmarks = full QuasarCert.
 
 ### Mockup — Receive
 
@@ -492,7 +492,7 @@ For users running their own Zoo or Lux validator. Surfaces block production stat
 │                                                          │
 │  Triple-consensus participation                          │
 │  BLS:       ████████████████████ 99.99%                  │
-│  Ringtail:  ████████████████████ 99.97%                  │
+│  Corona:  ████████████████████ 99.97%                  │
 │  ML-DSA:    ████████████████████ 99.98%                  │
 │                                                          │
 │  Threshold ceremonies (M-Chain)                          │
