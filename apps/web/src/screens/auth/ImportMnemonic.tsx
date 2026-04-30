@@ -5,8 +5,9 @@
  */
 import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { english, validateMnemonic } from "viem/accounts"
-import { Button, Card, Input, Stack, Text, YStack } from "@hanzo/gui/web"
+import { validateMnemonic } from "@scure/bip39"
+import { wordlist as bip39English } from "@scure/bip39/wordlists/english"
+import { Button, Card, Input, YStack, Text } from "@hanzo/gui"
 import { useMnemonicDraft } from "./mnemonicDraft"
 
 export default function ImportMnemonic() {
@@ -17,7 +18,7 @@ export default function ImportMnemonic() {
   const normalized = useMemo(() => phrase.trim().replace(/\s+/g, " ").toLowerCase(), [phrase])
   const wordCount = normalized ? normalized.split(" ").length : 0
   const validShape = wordCount === 12 || wordCount === 24
-  const validBip39 = validShape && validateMnemonic(normalized, english)
+  const validBip39 = validShape && validateMnemonic(normalized, bip39English)
 
   const onContinue = () => {
     if (!validBip39) return
@@ -34,7 +35,7 @@ export default function ImportMnemonic() {
       <Text col="$neutral2">Paste your 12 or 24-word BIP-39 recovery phrase.</Text>
 
       <Card p="$4">
-        <Stack gap="$3">
+        <YStack gap="$3">
           <Input
             multiline
             numberOfLines={4}
@@ -54,7 +55,7 @@ export default function ImportMnemonic() {
               Phrase failed BIP-39 checksum. Check for typos.
             </Text>
           ) : null}
-        </Stack>
+        </YStack>
       </Card>
 
       <Button disabled={!validBip39} onPress={onContinue} theme="active">

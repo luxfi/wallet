@@ -5,7 +5,7 @@
  */
 import { useMemo, useState } from "react"
 import { useNavigate, Navigate } from "react-router-dom"
-import { Button, Card, Input, Stack, Text, XStack, YStack } from "@hanzo/gui/web"
+import { Button, Card, Input, YStack, Text, XStack } from "@hanzo/gui"
 import { useMnemonicDraft } from "./mnemonicDraft"
 
 function pickIndices(total: number, count: number): number[] {
@@ -40,7 +40,7 @@ export default function ConfirmMnemonic() {
       </Text>
 
       <Card p="$4">
-        <Stack gap="$3">
+        <YStack gap="$3">
           {indices.map((i) => (
             <XStack key={i} ai="center" gap="$3">
               <Text width={48} col="$neutral2">
@@ -56,7 +56,7 @@ export default function ConfirmMnemonic() {
               />
             </XStack>
           ))}
-        </Stack>
+        </YStack>
       </Card>
 
       <Button disabled={!allCorrect} onPress={() => navigate("/auth/pin")} theme="active">
