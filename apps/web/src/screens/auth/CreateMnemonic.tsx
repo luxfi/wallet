@@ -9,7 +9,7 @@
 import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { generateMnemonic, english } from "viem/accounts"
-import { Button, Card, Stack, Text, XStack, YStack } from "@hanzo/gui/web"
+import { Button, Card, YStack, Text, XStack } from "@hanzo/gui"
 import { useMnemonicDraft } from "./mnemonicDraft"
 
 export default function CreateMnemonic() {
@@ -36,7 +36,7 @@ export default function CreateMnemonic() {
       </Text>
 
       <Card p="$4">
-        <Stack flexWrap="wrap" flexDirection="row" gap="$2">
+        <YStack flexWrap="wrap" flexDirection="row" gap="$2">
           {words.map((word, i) => (
             <XStack
               key={i}
@@ -56,7 +56,7 @@ export default function CreateMnemonic() {
               </Text>
             </XStack>
           ))}
-        </Stack>
+        </YStack>
       </Card>
 
       <XStack ai="center" gap="$3">
