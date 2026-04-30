@@ -3,6 +3,7 @@ node_modules
 out
 dist
 build
+apps/web/public/brand.json
 *.tsbuildinfo
 .turbo
 .env*.local

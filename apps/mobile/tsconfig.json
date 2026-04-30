@@ -1,35 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Mobile App",
-  "extends": "../../config/tsconfig/expo.json",
+  "extends": "../../tsconfig.base.json",
   "exclude": [".storybook/storybook.requires.ts"],
   "references": [
     {
-      "path": "../../packages/sessions"
-    },
-    {
-      "path": "../../packages/notifications"
-    },
-    {
-      "path": "../../packages/hashcash-native"
-    },
-    {
-      "path": "../../packages/gating"
-    },
-    {
-      "path": "../../packages/api"
-    },
-    {
-      "path": "../../packages/wallet"
-    },
-    {
-      "path": "../../packages/utilities"
-    },
-    {
-      "path": "../../packages/ui"
-    },
-    {
-      "path": "../../packages/uniswap"
+      "path": "../../pkgs/wallet"
     }
   ],
   "compilerOptions": {
