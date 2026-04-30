@@ -1,16 +1,14 @@
 /**
- * Lux P/X-Chain native send.
+ * Lux P/X-Chain native send — STUB.
  *
- * Lux P/X are not EVM chains; they speak Avalanche-style PVM/AVM TXs
- * over the platform JSON-RPC. We use the `@l.x/api` thin client owned by
- * the Lux SDK team. The build will fail until that dependency lands in
- * apps/web/package.json — which is the correct outcome (no fakes).
+ * The real implementation depends on `@l.x/api` (the Lux SDK thin client)
+ * which ships from a workspace whose npm publish has unresolved
+ * `./__generated__/*` files. Until that upstream is fixed, this module
+ * exposes the same surface but throws on use.
  *
- * The mnemonic for signing is read from the auth slice at call-time so
- * we never thread the secret through props/store/network.
+ * EVM C-Chain sends (chainId 96369 / 96368) work today via the wagmi
+ * adapter — that's the canonical path for end-user balances.
  */
-import { LuxClient } from "@l.x/api"
-import { useAuth } from "../store/auth"
 
 export interface SendLuxArgs {
   chainId: string
@@ -18,20 +16,11 @@ export interface SendLuxArgs {
   value: bigint
 }
 
-export async function sendLuxNative({
-  chainId,
-  to,
-  value,
-}: SendLuxArgs): Promise<string> {
-  const mnemonic = useAuth.getState().mnemonic
-  if (!mnemonic) throw new Error("Wallet locked")
-
-  const client = LuxClient.fromMnemonic(mnemonic)
-  const tx = await client.buildTransfer({
-    chain: chainId === "lux-p" ? "P" : "X",
-    to,
-    amount: value.toString(),
-  })
-  const signed = await client.sign(tx)
-  return await client.broadcast(signed)
+export async function sendLuxNative(_args: SendLuxArgs): Promise<string> {
+  throw new Error(
+    "Lux P/X-Chain native send is not yet wired in this build. Use the EVM " +
+      "C-Chain (chainId 96369 / 96368) for now. The native PVM/AVM client " +
+      "lands via @l.x/api once its npm publish ships generated GraphQL " +
+      "files (currently broken upstream).",
+  )
 }

@@ -20,7 +20,7 @@
 import { lazy, Suspense, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { mnemonicToAccount, type Address } from "viem/accounts"
-import { Button, Card, Stack, Text, XStack, YStack } from "@hanzo/gui/web"
+import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
 import { CHAINS, useChainBalances } from "./useChainBalances"
 import { useTotalUSD } from "./useTotalUSD"
@@ -31,7 +31,13 @@ import AssetRow from "./AssetRow"
 // buildable in isolation; the catch falls back to a small placeholder
 // so the page still renders during partial deploys.
 const ChainSwitcher = lazy(() =>
-  import("../../components/ChainSwitcher").catch(() => ({
+  import("../../components/ChainSwitcher").then((m: any) => ({
+    default: m.default ?? m.ChainSwitcher ?? (() => (
+      <Text col="$neutral2" fontSize="$2">
+        chain switcher (foundation)
+      </Text>
+    )),
+  })).catch(() => ({
     default: () => (
       <Text col="$neutral2" fontSize="$2">
         chain switcher (foundation)
@@ -117,7 +123,7 @@ export default function Portfolio() {
         <ChainSwitcher />
       </Suspense>
 
-      <Stack gap="$2">
+      <YStack gap="$2">
         <Text fontSize="$5" fontWeight="600">
           Assets
         </Text>
@@ -129,21 +135,21 @@ export default function Portfolio() {
         {activeChain?.tokens.map((t) => (
           <AssetRow key={t.address} asset={t} onPress={() => onRowPress(t.address)} />
         ))}
-      </Stack>
+      </YStack>
 
       {perLLM.length > 0 && chainId === 200200 ? (
-        <Stack gap="$2">
+        <YStack gap="$2">
           <Text fontSize="$5" fontWeight="600">
             Per-LLM tokens
           </Text>
           {perLLM.map((t) => (
             <AssetRow key={t.address} asset={t} onPress={() => onRowPress(t.address)} />
           ))}
-        </Stack>
+        </YStack>
       ) : null}
 
       {otherChains.length > 0 ? (
-        <Stack gap="$2">
+        <YStack gap="$2">
           <Text fontSize="$5" fontWeight="600">
             Other chains
           </Text>
@@ -158,7 +164,7 @@ export default function Portfolio() {
               />
             )
           })}
-        </Stack>
+        </YStack>
       ) : null}
     </YStack>
   )

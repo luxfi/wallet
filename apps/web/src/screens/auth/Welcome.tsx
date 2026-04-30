@@ -3,7 +3,7 @@
  * Foundation router mounts this at /auth.
  */
 import { Link } from "react-router-dom"
-import { Button, Card, Stack, Text, YStack } from "@hanzo/gui/web"
+import { Button, Card, Text, YStack } from "@hanzo/gui"
 import { brand } from "@luxfi/wallet-brand"
 
 export default function Welcome() {
@@ -17,7 +17,7 @@ export default function Welcome() {
       </Text>
 
       <Card p="$5" maxWidth={360} width="100%">
-        <Stack gap="$3">
+        <YStack gap="$3">
           <Link to="/auth/create" style={{ textDecoration: "none" }}>
             <Button width="100%" theme="active">
               Create new wallet
@@ -28,7 +28,7 @@ export default function Welcome() {
               Import existing
             </Button>
           </Link>
-        </Stack>
+        </YStack>
       </Card>
     </YStack>
   )
