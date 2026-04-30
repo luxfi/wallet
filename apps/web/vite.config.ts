@@ -28,8 +28,25 @@ function copyBrandJson(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), copyBrandJson()],
+  plugins: [
+    react({
+      // `@hanzo/gui` ships React-only on web; default automatic JSX runtime.
+      jsxRuntime: "automatic",
+    }),
+    copyBrandJson(),
+  ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
+  },
   build: {
     outDir: "dist",
+    target: "es2022",
+    sourcemap: true,
+  },
+  server: {
+    port: 3000,
+    strictPort: false,
   },
 })
