@@ -1,13 +1,13 @@
 {
   "brand": {
-    "name": "Lux Wallet",
-    "title": "Lux Wallet",
-    "description": "Self-custodial wallet for the Lux Network",
-    "shortName": "LUX",
-    "labsName": "Lux Industries",
-    "legalEntity": "Lux Industries Inc.",
-    "walletName": "Lux Wallet",
-    "copyrightHolder": "Lux Industries Inc.",
+    "name": "\u25bc",
+    "title": "\u25bc",
+    "description": "Self-custodial wallet",
+    "shortName": "\u25bc",
+    "labsName": "\u25bc",
+    "legalEntity": "\u25bc",
+    "walletName": "\u25bc",
+    "copyrightHolder": "\u25bc",
     "appDomain": "wallet.lux.network",
     "docsDomain": "docs.lux.network",
     "gatewayDomain": "api.lux.network",
@@ -24,7 +24,19 @@
     "faviconUrl": "/favicon.ico",
     "primaryColor": "#FFFFFF",
     "defaultChainId": 96369,
-    "supportedChainIds": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114],
+    "supportedChainIds": [
+      96369,
+      96368,
+      200200,
+      36963,
+      36911,
+      494949,
+      1,
+      42161,
+      8453,
+      137,
+      43114
+    ],
     "walletConnectProjectId": "",
     "insightsHost": "",
     "insightsApiKey": "",
@@ -47,7 +59,19 @@
   },
   "chains": {
     "defaultChainId": 96369,
-    "supported": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114]
+    "supported": [
+      96369,
+      96368,
+      200200,
+      36963,
+      36911,
+      494949,
+      1,
+      42161,
+      8453,
+      137,
+      43114
+    ]
   },
   "rpc": {
     "96369": "https://api.lux.network/mainnet/ext/bc/C/rpc",
