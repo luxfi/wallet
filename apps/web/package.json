@@ -11,9 +11,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hanzo/gui": "^7.0.0",
+    "@luxfi/wallet-analytics": "workspace:^",
     "@luxfi/wallet-brand": "workspace:^",
+    "@tanstack/react-query": "^5.90.0",
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "react-router-dom": "^7.0.0",
+    "viem": "^2.30.0",
+    "wagmi": "^2.15.0",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
