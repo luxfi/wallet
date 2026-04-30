@@ -9,8 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hanzo/gui": "^7.0.0",
+    "@luxfi/wallet-brand": "workspace:^",
+    "@noble/hashes": "^1.7.1",
     "react": "19.2.5",
-    "react-dom": "19.2.5"
+    "react-dom": "19.2.5",
+    "react-router-dom": "^7.0.0",
+    "viem": "^2.30.0",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
