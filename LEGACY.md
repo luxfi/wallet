@@ -24,18 +24,61 @@ pin a stable `UPSTREAM_REF` against `luxfi/wallet@<sha>` instead of forking.
   Out of scope for the wallet — that work belongs in `~/work/lux/genesis`.
 - **Verdict**: Archive. Brand pattern absorbed.
 
-### `~/work/lux/wwallet/` — `luxfi/wwallet`
+### `~/work/lux/wwallet/` — `luxfi/wwallet` — ARCHIVED LOCAL 2026-04-30
 
-- **Lineage**: Bespoke Lux wallet line — `apps/{app,web}` + `components/` +
-  a standalone `sdk/` (rollup-built TypeScript SDK).
-- **What was unique**: A standalone TS SDK with `audits/`, `typedoc.json`,
-  rollup build, and Cypress E2E. Recent commits trended toward purging
-  PostHog and porting analytics to `@hanzo/insights`.
-- **Why not absorbed**: The canonical wallet uses the `@l.x/api` (npm-published)
-  for SDK surface and the new `pkgs/analytics` driver abstraction supersedes
-  the PostHog/Insights wiring. The SDK in `wwallet/sdk/` is older and
-  duplicates what's now in the published `@l.x/*` packages.
-- **Verdict**: Archive.
+- **Lineage**: Bespoke Lux wallet line — `app/` (Vue 3 + vue-cli SPA),
+  `web/` (Next.js 13 React port — partial, never shipped), `components/`
+  (4 Vue UI primitives), `sdk/` (rollup-built TypeScript SDK published as
+  `@luxfi/wallet-sdk@0.20.29` on npm).
+- **Inventory at archival**: 217 `.vue` (35,992 LoC), 287 `.ts` (24,045 LoC),
+  22 `.js` (1,281 LoC), 31 locale JSONs (~14k LoC), 8 SCSS, 48 SVG. Total
+  ~95k LoC including JSON across ~650 source files.
+- **Migration audit (2026-04-30)**: Walked every directory under
+  `wwallet/{app,web,components,sdk}`. **Zero files ported.** Decision matrix:
+
+  | wwallet asset | Canonical equivalent | Decision |
+  |---|---|---|
+  | `app/` Vue 3 monolith (`Wallet.vue`, Earn, Studio, Manage, Access, Create) | `apps/web` Vite + React + `pkgs/wallet` features | DROP — Vue forbidden; "React-only on web; never reintroduce Vue" |
+  | `web/` Next.js 13 React port (settings/keys/send/cross-chain/earn/portfolio/activity/onboard) | `apps/web` Vite SPA (settings/auth/send/bridge/stake/portfolio/swap/dapps/confidential/receive/signing) | DROP — superseded by canonical Vite SPA on broader feature set |
+  | `web/src/lib/networks.ts` (LUX_MAINNET/TESTNET hardcoded consts, Q-Chain stub) | `apps/web/src/config/wagmi.ts` brand-driven, 11 chains incl. Q-Chain (36911) and F-Chain (494949) | DROP — already covered with brand.json runtime overlay |
+  | `web/src/lib/wallet-sdk.ts` (thin facade over `@luxfi/wallet-sdk`) | `apps/web/src/screens/bridge/useBridgeExecute.ts` + `screens/stake/useStake.ts` (Foundation signer pattern, brand-routed) | DROP — canonical uses cleaner Foundation signer trust boundary |
+  | `components/` (BigNumInput, CopyText, QrInput, QrReader Vue) | `@hanzo/gui` v7 (aliased to `apps/web/src/lib/gui-stub.tsx`) | DROP — primitives covered, Vue forbidden |
+  | `sdk/` standalone (Asset/Csv/Explorer/History/Keystore/Network/UniversalTx/Wallet) — published as `@luxfi/wallet-sdk@0.20.29` on npm | `@l.x/api@1.0.8` (canonical SDK surface) + the same `@luxfi/wallet-sdk` already on npm | DROP — SDK already published; canonical apps consume `@l.x/api` |
+  | `app/src/locales/*.json` (31 languages, 740-line en.json keyed against legacy Vue UI) | `pkgs/wallet/src/features/i18n/deviceLocaleWatcherSaga.ts` (locale detection only) | DROP — keys target Vue1-era UI labels; no overlap with canonical screen text. Re-translation belongs to a fresh i18n pass against current strings, not a migration of stale ones |
+  | `app/src/ERC20Tokenlist.json`, `ERC721Tokenlist.json` | `pkgs/chains/` + token registries from `@l.x/api` | DROP — wwallet lists target chainId 43114 (Avalanche) which is wrong product surface for the Lux wallet |
+  | `app/src/components/wallet/{studio,advanced/{SignMessage,VerifyMessage},earn/StakingCalculator,portfolio/Collectibles}` | Not in canonical web v0.1 (per SCREENS.md spec freeze 2025-12-15) | DROP — these features are out of scope for the new wallet UX. Re-add (if desired) belongs to a fresh design pass against `@hanzo/gui` v7 primitives, not a Vue→React translation of stale code |
+  | Cypress E2E suite (`app/cypress/`) | Canonical uses Playwright in `apps/extension/e2e/` and Maestro on mobile | DROP — wrong test runner for the canonical bones |
+  | Static brand strings (Lux-only, hardcoded RPC URLs) | `@luxfi/wallet-brand` runtime brand.json + ConfigMap overlay | DROP — superseded by white-label runtime config |
+
+- **Why zero ported**: the canonical `luxfi/wallet` monorepo (this repo)
+  already covers every feature wwallet had, with a stricter security model
+  (Foundation signer separation, brand-routed RPC, no static chain consts),
+  cleaner workspace (`pkgs/{analytics,brand,chains,wallet}` vs scattered
+  rollup-built sibling packages), and the SDK already published on npm.
+  wwallet's only differentiator vs the canonical was its larger feature
+  surface (NFTs, staking calculator, sign/verify message, NFT minting
+  studio) — but those are out of the SCREENS.md spec for v0.1 and would
+  land as React-on-`@hanzo/gui`, not as ports of Vue components.
+
+- **Archival actions taken (2026-04-30)**:
+  ```bash
+  mv ~/work/lux/wwallet ~/work/lux/.wwallet-archived-2026-04-30   # done
+  ```
+  Local copy retained at `~/work/lux/.wwallet-archived-2026-04-30/` (NOT
+  `rm -rf`'d).
+
+- **GitHub archival pending — needs org admin**:
+  `gh repo archive luxfi/wwallet --yes` ran from account `zatsch` returned
+  `does not have the correct permissions to execute ArchiveRepository`.
+  An admin of the `luxfi` GitHub org needs to run, or grant zatsch admin:
+  ```bash
+  gh repo archive luxfi/wwallet --yes
+  ```
+  Or, if full deletion is desired (irreversible):
+  ```bash
+  gh repo delete luxfi/wwallet --yes
+  ```
+- **Verdict**: Archived.
 
 ### `~/work/lux/xwallet/` — `@luxwallet/x`
 
@@ -86,13 +129,14 @@ RUN git clone --depth 1 https://github.com/luxfi/wallet.git \
 
 The same pattern as `a downstream swap repo` shimming `luxfi/exchange`.
 
-## Archival action items (NOT performed by this Blue)
+## Archival action items
 
-The CTO/user makes the call on archival. Suggested actions:
-
-1. `gh repo archive luxfi/wallet-legacy`
-2. `gh repo archive luxfi/wwallet`
-3. `gh repo archive luxfi/xwallet`
+| Repo | Local | GitHub | Notes |
+|---|---|---|---|
+| `luxfi/wallet-legacy` | pending | pending | `gh repo archive luxfi/wallet-legacy --yes` (needs org admin) |
+| `luxfi/wwallet` | done — `~/work/lux/.wwallet-archived-2026-04-30/` | pending | `gh repo archive luxfi/wwallet --yes` (needs org admin; `zatsch` lacks permission) |
+| `luxfi/xwallet` | pending | pending | `gh repo archive luxfi/xwallet --yes` (needs org admin) |
 
 All three remain as GitHub repos with full git history — archival is
-non-destructive and reversible.
+non-destructive and reversible. Deletion is irreversible (`gh repo delete <name> --yes`)
+and only run on explicit instruction.
