@@ -1,13 +1,38 @@
 /**
- * Settings screen — Foundation placeholder.
+ * Settings sub-router.
  *
- * Owned by Settings-Signing Blue. SCREENS.md §10 Settings.
+ * Foundation Blue mounts this at `/settings/*` in the app router. We own
+ * the children and the shared layout; Foundation owns the path prefix.
+ *
+ * Usage (Foundation Blue):
+ *
+ *   import SettingsRoutes from "./screens/settings"
+ *   …
+ *   <Route path="/settings/*" element={<SettingsRoutes />} />
  */
-export default function Settings(): React.JSX.Element {
+import { Route, Routes } from "react-router-dom"
+import About from "./About"
+import Backup from "./Backup"
+import Currency from "./Currency"
+import Language from "./Language"
+import Networks from "./Networks"
+import Security from "./Security"
+import Settings from "./Settings"
+import ThemeScreen from "./Theme"
+
+export default function SettingsRoutes() {
   return (
-    <section>
-      <h1 style={{ fontSize: 24, marginBottom: 8 }}>Settings</h1>
-      <p style={{ color: "var(--neutral2, #888)" }}>Settings-Signing Blue: replace this file.</p>
-    </section>
+    <Routes>
+      <Route index element={<Settings />} />
+      <Route path="networks" element={<Networks />} />
+      <Route path="security" element={<Security />} />
+      <Route path="backup" element={<Backup />} />
+      <Route path="language" element={<Language />} />
+      <Route path="theme" element={<ThemeScreen />} />
+      <Route path="currency" element={<Currency />} />
+      <Route path="about" element={<About />} />
+    </Routes>
   )
 }
+
+export { About, Backup, Currency, Language, Networks, Security, Settings, ThemeScreen }
