@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "lib": ["dom", "esnext"],
+    "noEmit": true,
+    "types": [],
+    "rootDir": ".",
+    "composite": false,
+    "incremental": false
+  }
+}
