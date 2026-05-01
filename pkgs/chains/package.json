@@ -1,0 +1,43 @@
+{
+  "name": "@luxfi/wallet-chains",
+  "version": "0.1.1",
+  "description": "viem chain definitions for Lux Network and ecosystem L1s (Lux, Zoo, Hanzo, Pars, Sparkle Pony)",
+  "license": "GPL-3.0-or-later",
+  "private": false,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean --target es2022 --out-dir dist",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "viem": "^2.30.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0",
+    "viem": "^2.30.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxfi/wallet.git",
+    "directory": "pkgs/chains"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
