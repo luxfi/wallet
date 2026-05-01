@@ -10,7 +10,7 @@
  * are populated. The config is memoized at module init via a lazy ref so
  * StrictMode's double render does not re-instantiate WalletConnect.
  */
-import { useMemo } from "react"
+import { lazy, Suspense, useMemo } from "react"
 import { RouterProvider } from "react-router-dom"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { WagmiProvider } from "wagmi"
@@ -18,6 +18,11 @@ import { GuiProvider } from "./components/GuiProvider"
 import { buildWagmiConfig } from "./config/wagmi"
 import { queryClient } from "./config/queryClient"
 import { router } from "./router"
+
+// Lazy-load the signing modal so the auth/portfolio bootstrap path doesn't
+// pull abi.ts + prices.ts into the initial bundle. The modal mounts at
+// app root and any slice can trigger it via `useSigningModal().open(tx)`.
+const SigningModal = lazy(() => import("./screens/signing/SigningModal"))
 
 export default function App(): React.JSX.Element {
   // Build the wagmi config once. `useMemo` keeps StrictMode's double render
@@ -30,6 +35,9 @@ export default function App(): React.JSX.Element {
       <QueryClientProvider client={queryClient}>
         <WagmiProvider config={wagmiConfig}>
           <RouterProvider router={router} />
+          <Suspense fallback={null}>
+            <SigningModal />
+          </Suspense>
         </WagmiProvider>
       </QueryClientProvider>
     </GuiProvider>
