@@ -48,22 +48,9 @@ const FALLBACK_LUX: TrustedDApp[] = [
   },
 ]
 
-const FALLBACK_LIQUIDITY: TrustedDApp[] = [
-  {
-    name: "",
-    url: "https://swap.",
-    description: " DEX.",
-    chainIds: [],
-    category: "dex",
-  },
-  {
-    name: "Liquidity Exchange",
-    url: "https://exchange.",
-    description: ".",
-    chainIds: [],
-    category: "exchange",
-  },
-]
+// Tenant-specific fallbacks live in the tenant's wallet build, not in the
+// upstream lux/wallet source. Custom brands wire their own list via the
+// trusted-dapps fetch endpoint configured by appDomain.
 
 function isHttpsUrl(value: string): boolean {
   try {
@@ -111,12 +98,10 @@ function sanitiseEntries(entries: unknown): TrustedDApp[] {
   return out
 }
 
-function selectFallback(appDomain: string | undefined): TrustedDApp[] {
-  if (!appDomain) return FALLBACK_LUX
-  const d = appDomain.toLowerCase()
-  if (d.endsWith("") || d.endsWith("")) {
-    return FALLBACK_LIQUIDITY
-  }
+function selectFallback(_appDomain: string | undefined): TrustedDApp[] {
+  // Wallet always ships the Lux fallback. Branded builds replace this list
+  // at build time via WALLET_TRUSTED_DAPPS env override or fetch from a
+  // tenant-managed `${appDomain}/api/trusted-dapps` endpoint.
   return FALLBACK_LUX
 }
 
