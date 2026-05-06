@@ -4,11 +4,10 @@
  *
  * Source order:
  *   1. brand.trustedDApps (white-label override; mounted via brand.json)
- *   2. Hardcoded fallback (Lux/Liquid/Zoo defaults)
+ *   2. Hardcoded Lux fallback
  *
- * The fallback never includes Liquidity-internal hosts in non-Liquidity
- * builds — host selection is keyed off brand.appDomain so a hijacked
- * brand.json cannot inject arbitrary entries.
+ * White-label deployments inject their own dApp list via brand.json; the
+ * Lux OSS build only ships Lux-native entries here.
  *
  * URLs are normalised to absolute https origins; entries that fail the
  * URL parser are dropped.
@@ -45,23 +44,6 @@ const FALLBACK_LUX: TrustedDApp[] = [
     description: "Marketplace.",
     chainIds: [96369],
     category: "nft",
-  },
-]
-
-const FALLBACK_LIQUIDITY: TrustedDApp[] = [
-  {
-    name: "",
-    url: "https://swap.",
-    description: " DEX.",
-    chainIds: [],
-    category: "dex",
-  },
-  {
-    name: "Liquidity Exchange",
-    url: "https://exchange.",
-    description: ".",
-    chainIds: [],
-    category: "exchange",
   },
 ]
 
@@ -111,12 +93,9 @@ function sanitiseEntries(entries: unknown): TrustedDApp[] {
   return out
 }
 
-function selectFallback(appDomain: string | undefined): TrustedDApp[] {
-  if (!appDomain) return FALLBACK_LUX
-  const d = appDomain.toLowerCase()
-  if (d.endsWith("") || d.endsWith("")) {
-    return FALLBACK_LIQUIDITY
-  }
+function selectFallback(_appDomain: string | undefined): TrustedDApp[] {
+  // White-label builds inject their dApp list via brand.json; the Lux OSS
+  // fallback always returns the Lux-native entry list.
   return FALLBACK_LUX
 }
 
