@@ -8,7 +8,7 @@ import { useOnboardingContext } from 'wallet/src/features/onboarding/OnboardingC
 
 /**
  * Activates onboarding accounts on component mount,
- * and auto-connects to app.uniswap.org.
+ * and auto-connects to lux.exchange.
  */
 export function useFinishExtensionOnboarding({
   callback,
