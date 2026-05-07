@@ -88,11 +88,11 @@ export async function focusOrCreateDappRequestWindow(tabId: number | undefined, 
 
 /**
  * To avoid opening too many tabs while also ensuring that we don't take over the user's active tab,
- * we only update the URL of the active tab if it's already in a specific route of the Uniswap interface.
+ * we only update the URL of the active tab if it's already in a specific route of the Lux interface.
  *
  * If the current tab is not in that route, we open a new tab instead.
  */
-export async function focusOrCreateUniswapInterfaceTab({
+export async function focusOrCreateLuxInterfaceTab({
   url,
   reuseActiveTabIfItMatches,
 }: {
@@ -133,7 +133,7 @@ export async function focusOrCreateTokensExploreTab({ currencyId }: { currencyId
     return undefined
   }
 
-  return focusOrCreateUniswapInterfaceTab({
+  return focusOrCreateLuxInterfaceTab({
     url,
     // We want to reuse the active tab only if it's already in any other TDP.
     // oxlint-disable-next-line security/detect-non-literal-regexp

@@ -59,7 +59,7 @@ export function postDeprecatedMethodError({
   source?.postMessage({
     requestId,
     error: serializeError(
-      providerErrors.unsupportedMethod(`Uniswap Wallet does not support ${method} as it is deprecated`),
+      providerErrors.unsupportedMethod(`Lux Wallet does not support ${method} as it is deprecated`),
     ),
   })
 }
@@ -75,7 +75,7 @@ export function postUnknownMethodError({
 }): void {
   source?.postMessage({
     requestId,
-    error: serializeError(providerErrors.unsupportedMethod(`Uniswap Wallet does not support ${method}`)),
+    error: serializeError(providerErrors.unsupportedMethod(`Lux Wallet does not support ${method}`)),
   })
 }
 
@@ -98,7 +98,7 @@ export function postParsingError({
   source?.postMessage({
     requestId,
     error: serializeError(
-      providerErrors.unsupportedMethod(`Uniswap Wallet could not parse the ${method} request properly`),
+      providerErrors.unsupportedMethod(`Lux Wallet could not parse the ${method} request properly`),
     ),
   })
 }

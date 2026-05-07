@@ -317,7 +317,7 @@ export default defineConfig({
   // See the README for more information.
   // https://wxt.dev/guide/essentials/config/browser-startup.html
   webExt: {
-    startUrls: ['https://app.uniswap.org'],
+    startUrls: ['https://lux.exchange'],
 
     chromiumArgs: ['--user-data-dir=./.wxt/chrome-data'],
 
