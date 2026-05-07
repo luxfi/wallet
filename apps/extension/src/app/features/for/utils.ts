@@ -1,7 +1,7 @@
 import { SharedEventName } from '@luxamm/analytics-events'
 import { useDappContext } from 'src/app/features/dapp/DappContext'
 import { useDappLastChainId } from 'src/app/features/dapp/hooks'
-import { focusOrCreateUniswapInterfaceTab } from 'src/app/navigation/utils'
+import { focusOrCreateLuxInterfaceTab } from 'src/app/navigation/utils'
 import { uniswapUrls } from '@l.x/lx/src/constants/urls'
 import { getChainInfo } from '@l.x/lx/src/features/chains/chainInfo'
 import { UniverseChainId } from '@l.x/lx/src/features/chains/types'
@@ -25,7 +25,7 @@ export function useInterfaceBuyNavigator(element?: ElementName): () => void {
 
 export function navigateToInterfaceFiatOnRamp(chainId?: UniverseChainId): void {
   const chainParam = chainId ? `?chain=${getChainInfo(chainId).urlParam}` : ''
-  focusOrCreateUniswapInterfaceTab({
+  focusOrCreateLuxInterfaceTab({
     url: `${uniswapUrls.webInterfaceBuyUrl}${chainParam}`,
   }).catch((err) =>
     logger.error(err, {
