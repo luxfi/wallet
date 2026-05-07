@@ -4,7 +4,7 @@ This document tracks the migration of features from the Rabby-based xwallet to t
 
 ## Overview
 
-The Lux Exchange extension is built on a modern stack (WXT, React 19, Tamagui) and integrates deeply with the Lux/Lux DEX ecosystem. We're augmenting it with battle-tested features from the Rabby wallet fork (xwallet).
+The Lux Exchange extension is built on a modern stack (WXT, React 19, @hanzo/gui) and integrates deeply with the Lux/Lux DEX ecosystem. We're augmenting it with battle-tested features from the Rabby wallet fork (xwallet).
 
 ## Feature Status
 
@@ -55,7 +55,7 @@ The exchange extension uses WXT (Vite-based) which requires different handling t
 
 ### UI Components
 
-- Build on existing Tamagui component library
+- Build on existing @hanzo/gui component library
 - Follow feature-based folder structure
 - Integrate with existing navigation system
 
