@@ -158,7 +158,7 @@ export function ScanToOnboard(): JSX.Element {
     return () => cancelAnimation(qrScale)
     // oxlint-disable-next-line react/exhaustive-deps -- biome-parity: oxlint is stricter here
   }, [isLoadingUUID])
-  // Using useAnimatedStyle and AnimatedFlex because tamagui scale animation not working
+  // Using useAnimatedStyle and AnimatedFlex because @hanzo/gui scale animation not working
   const qrAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: `scale(${qrScale.value})`,
