@@ -354,8 +354,8 @@ module.exports = (env) => {
                   ...manifest.externally_connectable,
                   matches:
                     BUILD_ENV === 'prod'
-                      ? ['https://app.uniswap.org/*']
-                      : ['https://app.uniswap.org/*', 'https://ew.unihq.org/*', 'https://*.ew.unihq.org/*'],
+                      ? ['https://lux.exchange/*']
+                      : ['https://lux.exchange/*', 'https://ew.unihq.org/*', 'https://*.ew.unihq.org/*'],
                 },
                 // Ensure content scripts are registered in the webpack build (WXT handles this automatically).
                 // These mirror the matches/runAt used in the TS entrypoints.

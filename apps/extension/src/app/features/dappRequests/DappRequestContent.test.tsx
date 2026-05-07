@@ -204,10 +204,10 @@ describe('DappRequestContent - Stale Request Rendering', () => {
     renderDappRequestContent({
       createdAt: freshCreatedAt,
       isRequestStale: false,
-      frameUrl: 'https://app.uniswap.org',
+      frameUrl: 'https://lux.exchange',
     })
 
-    // Should show "app.uniswap.org via example.com" in the URL label
+    // Should show "lux.exchange via example.com" in the URL label
     expect(screen.queryByText(/app\.uniswap\.org via example\.com/i)).not.toBeNull()
   })
 

@@ -5,7 +5,7 @@ import { AppRoutes, HomeQueryParams, HomeTabs } from 'src/app/navigation/constan
 import { navigate } from 'src/app/navigation/state'
 import {
   focusOrCreateTokensExploreTab,
-  focusOrCreateUniswapInterfaceTab,
+  focusOrCreateLuxInterfaceTab,
   SidebarLocationState,
 } from 'src/app/navigation/utils'
 import { uniswapUrls } from '@l.x/lx/src/constants/urls'
@@ -80,7 +80,7 @@ function SharedExtensionNavigationProvider({
   const navigateToTokenDetails = useNavigateToTokenDetails()
   const navigateToFiatOnRamp = useNavigateToFiatOnRamp()
   const navigateToExternalProfile = useCallback(({ address }: NavigateToExternalProfileArgs) => {
-    focusOrCreateUniswapInterfaceTab({ url: getPortfolioUrl(address) })
+    focusOrCreateLuxInterfaceTab({ url: getPortfolioUrl(address) })
   }, [])
   const navigateToPoolDetails = useNavigateToPoolDetails()
   const navigateToAdvancedSettings = useNavigateToAdvancedSettings()
@@ -202,7 +202,7 @@ function useNavigateToTokenDetails(): (currencyId: string) => void {
 
 function useNavigateToPoolDetails(): (args: { poolId: Address; chainId: UniverseChainId }) => void {
   return useCallback(async ({ poolId, chainId }: { poolId: Address; chainId: UniverseChainId }): Promise<void> => {
-    await focusOrCreateUniswapInterfaceTab({
+    await focusOrCreateLuxInterfaceTab({
       url: getPoolDetailsURL(poolId, chainId),
       // We want to reuse the active tab only if it's already in any other PDP.
       // oxlint-disable-next-line security/detect-non-literal-regexp
