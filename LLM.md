@@ -117,9 +117,7 @@ no Alchemy direct. White-labels point at their own gateway (e.g.,
 ## Workspace catalog (`pnpm-workspace.yaml`)
 
 `@hanzogui/*-fork.1` aliases for React Native packages. The `@hanzogui` prefix
-is the internal umbrella name (NEVER write "Tamagui" — see
-`feedback_no_tamagui_brand.md`). Product brand for the GUI library is
-`@hanzo/gui`.
+is the internal umbrella name. Product brand for the GUI library is `@hanzo/gui`.
 
 ## Known transitive type errors (NOT our bug)
 
@@ -148,7 +146,7 @@ The web SPA builds because Vite tree-shakes — only used surface is touched.
 4. **NEVER** reference `getQuicknodeEndpointUrl` — use `getBootnodeRpcUrl`.
 5. **NEVER** hardcode brand strings (`"Lux Wallet"`, `"lux.network"`) in app code —
    read from the `brand` singleton in `@luxfi/wallet-brand`.
-6. **NEVER** write "Tamagui" — use "@hanzo/gui" / `@hanzogui/*` umbrella.
+6. **NEVER** write the banned forked-UI brand — use "@hanzo/gui" / `@hanzogui/*` umbrella.
 7. **ALWAYS** preserve BIP44 path 9000 for Lux P/X chain addresses in any
    key derivation (60 for EVM C-chain).
 8. **ALWAYS** keep the GPL-3.0-or-later license header — wallet inherits it.
