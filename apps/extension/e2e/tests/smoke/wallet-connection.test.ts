@@ -9,7 +9,7 @@ test.describe('Wallet Connection to Uniswap', () => {
 
     // Open Uniswap app in a new tab
     const uniswapPage = await context.newPage()
-    await uniswapPage.goto('https://app.uniswap.org', { waitUntil: 'domcontentloaded' })
+    await uniswapPage.goto('https://lux.exchange', { waitUntil: 'domcontentloaded' })
 
     // Wait a bit for the ethereum provider to be injected
     await uniswapPage.waitForTimeout(3000)
