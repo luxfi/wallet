@@ -202,15 +202,6 @@ export default defineConfig({
           // ignores tsconfig files in Nx generator template directories
           skip: (dir) => dir.includes('files'),
         }),
-        // TODO(INFRA-299): enable tamagui in production once building works
-        // !isPreparePhase && isProduction
-        //   ? tamaguiPlugin({
-        //       config: '../../packages/ui/src/tamagui.config.ts',
-        //       components: ['ui', 'uniswap', 'utilities'],
-        //       optimize: true,
-        //       importsWhitelist: ['constants.js'],
-        //     })
-        //   : undefined,
         svgr({
           svgrOptions: {
             icon: false,
@@ -244,8 +235,8 @@ export default defineConfig({
 
       optimizeDeps: {
         include: [
-          'tamagui',
-          '@tamagui/web',
+          '@hanzo/gui',
+          '@hanzogui/web',
           'ui',
           '@luxamm/sdk-core',
           '@luxamm/v2-sdk',
