@@ -20,7 +20,7 @@ import {
 } from '@universe/notifications'
 import ms from 'ms'
 import { UnitagClaimRoutes } from 'src/app/navigation/constants'
-import { focusOrCreateUniswapInterfaceTab, focusOrCreateUnitagTab } from 'src/app/navigation/utils'
+import { focusOrCreateLuxInterfaceTab, focusOrCreateUnitagTab } from 'src/app/navigation/utils'
 import { createChromeStorageAdapter } from 'src/notification-service/createChromeStorageAdapter'
 import { createExtensionLegacyBannersNotificationDataSource } from 'src/notification-service/data-sources/createExtensionLegacyBannersNotificationDataSource'
 import { createStorageWarningCondition } from 'src/notification-service/data-sources/reactive/storageWarningCondition'
@@ -138,7 +138,7 @@ function provideExtensionNotificationService(ctx: {
   const onNavigate = (url: string) => {
     // Handle explore paths by opening in web interface
     if (url.startsWith('/explore/')) {
-      focusOrCreateUniswapInterfaceTab({
+      focusOrCreateLuxInterfaceTab({
         url: `${uniswapUrls.requestOriginUrl}${url}`,
       }).catch((error) => {
         getLogger().error(error, {
