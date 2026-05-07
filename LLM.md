@@ -110,7 +110,7 @@ no Alchemy direct. White-labels point at their own gateway (e.g.,
   (Transitive deps via `@l.x/utils` and `@l.x/lx` remain — those are upstream
   packages and will be cleaned in their own pkg releases.)
 - **Zero `@amplitude/*` direct deps**.
-- **Zero `@uniswap/*` direct deps** (forked to `@luxamm/*` per commit `81b2ba3e`).
+- **Zero `@luxamm/*` direct deps** (forked to `@luxamm/*` per commit `81b2ba3e`).
 - **Zero `getQuicknodeEndpointUrl` references** in our source — only the
   string literal `'quicknode'` exists in error-matching test fixtures.
 
@@ -141,7 +141,7 @@ The web SPA builds because Vite tree-shakes — only used surface is touched.
 
 1. **NEVER** write random summary files — update `LLM.md` only.
 2. **NEVER** commit symlinked files (.AGENTS.md, CLAUDE.md, etc.) — they're in `.gitignore`.
-3. **NEVER** introduce direct `@datadog/*`/`@amplitude/*`/`@uniswap/*` deps —
+3. **NEVER** introduce direct `@datadog/*`/`@amplitude/*`/`@luxamm/*` deps —
    use the abstractions in `pkgs/analytics` and `@luxamm/*`.
 4. **NEVER** reference `getQuicknodeEndpointUrl` — use `getBootnodeRpcUrl`.
 5. **NEVER** hardcode brand strings (`"Lux Wallet"`, `"lux.network"`) in app code —
