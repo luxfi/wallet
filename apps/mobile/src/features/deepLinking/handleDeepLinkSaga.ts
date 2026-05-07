@@ -20,7 +20,7 @@ import { handleOffRampReturnLink } from 'src/features/deepLinking/handleOffRampR
 import { handleOnRampReturnLink } from 'src/features/deepLinking/handleOnRampReturnLinkSaga'
 import { handleSwapLink } from 'src/features/deepLinking/handleSwapLinkSaga'
 import { handleTransactionLink } from 'src/features/deepLinking/handleTransactionLinkSaga'
-import { handleUniswapAppDeepLink } from 'src/features/deepLinking/handleUniswapAppDeepLink'
+import { handleLuxAppDeepLink } from 'src/features/deepLinking/handleLuxAppDeepLink'
 import { parseSwapLinkMobileFormatOrThrow } from 'src/features/deepLinking/parseSwapLink'
 import { LinkSource } from 'src/features/deepLinking/types'
 import { closeAllModals, openModal } from 'src/features/modals/modalSlice'
@@ -78,7 +78,7 @@ export function* handleDeepLink(action: ReturnType<typeof openDeepLink>) {
     } else {
       switch (deepLinkAction.action) {
         case DeepLinkAction.UniswapWebLink: {
-          yield* call(handleUniswapAppDeepLink, {
+          yield* call(handleLuxAppDeepLink, {
             path: deepLinkAction.data.urlPath,
             url: deepLinkAction.data.url.href,
             linkSource: LinkSource.Share,
@@ -95,7 +95,7 @@ export function* handleDeepLink(action: ReturnType<typeof openDeepLink>) {
           break
         }
         case DeepLinkAction.UniswapWidget: {
-          yield* call(handleUniswapAppDeepLink, {
+          yield* call(handleLuxAppDeepLink, {
             path: deepLinkAction.data.url.hash,
             url: deepLinkAction.data.url.toString(),
             linkSource: LinkSource.Widget,
