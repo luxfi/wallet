@@ -26,7 +26,7 @@
     "type": "module"
   },
   "permissions": ["alarms", "notifications", "sidePanel", "storage", "tabs"],
-  "host_permissions": ["https://*.uniswap.org/*"],
+  "host_permissions": ["https://lux.exchange/*", "https://*.lux.network/*"],
   "externally_connectable": {
     "ids": [],
     "matches": ["THIS WILL BE OVERWRITTEN DURING THE BUILD PROCESS - See webpack.config.js"]
