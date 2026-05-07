@@ -237,6 +237,13 @@ export default defineConfig({
           name: 'svg-import-fix',
           transform(code: string) {
             const regex = /import\s+([a-zA-Z0-9_$]+)\s+from\s+['"]([^'"]+\.svg)['"]/g
+            return code.replace(regex, "import { ReactComponent as $1 } from '$2'")
+          },
+        },
+      ],
+
+      optimizeDeps: {
+        include: [
           'tamagui',
           '@tamagui/web',
           'ui',
