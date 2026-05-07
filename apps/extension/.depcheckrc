@@ -25,7 +25,6 @@ ignores: [
 =======
     # Webpack plugins
     '@svgr/webpack',
-    'tamagui-loader',
     'esbuild-loader',
     'style-loader',
     'css-loader',
