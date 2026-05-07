@@ -6,7 +6,7 @@ html {
   font-variant-ligatures: no-contextual;
 }
 
-/* Theme-aware background colors using Tamagui theme classes */
+/* Theme-aware background colors using @hanzo/gui theme classes */
 .t_light body,
 .t_light html {
   background-color: #fff;
