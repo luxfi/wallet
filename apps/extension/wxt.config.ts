@@ -7,12 +7,21 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'wxt'
+import { getTsconfigAliases } from './config/getTsconfigAliases'
 const BASE_NAME = process.env.BRAND_EXTENSION_NAME || '▼ Wallet'
 const BASE_DESCRIPTION = process.env.BRAND_EXTENSION_DESC || 'Self-custody crypto wallet for swapping, bridging, and managing digital assets.'
 const BASE_VERSION = '1.69.0'
 
 const BUILD_NUM = parseInt(process.env.BUILD_NUM || '0')
 const EXTENSION_VERSION = `${BASE_VERSION}.${BUILD_NUM}`
+
+// Build variant directory under src/publicAssetsByEnv/. Determines which icons,
+// manifest images, and copy bundles ship with the extension.
+//   prod    = production stores (Chrome Web Store + Firefox Add-ons)
+//   beta    = beta channel
+//   dev     = local development
+//   default = same as prod when env not set
+const publicAssetsVariant = process.env.WXT_PUBLIC_ASSETS_VARIANT || 'prod'
 
 /**
  * Vite's optimizeDeps cache hash doesn't include `define` values, so changing env vars
