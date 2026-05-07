@@ -58,6 +58,7 @@
     "zustand": "5.0.6"
   },
   "devDependencies": {
+    "@hanzogui/loader": "3.0.6",
     "@playwright/test": "1.58.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "@testing-library/dom": "10.4.0",
@@ -89,8 +90,11 @@
     "serve": "14.2.4",
     "style-loader": "3.3.2",
     "swc-loader": "0.2.6",
-    "@hanzogui/loader": "3.0.6",
     "typescript": "5.9.3",
+    "vite-plugin-commonjs": "^0.10.4",
+    "vite-plugin-node-polyfills": "^0.24.0",
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.4",
     "webpack": "5.90.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.1"
