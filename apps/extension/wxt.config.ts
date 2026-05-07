@@ -107,13 +107,6 @@ export default defineConfig({
     },
   },
 
-  // Dynamic manifest generation
-            ? ['https://app.uniswap.org/*']
-            : ['https://app.uniswap.org/*', 'https://ew.unihq.org/*', 'https://*.ew.unihq.org/*'],
-      },
-    }
-  },
-
   // Vite configuration copied from web project
   vite: (env) => {
     // Load ALL env variables (including those without VITE_ prefix)
