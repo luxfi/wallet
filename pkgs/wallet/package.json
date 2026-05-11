@@ -41,6 +41,7 @@
     "@l.x/api": "^1.0.8",
     "@l.x/gating": "^1.0.7",
     "@l.x/sessions": "^1.0.8",
+    "@noble/hashes": "^1.7.1",
     "apollo3-cache-persist": "0.14.1",
     "dayjs": "1.11.7",
     "ethers": "5.7.2",
