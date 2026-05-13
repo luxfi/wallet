@@ -1,6 +1,6 @@
 {
   "name": "@luxfi/wallet",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "check:deps:usage": "nx check:deps:usage wallet",
