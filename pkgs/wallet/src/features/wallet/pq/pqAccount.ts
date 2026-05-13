@@ -56,8 +56,14 @@ export function walletSchemeName(s: WalletSchemeID): string {
       return 'ml-dsa-65'
     case WalletSchemeID.MLDSA87:
       return 'ml-dsa-87'
-    default:
-      return `wallet-scheme(0x${s.toString(16).padStart(2, '0')})`
+    default: {
+      // Forward-compat: a numeric scheme byte that does not match any
+      // known enum case still gets a readable name. The cast to number
+      // is required because the switch above is exhaustive over the
+      // enum and TypeScript narrows `s` to `never` here.
+      const raw = s as number
+      return `wallet-scheme(0x${raw.toString(16).padStart(2, '0')})`
+    }
   }
 }
 
