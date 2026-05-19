@@ -13,7 +13,7 @@
  * (it returns the correct router per chain in its quote). The constants here
  * are only used by the on-chain QuoterV2 fallback when the gateway is offline.
  *
- *  chain ids (per top-level memory):
+ * Downstream EVM chain ids (per top-level memory):
  *   8675309 = mainnet, 8675310 = testnet, 8675311 = devnet.
  *
  * Lux EVM chain ids:
@@ -114,7 +114,7 @@ const QUOTERS: Record<number, Address> = {
   96369: ZERO,
   // Zoo L1
   200200: ZERO,
-  //  mainnet/testnet/devnet
+  // Downstream EVM mainnet/testnet/devnet
   8675309: ZERO,
   8675310: ZERO,
   8675311: ZERO,

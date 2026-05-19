@@ -150,6 +150,29 @@ The web SPA builds because Vite tree-shakes — only used surface is touched.
 7. **ALWAYS** preserve BIP44 path 9000 for Lux P/X chain addresses in any
    key derivation (60 for EVM C-chain).
 8. **ALWAYS** keep the GPL-3.0-or-later license header — wallet inherits it.
+9. **ALWAYS** route PQ crypto through `pkgs/wallet/src/features/wallet/pq/` —
+   ML-DSA / ML-KEM / SLH-DSA / hybrid / HD-PQ derivation / domain separators /
+   precompile encoders all live there. Re-export from `apps/web/src/lib/pq.ts`.
+
+## PQ stack (LP-4200, FIPS 203/204/205)
+
+Canonical entry: `pkgs/wallet/src/features/wallet/pq/index.ts`. Web facade:
+`apps/web/src/lib/pq.ts`. React hook: `apps/web/src/hooks/usePQIdentity.ts`.
+
+| Module          | Purpose                                                      |
+|-----------------|--------------------------------------------------------------|
+| `pqAccount.ts`  | shape, cSHAKE AccountID, MLDSAProvider iface, HD-path strings |
+| `domain.ts`     | FIPS-204 ctx strings (evm-precompile, x-chain-utxo, …)        |
+| `mldsa.ts`      | ML-DSA-44/65/87 providers via @noble/post-quantum             |
+| `mlkem.ts`      | ML-KEM-512/768/1024 KEM providers                             |
+| `slhdsa.ts`     | SLH-DSA-128f/192f/192s/256f providers                         |
+| `hybrid.ts`     | Ed25519∥ML-DSA + secp256k1∥ML-DSA containers (luxfi/sdk-compat)|
+| `hdPq.ts`       | BIP32 → expandChildSeed → ML-DSA/SLH-DSA keypair               |
+| `precompile.ts` | eth_call wrappers for 0x012201/02/03                          |
+
+Tests run via `pnpm --dir pkgs/wallet exec jest --config jest.pq.config.js`
+(standalone — bypasses the upstream-shaped jest-expo preset that's still
+pending refactor). 71 tests passing as of 2026-05-18.
 
 ---
 
