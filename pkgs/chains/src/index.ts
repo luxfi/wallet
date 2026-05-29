@@ -3,8 +3,8 @@
  *
  * Single source of truth for static viem `Chain` configs across the Lux
  * ecosystem (lux/build developer portal, lux/wallet apps, third-party
- * integrators). White-label deployments (Liquidity, etc.) overlay their
- * own chain configs via runtime `brand.json` and do not import this pkg.
+ * integrators). White-label deployments overlay their own chain configs
+ * via runtime `brand.json` and do not import this pkg.
  *
  * Chain IDs are pinned per `~/work/lux/build/CLAUDE.md` `NETWORKS.yaml`:
  *   Lux mainnet         96369   testnet 96368
