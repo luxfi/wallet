@@ -47,7 +47,7 @@ export interface ActiveStake {
   pendingRewardNLux: bigint
   startTime: number
   endTime: number
-  /** "Pending" while subnet has not yet activated; "Active" once running. */
+  /** "Pending" while chain has not yet activated; "Active" once running. */
   status: "pending" | "active" | "completed"
 }
 
