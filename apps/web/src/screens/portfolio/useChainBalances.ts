@@ -5,8 +5,8 @@
  *   - EVM chains: viem publicClient(getBootnodeRpcUrl) → native balance and
  *     (later) erc20 multicall in a single round-trip.
  *   - Lux non-EVM (P/X/Q/A/B/M): JSON-RPC `*.getBalance` via the same
- *     gateway URL helper. Each chain has its own subnet route; the
- *     gateway resolves it.
+ *     gateway URL helper. Each chain has its own route; the gateway
+ *     resolves it.
  *   - F-Chain (confidential): we never fetch plaintext — the row renders
  *     as "Hidden 🔒" with an unwrap action.
  *
@@ -86,7 +86,7 @@ async function fetchEvmBalance(entry: ChainEntry, address: Address): Promise<Cha
 
 async function fetchLuxNonEvmBalance(entry: ChainEntry, address: Address): Promise<ChainPortfolio | null> {
   // Non-EVM chains use AVAX-style REST. Foundation Blue's gateway resolves
-  // /v1/rpc/{chainId} to the right subnet endpoint.
+  // /v1/rpc/{chainId} to the right chain endpoint.
   const url = getBootnodeRpcUrl(entry.chainId)
   if (!url) return null
   try {
