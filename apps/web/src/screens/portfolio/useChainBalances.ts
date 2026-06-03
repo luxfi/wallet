@@ -85,7 +85,7 @@ async function fetchEvmBalance(entry: ChainEntry, address: Address): Promise<Cha
 }
 
 async function fetchLuxNonEvmBalance(entry: ChainEntry, address: Address): Promise<ChainPortfolio | null> {
-  // Non-EVM chains use AVAX-style REST. Foundation Blue's gateway resolves
+  // Non-EVM chains use platform/AVM JSON-RPC. Foundation Blue's gateway resolves
   // /v1/rpc/{chainId} to the right subnet endpoint.
   const url = getBootnodeRpcUrl(entry.chainId)
   if (!url) return null
