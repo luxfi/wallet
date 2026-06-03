@@ -13,9 +13,6 @@
  * (it returns the correct router per chain in its quote). The constants here
  * are only used by the on-chain QuoterV2 fallback when the gateway is offline.
  *
- * Downstream EVM chain ids (per top-level memory):
- *   8675309 = mainnet, 8675310 = testnet, 8675311 = devnet.
- *
  * Lux EVM chain ids:
  *   96369   = Lux C-Chain mainnet
  *   200200  = Zoo L1
@@ -114,10 +111,6 @@ const QUOTERS: Record<number, Address> = {
   96369: ZERO,
   // Zoo L1
   200200: ZERO,
-  // Downstream EVM mainnet/testnet/devnet
-  8675309: ZERO,
-  8675310: ZERO,
-  8675311: ZERO,
   // Ethereum mainnet — Uniswap QuoterV2 (only used if user routes via L1).
   1: "0x61fFE014bA17989E743c5F6cB21bF9697530B21e",
 }
@@ -125,9 +118,6 @@ const QUOTERS: Record<number, Address> = {
 const ROUTERS: Record<number, Address> = {
   96369: ZERO,
   200200: ZERO,
-  8675309: ZERO,
-  8675310: ZERO,
-  8675311: ZERO,
   // Uniswap SwapRouter02 mainnet.
   1: "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
 }
