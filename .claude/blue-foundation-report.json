@@ -1,0 +1,77 @@
+{
+  "scope": "Foundation slice 1/7 — apps/web Vite SPA shell",
+  "branch": "feat/foundation",
+  "remote": "git@github.com:luxfi/wallet.git",
+  "head_sha": "b39d6cc01a54ef513868ede9a78dcde00d5b48ad",
+  "commits": [
+    "7bcd0dae0 feat(web): replace Next.js skeleton with Vite SPA shell",
+    "87ea30391 feat(web): wagmi + react-query + zustand + brand wiring",
+    "da9cf227c feat(web): router placeholders for 9 screens (filled by screen blues)",
+    "6281d838b feat(web): @hanzo/gui v7 web AppShell + ChainSwitcher",
+    "b39d6cc01 docs(LLM.md): record foundation slice apps/web shell"
+  ],
+  "files_created": [
+    "apps/web/index.html",
+    "apps/web/package.json",
+    "apps/web/tsconfig.json",
+    "apps/web/vite.config.ts",
+    "apps/web/public/logo.svg",
+    "apps/web/public/favicon.svg",
+    "apps/web/src/main.tsx",
+    "apps/web/src/App.tsx",
+    "apps/web/src/router.tsx",
+    "apps/web/src/components/AppShell.tsx",
+    "apps/web/src/components/ChainSwitcher.tsx",
+    "apps/web/src/components/GuiProvider.tsx",
+    "apps/web/src/config/wagmi.ts",
+    "apps/web/src/config/queryClient.ts",
+    "apps/web/src/store/index.ts",
+    "apps/web/src/hooks/useBrand.ts",
+    "apps/web/src/hooks/useAccount.ts",
+    "apps/web/src/screens/{portfolio,send,receive,swap,bridge,stake,dapps,confidential,settings}/index.tsx"
+  ],
+  "build": {
+    "command": "pnpm install --no-frozen-lockfile && pnpm --dir apps/web build",
+    "result": "clean",
+    "tsc_typecheck": "passes",
+    "vite_build_time_ms": 308,
+    "main_bundle": {"file": "dist/assets/index-CuBbFc1y.js", "bytes": 356807, "gzip_bytes": 112220, "sha256": "dbdb1f967b06e355d264504b6457d3dace2583cd4b70e0bcf963a4276525e9b3"},
+    "dist_total_bytes": 2306048,
+    "lazy_screens_emitted": 9,
+    "brand_json_in_dist": true
+  },
+  "punted": [
+    {
+      "what": "@hanzo/gui v7 HanzoguiProvider import",
+      "reason": "@hanzo/gui@7.0.0 npm tarball ships no dist/ directory — package.json:exports point at ./dist/esm/index.mjs which doesn't exist. Importing the package crashes module resolution. Foundation ships a passthrough <GuiProvider> wrapping children; CSS-var theme path already drives every component via loadBrandConfig(). Swap to HanzoguiProvider once upstream republishes a fixed v7.",
+      "fix_path": "apps/web/src/components/GuiProvider.tsx body — single import + JSX wrapper change."
+    }
+  ],
+  "threat_model": {
+    "assets": ["Eventually: encrypted mnemonic envelope (Auth-Portfolio Blue), signed transactions, RPC endpoints"],
+    "adversaries": ["XSS injecting brand overrides", "tampered /brand.json swapping RPCs to attacker URLs", "downgrade attacks via stale lockfile"],
+    "attack_surface": ["loadBrandConfig() fetch(/brand.json) — trust boundary", "wagmi RPC URLs — DNS/MITM exposure", "react-router NavLink — open redirect via path prop"]
+  },
+  "confidence": {
+    "high": ["build is reproducible", "router lazy boundaries are clean", "brand → CSS var pipeline works", "no empty-string RPC URLs reach viem", "GPL-3.0-or-later preserved"],
+    "medium": ["wagmi config tested via build only — no live tx flow yet", "AppShell layout is minimal — accessibility audit not done"],
+    "low": ["@hanzo/gui v7 rebinding when upstream fixes dist", "non-EVM address shape in zustand account slice — Auth-Portfolio Blue defines"]
+  },
+  "suggested_attack_vectors": [
+    "1. Tamper /brand.json with attacker RPC URLs — does loadBrandConfig() validate scheme/host?",
+    "2. Set brand.supportedChainIds to chain id with no CHAIN_DEFS entry — does the fallback config still construct safely?",
+    "3. window.location.origin coercion: confirm http(empty) is impossible. Try a brand.json with rpc field set to empty string.",
+    "4. NavLink path injection: can a rendered URL force navigation to an attacker site? router has Navigate to /portfolio fallback — bypass?",
+    "5. localStorage poisoning: zustand.persist isn't used yet in foundation slices, but Auth Blue will. Foundation slices (account/chain/ui) currently not persisted — confirm.",
+    "6. CSP: index.html ships no Content-Security-Policy meta. Should foundation set one, or is that ingress-layer (hanzoai/ingress)?",
+    "7. SourceMap exposure: dist/ ships .js.map — appropriate for staging; remove for prod via sourcemap: false in vite.config.ts? Or rely on hanzo/spa runtime to drop them?",
+    "8. StrictMode double-render: WagmiProvider config built in useMemo — confirm WalletConnect doesn't init twice. Check buildWagmiConfig() is referentially stable.",
+    "9. Race: loadBrandConfig() failure mode — if /brand.json 404s, brand.supportedChainIds is empty and fallback mainnet config kicks in. Is the fallback an information leak (telling attacker brand load failed)?"
+  ],
+  "open_questions": [
+    "Should buildWagmiConfig() also register WalletConnect connector? brand.walletConnectProjectId is provisioned but no connector configured today — empty string would crash WC.",
+    "Receive screen's QR code generation library: Foundation hasn't picked one. Send-Receive Blue choice cascades.",
+    "Is the lazy-load Suspense fallback hooked into AppShell so it doesn't flash an unstyled spinner outside the shell? Currently AppShell wraps the fallback so layout is preserved — verify.",
+    "@luxfi/wallet-analytics is in deps but not yet wired (no setAnalyticsDriver call). Should Foundation register the Hanzo Insights driver, or is that Auth-Portfolio Blue's job once an account exists?"
+  ]
+}
