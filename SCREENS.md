@@ -109,7 +109,7 @@ Sign and broadcast outbound transactions; show receive address with QR.
 │  Privacy: ○ off                          │
 │  Finality:                               │
 │   ✓ BLS classical fast-path              │
-│   ⏱ Corona PQ threshold                │
+│   ⏱ Corona PQ threshold                  │
 │   ⏱ ML-DSA identity                      │
 │                                          │
 │           [   Sign & Send   ]            │
@@ -492,7 +492,7 @@ For users running their own Zoo or Lux validator. Surfaces block production stat
 │                                                          │
 │  Triple-consensus participation                          │
 │  BLS:       ████████████████████ 99.99%                  │
-│  Corona:  ████████████████████ 99.97%                  │
+│  Corona:    ████████████████████ 99.97%                  │
 │  ML-DSA:    ████████████████████ 99.98%                  │
 │                                                          │
 │  Threshold ceremonies (M-Chain)                          │
