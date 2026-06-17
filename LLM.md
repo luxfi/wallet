@@ -1,4 +1,4 @@
-# `@luxfi/wallet` — AI Assistant Knowledge Base
+# `@luxfi/wallet`
 
 **Project**: `luxfi/wallet` — canonical Lux Wallet upstream (web + mobile + extension).
 **Org**: Lux Industries Inc. (`luxfi`).
