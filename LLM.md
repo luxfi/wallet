@@ -1,10 +1,19 @@
 # `@luxfi/wallet`
 
-**Project**: `luxfi/wallet` — canonical Lux Wallet upstream (web + mobile + extension).
+**Project**: `luxfi/wallet` — canonical Lux Wallet upstream (web + mobile + extension + backend).
 **Org**: Lux Industries Inc. (`luxfi`).
-**Status**: `apps/web` builds clean. `apps/{extension,mobile}` retain upstream-shaped
-src that requires an app-level refactor to compile against current `@l.x/*` npm
+**Status**: `apps/web` builds clean. `apps/backend` (Go MPC custody server) builds
++ tests green (17 tests). `apps/{extension,mobile}` retain upstream-shaped src
+that requires an app-level refactor to compile against current `@l.x/*` npm
 packages. The canonical bones (`pkgs/{wallet,brand,analytics}`) are stable.
+
+> The freshly-scaffolded MIT TS shared core lives in a SEPARATE org —
+> `github.com/luxwallet/*` (`@luxwallet/{chains,rpc,crypto,keyring,tx,sdk}`,
+> + `connect`, `ui`, `desktop`, native ios/android/mobile-rn). That is the
+> cross-target shared core; `luxfi/wallet` here is the GPL product monorepo
+> (web/extension/mobile FE + this Go custody backend + PQ stack). The backend's
+> custody port mirrors `@luxwallet/keyring`'s account model + the lux/mpc
+> `client.Threshold` security contract.
 
 ## Canonical structure
 
@@ -12,6 +21,7 @@ packages. The canonical bones (`pkgs/{wallet,brand,analytics}`) are stable.
 luxfi/wallet/
 ├── apps/
 │   ├── web/             — Vite 8 SPA, React 19, brand-aware. Builds in <100ms.
+│   ├── backend/         — Go MPC custody server (App(Wallet) backend). See below.
 │   ├── extension/       — Chrome/Firefox MV3 (upstream-shaped; app-refactor pending).
 │   └── mobile/          — React Native + Expo (upstream-shaped; app-refactor pending).
 ├── pkgs/
@@ -136,6 +146,76 @@ The web SPA builds because Vite tree-shakes — only used surface is touched.
 - `~/work/lux/wwallet` — bespoke SDK line. Superseded by `@l.x/api` → archive.
 - `~/work/lux/xwallet` — OKX-fork lineage. Hardware support already removed → archive.
 - `~/work/lux/dwallet` — Desktop product. **Independent**, do not fold in.
+
+## `apps/backend` — App(Wallet) custody server (Go)
+
+The wallet's BACKEND. A small Go HTTP service that gives the wallet a custody
+account model with **MPC custody — NO plaintext keys, ever**. The private key
+is split t-of-n across the MPC nodes (lux → `mpc.lux.network`) and is never
+assembled; this service stores only public keys + addresses.
+
+```
+apps/backend/
+├── cmd/wallet-backend/main.go   — env config, graceful shutdown, JSON logging
+└── internal/
+    ├── iam/      — lux.id OIDC bearer verify (JWKS discovery, RS256/ES256,
+    │              alg-confusion-safe). Org from the `owner` claim. (golang-jwt/v5)
+    ├── custody/  — the custody PORT (Custodian iface) + MPC HTTP adapter to
+    │              lux/mpc (/keygen + /sign). Mirrors lux/mpc client.Threshold's
+    │              security contract (idempotency required, org-scoped). PQ-ready
+    │              (Scheme mldsa65 is first-class).
+    ├── store/    — wallet↔org↔addresses (no key field). Org-scoped reads (a
+    │              cross-org get is ErrNotFound — no existence disclosure).
+    └── api/      — /v1/* HTTP (no /api/ prefix). IAM-gated, org-scoped:
+                    POST /v1/wallets · GET /v1/wallets · GET /v1/wallets/{id} ·
+                    POST /v1/wallets/{id}/sign · GET /v1/health (open).
+```
+
+Run: `cd apps/backend && go test ./...` (17 tests). Build standalone with
+`GOWORK=off go build ./cmd/wallet-backend` (the monorepo go.work also lists it).
+Deploy: build-only `.platform.yml` (repo root) → `ghcr.io/luxfi/wallet-backend`;
+the lux operator rolls `apps/backend/k8s/wallet-backend.yaml` (lux.cloud/v1
+Service + KMSSecret for `MPC_SERVICE_TOKEN`), ingress `wallet-api.lux.network`.
+
+White-label is per-tenant + per-env injection — `IAM_ISSUER` (lux → lux.id),
+`IAM_AUDIENCE` (`<org>-wallet`), `MPC_ENDPOINT` (lux → mpc.lux.network; shared
+hanzo-mpc or BYOMPC). Same binary, any brand. PQ crypto is NOT duplicated here —
+ML-DSA/SLH-DSA live in `pkgs/wallet/.../pq` and on the consensus/precompile side;
+the custody layer just carries `mldsa65` as a scheme through to MPC.
+
+## App(Wallet) spec — for the unified operator (`App` Kind)
+
+The unified web3 operator's `App` Kind deploys the wallet, white-labeled by
+domain. The wallet App is **two deployables**, one OSS core, branded per tenant:
+
+| Part | What | Image | Host |
+|------|------|-------|------|
+| Web wallet | `apps/web` Vite SPA, runtime brand.json (no source fork) | `ghcr.io/luxfi/wallet-web` | `wallet.<brand>` |
+| Custody backend | `apps/backend` Go MPC custody server | `ghcr.io/luxfi/wallet-backend` | `wallet-api.<brand>` |
+
+`App(Wallet)` CR shape (operator renders Service(s) + Ingress + KMSSecret):
+
+```yaml
+apiVersion: lux.cloud/v1
+kind: App
+metadata: { name: lux-wallet }
+spec:
+  kind: wallet              # curated view: balances/send/receive/PQ identity
+  source: { mode: native }  # native luxwallet | override → tenant fork
+  web:    { image: ghcr.io/luxfi/wallet-web,     host: wallet.lux.network }
+  backend:{ image: ghcr.io/luxfi/wallet-backend, host: wallet-api.lux.network }
+  iam:    https://lux.id              # per-tenant (lux→lux.id)
+  mpc:    https://mpc.lux.network     # per-tenant: shared hanzo-mpc | BYOMPC
+  chainDefault: 96369                 # Lux C-Chain
+```
+
+Custody = the `MPC` Kind (shared or BYO). The wallet App references {iam, mpc}
+endpoints; the operator wires the KMSSecret (`MPC_SERVICE_TOKEN`). Native
+binaries (mac/win/linux/ios/android/extension) build on the NATIVE CI fleet
+(lux arcd, NO GHA) + codesign via `hanzoai/ci-signing/sign-<plat>@v1`, per
+brand, served from the per-brand download page on `wallet.<brand>`. The native
+shells live in the `luxwallet/*` org (desktop/ios/android/extension); they embed
+the shared `@luxwallet/sdk` core and point at this backend for custody.
 
 ## Rules for AI Assistants
 

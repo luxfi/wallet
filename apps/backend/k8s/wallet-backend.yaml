@@ -1,0 +1,87 @@
+# wallet-backend — the App(Wallet) custody server, deployed by the unified lux
+# web3 operator (group lux.cloud) as a Service CR. Custody is MPC
+# (mpc.lux.network); the only secret is the MPC service token, synced from Lux
+# KMS via the KMSSecret below — NEVER in this manifest, NEVER plaintext.
+---
+apiVersion: secrets.lux.network/v1alpha1
+kind: KMSSecret
+metadata:
+  name: wallet-backend-kms
+  namespace: lux-mainnet
+  labels:
+    app: wallet-backend
+    brand: lux
+spec:
+  hostAPI: http://kms.lux-kms.svc.cluster.local
+  resyncInterval: 60
+  authentication:
+    universalAuth:
+      credentialsRef:
+        secretName: universal-auth-credentials
+        secretNamespace: lux-system
+      secretsScope:
+        projectSlug: lux-wallet
+        envSlug: prod
+        secretsPath: /
+  managedSecretReference:
+    creationPolicy: Orphan
+    secretName: wallet-backend-secrets
+    secretNamespace: lux-mainnet
+    secretType: Opaque
+---
+apiVersion: lux.cloud/v1
+kind: Service
+metadata:
+  name: wallet-backend
+  namespace: lux-mainnet
+  labels:
+    app: wallet-backend
+    brand: lux
+    component: api
+spec:
+  image:
+    repository: ghcr.io/luxfi/wallet-backend
+    tag: latest
+    pullPolicy: Always
+  replicas: 2
+  strategy: RollingUpdate
+  ports:
+    - name: http
+      containerPort: 8080
+  # MPC_SERVICE_TOKEN arrives from the KMSSecret-managed Secret above.
+  envFrom:
+    - secretRef:
+        name: wallet-backend-secrets
+  env:
+    - name: LISTEN_ADDR
+      value: ":8080"
+    - name: IAM_ISSUER
+      value: https://lux.id
+    - name: IAM_AUDIENCE
+      value: lux-wallet
+    - name: MPC_ENDPOINT
+      value: https://mpc.lux.network
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+  livenessProbe:
+    path: /v1/health
+    port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 15
+  readinessProbe:
+    path: /v1/health
+    port: 8080
+    initialDelaySeconds: 3
+    periodSeconds: 5
+  imagePullSecrets:
+    - name: ghcr-luxfi
+  ingress:
+    enabled: true
+    hosts:
+      - wallet-api.lux.network
+    tls: true
