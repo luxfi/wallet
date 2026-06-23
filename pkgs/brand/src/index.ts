@@ -38,6 +38,35 @@ export interface BrandTheme {
   scrim?: string
 }
 
+/**
+ * A single platform's downloadable native build. The binary `url` and the
+ * native-CI–published `version` are filled per brand from `brand.json`. Store
+ * links (`storeUrl`) cover iOS/Android/extension distribution. A
+ * `checksumUrl` points at the published checksums/signature for verification.
+ * Any field may be absent — the download page degrades to "coming soon".
+ */
+export interface BrandDownload {
+  /** Direct binary URL (dmg/exe/msi/AppImage/deb/apk). */
+  url?: string
+  /** Published version string, e.g. "1.4.2". */
+  version?: string
+  /** App/Play/extension store link (preferred for iOS/Android/extension). */
+  storeUrl?: string
+  /** URL of the published checksums + signature for "verify signature". */
+  checksumUrl?: string
+}
+
+/** Per-platform native download manifest, white-labeled per brand. */
+export interface BrandDownloads {
+  mac?: BrandDownload
+  windows?: BrandDownload
+  linux?: BrandDownload
+  ios?: BrandDownload
+  android?: BrandDownload
+  /** Browser extension (Chrome/Firefox/Safari store links). */
+  extension?: BrandDownload
+}
+
 export interface BrandConfig {
   /** Product name — used in titles, headers, splash screens */
   name: string
@@ -75,6 +104,24 @@ export interface BrandConfig {
   walletConnectProjectId: string
   insightsHost: string
   insightsApiKey: string
+  /**
+   * Custody backend base URL (apps/backend). lux → https://wallet-api.lux.network.
+   * One explicit, white-labelable config value — the custody client reads it
+   * via `getWalletApiUrl()`. Never trailing-slashed.
+   */
+  walletApi: string
+  /**
+   * lux.id OIDC issuer for this brand. lux → https://lux.id; hanzo →
+   * https://hanzo.id; zoo → https://zoo.id. Read via `getIamConfig()`.
+   */
+  iamIssuer: string
+  /**
+   * OIDC client id, by the `<org>-<app>` IAM convention. lux → `lux-wallet`.
+   * This is the backend's expected audience too.
+   */
+  iamClientId: string
+  /** Per-platform native download manifest (download page reads this). */
+  downloads?: BrandDownloads
   /** Theme color overrides for dark and light modes */
   theme?: {
     light?: BrandTheme
@@ -130,6 +177,9 @@ export const brand: BrandConfig = {
   walletConnectProjectId: "",
   insightsHost: "",
   insightsApiKey: "",
+  walletApi: "",
+  iamIssuer: "",
+  iamClientId: "",
 }
 
 export let runtimeConfig: RuntimeConfig | null = null
@@ -194,6 +244,23 @@ export async function loadBrandConfig(overrides?: Partial<RuntimeConfig>): Promi
     brand.copyrightHolder = brand.legalEntity
   }
 
+  // Custody backend + IAM are explicit per-brand values, but derive sane
+  // defaults from the gateway domain so a minimal brand.json still works.
+  // `api.lux.network` → wallet-api host `wallet-api.lux.network`, issuer
+  // `https://<rootDomain>.id` style is brand-specific so we only derive the
+  // wallet-api host here; iamIssuer/iamClientId must be set explicitly.
+  if (!brand.walletApi && brand.gatewayDomain) {
+    const root = brand.gatewayDomain.replace(/^api\./, "")
+    brand.walletApi = `https://wallet-api.${root}`
+  }
+  // Strip any accidental trailing slash — the custody client joins paths raw.
+  if (brand.walletApi) {
+    brand.walletApi = brand.walletApi.replace(/\/+$/, "")
+  }
+  if (brand.iamIssuer) {
+    brand.iamIssuer = brand.iamIssuer.replace(/\/+$/, "")
+  }
+
   if (config.chains) {
     brand.defaultChainId = config.chains.defaultChainId ?? brand.defaultChainId
     brand.supportedChainIds = config.chains.supported ?? brand.supportedChainIds
@@ -215,6 +282,16 @@ export async function loadBrandConfig(overrides?: Partial<RuntimeConfig>): Promi
       if (link) {
         link.href = config.brand.faviconUrl
       }
+    }
+    // Overwrite the static (Lux-default) meta description so a white-label
+    // deploy never serves a stale brand in <head>.
+    if (config.brand?.description) {
+      const meta = document.querySelector("meta[name='description']") as HTMLMetaElement | null
+      if (meta) meta.content = config.brand.description
+    }
+    if (config.brand?.primaryColor) {
+      const tc = document.querySelector("meta[name='theme-color']") as HTMLMetaElement | null
+      if (tc) tc.content = config.brand.primaryColor
     }
     if (brand.theme && typeof window !== "undefined") {
       const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches
@@ -275,4 +352,30 @@ export function getBootnodeRpcUrl(chainId: number): string | undefined {
 
 export function getApiUrl(key: keyof RuntimeConfig["api"]): string {
   return runtimeConfig?.api?.[key] ?? ""
+}
+
+/**
+ * Custody backend base URL for this brand — the ONLY way the web app resolves
+ * `apps/backend`. lux → `https://wallet-api.lux.network`. White-labels set
+ * `brand.json:brand.walletApi`; absent, it is derived from `gatewayDomain`.
+ * Returns "" only when neither is configured (caller must guard).
+ */
+export function getWalletApiUrl(): string {
+  return brand.walletApi
+}
+
+/** OIDC config for this brand's lux.id IAM (issuer + client id). */
+export interface IamConfig {
+  issuer: string
+  clientId: string
+}
+
+/**
+ * lux.id OIDC config for this brand. lux → `{issuer: https://lux.id,
+ * clientId: lux-wallet}`. The clientId is the backend's expected audience by
+ * the `<org>-<app>` convention. Both come from `brand.json` (no derivation —
+ * issuers are brand-specific TLDs).
+ */
+export function getIamConfig(): IamConfig {
+  return { issuer: brand.iamIssuer, clientId: brand.iamClientId }
 }
