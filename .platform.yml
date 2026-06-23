@@ -1,0 +1,20 @@
+# Platform-native CI/CD — luxfi/wallet.
+#
+# Build+deploy intent owned by platform.hanzo.ai (NOT GitHub Actions). On
+# webhook, platform builds these images on the lux arcd pools
+# (lux-build-linux-{amd64,arm64}) and pushes to GHCR. See platform
+# docs/PLATFORM_CI.md.
+#
+# Build-only: the lux web3 operator (lux.cloud) deploys the App(Wallet) backend
+# via the Service CR in apps/backend/k8s/wallet-backend.yaml — not platform's
+# deploy-executor (which targets the hanzo operator only). Bump the CR's
+# .spec.image.tag to the built {{git.sha}} to roll.
+build:
+  matrix:
+    - { os: linux, arch: amd64 }
+    - { os: linux, arch: arm64 }
+  dockerfile: ./apps/backend/Dockerfile
+  context: .
+  image: ghcr.io/luxfi/wallet-backend
+  tag-pattern: "{{git.sha}}"
+  push: true
