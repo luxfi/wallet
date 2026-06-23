@@ -73,6 +73,60 @@ GuiProvider → QueryClientProvider → WagmiProvider → RouterProvider
 Screen Blues fill `src/screens/{name}/index.tsx`; today each is a labelled
 placeholder so the build is clean and merges are pure file replacements.
 
+## Custody + lux.id auth wiring (apps/web)
+
+The web app talks to the MPC custody backend (`apps/backend`, `wallet-api.<brand>`)
+authenticated via lux.id. One way, three thin layers:
+
+- `src/lib/iam.ts` — lux.id OIDC Authorization-Code + **PKCE** (Web Crypto only,
+  no dep). Issuer + clientId come from the brand (`getIamConfig()`); the
+  callback is `/auth/callback`. Tokens live in **sessionStorage** (survive a tab
+  reload, gone on close; never localStorage, never logged). `getAccessToken()`
+  refreshes on expiry. The Go backend verifies this same issuer + audience and
+  derives the org from the token's `owner` claim.
+- `src/lib/custody.ts` — typed client for `/v1/wallets`, `/v1/wallets/{id}`,
+  `/v1/wallets/{id}/sign`. Matches `internal/api/api.go` + `custody.*` JSON
+  exactly. Attaches `Authorization: Bearer`; **never sends org** (server-side
+  only). `signPayload` requires a non-empty `idempotencyKey` (anti-replay) and
+  refuses to send without one. Validates returned EVM addresses (EIP-55) at the
+  boundary. `fetchImpl` is injectable for tests.
+- `src/store/session.ts` — lux.id session + custody wallets + `signWithCustody`.
+  `App.tsx` calls `hydrate()` on boot (restore token → list wallets).
+- `src/screens/signing/SigningModal.tsx` — on confirm, a tx carrying
+  `custody.payloadHash` requests the MPC signature and resolves
+  `SigningResult.signature`; a custody failure resolves `reason:"error"` (no
+  silent noop). The local-key path (no `custody` field) is unchanged. **Tx
+  broadcast is a typed seam** — the modal returns the signature; assembling +
+  broadcasting the signed tx via `getBootnodeRpcUrl` is the calling slice's job
+  (not yet wired into Send/Swap; no `// TODO`, the seam is explicit).
+
+Brand gained three explicit fields (in `pkgs/brand/src/index.ts` + every
+`brand.json`): `walletApi` (custody base URL), `iamIssuer`, `iamClientId`
+(`<org>-wallet`), plus an optional `downloads` manifest. Helpers:
+`getWalletApiUrl()`, `getIamConfig()`.
+
+## /download screen (per-brand host)
+
+`src/screens/download/` renders the per-brand native-download page served at
+`wallet.<brand>/download` (client-routed; the SPA server's index.html fallback
+covers it). Logo + name from the `brand` singleton; a grid of macOS/Windows/
+Linux/iOS/Android/extension reads `brand.downloads` (binary `url` or `storeUrl`
++ `version` + `checksumUrl` for "Verify signature"); a missing platform shows
+"Coming soon". Binaries are published by the native CI fleet (NO GHA).
+
+## Tests (apps/web) — Node built-in runner
+
+`pnpm --dir apps/web test`. Runner = Node's stdlib `node:test` (the repo's one
+way; no vitest dep) via `tools/ts-resolve.mjs`, a synchronous resolve hook that
+maps bundler-style extensionless `.ts` imports for the loader (Node 22+ strips
+types natively). The script covers `src/{lib,store,screens/dapps}/**/*.test.ts`
+(63 tests). `src/screens/_shared/runtime.test.ts` is a JSX import probe for
+`tsc --noEmit` (its own header), not a runtime test — it stays in `typecheck`.
+New suites: `lib/custody.test.ts` (12 — bearer attached, no-org, exact
+endpoints/bodies, idempotency required, boundary validation, error mapping),
+`lib/brand.test.ts` (6 — each brand overlay → correct name/chain/logo/walletApi/
+issuer, total swap, downloads present).
+
 ## White-label brand pattern (canonical)
 
 Brand config flows at runtime, not build time. Same pattern as
@@ -216,6 +270,19 @@ binaries (mac/win/linux/ios/android/extension) build on the NATIVE CI fleet
 brand, served from the per-brand download page on `wallet.<brand>`. The native
 shells live in the `luxwallet/*` org (desktop/ios/android/extension); they embed
 the shared `@luxwallet/sdk` core and point at this backend for custody.
+
+**Web deploy manifests** — `apps/web/k8s/` is a Kustomize base + 3 brand
+overlays (`overlays/{lux,hanzo,zoo}`). Base = `lux.cloud/v1 Service` for
+`ghcr.io/luxfi/wallet-web` (port 3000, `imagePullSecrets: ghcr-luxfi`,
+`/` health). Each overlay sets `namespace`, ingress host
+(`wallet.{lux.network,hanzo.ai,zoo.ngo}`), `brand: <b>` label, the pinned image
+tag, and a `configMapGenerator` over that dir's `brand.json` (`brand` volume →
+`/public/brand.json`, `disableNameSuffixHash` since the volume ref is in a
+custom CR). The brand `brand.json` files in `overlays/<b>/` are the SINGLE
+source — the brand-swap test reads them directly. Build: `kubectl kustomize
+apps/web/k8s/overlays/<b>`. Serving = house `ghcr.io/hanzoai/spa` (scratch,
+:3000, SPA fallback → index.html, so `/download` client-routes). Apps/web image
++ backend image both built by `.platform.yml` (now a 2-entry build list).
 
 ## Rules for AI Assistants
 

@@ -16,6 +16,7 @@ import { createBrowserRouter, Navigate, type RouteObject } from "react-router-do
 import { AppShell } from "./components/AppShell"
 
 const Auth = lazy(() => import("./screens/auth"))
+const Callback = lazy(() => import("./screens/auth/Callback"))
 const Portfolio = lazy(() => import("./screens/portfolio"))
 const Send = lazy(() => import("./screens/send"))
 const Receive = lazy(() => import("./screens/receive"))
@@ -25,6 +26,7 @@ const Stake = lazy(() => import("./screens/stake"))
 const DApps = lazy(() => import("./screens/dapps"))
 const Confidential = lazy(() => import("./screens/confidential"))
 const Settings = lazy(() => import("./screens/settings"))
+const Download = lazy(() => import("./screens/download"))
 
 function ScreenFallback(): React.JSX.Element {
   return (
@@ -53,10 +55,20 @@ const SCREEN_ROUTES: RouteObject[] = [
   { path: "dapps/*", element: <DApps /> },
   { path: "confidential/*", element: <Confidential /> },
   { path: "settings/*", element: <Settings /> },
+  { path: "download/*", element: <Download /> },
   { path: "*", element: <Navigate to="/portfolio" replace /> },
 ]
 
 export const router = createBrowserRouter([
+  {
+    // OIDC callback renders bare (no AppShell) — it runs before login.
+    path: "/auth/callback",
+    element: (
+      <Suspense fallback={<ScreenFallback />}>
+        <Callback />
+      </Suspense>
+    ),
+  },
   {
     path: "/",
     element: (
