@@ -52,12 +52,28 @@ export interface UnsignedTx {
   summary?: string
   /** dApp metadata, present only when origin === "dapp". */
   dapp?: DAppCaller
+  /**
+   * MPC custody signing. When set, confirm requests an MPC threshold signature
+   * over `payloadHash` from the custody backend (the active session wallet)
+   * rather than signing locally with the in-RAM mnemonic. The signature is
+   * returned in `SigningResult.signature`. Absent → local-key signing path.
+   */
+  custody?: {
+    /** 0x-prefixed 32-byte hash of the unsigned tx to sign. */
+    payloadHash: string
+    /** Signing scheme; defaults to secp256k1 (EVM). */
+    scheme?: "secp256k1" | "ed25519" | "mldsa65"
+  }
 }
 
 export interface SigningResult {
   approved: boolean
-  /** Set when approved=false: "rejected" | "closed" | "timeout". */
-  reason?: "rejected" | "closed" | "timeout"
+  /** Set when approved=false: "rejected" | "closed" | "timeout" | "error". */
+  reason?: "rejected" | "closed" | "timeout" | "error"
+  /** Hex signature when a custody tx was approved + signed. */
+  signature?: string
+  /** Error detail when reason === "error". */
+  error?: string
 }
 
 interface PendingEntry extends UnsignedTx {
@@ -72,6 +88,12 @@ export interface SigningState {
   reject: () => void
   /** Generic close — used by ESC, backdrop click, beforeunload. */
   cancel: (reason: SigningResult["reason"]) => void
+  /**
+   * Resolve the pending request with a full result. The modal uses this for
+   * the custody path (carries `signature`/`error`); the store stays a pure
+   * data slice — the async MPC call lives in the modal/hook, not here.
+   */
+  resolveWith: (result: SigningResult) => void
 }
 
 export const useSigningStore = create<SigningState>((set, get) => ({
@@ -109,6 +131,13 @@ export const useSigningStore = create<SigningState>((set, get) => ({
     const p = get().pending
     if (!p) return
     p.resolve({ approved: false, reason })
+    set({ pending: null })
+  },
+
+  resolveWith: (result) => {
+    const p = get().pending
+    if (!p) return
+    p.resolve(result)
     set({ pending: null })
   },
 }))
