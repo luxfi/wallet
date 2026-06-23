@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------------------
+# wallet-web — ZOO brand overlay. Host wallet.zoo.ngo, namespace zoo-mainnet.
+# This dir's `brand.json` (the SINGLE source for the Zoo brand, also read by
+# the brand-swap test) is mounted over /public/brand.json from a generated
+# ConfigMap. Pin the image tag here.
+#
+# Same OSS image as Lux (ghcr.io/luxfi/wallet-web) — white-label is pure
+# runtime brand.json (Zoo logo + Zoo L1 chain 200200 + zoo.id IAM).
+# ---------------------------------------------------------------------------
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: zoo-mainnet
+
+resources:
+  - ../../base
+
+labels:
+  - pairs:
+      brand: zoo
+    includeSelectors: false
+
+configMapGenerator:
+  - name: wallet-web-brand
+    files:
+      - brand.json
+    options:
+      disableNameSuffixHash: true
+
+images:
+  - name: ghcr.io/luxfi/wallet-web
+    newTag: latest
+
+patches:
+  - target:
+      group: lux.cloud
+      version: v1
+      kind: Service
+      name: wallet-web
+    patch: |
+      - op: add
+        path: /spec/ingress/hosts
+        value:
+          - wallet.zoo.ngo
+      - op: add
+        path: /spec/volumes
+        value:
+          - name: brand
+            configMap:
+              name: wallet-web-brand

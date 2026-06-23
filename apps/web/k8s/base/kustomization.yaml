@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------------------
+# wallet-web base. Pure Kustomize (NEVER Helm). Brand overlays set the
+# namespace, ingress host, brand ConfigMap (the runtime brand.json), the
+# `volumes` entry that backs the /public/brand.json mount, and the pinned image
+# tag.
+#
+# IMAGE:
+#   ghcr.io/luxfi/wallet-web — built from apps/web/Dockerfile by platform
+#   native CI (.platform.yml). Pin the tag in ONE place per overlay via the
+#   `images:` block, e.g.:
+#       images:
+#         - name: ghcr.io/luxfi/wallet-web
+#           newTag: <git.sha>
+#   Do NOT use :latest in production overlays — K8s image caching.
+# ---------------------------------------------------------------------------
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Common label on all resources WITHOUT touching selectors (Service selectors
+# are kept minimal & stable by the operator).
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: wallet-web
+    includeSelectors: false
+
+resources:
+  - wallet-web.yaml
