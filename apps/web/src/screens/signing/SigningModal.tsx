@@ -22,20 +22,24 @@ import { type DecodedCall } from "../../lib/abi"
 import RiskIndicator, { assessRisk, type RiskAssessment } from "./RiskIndicator"
 import TxSummary from "./TxSummary"
 import { useSigningStore } from "../../store/signing"
+import { useSession } from "../../store/session"
 
 export default function SigningModal() {
   const pending = useSigningStore((s) => s.pending)
   const confirm = useSigningStore((s) => s.confirm)
   const reject = useSigningStore((s) => s.reject)
   const cancel = useSigningStore((s) => s.cancel)
+  const resolveWith = useSigningStore((s) => s.resolveWith)
 
   const [decoded, setDecoded] = useState<DecodedCall | null>(null)
   const [risk, setRisk] = useState<RiskAssessment | null>(null)
+  const [signing, setSigning] = useState(false)
 
-  // Reset decode state on every new tx.
+  // Reset decode + signing state on every new tx.
   useEffect(() => {
     setDecoded(null)
     setRisk(null)
+    setSigning(false)
   }, [pending?.from, pending?.to, pending?.data, pending?.value])
 
   // Re-assess whenever decode result changes.
@@ -53,6 +57,33 @@ export default function SigningModal() {
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
   }, [pending, cancel])
+
+  // Confirm handler. For a custody tx, request the MPC threshold signature
+  // from the backend and resolve with it; otherwise resolve the local-key
+  // approval (the caller signs with the in-RAM mnemonic). A custody failure
+  // resolves with reason:"error" — never a silent noop.
+  const onConfirm = async () => {
+    if (!pending) return
+    if (!pending.custody) {
+      confirm()
+      return
+    }
+    setSigning(true)
+    try {
+      const res = await useSession.getState().signWithCustody({
+        chainId: pending.chainId,
+        payloadHash: pending.custody.payloadHash,
+        scheme: pending.custody.scheme,
+      })
+      resolveWith({ approved: true, signature: res.signature })
+    } catch (e) {
+      resolveWith({
+        approved: false,
+        reason: "error",
+        error: e instanceof Error ? e.message : String(e),
+      })
+    }
+  }
 
   if (!pending) return null
 
@@ -90,11 +121,11 @@ export default function SigningModal() {
         <TxSummary tx={pending} onDecoded={setDecoded} />
 
         <footer style={footer}>
-          <button type="button" onClick={reject} style={rejectBtn}>
+          <button type="button" onClick={reject} style={rejectBtn} disabled={signing}>
             Reject
           </button>
-          <button type="button" onClick={confirm} style={confirmBtn}>
-            Confirm
+          <button type="button" onClick={onConfirm} style={confirmBtn} disabled={signing}>
+            {signing ? "Signing…" : "Confirm"}
           </button>
         </footer>
       </section>

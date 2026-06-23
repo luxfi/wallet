@@ -1,0 +1,63 @@
+{
+  "brand": {
+    "name": "Zoo",
+    "title": "Zoo Wallet",
+    "description": "Self-custodial Zoo wallet — multi-chain, post-quantum, MPC custody.",
+    "shortName": "ZOO",
+    "labsName": "Zoo Labs Foundation",
+    "legalEntity": "Zoo Labs Foundation",
+    "walletName": "Zoo Wallet",
+    "copyrightHolder": "Zoo Labs Foundation",
+    "appDomain": "wallet.zoo.ngo",
+    "docsDomain": "docs.zoo.ngo",
+    "gatewayDomain": "api.zoo.network",
+    "helpUrl": "https://docs.zoo.ngo/wallet",
+    "termsUrl": "https://zoo.ngo/terms",
+    "privacyUrl": "https://zoo.ngo/privacy",
+    "downloadUrl": "https://wallet.zoo.ngo/download",
+    "walletApi": "https://wallet-api.zoo.ngo",
+    "iamIssuer": "https://zoo.id",
+    "iamClientId": "zoo-wallet",
+    "complianceEmail": "compliance@zoo.ngo",
+    "supportEmail": "hi@zoo.ngo",
+    "twitter": "https://x.com/zoo_labs",
+    "github": "https://github.com/zooai",
+    "discord": "https://discord.gg/zoo",
+    "logoUrl": "/brands/zoo.svg",
+    "faviconUrl": "/brands/zoo.svg",
+    "primaryColor": "#FFFFFF",
+    "defaultChainId": 200200,
+    "supportedChainIds": [200200, 200201, 96369, 36963, 1, 42161, 8453, 137],
+    "walletConnectProjectId": "",
+    "insightsHost": "",
+    "insightsApiKey": "",
+    "downloads": {
+      "mac": { "url": "https://wallet.zoo.ngo/dl/mac/Zoo-Wallet.dmg", "version": "1.0.0", "checksumUrl": "https://wallet.zoo.ngo/dl/mac/checksums.txt" },
+      "windows": { "url": "https://wallet.zoo.ngo/dl/windows/Zoo-Wallet-Setup.exe", "version": "1.0.0", "checksumUrl": "https://wallet.zoo.ngo/dl/windows/checksums.txt" },
+      "linux": { "url": "https://wallet.zoo.ngo/dl/linux/Zoo-Wallet.AppImage", "version": "1.0.0", "checksumUrl": "https://wallet.zoo.ngo/dl/linux/checksums.txt" },
+      "ios": { "storeUrl": "https://apps.apple.com/app/zoo-wallet" },
+      "android": { "storeUrl": "https://play.google.com/store/apps/details?id=ngo.zoo.wallet" },
+      "extension": { "storeUrl": "https://chromewebstore.google.com/detail/zoo-wallet" }
+    },
+    "theme": {
+      "light": { "accent1": "#000000", "surface1": "#FFFFFF", "surface2": "#F9F9F9", "neutral1": "#131313", "neutral2": "rgba(19, 19, 19, 0.63)" },
+      "dark": { "accent1": "#FFFFFF", "surface1": "#000000", "surface2": "#1A1A1A", "neutral1": "#FFFFFF", "neutral2": "rgba(255, 255, 255, 0.65)" }
+    }
+  },
+  "chains": {
+    "defaultChainId": 200200,
+    "supported": [200200, 200201, 96369, 36963, 1, 42161, 8453, 137]
+  },
+  "rpc": {
+    "200200": "https://api.zoo.network/rpc",
+    "200201": "https://api.zoo.network/testnet/rpc",
+    "96369": "https://api.lux.network/mainnet/ext/bc/C/rpc",
+    "36963": "https://api.hanzo.ai/mainnet/ext/bc/C/rpc",
+    "1": "https://eth.llamarpc.com",
+    "42161": "https://arb1.arbitrum.io/rpc",
+    "8453": "https://mainnet.base.org",
+    "137": "https://polygon-rpc.com"
+  },
+  "api": { "gateway": "https://api.zoo.network", "insights": "" },
+  "walletConnect": { "projectId": "" }
+}

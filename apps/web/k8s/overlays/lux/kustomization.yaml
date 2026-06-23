@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+# wallet-web — LUX brand overlay. Host wallet.lux.network, namespace
+# lux-mainnet. The Lux brand.json (this dir's `brand.json` — the SINGLE source
+# of truth for the Lux brand, also read by the brand-swap test) is mounted over
+# /public/brand.json from a generated ConfigMap. Pin the image tag here.
+# ---------------------------------------------------------------------------
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: lux-mainnet
+
+resources:
+  - ../../base
+
+labels:
+  - pairs:
+      brand: lux
+    includeSelectors: false
+
+# Brand.json → ConfigMap. Key `brand.json` = the mount subPath. The hash suffix
+# is disabled because the volume reference lives in a custom (lux.cloud/v1
+# Service) CR that kustomize's nameReference transformer does not rewrite — a
+# stable literal name keeps the patch correct. A brand change rolls pods via
+# the deploy bumping the image tag (CI sets newTag to the built sha).
+configMapGenerator:
+  - name: wallet-web-brand
+    files:
+      - brand.json
+    options:
+      disableNameSuffixHash: true
+
+images:
+  - name: ghcr.io/luxfi/wallet-web
+    newTag: latest
+
+# Patch the Service CR: ingress host + the `volumes` entry that backs the
+# /public/brand.json mount (the base declares the volumeMount by name `brand`).
+patches:
+  - target:
+      group: lux.cloud
+      version: v1
+      kind: Service
+      name: wallet-web
+    patch: |
+      - op: add
+        path: /spec/ingress/hosts
+        value:
+          - wallet.lux.network
+      - op: add
+        path: /spec/volumes
+        value:
+          - name: brand
+            configMap:
+              name: wallet-web-brand
