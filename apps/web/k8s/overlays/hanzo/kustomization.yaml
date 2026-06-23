@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------------------
+# wallet-web — HANZO brand overlay. Host wallet.hanzo.ai, namespace
+# hanzo-mainnet. This dir's `brand.json` (the SINGLE source for the Hanzo
+# brand, also read by the brand-swap test) is mounted over /public/brand.json
+# from a generated ConfigMap. Pin the image tag here.
+#
+# Same OSS image as Lux (ghcr.io/luxfi/wallet-web) — white-label is pure
+# runtime brand.json (Hanzo logo + Hanzo L1 chain 36963 + hanzo.id IAM). The
+# upstream image reference is fine on any brand's manifest.
+# ---------------------------------------------------------------------------
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: hanzo-mainnet
+
+resources:
+  - ../../base
+
+labels:
+  - pairs:
+      brand: hanzo
+    includeSelectors: false
+
+configMapGenerator:
+  - name: wallet-web-brand
+    files:
+      - brand.json
+    options:
+      disableNameSuffixHash: true
+
+images:
+  - name: ghcr.io/luxfi/wallet-web
+    newTag: latest
+
+patches:
+  - target:
+      group: lux.cloud
+      version: v1
+      kind: Service
+      name: wallet-web
+    patch: |
+      - op: add
+        path: /spec/ingress/hosts
+        value:
+          - wallet.hanzo.ai
+      - op: add
+        path: /spec/volumes
+        value:
+          - name: brand
+            configMap:
+              name: wallet-web-brand
