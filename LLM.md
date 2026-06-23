@@ -240,36 +240,52 @@ the custody layer just carries `mldsa65` as a scheme through to MPC.
 ## App(Wallet) spec — for the unified operator (`App` Kind)
 
 The unified web3 operator's `App` Kind deploys the wallet, white-labeled by
-domain. The wallet App is **two deployables**, one OSS core, branded per tenant:
+domain. The wallet App is **three deployable groups**, one OSS core, branded
+per tenant. The product KIND (`wallet`) is orthogonal to its SOURCE
+(`native` = our OSS default | `override` = a tenant fork): a tenant points
+`source.repo`/`source.ref` at any OSS wallet to replace our native one — same
+decomplect as pluggable-MPC.
 
-| Part | What | Image | Host |
-|------|------|-------|------|
-| Web wallet | `apps/web` Vite SPA, runtime brand.json (no source fork) | `ghcr.io/luxfi/wallet-web` | `wallet.<brand>` |
+| Group | What | Artifact | Host (per brand) |
+|-------|------|----------|------------------|
+| Web wallet | `apps/web` Vite SPA, runtime `brand.json` (no source fork) | `ghcr.io/luxfi/wallet-web` | `wallet.<brand>` |
 | Custody backend | `apps/backend` Go MPC custody server | `ghcr.io/luxfi/wallet-backend` | `wallet-api.<brand>` |
+| Native binaries | `luxwallet/*` shells (desktop/ios/android/extension) over `@luxwallet/sdk` | signed installers (per platform), GitHub Release | `wallet.<brand>/download` |
 
-`App(Wallet)` CR shape (operator renders Service(s) + Ingress + KMSSecret):
+`App(Wallet)` CR shape (operator renders Service(s) + Ingress + KMSSecret;
+`chainDefault` and the brand `configMap` are the only per-tenant deltas):
 
 ```yaml
 apiVersion: lux.cloud/v1
 kind: App
-metadata: { name: lux-wallet }
+metadata: { name: lux-wallet }       # <brand>-wallet
 spec:
-  kind: wallet              # curated view: balances/send/receive/PQ identity
-  source: { mode: native }  # native luxwallet | override → tenant fork
+  kind: wallet               # curated view: balances/send/receive/PQ identity
+  source: { mode: native }   # native luxwallet | { mode: override, repo, ref }
+  brand:  lux                # selects the brand.json overlay + native artifacts
   web:    { image: ghcr.io/luxfi/wallet-web,     host: wallet.lux.network }
   backend:{ image: ghcr.io/luxfi/wallet-backend, host: wallet-api.lux.network }
-  iam:    https://lux.id              # per-tenant (lux→lux.id)
-  mpc:    https://mpc.lux.network     # per-tenant: shared hanzo-mpc | BYOMPC
-  chainDefault: 96369                 # Lux C-Chain
+  download: { host: wallet.lux.network/download } # per-brand signed-binary page
+  iam:    https://lux.id               # per-tenant (lux→lux.id; hanzo→hanzo.id; zoo→zoo.id)
+  mpc:    https://mpc.lux.network      # per-tenant: shared hanzo-mpc | BYOMPC
+  chainDefault: 96369                  # per brand: lux 96369 · hanzo 36963 · zoo 200200
 ```
 
-Custody = the `MPC` Kind (shared or BYO). The wallet App references {iam, mpc}
-endpoints; the operator wires the KMSSecret (`MPC_SERVICE_TOKEN`). Native
-binaries (mac/win/linux/ios/android/extension) build on the NATIVE CI fleet
-(lux arcd, NO GHA) + codesign via `hanzoai/ci-signing/sign-<plat>@v1`, per
-brand, served from the per-brand download page on `wallet.<brand>`. The native
-shells live in the `luxwallet/*` org (desktop/ios/android/extension); they embed
-the shared `@luxwallet/sdk` core and point at this backend for custody.
+Per-brand defaults (the only values that differ; everything else is one image):
+
+| Brand | `chainDefault` | web host | iam | gateway |
+|-------|----------------|----------|-----|---------|
+| lux | 96369 (C-Chain) | wallet.lux.network | lux.id | api.lux.network |
+| hanzo | 36963 (Hanzo L1) | wallet.hanzo.ai | hanzo.id | api.hanzo.ai |
+| zoo | 200200 (Zoo) | wallet.zoo.ngo | zoo.id | api.zoo.network |
+
+Custody = the `MPC` Kind (shared hanzo-mpc or BYO). The wallet App references
+{iam, mpc} endpoints; the operator wires the KMSSecret (`MPC_SERVICE_TOKEN`).
+The backend custody adapter speaks the lux/mpc HTTP wire `POST /keygen` +
+`POST /sign` (mpcd internal API, default `:9800`, bearer `MPC_INTERNAL_API_KEY`).
+**`/sign` is LIVE** (lux/mpc `cmd/mpcd`, idempotent + t-of-n-quorum-gated, the
+threshold signature never assembles a key) — the backend↔MPC sign path is a
+real threshold signature, not a mock.
 
 **Web deploy manifests** — `apps/web/k8s/` is a Kustomize base + 3 brand
 overlays (`overlays/{lux,hanzo,zoo}`). Base = `lux.cloud/v1 Service` for
@@ -283,6 +299,31 @@ source — the brand-swap test reads them directly. Build: `kubectl kustomize
 apps/web/k8s/overlays/<b>`. Serving = house `ghcr.io/hanzoai/spa` (scratch,
 :3000, SPA fallback → index.html, so `/download` client-routes). Apps/web image
 + backend image both built by `.platform.yml` (now a 2-entry build list).
+
+**Native binaries + download** — the signed installers are PER-BRAND artifacts
+(a signed installer is immutable, so brand = logo + `chainDefault` is BAKED at
+build, unlike the web app's runtime brand.json). Each `luxwallet/*` shell has a
+canonical `.github/workflows/release.yml` (tag `v*` / dispatch) that builds on
+the arcd fleet (NO GHA) with a `BRAND` matrix axis (lux|hanzo|zoo, brand data
+resolved from `@luxwallet/brand` → `@luxwallet/chains`), then hands the unsigned
+artifact to the `hanzoai/ci-signing/.github/workflows/sign-<plat>.yml@v1`
+reusable workflow and publishes the signed artifact + checksum to a GitHub
+Release. Platform → arcd pool → signer:
+
+| Platform | shell | arcd pool | ci-signing | artifact |
+|----------|-------|-----------|------------|----------|
+| macOS | desktop (Electron) | `luxfi-macos-arm64` | `sign-macos` | notarized `.dmg` |
+| Windows | desktop | `luxfi-windows-amd64` | `sign-windows` | Authenticode `.exe` |
+| Linux | desktop | `luxfi-linux-{amd64,arm64}` | `sign-linux` | `.AppImage` + `.asc` |
+| iOS | ios (Xcode/Swift) | `dbc-luxfi-macos` | `sign-ios` | App-Store `.ipa` |
+| Android | android (Gradle/Kotlin) | `luxfi-linux-amd64` | `sign-android` | signed `.aab` |
+| Extension | extension (MV3) | `luxfi-linux-amd64` | `publish-{chrome,firefox,safari}` | store pkg + `.xpi` |
+
+The `/download` screen (`apps/web/src/screens/download/`) renders the per-brand
+page (brand logo + name) from a `downloads` block in `brand.json`
+(`{ <platform>: { url|storeUrl, version, checksumUrl } }`); missing platforms
+show "Coming soon". The native artifacts' Release-asset URLs feed that block,
+so `wallet.<brand>/download` is the signed-binary host for every platform.
 
 ## Rules for AI Assistants
 
