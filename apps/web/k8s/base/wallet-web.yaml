@@ -1,0 +1,59 @@
+# wallet-web — the App(Wallet) web SPA, deployed by the unified lux web3
+# operator (group lux.cloud) as a Service CR and served by the house static
+# SPA server (ghcr.io/hanzoai/spa, :3000, SPA fallback → index.html so the
+# client-routed /download path works).
+#
+# White-label is a runtime brand.json overlay: each brand overlay mounts its
+# own ConfigMap over /public/brand.json — NO source fork, NO build-time switch.
+# Brand-specific fields (namespace, ingress host, the brand ConfigMap + volume)
+# live in the per-brand overlays; this base is brand-agnostic.
+#
+# No secrets here — the SPA has none. IAM issuer + custody backend are PUBLIC
+# config baked into brand.json (the bearer token is obtained client-side via
+# lux.id OIDC PKCE; the backend verifies it).
+apiVersion: lux.cloud/v1
+kind: Service
+metadata:
+  name: wallet-web
+  labels:
+    app: wallet-web
+    component: web
+spec:
+  image:
+    repository: ghcr.io/luxfi/wallet-web
+    tag: latest
+    pullPolicy: Always
+  replicas: 2
+  strategy: RollingUpdate
+  ports:
+    - name: http
+      containerPort: 3000
+  # The brand overlay ConfigMap is mounted over /public/brand.json. The overlay
+  # supplies the matching `volumes` entry (configMap source) by name.
+  volumeMounts:
+    - name: brand
+      mountPath: /public/brand.json
+      subPath: brand.json
+      readOnly: true
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "64Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+  livenessProbe:
+    path: /
+    port: 3000
+    initialDelaySeconds: 5
+    periodSeconds: 15
+  readinessProbe:
+    path: /
+    port: 3000
+    initialDelaySeconds: 3
+    periodSeconds: 5
+  imagePullSecrets:
+    - name: ghcr-luxfi
+  ingress:
+    enabled: true
+    tls: true

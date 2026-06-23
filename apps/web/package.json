@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --import ./tools/ts-resolve.mjs --test 'src/lib/**/*.test.ts' 'src/store/**/*.test.ts' 'src/screens/dapps/**/*.test.ts'"
   },
   "dependencies": {
     "@hanzo/gui": "^7.0.0",
