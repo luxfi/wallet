@@ -588,7 +588,7 @@ describe('handleLuxAppDeepLink', () => {
 
     it('should handle buy link with multiple providers', () => {
       const path = 'buy'
-      const url = 'https://lux.exchange/buy?providers=moonpay,coinbasepay,stripe'
+      const url = 'https://lux.exchange/buy?providers=moonpay,coinbasepay'
 
       return expectSaga(handleLuxAppDeepLink, {
         path,
@@ -604,7 +604,7 @@ describe('handleLuxAppDeepLink', () => {
                   prefilledAmount: undefined,
                   currencyCode: undefined,
                   prefilledIsTokenInputMode: false,
-                  providers: ['MOONPAY', 'COINBASEPAY', 'STRIPE'],
+                  providers: ['MOONPAY', 'COINBASEPAY'],
                 },
               }),
             ),
@@ -616,7 +616,7 @@ describe('handleLuxAppDeepLink', () => {
 
     it('should handle buy link with providers in mixed case (converted to uppercase)', () => {
       const path = 'buy'
-      const url = 'https://lux.exchange/buy?providers=MoonPay,coinbasepay,STRIPE'
+      const url = 'https://lux.exchange/buy?providers=MoonPay,coinbasepay'
 
       return expectSaga(handleLuxAppDeepLink, {
         path,
@@ -632,7 +632,7 @@ describe('handleLuxAppDeepLink', () => {
                   prefilledAmount: undefined,
                   currencyCode: undefined,
                   prefilledIsTokenInputMode: false,
-                  providers: ['MOONPAY', 'COINBASEPAY', 'STRIPE'],
+                  providers: ['MOONPAY', 'COINBASEPAY'],
                 },
               }),
             ),
