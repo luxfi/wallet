@@ -13,20 +13,7 @@ import { useId } from "react"
 import { useSwitchChain } from "wagmi"
 import { useAppStore } from "../store"
 import { useBrand } from "../hooks/useBrand"
-
-const CHAIN_LABELS: Record<number, string> = {
-  1: "Ethereum",
-  137: "Polygon",
-  8453: "Base",
-  42161: "Arbitrum",
-  43114: "Avalanche",
-  96369: "Lux C-Chain",
-  96368: "Lux Testnet",
-  200200: "Zoo L1",
-  36963: "Hanzo L1",
-  36911: "Q-Chain",
-  494949: "F-Chain",
-}
+import { chainLabel } from "../lib/chains"
 
 export function ChainSwitcher(): React.JSX.Element {
   const id = useId()
@@ -66,7 +53,7 @@ export function ChainSwitcher(): React.JSX.Element {
       >
         {supported.map((cid) => (
           <option key={cid} value={cid}>
-            {CHAIN_LABELS[cid] ?? `Chain ${cid}`}
+            {chainLabel(cid)}
           </option>
         ))}
       </select>

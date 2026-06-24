@@ -8,6 +8,7 @@
  * consistent.
  */
 import { brand as runtimeBrand, type BrandConfig } from "@luxfi/wallet-brand"
+import { chainLabel as registryChainLabel } from "./chains"
 
 /** Compatibility shape for stash code that called `getBrand().brand`. */
 export interface BrandHandle {
@@ -22,26 +23,9 @@ export function getBrand(): BrandHandle {
 /** Direct named export for code that just wants the singleton. */
 export const brand = runtimeBrand
 
-const CHAIN_LABELS: Record<number, string> = {
-  1: "Ethereum",
-  137: "Polygon",
-  8453: "Base",
-  42161: "Arbitrum One",
-  43114: "Avalanche",
-  96369: "Lux",
-  96368: "Lux Testnet",
-  96370: "Lux DEX",
-  200200: "Zoo",
-  200201: "Zoo Testnet",
-  36963: "Hanzo",
-  36964: "Hanzo Testnet",
-  36911: "Q-Chain",
-  36910: "Q-Chain Testnet",
-  494949: "F-Chain",
-  7071: "F-Chain Testnet",
-}
-
-/** Render a chain id as a readable label, or `Chain {id}` if unknown. */
-export function chainLabel(id: number): string {
-  return CHAIN_LABELS[id] ?? `Chain ${id}`
-}
+/**
+ * Render a chain id as a readable label. Delegates to `@luxwallet/chains`
+ * (the canonical registry) via `lib/chains` so every surface shows the same
+ * name. Re-exported here for the screens that already import it from `brand`.
+ */
+export const chainLabel = registryChainLabel
