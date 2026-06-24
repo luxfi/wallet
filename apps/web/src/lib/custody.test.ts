@@ -47,14 +47,15 @@ class MemStorage {
 }
 ;(globalThis as unknown as { sessionStorage: MemStorage }).sessionStorage = new MemStorage()
 
-const SS_TOKENS = "lux-wallet/oidc/tokens"
+// @hanzo/iam (browser SDK) sessionStorage keys — lib/iam delegates to the SDK,
+// so the real getAccessToken() path reads these.
+const SS_ACCESS_TOKEN = "hanzo_iam_access_token"
+const SS_EXPIRES_AT = "hanzo_iam_expires_at"
 const TEST_TOKEN = "test.jwt.token"
 
 function seedToken(): void {
-  sessionStorage.setItem(
-    SS_TOKENS,
-    JSON.stringify({ accessToken: TEST_TOKEN, expiresAt: Date.now() + 3_600_000 }),
-  )
+  sessionStorage.setItem(SS_ACCESS_TOKEN, TEST_TOKEN)
+  sessionStorage.setItem(SS_EXPIRES_AT, String(Date.now() + 3_600_000))
 }
 
 /** A recorded fetch call + a programmable response factory. */
