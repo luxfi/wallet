@@ -407,7 +407,7 @@ importers:
         version: 0.3.2(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
       '@react-native/metro-config':
         specifier: 0.79.5
-        version: 0.79.5(@babel/core@7.26.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
+        version: 0.79.5(@babel/core@7.26.0)
       '@react-navigation/bottom-tabs':
         specifier: 6.6.1
         version: 6.6.1(@hanzogui/react-native@0.79.5-fork.1)(@react-navigation/native@7.1.9(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react-native-screens@4.11.1(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react@19.2.5)
@@ -835,12 +835,18 @@ importers:
       '@hanzo/gui':
         specifier: ^7.0.0
         version: 7.0.0(a78562c9190c433e310670a5376437de)
+      '@hanzo/iam':
+        specifier: file:../../../../hanzo/iam-sdk
+        version: file:../../hanzo/iam-sdk(react@19.2.5)
       '@luxfi/wallet-analytics':
         specifier: workspace:^
         version: link:../../pkgs/analytics
       '@luxfi/wallet-brand':
         specifier: workspace:^
         version: link:../../pkgs/brand
+      '@luxwallet/chains':
+        specifier: file:../../../../luxwallet/sdk/packages/chains
+        version: file:../../luxwallet/sdk/packages/chains
       '@noble/curves':
         specifier: ^1.6.0
         version: 1.9.7
@@ -3154,8 +3160,18 @@ packages:
       react: '>=19'
       react-native: '*'
 
+  '@hanzo/iam@file:../../hanzo/iam-sdk':
+    resolution: {directory: ../../hanzo/iam-sdk, type: directory}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: '>=17'
+    peerDependenciesMeta:
+      react:
+        optional: true
+
   '@hanzogui/accordion@3.0.2':
     resolution: {integrity: sha512-LSWS5nFQb0gZ19NtBk2UrkCyiepS7uVVp/nczjQWBC29PkH/v+1+n5l3Y2tIe3ZUR+WXvwjWlVI6QQPh+MDddQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3166,16 +3182,19 @@ packages:
 
   '@hanzogui/adapt@3.0.0':
     resolution: {integrity: sha512-vUkLM3wDHjHoLwU1oJSSjduIrm7aA7BDkBwa3Aemlo2g5NRUnPIg41SIbQMpBL2BXT7WkBrBO6+0LgLzu7ECpw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/adapt@3.0.1':
     resolution: {integrity: sha512-9LkU3jR/t4yWr4Psr9JrwXjj972n6VkWORkKUQ/uL8qOHk+PG93JKAhwA+fdv3JKZXNz46vt9r10gbmWfPuvUw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/adapt@3.0.2':
     resolution: {integrity: sha512-79q/JqosxAYTrAm+w+wsvNZEIaeDux19JXHxA1vCaiFXNt4XZzu7qjqphmtzqBVnoBAtr6AXzo7B2Lwt9n56rw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3192,16 +3211,19 @@ packages:
 
   '@hanzogui/animate-presence@3.0.0':
     resolution: {integrity: sha512-7y30myyquxqNjsYa7hBWkegK9RB9US+W+tM7v1aFVnRsfNYOhXdG8O5xwPcANlb1CadfbnBN978hW5kMcK22cg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/animate-presence@3.0.1':
     resolution: {integrity: sha512-V2GFvfGNAl20uCW2QlXyhbJBwlgLEHn9hfA6dmlzLNpV/CrZd6Uo3o674YvEGZuHeODrF7I5EMeHAi6YhqLu+Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/animate-presence@3.0.2':
     resolution: {integrity: sha512-csgwzDYd7qk2txeobl9CgpBP9PMkjG98f+KU5UhqR4EiK4mCwuXwFaB/RsNL+tC3NHLK1h5ZFbAYYHcrBbGkJA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3212,16 +3234,19 @@ packages:
 
   '@hanzogui/animate@3.0.0':
     resolution: {integrity: sha512-v6Hg3Z8EhvmFSAGdI6xOdGUlWNkHcT3eX3oSlL8Ftdk9h1hwBsaDMCQj/zFh9napTKJk1OGsiGwOs/uzP1CQKQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/animate@3.0.1':
     resolution: {integrity: sha512-p8lr+dhZRpLUBqK7vfXvwhUOKmL9HhnUpNieXZfW/NapBDOQXfoNMbo7sPLGr9/tysQZOuznt9RVsX3Fm9072w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/animate@3.0.2':
     resolution: {integrity: sha512-XSLrGh6sSTO0fNLk1tBYJnC7aZNmJe4orEkGc01Mr120S8z9sWp0QgAoUDYGFSFWNqjtaaLq4trJP59LCfQvjA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3232,30 +3257,36 @@ packages:
 
   '@hanzogui/animation-helpers@3.0.0':
     resolution: {integrity: sha512-Yauco+gnstjdKJ3F0gOVk8LAVxY59BCYSPcK4S/wpmi0fG8Si05paTY++2hj/I5sqap6BfHDeFFS5BA7TfAasQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/animation-helpers@3.0.6':
     resolution: {integrity: sha512-/NM+0eSe3bYdGOu8Y3/tMBMKDWHEWMqjwFDE7ojj6VOd/oXKyJzXj1T0sPXPqLaVsMK6Ctxd7K9qGYixJfSOKA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/animation-helpers@4.4.0':
     resolution: {integrity: sha512-aL3WcTsWFPcfqmwRE+HbxPqwNI52CI2jELRYpPxXvCzLvCLc5fqb9WTdRbw+VbnlC31ICe/xATdu1UGFyKLRXg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/animation-helpers@7.0.0':
     resolution: {integrity: sha512-nwZ1FRMJm7HnyfnZSHsmOy8z+MmF0Y4VouWIFyxlpHQnKqLugOUngt63e9Z0LJO7/UhjH8/QQk8rwg/AOTU7kA==}
 
   '@hanzogui/animations-css@3.0.0':
     resolution: {integrity: sha512-bWFkQiBippscRo/ap5QJtN7uhXRVFRxVgJDdaG/TXyOv437qnWUDtCf5aHnvGQWIhtUT41a/84rG6ndSFMZWwA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
 
   '@hanzogui/animations-css@3.0.6':
     resolution: {integrity: sha512-UY3y00XTS8Ucd6iCDnd2smHZe5HUL6YNVePFRFR4zEQ+2Yuo9jYYi+wWAVhwwgbk1eiZDTyeB2ToV0xrtBJBtQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
 
   '@hanzogui/animations-css@4.4.0':
     resolution: {integrity: sha512-JK1rrFIMUyOXBDArDK5bH0/O8e1y9FDZVNYt146XsPXgEYLB643gae6n+NzbsIumXz7/bDA8Dak+mKbaIOBieA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -3268,24 +3299,28 @@ packages:
 
   '@hanzogui/animations-react-native@3.0.0':
     resolution: {integrity: sha512-a+L/JpOwNNfndePzNtWPbyR1aRVe7XdamDncaHStRAS4f2qhY2iBexl390Vy69kA3HUuYAvK4kvHGrXlVJ2TCg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/animations-react-native@3.0.1':
     resolution: {integrity: sha512-0tSbeG2z4l/TVmnS4oU0/eIbxRAruKhJNBDEPOobQvrk+DMklpB/jzMsXFPZwtekE2zHvoh33s3AwJAFrQLGfg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/animations-react-native@3.0.6':
     resolution: {integrity: sha512-XlM+3n8tR9X1P9fNSTP6vtrW9MDsruFYxByTxI0nthT0c3jeByiK4XFikNbQSro8l4FLLo1w8BhJ6MKJ/VynwQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/animations-react-native@4.4.0':
     resolution: {integrity: sha512-1C5rLgJIMc4Q8Zk8R51F+ncD3RslSq92FhpZOflmo0yxV+y/titaEX9Wr4l9AFFNQMDYuJAqQEL1SdcqnH4D4Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3298,6 +3333,7 @@ packages:
 
   '@hanzogui/avatar@3.0.2':
     resolution: {integrity: sha512-G2eOuBYGfuACA0jmeI91f8XEh0mp6i3RUe/PGZflzaZSF8CzwhYScY+StbWPaBfQ8kwdjsVBUEcgc+QTc/bh/A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3310,9 +3346,11 @@ packages:
 
   '@hanzogui/babel-plugin@3.0.6':
     resolution: {integrity: sha512-H2NVFchB22JQSjuCKTSxJQ31MnobY39fh5NB+Hd7jqOy20XryHhhIgUuoIeuL0KO4zm/qrDXkOcfRyy6yXoKuQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/button@3.0.3':
     resolution: {integrity: sha512-pZHUCAUATUZXtxjXi5/lKpc/4n1X/+h1OFrCaewzll7utDDaJA5jj4jiLNMW47TUpMWcv8YSwm2loEWXnJW7PQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3323,6 +3361,7 @@ packages:
 
   '@hanzogui/card@3.0.2':
     resolution: {integrity: sha512-oKoLmVsQqRe1Te/GFADYVfTO4+nX/fC1Mpb7A9dCUeJqzEk+wQr+Rts5QKvg7zDBoujcdFvza1cF+X26P0dbYw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3335,12 +3374,14 @@ packages:
 
   '@hanzogui/checkbox-headless@3.0.1':
     resolution: {integrity: sha512-SsmRqy/FTZKAmmW3musfjUqF0Zf7Ukzcwul5oHyDiCdRUcYQYSyA7YAsWPjrU0/J8X2BuITjhHV2ub1agfqy9Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/checkbox-headless@3.0.2':
     resolution: {integrity: sha512-BVhwVUPwxdMtzy2TERBQCtNuggl64qpPizjL/CnoTjT9FZiHwbDp1cwnLjrFkkUDw6MIW89yBzuBbSgtIsvXAw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3353,6 +3394,7 @@ packages:
 
   '@hanzogui/checkbox@3.0.3':
     resolution: {integrity: sha512-Sc9/cdqMXSYpgayalJ12VR4k/bM9Y0n3EDgx8gb3yBrPWtrLgT1Bam29KHqbQkcchZ20kDPQVBrvqFn8sQ5XGQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3363,9 +3405,11 @@ packages:
 
   '@hanzogui/cli-color@3.0.6':
     resolution: {integrity: sha512-bJaSjMg5sKhJeTsVidaBe5HWLVSSj/QEVyJ1hK6ckN7+jI9xHP63W4ZRU67o3FqsRsJbISAuonLIy6/0tFCtDQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/collapsible@3.0.1':
     resolution: {integrity: sha512-f9Qv78+Jw31uWcZssTWoY5Jg/g3dYuprtGDa4B3IXLWxYaC7NXWOwiG3GBdlOLuaeUqsgq3yJxAUN8v5hUcAVw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3376,16 +3420,19 @@ packages:
 
   '@hanzogui/collection@3.0.0':
     resolution: {integrity: sha512-IWd3aET6s6VramN39YmpbolbyMnzPaFlGtiokvxqi2e/YwW+pGXUhcNE+Iqq5XFcvFhhKEeG/sNdQgWqkS/CGA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/collection@3.0.1':
     resolution: {integrity: sha512-mVFXLFUqvSyzHO9xrm31QCjWs8jeo+SBwUrIlIdX+J5V4OfTQLfkZzadGyPFQxwIDejeB4N6/BodiVHRqbqFBg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/collection@3.0.2':
     resolution: {integrity: sha512-TWrBrKPstzjm5TLIt6zLHvu8aDu/pQcqPdIQ28ruwD0JqYtX57PlSVRlQcQGxfY2/V+7QjCzY/rKR4UET69G3A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3396,6 +3443,7 @@ packages:
 
   '@hanzogui/component-helpers@3.0.1':
     resolution: {integrity: sha512-EsZxOAUZqEMlzeJOOsTF8mqlv93B1U2hq1ZcIvrf/7EAHau0Edm6D2tW2BooLDOQDg1CiIEiq/q+d2rQz7brVw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3408,21 +3456,25 @@ packages:
 
   '@hanzogui/compose-refs@3.0.0':
     resolution: {integrity: sha512-VNhuodKZOA9FWLVe4mOTrB8dnO9VPc5wDQcuYqiaxCUvAWRiINIDt5HUqqLfXF74O8HYfWozB8YW+5GwtvmKww==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/compose-refs@3.0.1':
     resolution: {integrity: sha512-91/e4LZSr3y4klE0wBi+eo7vpAPPXk3iMuyhP8V7RUF9uvORJP+GWg7Ft4mNR5Cjlxj7jB+adjM9L4i0pNaAOA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/compose-refs@3.0.6':
     resolution: {integrity: sha512-oIjOW0Kf62zGXRmLeru9xhincHuhKtH9DA10+jDS9cph3uDU4kmrM9Vyq4wT8lhltrhU3SRsld+rKiYaZPYdIA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/compose-refs@4.4.0':
     resolution: {integrity: sha512-eQHe8BPZKQkPXpnI9+/Yg4/qR61ZsCyB1Ll7Uu1eKOG4ADDKt5a/NvSCF8pnmVjWRyZi5P4WGRZ84a2pIgMLQQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3433,36 +3485,43 @@ packages:
 
   '@hanzogui/config-default@3.0.1':
     resolution: {integrity: sha512-q0+R2ra1dRoa6oISqHN8kHV2mk8eFsD6ds4MV21+Hwa7RVWWP/Q1THImghQPEFmr1IhEyIvKHvDt7lhmOb+gGQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/config-default@3.0.6':
     resolution: {integrity: sha512-1+l7kU8vTijJJt+5Tm3M45na5GsuuyDRV4Z5286TjLtI2jst2DYPdU1Wx3TPwfabci8XosWEXvUEm2r3F0AXoQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/config-default@4.4.0':
     resolution: {integrity: sha512-FrNj9GUzHD35eTF/qJmJKDa3gCt1MAF10ajA24SIKlrfUWM3IZDcrethiCMg3myfFuTOpgsAnwyxS60t+5e8Pw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/config-default@7.0.0':
     resolution: {integrity: sha512-mVxtRVxc0VDfEE1ZPtmdWZmyKugzb15V5iPVFsTVkKji4UbpBBdrhPXHrysHhe6ObyuEgpFu3dk6NDgmKqWw2A==}
 
   '@hanzogui/constants@3.0.0':
     resolution: {integrity: sha512-slwCD3UCbGcaU/liHx8Ym4JjcsgzvsBRkkPuzpJEvGfImj1OgQ1fQbptEhrGxHrYu8OtoAKCwWxt/FABI+ph2A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/constants@3.0.1':
     resolution: {integrity: sha512-+4bSwhyHW1XI4cNAciH+6GODOvREpIt2APFzYalpjJzybULhmmss6kUAJJuLDTnNZIrrBpqRzLs6ly+5I+QEOQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/constants@3.0.6':
     resolution: {integrity: sha512-TaqWo61DmKtfxvq5hDwpiWe6H+EIHp/ihlmBGOHJrmPjC86W+a6kxBLMPgeIoBhJyvjgjQPqq/lSEaDR3k1+6Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/constants@4.4.0':
     resolution: {integrity: sha512-k9RpfyTavGRVK7lhKt02eSaZfpCHfDbHnNftEOm4RGL8nCKkpV7OCkleHXfV458UKVtzbjPDhhcK6qTBQWQ1FA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3475,6 +3534,7 @@ packages:
 
   '@hanzogui/context-menu@3.0.2':
     resolution: {integrity: sha512-cX2KqkXzhgyVweIR+slfXuqnii7juVrtTKCJQbnBK/p73kDA9xUYAbmUwYmE0RyNezOjQT+w3oBLg3q1DNoW4g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3485,24 +3545,28 @@ packages:
 
   '@hanzogui/core@3.0.0':
     resolution: {integrity: sha512-KC1w/NiWsam+clMG68hhEv1Yxqii/N+gBy6602XLah7ELCm34QZWSZsoEpW1gtOP7OteRbslFn5uMwYTexZPng==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/core@3.0.1':
     resolution: {integrity: sha512-gnBPobWQIC1vk3lJ86sC85+Hy72msx4FTMYoden9hVempDjiV9CVX7hHsFI8lgLpkzY+dheRttCaH/4FZDzh1A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/core@3.0.6':
     resolution: {integrity: sha512-ItsDpLN4dQ2OYF89sXbcdaM+8N4TmzaZKWk4YtHuns7/1/IX1DnQzj62R4KCr4YB19oLYhdZPV9drbdWnkmkQg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/core@4.4.0':
     resolution: {integrity: sha512-yPFzSNtWy2FwG9e2a5KAUGNvlqnvmQ02awCVgAi82Tg/22wI8b78rgI4dP6c1I3/A7Y7cm8pKb0m8AOSh/y5iA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3515,16 +3579,19 @@ packages:
 
   '@hanzogui/create-context@3.0.0':
     resolution: {integrity: sha512-XHK8efLfnIAYZVxvV61E1HM9YlPu1N9LW7RI9qo3ipg0LANbWf74PkFIMkl1ZYw3KPnZvLpIH4uH/Dr5O/jb8w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/create-context@3.0.1':
     resolution: {integrity: sha512-5GGc3nrLt3eNcjQYDl2f6osC4jQoaOaubaFvUfAJ9vmyNYnVIDzQJT+3MNCYTTirZwWWVIOty9ZYXH+qjolOYg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/create-context@4.4.0':
     resolution: {integrity: sha512-htQE8iDkC1JgfsLI5yVxrKS7CD3S8RSH5aei+bZIWsPCIVTmjknI2KL+KkfdBwKNf+lQ2/uNfu74jI54QEVeMA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3535,12 +3602,14 @@ packages:
 
   '@hanzogui/create-menu@3.0.1':
     resolution: {integrity: sha512-QUxjtWMnLUxyo2fmbB+jFOV2n+8ca6wukelDlaeWWDV53nun1FvL7vqCkFgTHuuC8lVb4ngA3GYCIYkJuMAzKA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/create-menu@3.0.2':
     resolution: {integrity: sha512-KGLlG+dvHlx09rv4hEidh79sNxQQFkLLjTjXTRY1SyrWAXHnYI1ThhSixGbjDxCLO7nlCIe0iqw3LDrMWuFDyg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3553,24 +3622,30 @@ packages:
 
   '@hanzogui/create-theme@3.0.6':
     resolution: {integrity: sha512-GVgz5wuATUMHWzYbxVirKZQXvdvaBLlHmVe3n9y1NkkQN2r4LjAwIVAsWGt5AZ/vEIdiSW7FLz8ZKaBoTx8dFQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/create-theme@4.4.0':
     resolution: {integrity: sha512-eWAAkt3kP/XCVq/xJHL+yYK/JzN9BVZN5n0WOVzYApJgu3Lp0PBMhGHe7DyE1lFfOGNH/OjGNBYg0xUEuq0Qmg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/cubic-bezier-animator@3.0.0':
     resolution: {integrity: sha512-iWYnp5TW/sX4JX6t/qfzu5wS0ZVXtOEmlvjGs0RubgB/KIPpR02uU1n+rf8HA48xx0bBwc0vdAw0sPKWNPYtDw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/cubic-bezier-animator@3.0.6':
     resolution: {integrity: sha512-u1ZSsWJTRD5azEzqCUBQ4Aa4Qjf9fcaRkscuD6Rvyb9ILTFoGkXz5drUSP4IZ1U2dcuWvPF1bXACQbDW5tOQBw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/cubic-bezier-animator@4.4.0':
     resolution: {integrity: sha512-8HIM/d3lEnzuyT1Z6LjlczL9YfT7uqdbhGJzMOo5uoTDdM3cd9sDP5lFiDAd8eb4LKt3nXxtCVigpsjJf9QWPw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/cubic-bezier-animator@7.0.0':
     resolution: {integrity: sha512-1DV5WqNwCwhbJ7C2xUPj7tvAPJJToowTGnoPmt9GxgiSl0s9XZLar7S+FwBUUCYv6aWg9PgJwotfdkxgddWJ5A==}
 
   '@hanzogui/dialog@3.0.2':
     resolution: {integrity: sha512-UXxQkb0huyo03RyFm7S17HLlj6zlE7/WVlysbN7lQd/mgcCbqolywArybDZr/YO3Rx9wXwO3B8ErN+BUBeQABw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3583,18 +3658,21 @@ packages:
 
   '@hanzogui/dismissable@3.0.0':
     resolution: {integrity: sha512-x7BDuG6ISC+x0+YdeJAGEAD1i3Ev7gOUNtsvyQIX6bPhBDQPh5d3WwPXF2JzzXQOiuyW3Btj7GVFle93XbeRRA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
 
   '@hanzogui/dismissable@3.0.1':
     resolution: {integrity: sha512-RJujfW/MYdfj4iQe6+ZkpU6qu7KitUETMJMIcEFROw9xww0xnPey4z1D6SQfZYkikT4HwPOpT83JBr1v+9e1GQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
 
   '@hanzogui/dismissable@3.0.2':
     resolution: {integrity: sha512-2XhwQWfWy3MvkSGb/9qHBT9jKslvgY5GaCg5vIGxQYWDZydpGOrvaf0meoohS8FYa6az8ZiMss4QwUT6UtItag==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -3607,12 +3685,14 @@ packages:
 
   '@hanzogui/element@3.0.1':
     resolution: {integrity: sha512-OTFspFLCbpsyQHINbrjMSet0O4D6SoAC1plds7X2HP9CsvuytQ3gSixfUTEhnj/G6J2VlcnXK7l/kHBqQ6LU0A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '*'
       react-native: '*'
 
   '@hanzogui/element@4.4.0':
     resolution: {integrity: sha512-c3dWkbBekZ1gvEiNnl+v+I+NZDR+oQd8ljg8AxTg+QRg7wfF0bD9RR9i+yhV4ZNu9ZXiGh0RmjJtltkem3Gy7g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -3625,6 +3705,7 @@ packages:
 
   '@hanzogui/elements@3.0.2':
     resolution: {integrity: sha512-eziz2nJQiFM/BgmAJtwhkzDeAjV52tJRHNQ/NAXOJTt+UoOferWKJT5ipVG+CpZRK3xNOEcaGxh0mYlKfuQHzg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3635,15 +3716,18 @@ packages:
 
   '@hanzogui/fake-react-native@4.3.1':
     resolution: {integrity: sha512-KsqYysZXidl0fenmDfOLd30Ya7q399bRsHlltYmxo5njWjG0I8NdCwX26ncwyFr0x59p7JLC9gxTrIuGgkgp1A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/floating@3.0.0':
     resolution: {integrity: sha512-k9Qaf95BHphp+XkNLUeByVNbd+UXn5WDZIWjHQ8MpkteSYNVAAC4qTB2z9t1/1sjELRfEGm70lJFXVoo3ky9dg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/floating@3.0.1':
     resolution: {integrity: sha512-Do0HvrSSsBpngpBKCOHxqWAn5zlmngCK2KT9FMTT03lyNUHygLkak5TjEO2LRsCn+jr9lPfz6NJxTl5xW9dvew==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3656,16 +3740,19 @@ packages:
 
   '@hanzogui/focus-guard@3.0.0':
     resolution: {integrity: sha512-tsYCQIUnHbi0gGLtLdclfl27FD0M04UiAWQ/99b9Kkj3GselY5pcphngvjF/mk33FvyG9MVxyW91qqy/M/3R8w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focus-guard@3.0.1':
     resolution: {integrity: sha512-w9+d0SKHkP7eeklzEZX1KupiH+Ns6ktkrzz0QmKCpTnNLlgJo9b626pJ3I1p+vkZuouE3FfGVhXK3UvVgDlBhw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focus-guard@3.0.2':
     resolution: {integrity: sha512-33AU1367fG5qcU6h9mjL2w2+IlD8Ghvur5aoTiqRWGJhExxJux8Zt8SopnkxB3HDHOl56FpIyQtBHwGAGbjy0g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3676,16 +3763,19 @@ packages:
 
   '@hanzogui/focus-scope@3.0.0':
     resolution: {integrity: sha512-ZLEWY722XuDbRPiBxWkbeDUafF/vfJpOPLQOLNzR4T8Vcc72thP6PV0o/X77quShaj/h4rb/QhQ5CkeJ0U9LMQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focus-scope@3.0.1':
     resolution: {integrity: sha512-N/c+Gd8UwaMQWJIFJYHGvmiygSHa6685vlVOxx2WduoQoKPQe/h1q6qiFrGPZJwKz5Me5IBNpw9aT4HFpUwiCg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focus-scope@3.0.2':
     resolution: {integrity: sha512-rRl2mr55zJ/hh/blExuD460C0FL5Y+BKfnOCi8B974nyB/nLgTCzaCX0sz3zbrMuEEYkITjxKPKfG5N+0ddjaQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3696,16 +3786,19 @@ packages:
 
   '@hanzogui/focusable@3.0.0':
     resolution: {integrity: sha512-0rcqybjSVLykECKWugx3rc9JpmnNo5aIGLCDpFHIeKhjAFQKnPb7Il1+RoWTVyzFGPOMqlRH4lWS7XoYwwNBGw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focusable@3.0.1':
     resolution: {integrity: sha512-VrnbF4OXgf3Lnj85NFuzTwA8e4DdwfeaNEoVupcz/va/bOhHoX6AflEg3GwzaolTTCd4ihOjeDs+mJX6jeaiLQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/focusable@3.0.2':
     resolution: {integrity: sha512-3hd8dSCqdZSf1AQYf/oHuUAu4fN3SVwPuTwKUfF+2yUxpiEaaFg5RA50uR5cQkPaj2JcYf4axrk33MvLfidjZQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3716,19 +3809,23 @@ packages:
 
   '@hanzogui/font-geist-sans@4.4.0':
     resolution: {integrity: sha512-lj05y8YQhBbsWF5oR83Dt9UmWckkJ1L3DeiBfU4WcT1fVI6GlbKifhNp5jPZOEmkvr6J56W9W3qrd8RSfyGgMQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/font-size@3.0.0':
     resolution: {integrity: sha512-R8IEFUueb+FUxnWDoOWY800BfsjijwsKTaqhLnLHS2FQvalJzbxStOqzzSbxIOsRvvRtadfgrMR1L1qsg1Rydg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/font-size@3.0.1':
     resolution: {integrity: sha512-6sfPu/aq6/emKECIms7/aMtDtZ1nvol0hlhAfjdzi/LYabiy8Raor9uIUkEiU0y5XswmjDnXgQvSthG2EqAFdA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/font-size@4.4.0':
     resolution: {integrity: sha512-Z5ULCldpsQ4sD8CvIuzHZtpMFf0j6F6undQ8/zVszRWpVA8XcVsyZ2MQ6sai7+Ukifww+LymJ5DgLWD3b1G9uQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3739,6 +3836,7 @@ packages:
 
   '@hanzogui/form@3.0.2':
     resolution: {integrity: sha512-rFlCYTJhgbzmPQThgnude7a0P8nBi0zTO5YT9Fs2MHnInDntqZkbtm3f7v922vcT9dpxBP8RKLET/270bY234g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3749,19 +3847,23 @@ packages:
 
   '@hanzogui/generate-themes@3.0.6':
     resolution: {integrity: sha512-jhm7bMviTefpzND9rXYutI+aZDvFLQpsNKpm79io5plZRRQ5L/Tzf0H/G+b7kWtit86B+Yenm+oGp34PSgjLjA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/get-button-sized@3.0.0':
     resolution: {integrity: sha512-iNWUpiM1UG0/hW5noxojSO7wXLUQ4ocmWS4J8uxqk9xoINwTJsnSwo0EQY3U7j83tT5xZ6tvUbu29KgNAH6yoA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-button-sized@3.0.1':
     resolution: {integrity: sha512-k/SOz978bEe2Df0Iu8Ny1TDBH7EEjcEfGt0gcCXq3Jd6d4RVT3PJx6SgXUIbuDRfL8LsjYG+o/JfyqT54PQ9hg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-button-sized@4.4.0':
     resolution: {integrity: sha512-26GMmNKGuuK5bq+7i9t1+QyhkH8J2C9eKEIrq2EFrjVmsmkEMiDjbjM1JxLAz64PlahS1M3MpMjz5KzwAJQ30Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3772,16 +3874,19 @@ packages:
 
   '@hanzogui/get-font-sized@3.0.0':
     resolution: {integrity: sha512-OgHKfW7Fdfj4HGc5TqIfb8AFTv66wDnnGNxNGW69FY30ICgPknjkVCIS/J9oPyVdOa4ZxHtpCgvryqLteB8EPA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-font-sized@3.0.1':
     resolution: {integrity: sha512-MWISibmdTUCGtPHl4KiQrwoVg051S0v87J6JkwkonYNYF/iIxGEfgSaa4brcoZu/8+F3gqGhUylA9iMx2fBeDA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-font-sized@4.4.0':
     resolution: {integrity: sha512-W3AGpaXJCJLBk8TJkdOvh4IgheiVan2yuwlv0j2U+pjqWp1THSN/pw844CI+9Mkv3zDix57DHNYJa05tKCOq9Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3792,16 +3897,19 @@ packages:
 
   '@hanzogui/get-token@3.0.0':
     resolution: {integrity: sha512-w4BwQFTK8w/eOqGO/VnyGwCMPRdIGpeIfwWD6MOYV3uTQgc2Wl1TGjw2UiHEluwYBBHlKskejYBox3eC9WSqjA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-token@3.0.1':
     resolution: {integrity: sha512-0VG4I1xV0k9WR0IZxoBToC/xNl/DL8YczI0+c2KpIWvOVMQ1uy2LqohVFcmhuqqkgmocT5+kwf80ltUK7H4oOQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/get-token@4.4.0':
     resolution: {integrity: sha512-Ws1bo+ls1QveBFNESGhHeHTTcsUHxW/XpXAKrUrs3sSh15cvJUGHbbAQevqsgN+zWbMtpLJ8Z9odutjnLWZGQQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3812,12 +3920,14 @@ packages:
 
   '@hanzogui/group@3.0.1':
     resolution: {integrity: sha512-/YAKTXdBAaf6CR5hzxb+ZBz3kO7/3HLpkBAO2sR03e0+2Y3ewpVGbkeCxrwXkVOpuXujRav3CJR5PGoXToJXug==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/group@3.0.2':
     resolution: {integrity: sha512-oL9dqyeLy9oQOebl3/d7jeqgQ1cSDRNJLSKrCKwUVyL4GV9NnP6+9wFdMSqCxI/1+Lvjc7N/u1A+qbQa8y0ppA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3830,30 +3940,36 @@ packages:
 
   '@hanzogui/helpers-icon@4.4.0':
     resolution: {integrity: sha512-+UpHhvvo8/gqj9kOtPpL83yKwJunS9e9ubgnQCS6Sov5Gc08NL1/lEYlJrRVxSU2x7JnE5x93bKgwWpnvuubPA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native-svg: '>=12'
 
   '@hanzogui/helpers-node@3.0.6':
     resolution: {integrity: sha512-t1DM7CXpPmFpl+0zwzs6DJh+bl2Y/SNPOYJB6zui88PnqGq0FLfiFvn2j8cLFJ3lYjJxb8NU5pHQDjaxt1J0tQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/helpers@3.0.0':
     resolution: {integrity: sha512-PAMB5c4jxT/SlMbQ9hZdBTpcgK7UQhyy0i12t2Zw5y/kYT9rSxinbKcQ0bYvaUi7J0YoJdOMd65i7gLaw48v1A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/helpers@3.0.1':
     resolution: {integrity: sha512-w6u+31/YjS0JG+5p1dFUv4rKzTsbYlZu1aab6PVYoDlLm+gjlIQxnEoNTkuYHotETf/LUQ9QyFD6fL2qVwq5QA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/helpers@3.0.6':
     resolution: {integrity: sha512-rkazI3R2qdPn6wUpjk5w0mxHBrjetbntu5Pn/jtOLRFx1iq3uYfLfAyI7gYZfTef48XwsDWK6d7bxvj3kM4WNw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/helpers@4.4.0':
     resolution: {integrity: sha512-zNStbVUb6scwweCk3mSGAWqv2f/AYFg404zad7XJk5uR6dt19Msm/i1cJ9KZ2YYti+91rbrjON0kFjORcNeStQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3864,18 +3980,21 @@ packages:
 
   '@hanzogui/image@3.0.0':
     resolution: {integrity: sha512-liQyeuG6AUY+mcCx9vi/aiNV/iFFYCAtcCORxUMFmI3rpWk7/fvvg04hBEtKv9R6cUDj0bJPgNmqMRiUT0zeKw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/image@3.0.1':
     resolution: {integrity: sha512-166qG18sZ9LdDA4ug4cs27+9ELE5znb+TGqYguVPWug9Zhoz0cN8uYthab8b7SGwnEzZCwjk6C3D0eCcw+m/DQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/image@3.0.2':
     resolution: {integrity: sha512-LfmnMW1EKvAQuii3WiJXguHPwYJMAWsgk0KRSkL1cfFibeFvSTIyo3szPbT3EObtHJ1aEOej6Dd2nBVE00qdhA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3888,6 +4007,7 @@ packages:
 
   '@hanzogui/input@3.0.2':
     resolution: {integrity: sha512-oQoB2cGGJ7nhYz4gh0oqJCkIM4ilCRrdTAn1bPMRWEXVMXYTz5njs8L7jz86zPVnsw3VdgdGN3WgOIlZR/+vjw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3900,16 +4020,19 @@ packages:
 
   '@hanzogui/is-equal-shallow@3.0.0':
     resolution: {integrity: sha512-M0tkcFUiBjcFkX76FhZknIyGuGgP87wRxTMSIgaUYhjb63qr0Ffj69UqaudrYtQXZc1hC8/Og5psKWXXKVNFRA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/is-equal-shallow@3.0.6':
     resolution: {integrity: sha512-4cUvZTCC2rZCbDQilNX75nu0hAV/RNw+HenY/uEjerHd1m5rIzQm7e9HCtvtJaTXsYXoYv3alRDOsUIvJmzbhg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/is-equal-shallow@4.4.0':
     resolution: {integrity: sha512-Wnb1pEDSG03pYXXI+3SisRTX2lZPcTPh4bJTe5xNZHaVToBMnkLAtRs6x3bp6w9FOiTnsLDiLY+7hWresIqaIw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3920,18 +4043,21 @@ packages:
 
   '@hanzogui/label@3.0.0':
     resolution: {integrity: sha512-6V/t8AerRakQ8vhmmzzgLY3qqD1aIScn26DQkkjLeXWOm9yHpLe/ayU4wtPX9wvMyOPKZG1Lfadkn4xE+dEVDA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/label@3.0.1':
     resolution: {integrity: sha512-NfS1djeCOiPWNFnJas0PACrSRdroTmcguji/3z6SrxGCHRvAOrnh9Uzc1J9tVpvEjgKlZ13B+Pfq1ecI8LpgcQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/label@3.0.2':
     resolution: {integrity: sha512-n1WoxyqcqDTrGd5XaG96k3f+U/pJW+/dCcvmcsq5qzihwK3WXbYLC+NNsHAY6FOzeEScbSjPqiiG7LUcO3LWuA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -3950,11 +4076,13 @@ packages:
 
   '@hanzogui/list-item@3.0.1':
     resolution: {integrity: sha512-ujOkSP+l3OREb/9jTiCsNLbHQwZhaxR1y9XUDwF4PoqI1tl3mZloHx9JWxeTArKB670TUkH1KAQzpArK5j3u6w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/list-item@3.0.3':
     resolution: {integrity: sha512-fqjav7xq20l+muUvlBchmM25r0Boec9cy4ZM0XsmlzqNg2qsJ0o51VM6aEgeE41AFxVP4SrWRxNku0gdYYwoCQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3968,6 +4096,7 @@ packages:
 
   '@hanzogui/menu@3.0.2':
     resolution: {integrity: sha512-m+x6Tv3zUXcQl0fMX30P21v2nKHWDZarbG/MAO/S1d6uIFUSAz3tg96yQ0s1VTiPvLIepQ20Reg4uetLkdgD9Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -3978,6 +4107,7 @@ packages:
 
   '@hanzogui/native@3.0.0':
     resolution: {integrity: sha512-e0CebWkvwCR2DfSXLRJGvHZO5YDQLZM/qtj5XHzVqmSSuG1SCQbH7CwLHSpX/Xae8U8TMuh839lp6tFE1Kyt0Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       '@react-native-menu/menu': '>=2.0.0'
       burnt: '>=0.12.0'
@@ -4018,6 +4148,7 @@ packages:
 
   '@hanzogui/native@3.0.1':
     resolution: {integrity: sha512-+qN2WQkBAXr1PEBBClI617JkXs1Y0HHeXMf3I2Ue31b4lmQpddEuK2lTm72PVuKsjZZThQ8/JwvLiOYRP0RSjA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       '@react-native-menu/menu': '>=2.0.0'
       burnt: '>=0.12.0'
@@ -4058,6 +4189,7 @@ packages:
 
   '@hanzogui/native@3.0.6':
     resolution: {integrity: sha512-HT2ya3ENubWheBhFsLOVo13rCycF7YYirG35Wx8cQ+qY2PzPp+XuKUoc5eb198yqyr3TRUHC9W8bs7sOv88HBg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       '@react-native-menu/menu': '>=2.0.0'
       burnt: '>=0.12.0'
@@ -4098,6 +4230,7 @@ packages:
 
   '@hanzogui/native@4.4.0':
     resolution: {integrity: sha512-k0HQXSmovDdrrqa5FfH/27WairTqY4htprAHY4KQb69ihSYN2HERkLV0hwFg6IaEovCNaqbzo+438KybXFbbvg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       '@react-native-menu/menu': '>=2.0.0'
       burnt: '>=0.12.0'
@@ -4178,42 +4311,51 @@ packages:
 
   '@hanzogui/normalize-css-color@3.0.0':
     resolution: {integrity: sha512-PLU5+kEdU7109B8ItbSKFknicrj6475O3gX64CV4EQouGXJ9LrnWlet2A4i9fQcMw4OFJH+LCgG6ZOTr/611Mg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/normalize-css-color@3.0.6':
     resolution: {integrity: sha512-Nu+BYmIHEthnz8cqaybv959sSWq21jXvtzx7enUuBTzRRzyl0CyCOl4aMBM5mvf7TPACIuioXhOxLmdZVwKJSw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/normalize-css-color@4.4.0':
     resolution: {integrity: sha512-UuRU/0l+2zQ+d7CR1H7TwyXXiQfEcLw2VIoss1l/+sunH/0pGbS4wXICH5QN7N4NgTGHzQN24FObW4kCWS02YA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/normalize-css-color@7.0.0':
     resolution: {integrity: sha512-Ag7In5whBVtrc6crO/onriTou96T45y9xmpYhfgqQx/IEd9zymFPdCxURvRP3E5w25wXPF7MgH2PwPmkG+ciXQ==}
 
   '@hanzogui/polyfill-dev@3.0.0':
     resolution: {integrity: sha512-opa8TrUTwzTPWCpKlxs5zN1vG8cQSVMhd/TW6/3lfo3n30HnNyCnN6PcrqiB5oovRrv/GVqbe+6cArDAzSZCFg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/polyfill-dev@3.0.1':
     resolution: {integrity: sha512-OdTDP3EpqDRaAw9vOHS/Lsr/KXdNKR1125CQyK6TcKr1g6ZzWu5SxZ0FWFxgAXtqhRSetpMlXCaSHbQgobuXGw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/polyfill-dev@4.4.0':
     resolution: {integrity: sha512-xAEZLvZNzmPVTKO1Vx5Vh7rx4eas2klzQGqeDX0Hh5TKq/U2LGIf82oVK2kdMIKr1LiQq1eF3iTnBKkpC/c2Bw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/polyfill-dev@7.0.0':
     resolution: {integrity: sha512-+c+/pdiEPcV/LULTCmHJ1/baSUsoXpzOJG2l4UGXMZLM8C3tPU1fQX4kuuHACNeLv0/F1Kxl/zSCtrGepc0S6Q==}
 
   '@hanzogui/popover@3.0.0':
     resolution: {integrity: sha512-mVbk05Grvvdm0F88eQN5Dtr4AXui70NjWqPrw23W8CzlPYc4CGU3SmN+W5MoS0WTTf242eMr1wKLU71oH5UEJA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/popover@3.0.1':
     resolution: {integrity: sha512-8vQtXOdvMGkohWl4p7TwlDV4WJSeCPS/aOYjqI4EXfvGvGuajPixGfXbIbnJO1d2zhIWiYi57wKuelxibOgOWQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/popover@3.0.2':
     resolution: {integrity: sha512-9hHLe0WvII/fiX36iIBiBlsdyLwnH7eWjnlN9NzaMmn6PVdfaja9nr7mzN4VrR4KeDumiuWpia11M8CyX9S/hw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4226,18 +4368,21 @@ packages:
 
   '@hanzogui/popper@3.0.0':
     resolution: {integrity: sha512-UP8KsWpFbk5iccCcOZlKPZR9Z9NlUH/XC9gABse0kQ+mbjeipbdjcfzjEPMa30YuLvjUJDP7BTaAmU8GimwR0g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/popper@3.0.1':
     resolution: {integrity: sha512-JVI9WzhONVtz/2GfN4oWofbWAh43wYmS9UOilbLHxq0pGkvTe5+TAayK1eHA4EiLU0BVeaTa5woZa8Odcye+jQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/popper@3.0.2':
     resolution: {integrity: sha512-rCPi6Y8X79lSG5eYjMPVwE56lmsXnjXjzj6xE9Bb5txDeoC5F6RiGv0VNpY5r4ODGQTthyTlDATVraXZz4Rr1Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4250,6 +4395,7 @@ packages:
 
   '@hanzogui/portal@3.0.0':
     resolution: {integrity: sha512-ecoJgOMhFq23Y77dXIbzUhJaKdu9IFRqZORUrmDrd2IUjgbZNswdM+USwKyFfyk2oZwWaeRy0jpDcogFzfN+rg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -4257,6 +4403,7 @@ packages:
 
   '@hanzogui/portal@3.0.1':
     resolution: {integrity: sha512-EGolG8L1uK7OQuL+oPweXGqZQ7XEdt59IIAcc3dzBRM22OBB4cg9FJx6I7DZQCS+AIU/SkLgjFSRQRby84OdUw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -4264,6 +4411,7 @@ packages:
 
   '@hanzogui/portal@3.0.2':
     resolution: {integrity: sha512-jWpgiw62OsjxG46mWTCOuoimg+SQaTNROdSzkscKE5OFTN/J0S4X8y+gHRxoITfFOIE+Iuq5cu3SXOJx7DdB/A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -4278,6 +4426,7 @@ packages:
 
   '@hanzogui/progress@3.0.2':
     resolution: {integrity: sha512-UvXXFbDXUMOmf0fw9cEipctp5f2jyAcaG8qG8ESk9+PpXOeRQw6mNvexT3L5bghYkASjqutEQj7G6IQKvxkEIg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4290,9 +4439,11 @@ packages:
 
   '@hanzogui/proxy-worm@3.0.6':
     resolution: {integrity: sha512-NsppOfjr5jw9nK3ktDPt2r/EJOgZWVu0mg7sNeDD6GbF+oCVbx53j9sV5h6vmqoFGHDZR20uA1LypQZlVwmYhA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/radio-group@3.0.2':
     resolution: {integrity: sha512-+9xMfAYP0qHXcLY2IHe8QNmKCa9wDgU3q5PHS7uJz+GtyuxkVpHIc7M2Uuidw5wJoMNqVYkS6vPZjwG6l646+Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4303,12 +4454,14 @@ packages:
 
   '@hanzogui/radio-headless@3.0.1':
     resolution: {integrity: sha512-B7q0Rc76jhATiUN5Qz8eaMnrJ/dyauke4/47LqwAp5ctrogT12c/uAQzUqvRX/x/WXJMZS7Hy6N9i3yRct5rNQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/radio-headless@3.0.2':
     resolution: {integrity: sha512-6kzEWfB3msrFcWclb97aDv7z0l9tLD31ugr7F4EXz4MZV4zckIJb0bOMiLc95F/m9tLtPJaGwLbR6Ih0jZ3vIQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4321,16 +4474,19 @@ packages:
 
   '@hanzogui/react-native-media-driver@3.0.0':
     resolution: {integrity: sha512-/2C5G7RwOGmXHY8ksoZRdF3CvgMYTC3e2eRUaiompg0OrRiHh8ahq9d6S+RoR5QaiR5kZ3l8+zYxww1NoJHkCA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react-native: '*'
 
   '@hanzogui/react-native-media-driver@3.0.6':
     resolution: {integrity: sha512-qJ+0Cz11t3Ar7K6J+GOzMdarrtegLcwCT47hEiRPZMzoJhFsp7QvTYWj3MvWp5SIbBgKZvY4Gr1QArKu3AccEw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react-native: '*'
 
   '@hanzogui/react-native-media-driver@4.4.0':
     resolution: {integrity: sha512-xrVG0jjFDz+m6QZL3jxdHpsfXOdnNuFD9iQnVYTP08LSOl/8n+DXSMuybKR5p1ADaycQHEhi+S26QPx5aOFyOg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react-native: '*'
 
@@ -4354,16 +4510,19 @@ packages:
 
   '@hanzogui/react-native-use-pressable@3.0.0':
     resolution: {integrity: sha512-xL/ZeJ5yZ3IzH1bGrQbru5GNOrm1btRsv+xvm2d5crLPrHiKQO1y3rBDCkOBN79dsRGA8q/ttFmjtpqgFjZFcA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/react-native-use-pressable@3.0.6':
     resolution: {integrity: sha512-w1XVVDkE3yoh39gUDtFoolu2p88zw7hplDh0ksBaAOhAbLV9MAS3++MYaGGaH1lkbvhJbhNvS+Cw9ZfHBf9m0Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/react-native-use-pressable@4.4.0':
     resolution: {integrity: sha512-nZb5dwH4YDDc9W55ClPQ2Cf6q8UaI7nxmVLHcZt+jIW+3wJJYao3np0C/lagu+Ukr7fQFt8WTm5xm/Q312DrHQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4374,17 +4533,20 @@ packages:
 
   '@hanzogui/react-native-use-responder-events@3.0.6':
     resolution: {integrity: sha512-MUVXTqwndXgS6isEwPxzrBWIDxMjbwpTpg8rvMJjigEKSYcpt7nwYNDPFGL6ltaFfXYhUy2CWEn65lv+sG1Gow==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/react-native-web-internals@3.0.6':
     resolution: {integrity: sha512-IM7XcY0xeAKBNhvQulYo8d7HfbiD9FE3omzmvj4m0mr2jlZfOZhonVvcBu61oXWLSCIB8F70Nvji+W09Vk8Daw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
 
   '@hanzogui/react-native-web-lite@3.0.6':
     resolution: {integrity: sha512-yCMIVYJ33mmyHAzuZTqECxRuejlZg2Lvh0DwhyVq4vBhChPkj9DI6Pvimn37YeyXKXQ6VzIsUy+q2ZEMs3wicw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -4402,16 +4564,19 @@ packages:
 
   '@hanzogui/remove-scroll@3.0.0':
     resolution: {integrity: sha512-tfJ2j410lPGmC4dxl+X53c3e4DasdkoRGW0NBi+L77e6TiCq/PjfnGiqj6p9NIlql+0yQP4jjimgA02090QwCA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/remove-scroll@3.0.1':
     resolution: {integrity: sha512-LWrMxXVKhKmSOaOolDlSyMML6xPdY4Gkmg63+XD4QKKgWC1YXvp7wuL5KmHi6uSzA+HH9gW1DmnWLG5na7ny5w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/remove-scroll@3.0.2':
     resolution: {integrity: sha512-L20wmRssLfgpEkKmaO5IXbSpcyxXbNSpXwMjpzC/WPcQ4vdxuf9KLnmtf/YFNvRxvVrgCAFNtam2BnTKSc0Hjw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4422,16 +4587,19 @@ packages:
 
   '@hanzogui/roving-focus@3.0.0':
     resolution: {integrity: sha512-XdmcRSZLsrQqCtXvepc+f1TrC+aZzWYd4rNz5tHR/v1X9ygO+XKrbiKXJ6c/wzVx+1dm3RjkGu4fKlgOJvcpUw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/roving-focus@3.0.1':
     resolution: {integrity: sha512-7DcgUtIoIyo5gAqGTh1whJ4amz8LrB9fe6/no73+WNfovFWwN7Y9oDnWaQ8uTsg52F7FSyekpStfR+2GWy1yDg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/roving-focus@3.0.2':
     resolution: {integrity: sha512-M3JyseyAVmk9dyf/XvfEwif4ISFflMjLmxPhYQGQt0Pd1ibfhYVHFGSeLDwXXSas6eWg21VpbV+R9Ci+dSLqDg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4442,18 +4610,21 @@ packages:
 
   '@hanzogui/scroll-view@3.0.0':
     resolution: {integrity: sha512-kLg2ISt8CrwhzqzI13Pzlzegr0g6r/o9bEaPPpeayohZdlc2uffxxLhHccoishqNcjjgnQx91EjhsDTrNH6KVg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/scroll-view@3.0.1':
     resolution: {integrity: sha512-I3VOLrOEMxUCVRpbaFISSRRXqJw5fCraV71hPLWKs6SVxkBXwDvFaieOKoRLYGI+fIEZYPchBjcByqGNJYBWrA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/scroll-view@3.0.2':
     resolution: {integrity: sha512-w8Gtao90Lt49AjsfkAtCtcQDDwhf6Fscx7TFFbmsB2xlrAax++RDaHwdVqDuy0OLlDPL7ME8L64tnZEKLg4B9Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4466,6 +4637,7 @@ packages:
 
   '@hanzogui/select@3.0.2':
     resolution: {integrity: sha512-N3TyZ9osyX1MbPEo3KAUblnYzytrSqzbuyfqgq/4OhgunJ8gA2bpC0qU1Nl+rtEaLQx/q2aVIvHP3ijRAswjcQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -4480,11 +4652,13 @@ packages:
 
   '@hanzogui/separator@3.0.1':
     resolution: {integrity: sha512-RB8qDCNfq+DINgwio3COPbvkDK7adK0HdpnFrMDpR/KaXrRrXrCLFlw+0BPhdjhC+QYK6Q/kFWn8n1dttPnQTQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/separator@3.0.2':
     resolution: {integrity: sha512-I1FkafRP4YsS0TKhN9vSbQOqSN1gZd7dsrnqxDGVUeCnmCGCKk9bD3mAXVuOV7bDqcXiofhbFBD2kq03fE+rlA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4495,11 +4669,13 @@ packages:
 
   '@hanzogui/shapes@3.0.1':
     resolution: {integrity: sha512-v2gof19U2Iqxxel3G5IuvdUvn7U17DcT3w3DyiQ4cjd8kv9uO/CJjdQd6/XHA+ExzeQieNCEiSK4+n+nXP8KuQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/shapes@3.0.2':
     resolution: {integrity: sha512-MF4i76HNj4C3txjOp7Fl5NFvr2DnJbocvS1O36k4/IY5whiYyY98XyAZQ8+Hhq/A5gprBOuodh58iC8aWK1SMA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4510,6 +4686,7 @@ packages:
 
   '@hanzogui/sheet@3.0.0':
     resolution: {integrity: sha512-5AhyaNZQujv8fc9QvlVwKpfbyZWfiA+g2W44HpUMKqRXUYwoPSwHF3bCBTxRTiu/OULb6pd3Rpm7pLU7P/ZwxQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4520,6 +4697,7 @@ packages:
 
   '@hanzogui/sheet@3.0.1':
     resolution: {integrity: sha512-VTDmLVVoI1bZdzH0xvgEATJ3BJTQGx5mwCMyYuItOi1KxURyLyPl3tvZ3QewiVAwGPbS9kfO676MWtk6azL7AQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4530,6 +4708,7 @@ packages:
 
   '@hanzogui/sheet@3.0.2':
     resolution: {integrity: sha512-exCZs/jPRSIZCCKtL6fS/2ieLBxYYERF7SRAc0Ps33E+gWOhQUvUQvfVd0cknFta+PgEbQNRwYroWICDgbWsUw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4550,35 +4729,43 @@ packages:
 
   '@hanzogui/shorthands@3.0.0':
     resolution: {integrity: sha512-ZCjLX8ki7ZIiRRUN8n1AYQHEX5sOnDaoSHROtVmk2SG1pV16+wYpppTUsA6M0QOQwSuv8+cdNwD+sjdL92In0A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/shorthands@3.0.6':
     resolution: {integrity: sha512-ZYpPkkvzXSJ4L3oRBZEllg0UutlxedTR7fuD7w/ieEuopmCLTX8VSg2LgX6/9257A6NgfROIzws4pYwe+MOE3g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/shorthands@4.4.0':
     resolution: {integrity: sha512-/yiVSarmdMY7NEdCKSRhWRdQlFJx6qBSPmDEaweogp3EUYj+a1p0bYVBf9CMFVBaM3JQ3gUpb21tqImw0n6UZg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/shorthands@7.0.0':
     resolution: {integrity: sha512-WS3jTu6fm0RS4uPTbgRCwqMNuLahTFDA7qfMev6XZI8JL6L7REh1j3F6drvvv0H69LDpwAgq1x5aayXhbEcuuA==}
 
   '@hanzogui/simple-hash@3.0.0':
     resolution: {integrity: sha512-+6sbmtiL+C6MAkzHMRYJJMuXDrNp/3LpM1aatB4qL+vN9U1JBaL0aes8m1E7nju5g6WWDk3DKU3IP00MS3ANtA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/simple-hash@3.0.6':
     resolution: {integrity: sha512-CagMMuWyPrDnqYGk8BMh1F9WJwcMkSFUgBSncjDYuOZQBkgPZH2lm9pf3VOzcE9D4017pVklO/yzHMX+aAVlKQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/simple-hash@4.4.0':
     resolution: {integrity: sha512-OGkGbL2msR4WtzhEWuIqsO4dmlE5D/9ZjR8+wGglqriinBajicbdGeXjSdCoNEc9HBZ4ZaTnMII8pTEUXpLqlw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/simple-hash@7.0.0':
     resolution: {integrity: sha512-l9Qd+nhfczOuZuXYFmySSbH/beWQJQXNnWSOGhr8QfRFWMpu/DwK6Y1fQALCcvg7IyJpiYRxQkZvuViEyjcipw==}
 
   '@hanzogui/sizable-context@3.0.1':
     resolution: {integrity: sha512-04pNb/aH/cvkTEVKUh34w1sEd8cGKKo+78AeoEUe24l33+DSUbbSKWxw5REEEfvnrrfqEu7L8QrmGCQrby3hsQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/sizable-context@4.4.0':
     resolution: {integrity: sha512-JpkbyWcZtl7Qy6F8N74G3tNMat174B2NBjoxBwZkvZhNB/gCpWKCOm22Cwi7kCYQ/zntR12+TucWfmyk25A8uQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4589,6 +4776,7 @@ packages:
 
   '@hanzogui/slider@3.0.2':
     resolution: {integrity: sha512-jCFy/qEM7aa1DhcPO+gm3+CrKlK64C+i+DwEI57GuamVI9evY71uYgLLQNYyOYmzYLIpNeWh4cGg8nOPfj4p3Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4601,18 +4789,21 @@ packages:
 
   '@hanzogui/spacer@3.0.0':
     resolution: {integrity: sha512-fIBRn5vqrrMyyyp5NGDnFxwROfmEFYR/1aDF9KTMoL0XsGLPpdnAjVaO3uzCJAByrKPGMEkbt1uKW9eH+Vi1bQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/spacer@3.0.1':
     resolution: {integrity: sha512-mNFxgTiz8aKYVM1/n6FViZU5pIV65lT5OYHyp0kofVRy3PwshRnRfwW6gnhImcZQ915sFDCeahSh61T2DCiWNQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/spacer@3.0.2':
     resolution: {integrity: sha512-ImBO/r4jLFlTbm18uqpNzYrVDxwxgAvuFU1pRaClaqHS60/m9qdVJtcVIiOVV8BFi/iJmGri/qsWFbc5QRsTKQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4625,6 +4816,7 @@ packages:
 
   '@hanzogui/spinner@3.0.2':
     resolution: {integrity: sha512-pOrBwLAYJtqQ3b9JZZyz+AlIUcG/z9xkmMtiEhAT8zf4MEf0huT7HE58qbGS4cwWkSDKQDZCXlZRuRxIPTLtQA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4637,16 +4829,19 @@ packages:
 
   '@hanzogui/stacks@3.0.0':
     resolution: {integrity: sha512-2UvhtURf2ymXblcE83n2eVgqW0Ak/1XbsCaoeuvyeny7ZOls0acg70qamUj2YSctoNdPeT8Nbz2v3Mex6BNDTQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/stacks@3.0.1':
     resolution: {integrity: sha512-ll8E6IyRycexrdx05GP0tzcShQp3JL2JgsqzR0Gypbar++r/IkVAXK5cYNws+Uy9/ysTef31yjaEX91AfA3PDg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/stacks@3.0.2':
     resolution: {integrity: sha512-mLlYI5i8vZmfIg/EcETbKd/KwoRcI93rVcbgNzf2nFLJLjSZ0XSDq/RcmwGeQomf25MN4qyno4hvFk7ccuA8nA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4657,16 +4852,19 @@ packages:
 
   '@hanzogui/start-transition@3.0.0':
     resolution: {integrity: sha512-IvfmuVxQHz0jPsESFzYd4wncwo+eR0g/luET0xUn9BMqO1OFKVFWldgjer7l9e/BlGhxE/WCPK8ehwYy6DR6wg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/start-transition@3.0.1':
     resolution: {integrity: sha512-IfbAlfP+wMfqwvscwV6Qz3EB3XVzYgjYJdgmSaSlsWgvvs7a8ThyhEeaPlwtNF4I0Evbmy4nj3IoF+uy81afrA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/start-transition@4.4.0':
     resolution: {integrity: sha512-ZgEHnfR7iCAgNpu6R3PLk5pY1JCgth/h9z1andIvtfvuAzVcYt6INDy9qbrSSS5BYEVNTaeY3+ZCZ0/warMrjw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4677,24 +4875,29 @@ packages:
 
   '@hanzogui/static-sync@3.0.6':
     resolution: {integrity: sha512-ZOp9cywGIYI/2Y2oWqHrR0w18yKFGSqpBNcVYRxC1zgtbfk5CmZHkL24kmih/zSjGvfckr2WaW97kaFuFmLQQg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/static-worker@3.0.6':
     resolution: {integrity: sha512-jEZVj13u0cdWiUUqzmlj4SSiL6WJi73OLdA4jCAIeRpu79Q0DxiG9MOe0RyaNIT1WxjnVZOjb4eOIBnIPnifDg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/static@3.0.6':
     resolution: {integrity: sha512-YdMYSe1iLc7Aa1vg9SB7UG3e/sjGdqwTdXccXioGFvlT11FGyjuEFQpCWxjnwIblzkF0Ps6/BdywEZYpYXX6wg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/switch-headless@3.0.1':
     resolution: {integrity: sha512-BQ62U96zOnhrFg1WIUvUNFioOjOb9IGephFKsVwfn1UEGf+OsuzJmekXIo8Sh1MnL8BcIi1DtqIKTQCWtEj/Uw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/switch-headless@3.0.2':
     resolution: {integrity: sha512-0hYltHkSTk38tZfakRL+5LZsJVET7Z44DVrgt0Cmjbh0HDzgJnwlqVebpz+lQjTmn6NeeNfU/BqQEghF1VdhUQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4707,6 +4910,7 @@ packages:
 
   '@hanzogui/switch@3.0.2':
     resolution: {integrity: sha512-hfujuJI086xOSrZMKkk9jdrVgUTfK7D5tofH1XtDXAR2FNbn5NjXoRLqSahmDCRLeW6WjkMoNeEDbPElm5VBOQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4719,11 +4923,13 @@ packages:
 
   '@hanzogui/tabs-headless@3.0.2':
     resolution: {integrity: sha512-D6BzzhQcUY7DlH+A5ZUrGb1K2qWjXTiWUx2cJEqPKA5m3BfPkmQeSA1notK6qj+s6wMVyWMiDRNGFBRVoklaJA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/tabs@3.0.2':
     resolution: {integrity: sha512-MFxsvV++7IQP339kCQBEfW1zLGVy8cRmfmC+/R/v1RcRcMH+akIgdczzLdde6d8MVFf4wx5EMdY7dI5na+ijVA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4736,16 +4942,19 @@ packages:
 
   '@hanzogui/text@3.0.0':
     resolution: {integrity: sha512-5FBHtG9utyLHKOTvWcX3Fp0+6wyL2sPbZwyd3oLE77r3gEznv5jLkJlMggK2LlYUzoen6izlrzWlEVi0dNvHAw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/text@3.0.1':
     resolution: {integrity: sha512-jOaLw2KE8pa1FqlMUXTIJB0TvU93ktV3W95l2aXEsHPfJG17iJNDyzhrv6pnYFabXick0f58brhvx9KN0kbDeQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/text@3.0.2':
     resolution: {integrity: sha512-/0dqMi97rpiZFiezw1pkpmGUF9bluD/ee4uAAI2Qwi6QeBzFjWIupqRhZFQUU7W8PbSffh8O80FFL4Jqp5y7lw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4756,15 +4965,19 @@ packages:
 
   '@hanzogui/theme-base@4.4.0':
     resolution: {integrity: sha512-5sUORTGv7f+ZFQWg6ZjxbtdU/iNXzko6SericmKYsXrZCAMt4lh8rwABilMWew6VgWk9peOeFxEveHUtShME0A==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/theme-builder@3.0.6':
     resolution: {integrity: sha512-WsqKqyLDFQhgU71sul+EGqxGJWxeVnV8MB+d0s4X04C7vHy1/F9HXjS/5bhnum8BVchnH9PSGA6cwrKG7uwoGw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/theme-builder@4.4.0':
     resolution: {integrity: sha512-UsOjS0VFkjQqcwpu5TpPG8p6ZMqqgK6z9WvODO0oB9qsfPv7gGVWyojDFCmk1VOgRo1QbOxBkP9x2wryc6qxZA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/theme@4.4.0':
     resolution: {integrity: sha512-O9ZX75j72TMPtUALJex5gT4E64q6GfDPRXMXjhqFTv1XMWf7K91aq4CrlztArAnUs8R+b0BTh5WPeKbPw6g59g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4775,18 +4988,22 @@ packages:
 
   '@hanzogui/timer@3.0.0':
     resolution: {integrity: sha512-4J15nfU1ufwMbqNDzDyIu+CEc49BIs/BHz5iLycswtOVK/O/Adi/JBFQqHsD1gdWyasTF1dnBWnNF5qTKX8A3Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/timer@3.0.6':
     resolution: {integrity: sha512-IAJ23AMVG3cRT/Zmv3DY6TqXyZjp3HqNx7W0FxHgYQWCWUVRbQCFFJ4gNDCZoQCYtr4fYy3oIlTMZVFVLtH4pw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/timer@4.4.0':
     resolution: {integrity: sha512-V+FnBBLGDFLF2BU1GMuqoeVDPbOXH+/K0B6i9CH15kZeA7SSW3QYCpsPo0n/wpnHltT9CvF80G7YweMFtSpjkg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/timer@7.0.0':
     resolution: {integrity: sha512-HNBRhl8heMxieeKtODBmjtGRCeK/xthv5v+KQy3YBZY59JlLiIMavo6Lcb5rmA4oEKp15y7GSj1TpXwjkyPUfg==}
 
   '@hanzogui/toast@3.0.2':
     resolution: {integrity: sha512-ARGhqOb/AqvGRmceGoI+WxnOWxGRcdR5usgF76CPBZxVGpMLw37vBQXzZICai3aX15ddSj1BLpdvIquTBrXicQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4799,6 +5016,7 @@ packages:
 
   '@hanzogui/toggle-group@3.0.2':
     resolution: {integrity: sha512-n+TOgr5Cu496hFIXkRH/6WpXOe9PC3puq1FZw0mt2AjsfwxumBAkbD6AiuHKpZMHMXkrccWJySBbMZQbzPg3AQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4809,6 +5027,7 @@ packages:
 
   '@hanzogui/tooltip@3.0.2':
     resolution: {integrity: sha512-DMetn8O6RTaKNzsvwUnsrYoNYKK8GlFP6gsgF8hd9f+wYbHNsamug+mMU8aeIwibBYe8XUnPHhvgOyZRaFzNMw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -4821,23 +5040,28 @@ packages:
 
   '@hanzogui/types@3.0.0':
     resolution: {integrity: sha512-Ekhug4WbtytdFLulJfjF0dFCt8Z/t/HUt4Y9goIN/kzBWXUI3D3Pc5lrWZ3L3EQDaiDlPhv/H3Yc42BmBHj0TQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/types@3.0.6':
     resolution: {integrity: sha512-8fimpoiRBTmlg/hfnjCQvH/Z2Dm/9Z/oEjEaOSUQHyiVZXfsM4ZLldba7Vex3HvHTIN2j7ZOMw9A2A4UJps2ow==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/types@4.4.0':
     resolution: {integrity: sha512-twVTaJuH7vw2QOShYpy5ZSsSVUTAX+soBHf0m3pdhovud2yX0JVCgvbdPP+hnhCdJ8v4AEhZzaRc9NoV/viqCw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
 
   '@hanzogui/types@7.0.0':
     resolution: {integrity: sha512-ihHzjLEGeWiRs3CHlHV4x69eMKC4k26UZ5DGu5+rZ4joi/08m+GEvF6YGDLzX5OUOYR0Ch2rfSDS3QtlD8c6SQ==}
 
   '@hanzogui/use-async@3.0.0':
     resolution: {integrity: sha512-xPjW4C2dxBuko5MDflzgO/L+Ao/q7GH7JSFJyTwBcPHJNTHMcniTJBINA8FGPR6y/4nJs6M2WNCXrgzNVsg3/w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-async@3.0.1':
     resolution: {integrity: sha512-kXrr4olL1J0uF/Q2GmwvsE0rpts6Y8f17yWbadFmc9UIufJWijOwvaGdca6Sq2JPy4na5YAOet+1r7XhiFw9PA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4848,11 +5072,13 @@ packages:
 
   '@hanzogui/use-callback-ref@3.0.0':
     resolution: {integrity: sha512-dsOCsnGdACsiQhmLZJ8sb1pVGLfd9Di1yD8txWOd3Xp/l2F13JggoXT8ZYtQntVVjzP9FUXMZ78svipVo/l8wg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-callback-ref@3.0.1':
     resolution: {integrity: sha512-AMczKaYBg/Lfdfz9v5TylmJ4UbHCKAHtUGjg/O8HeKd+IR6fX0zoanRxp6KfKXVbZgyZA+U8+BZAudB8FaBcNg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4863,11 +5089,13 @@ packages:
 
   '@hanzogui/use-constant@3.0.0':
     resolution: {integrity: sha512-wxii+E1A91yG26muXlhhmTfNDDhWHadW3JnQjjapQmYIL8V1HbuBFJOiTJfwDaCoEcEC4t9QiLvZV6NAKtOshw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-constant@3.0.1':
     resolution: {integrity: sha512-j3TOE752aA80ogF/+YN4iNDbt8SkCxc6vIW8o+0XG01+Vxxq0/7Vje5wH8EEmsZWd69foJf6iVsgcsfzjY0BBw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4878,16 +5106,19 @@ packages:
 
   '@hanzogui/use-controllable-state@3.0.0':
     resolution: {integrity: sha512-5YRlczZMQ5S0BGm1NtE3kdIcpz5U1bP1cCO9caNg9NXwaE7Ind2g1o32del6lPA4VdVHr1qrCTyCQMINfEHg6g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-controllable-state@3.0.1':
     resolution: {integrity: sha512-V8sGRLCVrrgePNEjtgVZoaxLItVH/oha7rtsClhLIuW+VVZNvD9eo5WvlonNBFYPCmzMtLnFcgo5dLFrlBZk+w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-controllable-state@4.4.0':
     resolution: {integrity: sha512-JygDp0cNa2oXNp1BbM5qXECzm13iZOpjILb8b06PKmH5KdxtBJMoNR/ZcPzMO/XouNCXU/40LHUdeC7fAUBeLg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4898,11 +5129,13 @@ packages:
 
   '@hanzogui/use-debounce@3.0.1':
     resolution: {integrity: sha512-k/YGNaYqpQiMyqBcvJHR0BGHU2qGSZUyLfEeq6EMVZnBPrUV72xsMOs8HBrVmxLn+KilkDEKo5UZL/pWOj7/6g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-debounce@4.4.0':
     resolution: {integrity: sha512-ohfDGGFDz69mFuiPqDjooKseWbntBSsnkZ/YPSma/yXUIevcmOaQPlf2QI/OaxPDuY9aZf1raWRAvWXYFY7xQQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4913,21 +5146,25 @@ packages:
 
   '@hanzogui/use-did-finish-ssr@3.0.0':
     resolution: {integrity: sha512-XM7S8dNifD/PJL7GRzThu9t9cP6upypnSjcVD7F57spNxJGOFR9uR5WuqQDUoQ6Gr4JnGpKvML4nGsT86iEcHQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-did-finish-ssr@3.0.1':
     resolution: {integrity: sha512-8yaZf1IgkxKBGGKoJQCIDGLkQaW/omqZNy52/SXCBsnX/lvPq5ahAzGODT7QbuF6zcc/c11XC8L9R7VwaAdOjw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-did-finish-ssr@3.0.6':
     resolution: {integrity: sha512-K6Lf575UOoYMUycUdyUdlbtukxawRIf7EVI3V3Ew1UkVnS6aoBqzEwfRu1QbejA0mtX1xiM1Bi71E5m2J3fPxw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-did-finish-ssr@4.4.0':
     resolution: {integrity: sha512-WnUaI7HAcCxvmkGtcFtUyNVdFIvWZ3UkP0XP5QBUGnC2rm/bEa/dKAbZK+IqpjDqutLkJNY/GPthicoTkqEXgw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4938,11 +5175,13 @@ packages:
 
   '@hanzogui/use-direction@3.0.0':
     resolution: {integrity: sha512-n7oD9K6Xpk3oj81YRgKbLcMN880OcR6pRfoKU8Xzlvjs9BcBclRH+LrZTt4fRnvTZURJLA3NvxJS7+wQpOFHhw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-direction@3.0.1':
     resolution: {integrity: sha512-WmtGuSRGPNBSR9x6MqU6nzoFl2BPgmNDRA+/OI5qbmN3DKpef+NAiAerrxFvO5wzRcjRvJtKlD8WPCReWSrwgA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4953,16 +5192,19 @@ packages:
 
   '@hanzogui/use-element-layout@3.0.0':
     resolution: {integrity: sha512-uFaQI6VhVZ7WUJ4UukAR6VdKq3SHHxU2wtzjkhInBBrlU02lpdsbw+SH+GK+pgYq6gD+d4Y13hq0rXtXLnbjtA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-element-layout@3.0.6':
     resolution: {integrity: sha512-Bhqd0z2MHYrbOC7jO/G+fJXPgnM9m3nLLH+XKcAb5XsuKWCvE9eWV81SV0UydU1A15KdkT2zoN5HyRtIWY7oNg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-element-layout@4.4.0':
     resolution: {integrity: sha512-EVKmi+qwAmMK+EToxywhdrxVc5S67Dcqky1D0HiDNR/rzgCVEidBkKF702b91NQEhEThvGN23tqmODuq4ltbkg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4973,11 +5215,13 @@ packages:
 
   '@hanzogui/use-escape-keydown@3.0.0':
     resolution: {integrity: sha512-hTcxjA/7xl4/8rI+5O8DbtiufxczNPPIzGCEkUG9WS7qWREzf0QndbD3xJ5y85xmSerCN6Dxo18W0uqcydXjow==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-escape-keydown@3.0.1':
     resolution: {integrity: sha512-28qbckpKvb2W3NUwi/0O6Qxql1Tsiz3A9AuCnX7YNr5rFcMn4JZJcB75C/pD0jd3pvym4LZMNVGIpmPJ8EO2Gg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -4988,21 +5232,25 @@ packages:
 
   '@hanzogui/use-event@3.0.0':
     resolution: {integrity: sha512-8qHKaq+jaUnWnIgjm6EtVKRNUOZgUspXmhL+3bvW2ikdFFT/leA5xD7Nq0RaUIgTf42h70zdOoO/u6mioZSTLw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-event@3.0.1':
     resolution: {integrity: sha512-potVCkNwMyszr7/QqRsYOtY2N3ALNuEnu8ajLDrY4kIu956G8zJRwa7iIzDBe7Q7Uo4u/EpTYD5LSVgAuVkUyg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-event@3.0.6':
     resolution: {integrity: sha512-NVx1JpgGPRHfOFVgTODWWxfOP3u0/WgPcoQRarJYb+p9lA9ETtCqYFt6XS6WwfscKKpYjBcivzDMochZOyQ7TQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-event@4.4.0':
     resolution: {integrity: sha512-V04/docstBvCX7KGcVsugBdZTUn/LL/JWXH1NiGCqXOHus4402MaI5COlj16kIS/tNnKtKhtgTXDmkLt4jx2RQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5013,21 +5261,25 @@ packages:
 
   '@hanzogui/use-force-update@3.0.0':
     resolution: {integrity: sha512-yIwp2byfvhW6wnHNuVYW0amc9KvbOydUzD4TBHbH2lZ+jRAAAloEgBitGNEyUcEtWbLTLfTPDy1SHRO2Shp45Q==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-force-update@3.0.1':
     resolution: {integrity: sha512-LUs1LOVcbavP4B8vxJELPXs6/MdPA+FJc7YqVkz0d5S/wxIDydhBMObiuIyTZljJ15pwSECYJSV6l634L8Errw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-force-update@3.0.6':
     resolution: {integrity: sha512-IdszOClbq3JuIGpKK00HxTObr1bVTw4UTeHWvUS38GdSC3EmlKMw6jyu8gKCZp2nve88eycXowpWDgUGfApt5w==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-force-update@4.4.0':
     resolution: {integrity: sha512-bg9iBC/ItQZ1sLhXqJlBupO2uG0NHSfGk/wHuI1T1/vxWSkGHC4asfEfJpIMgfdegVZBtlGOJdb476Btt/teCA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5038,12 +5290,14 @@ packages:
 
   '@hanzogui/use-keyboard-visible@3.0.0':
     resolution: {integrity: sha512-KIPtU+bM4KopJlS9P7pLNIPoLjIm4707AARrBfew6HDVEYjRZ7Fpg1Wtc9SBnU/fqFoalPIRFupfdlIutsGdpQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
 
   '@hanzogui/use-keyboard-visible@3.0.1':
     resolution: {integrity: sha512-8pFBedX4xEfEfQbdi9xBCMzxFYRJJlXZwVUeZg23cQscxtSC1LoIiFSoj4/SOs+lPJ5JMvAHjAL6ENN1e8kwoQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -5056,21 +5310,25 @@ packages:
 
   '@hanzogui/use-presence@3.0.0':
     resolution: {integrity: sha512-KtoX36/y0XC5QQom/doayuQadcm8G4Vdb6Qsfm3tWArOwZdGCkR6sHbs/Zkb7qNyV6r9waIS9rT5BWr+pkxQEA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-presence@3.0.1':
     resolution: {integrity: sha512-uFdhv1CTz22/uYirAzs4hOBVhPHmH4wG0wM6z3nz2dUdw9Q5TXTW/MJCqVcOH+LCBntytDaGVs641LfhKzj+JQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-presence@3.0.6':
     resolution: {integrity: sha512-CF+npq1UVxmpU/mEPVchsB/StYJbzhs62ymKKT5wXm9laDPHPpJ9CslZS1tuko6e9dPwnWf00xfMA1kUhuXikQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-presence@4.4.0':
     resolution: {integrity: sha512-w5IAvAUnP+zjYCEqotxoYaRPcrhpg4j92n1gDXSF/OrZrwmT3aaSxyCEeONqiHlsgExwm9xvq2KSXeX4wYdzpA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5081,11 +5339,13 @@ packages:
 
   '@hanzogui/use-previous@3.0.0':
     resolution: {integrity: sha512-TAUEfNT/3HD+8JOK7tYmHyMG5lVcFBEisGpSLY1HHdVHNxryeclu9J6ImeQFWg8uIvaYXLINDMIySUy62Wdt3g==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/use-previous@3.0.1':
     resolution: {integrity: sha512-DsyEetbxa820JdGnNiFGaOaHBrDLpoH+UrwcO+y47Gsi02HSBkoJ7mrRhGULuvYJKeFAI7hMInZOTGgTPZJjog==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5096,6 +5356,7 @@ packages:
 
   '@hanzogui/use-window-dimensions@4.4.0':
     resolution: {integrity: sha512-boisi8kbF5wiy3lyDTPc1e45xZ+BbK5wIeHb1gSkEK601Dn0cq619mtODIScCtAKAc/AfLDZsazHftUF6bqkVw==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-native: '*'
@@ -5108,11 +5369,13 @@ packages:
 
   '@hanzogui/visually-hidden@3.0.1':
     resolution: {integrity: sha512-M4JSk66WmgNQ+lGdKXzj4h+u09SqiV1V91oVRkofc7EFbJ44vfHgTIaMO24Je6b+VSMOVHCmCVlg/rZiVTKshg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/visually-hidden@3.0.2':
     resolution: {integrity: sha512-yMAf06zeVOSHHpeyVgiJ3uJtJYS/4GEbNdoPW4OiQORXkWeLMS6q22089isXEqwcNZPijATpU+Fpy7Qw5szhOQ==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5123,6 +5386,7 @@ packages:
 
   '@hanzogui/web@3.0.0':
     resolution: {integrity: sha512-WQaZin0ixjf0lRM/0bFGrvfgXOWLz+ssiD3QP+jECwfZKLeWblXOaiLW5Bh8w3dJSsc6i7E+XX9KatGIZWMwDA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -5130,6 +5394,7 @@ packages:
 
   '@hanzogui/web@3.0.1':
     resolution: {integrity: sha512-j90WDtcVsoZRYtsISjhHUJ/BSS98udO3Zuo7/foDXLC/3ct1Ed7Qwrs/af+a38E5JhjYOZOz5gO5PkpaNtZdFg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -5137,6 +5402,7 @@ packages:
 
   '@hanzogui/web@3.0.6':
     resolution: {integrity: sha512-xNLX+9+/M//P2I8P7uI/BlLDS+ded1/kR9VY6KEgXHkneEN938fklhX/Ys4OIYuQ3YybJuLcgGFlZg7fcETwFA==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -5144,6 +5410,7 @@ packages:
 
   '@hanzogui/web@4.4.0':
     resolution: {integrity: sha512-6GYONObCTfAOopEFxlp90FxM2kBYet7hr5fo3K69GzhzlJl9/+pmCsZOW7zZHIJNp1AgGJhHSu7f6YcsiFqvAg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
       react-dom: '*'
@@ -5158,16 +5425,19 @@ packages:
 
   '@hanzogui/z-index-stack@3.0.0':
     resolution: {integrity: sha512-Xj4iCFRQU60rY35YH039EEYFo+Fkynxb2fyGZanxTHGKtY+gK044fas6cWj5W2iJn/MC3NHHOMXczOmgGTE+Qg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/z-index-stack@3.0.1':
     resolution: {integrity: sha512-ZZKLAs1e5I3wNpOfTQS89H0WAUrv3cU2+A5QsaDWx1wK9LsMe7jEaGLHTeJFW7SYfUSVW3ymbD2kYg16gmsDXg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
   '@hanzogui/z-index-stack@3.0.2':
     resolution: {integrity: sha512-WDX7d52zIhgz3zTRD7rjuivQvR1hn9wog6gPRBhFri6vGDag96aqMAmSAuk6RV/AmHDD4xy3SmjGv5TAn27htg==}
+    deprecated: Use 7.x — synced to upstream tamagui 2.0.0
     peerDependencies:
       react: '>=19'
 
@@ -5560,6 +5830,9 @@ packages:
     peerDependencies:
       eslint: 8.57.1
 
+  '@luxwallet/chains@file:../../luxwallet/sdk/packages/chains':
+    resolution: {directory: ../../luxwallet/sdk/packages/chains, type: directory}
+
   '@metamask/eth-json-rpc-provider@1.0.1':
     resolution: {integrity: sha512-whiUMPlAOrVGmX8aKYVPvlKyG4CpQXiNNyt74vE1xb5sPvmx5oA7B/kOi/JdBvhGQq97U1/AVdXEdk2zkP8qyA==}
     engines: {node: '>=14.0.0'}
@@ -5932,7 +6205,7 @@ packages:
 
   '@paulmillr/qr@0.2.1':
     resolution: {integrity: sha512-IHnV6A+zxU7XwmKFinmYjUcwlyK9+xkG3/s9KcQhI9BjQKycrJ1JRO+FbNYPwZiPKW3je/DR0k7w8/gLa5eaxQ==}
-    deprecated: 'The package is now available as "qr": npm install qr'
+    deprecated: 'Switch to "qr" (new package name) for security updates: npm install qr'
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -8683,6 +8956,10 @@ packages:
 
   base64-sol@1.0.1:
     resolution: {integrity: sha512-ld3cCNMeXt4uJXmLZBHFGMvVpK9KsLVEhPpFRXnvSVAqABKbuNZg/+dsq3NuM+wxFLb/UrVkz7m1ciWmkMfTbg==}
+
+  base64url@3.0.1:
+    resolution: {integrity: sha512-ir1UPr3dkwexU7FdV8qBBbNDRUhMmIekYMFZfi+C/sLNnRESKPl23nB9b2pltqfOQNnGzsDdId90AEtG5tCx4A==}
+    engines: {node: '>=6.0.0'}
 
   baseline-browser-mapping@2.10.18:
     resolution: {integrity: sha512-VSnGQAOLtP5mib/DPyg2/t+Tlv65NTBz83BJBJvmLVHHuKJVaDOBvJJykiT5TR++em5nfAySPccDZDa4oSrn8A==}
@@ -12112,6 +12389,9 @@ packages:
   joi@17.13.3:
     resolution: {integrity: sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==}
 
+  jose@6.2.3:
+    resolution: {integrity: sha512-YYVDInQKFJfR/xa3ojUTl8c2KoTwiL1R5Wg9YCydwH0x0B9grbzlg5HC7mMjCtUJjbQ/YnGEZIhI5tCgfTb4Hw==}
+
   jotai@1.3.7:
     resolution: {integrity: sha512-vLs/7CpXZy11REfeHaEUaXe3oqY9O0YwUAHUI/mph2Lujw4YqtyRk8r5qo0vq10nA9rESWHO+ky84Bf+lRG1lg==}
     engines: {node: '>=12.7.0'}
@@ -12296,6 +12576,9 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
+
+  libphonenumber-js@1.13.7:
+    resolution: {integrity: sha512-rvr3HIMdOgzhz1RFGjftji+wjoAFlzhqCNqJOU/MKTZQ8d9NZxAR/tI+0weDicyoucqVR0U1GCniqHJ0f8aM2A==}
 
   lie@3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
@@ -13131,6 +13414,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  oauth@0.10.2:
+    resolution: {integrity: sha512-JtFnB+8nxDEXgNyniwz573xxbKSOu3R8D40xQKqcjwJ2CDkYqUDI53o6IuzDJBx60Z8VKCm271+t8iFjakrl8Q==}
+
   ob1@0.82.5:
     resolution: {integrity: sha512-QyQQ6e66f+Ut/qUVjEce0E/wux5nAGLXYZDn1jr15JWstHsCH3l6VVrg8NKDptW9NEiBXKOJeGF/ydxeSDF3IQ==}
     engines: {node: '>=18.18'}
@@ -13403,6 +13689,14 @@ packages:
 
   partysocket@1.1.10:
     resolution: {integrity: sha512-ACfn0P6lQuj8/AqB4L5ZDFcIEbpnIteNNObrlxqV1Ge80GTGhjuJ2sNKwNQlFzhGi4kI7fP/C1Eqh8TR78HjDQ==}
+
+  passport-oauth2@1.8.0:
+    resolution: {integrity: sha512-cjsQbOrXIDE4P8nNb3FQRCCmJJ/utnFKEz2NX209f7KOHPoX18gF7gBzBbLLsj2/je4KrgiwLLGjf0lm9rtTBA==}
+    engines: {node: '>= 0.4.0'}
+
+  passport-strategy@1.0.0:
+    resolution: {integrity: sha512-CB97UUvDKJde2V0KDWWB3lyf6PC3FaZP7YxZ2G8OAtn9p4HI9j9JLP9qjOGZFvyl8uwNT8qM+hGnz/n16NI7oA==}
+    engines: {node: '>= 0.4.0'}
 
   path-browserify@1.0.1:
     resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
@@ -15642,6 +15936,7 @@ packages:
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
@@ -15810,6 +16105,9 @@ packages:
 
   uhyphen@0.2.0:
     resolution: {integrity: sha512-qz3o9CHXmJJPGBdqzab7qAYuW8kQGKNEuoHFYrBwV6hWIMcpAmxDLXojcHfFr9US1Pe6zUswEIJIbLI610fuqA==}
+
+  uid2@0.0.4:
+    resolution: {integrity: sha512-IevTus0SbGwQzYh3+fRsAMTVVPOoIVufzacXcHPmdlle1jUpq7BRL+mw3dgeLanvGZdwwbWhRV6XrcFNdBmjWA==}
 
   uint8arrays@3.1.0:
     resolution: {integrity: sha512-ei5rfKtoRO8OyOIor2Rz5fhzjThwIHJZ3uyDPnDHTXbP0aMQ1RN/6AI5B5d9dBxJOU+BvOAk7ZQ1xphsX8Lrog==}
@@ -19993,6 +20291,14 @@ snapshots:
       - react-native-worklets-core
       - sf-symbols-typescript
       - zeego
+
+  '@hanzo/iam@file:../../hanzo/iam-sdk(react@19.2.5)':
+    dependencies:
+      jose: 6.2.3
+      libphonenumber-js: 1.13.7
+      passport-oauth2: 1.8.0
+    optionalDependencies:
+      react: 19.2.5
 
   '@hanzogui/accordion@3.0.2(45f06717636f94e91b4f67f28d45f016)':
     dependencies:
@@ -34313,6 +34619,8 @@ snapshots:
       - turbo
       - typescript
 
+  '@luxwallet/chains@file:../../luxwallet/sdk/packages/chains': {}
+
   '@metamask/eth-json-rpc-provider@1.0.1':
     dependencies:
       '@metamask/json-rpc-engine': 7.3.3
@@ -35293,7 +35601,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/metro-config@0.79.5(@babel/core@7.26.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)':
+  '@react-native/metro-config@0.79.5(@babel/core@7.26.0)':
     dependencies:
       '@react-native/js-polyfills': 0.79.5
       '@react-native/metro-babel-transformer': 0.79.5(@babel/core@7.26.0)
@@ -35301,9 +35609,7 @@ snapshots:
       metro-runtime: 0.82.5
     transitivePeerDependencies:
       - '@babel/core'
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   '@react-native/normalize-color@2.1.0': {}
 
@@ -40135,6 +40441,8 @@ snapshots:
 
   base64-sol@1.0.1: {}
 
+  base64url@3.0.1: {}
+
   baseline-browser-mapping@2.10.18: {}
 
   batch@0.6.1: {}
@@ -44437,6 +44745,8 @@ snapshots:
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
 
+  jose@6.2.3: {}
+
   jotai@1.3.7(@babel/core@7.26.0)(@babel/template@7.28.6)(@urql/core@5.2.0(graphql@16.6.0))(immer@9.0.21)(react@19.2.5)(valtio@1.13.2(@types/react@19.0.10)(react@19.2.5))(wonka@6.3.6):
     dependencies:
       react: 19.2.5
@@ -44600,6 +44910,8 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  libphonenumber-js@1.13.7: {}
 
   lie@3.3.0:
     dependencies:
@@ -45588,6 +45900,8 @@ snapshots:
       pathe: 2.0.3
       tinyexec: 1.1.1
 
+  oauth@0.10.2: {}
+
   ob1@0.82.5:
     dependencies:
       flow-enums-runtime: 0.0.6
@@ -45968,6 +46282,16 @@ snapshots:
   partysocket@1.1.10:
     dependencies:
       event-target-polyfill: 0.0.4
+
+  passport-oauth2@1.8.0:
+    dependencies:
+      base64url: 3.0.1
+      oauth: 0.10.2
+      passport-strategy: 1.0.0
+      uid2: 0.0.4
+      utils-merge: 1.0.1
+
+  passport-strategy@1.0.0: {}
 
   path-browserify@1.0.1: {}
 
@@ -48928,6 +49252,8 @@ snapshots:
   ufo@1.6.3: {}
 
   uhyphen@0.2.0: {}
+
+  uid2@0.0.4: {}
 
   uint8arrays@3.1.0:
     dependencies:
