@@ -407,7 +407,7 @@ importers:
         version: 0.3.2(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
       '@react-native/metro-config':
         specifier: 0.79.5
-        version: 0.79.5(@babel/core@7.26.0)
+        version: 0.79.5(@babel/core@7.26.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
       '@react-navigation/bottom-tabs':
         specifier: 6.6.1
         version: 6.6.1(@hanzogui/react-native@0.79.5-fork.1)(@react-navigation/native@7.1.9(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react-native-safe-area-context@5.4.0(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react-native-screens@4.11.1(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(react@19.2.5)
@@ -836,8 +836,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(a78562c9190c433e310670a5376437de)
       '@hanzo/iam':
-        specifier: file:../../../../hanzo/iam-sdk
-        version: file:../../hanzo/iam-sdk(react@19.2.5)
+        specifier: ^0.12.3
+        version: 0.12.3(react@19.2.5)
       '@luxfi/wallet-analytics':
         specifier: workspace:^
         version: link:../../pkgs/analytics
@@ -845,8 +845,8 @@ importers:
         specifier: workspace:^
         version: link:../../pkgs/brand
       '@luxwallet/chains':
-        specifier: file:../../../../luxwallet/sdk/packages/chains
-        version: file:../../luxwallet/sdk/packages/chains
+        specifier: ^0.1.0
+        version: 0.1.0
       '@noble/curves':
         specifier: ^1.6.0
         version: 1.9.7
@@ -1103,7 +1103,7 @@ importers:
         version: 1.5.0(redux-saga@1.2.2)
       viem:
         specifier: 2.30.5
-        version: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+        version: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
       zod:
         specifier: npm:@hanzogui/zod@4.3.6-fork.1
         version: '@hanzogui/zod@4.3.6-fork.1'
@@ -3160,8 +3160,8 @@ packages:
       react: '>=19'
       react-native: '*'
 
-  '@hanzo/iam@file:../../hanzo/iam-sdk':
-    resolution: {directory: ../../hanzo/iam-sdk, type: directory}
+  '@hanzo/iam@0.12.3':
+    resolution: {integrity: sha512-AeeWA6cDDSXgW648UCusqeXetokH8nIMJqyIe7GfZ0P6SZJzxNnMBDWdOdtDgHC0YkFqeJNG09+NZZN0snWLkA==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=17'
@@ -5830,8 +5830,8 @@ packages:
     peerDependencies:
       eslint: 8.57.1
 
-  '@luxwallet/chains@file:../../luxwallet/sdk/packages/chains':
-    resolution: {directory: ../../luxwallet/sdk/packages/chains, type: directory}
+  '@luxwallet/chains@0.1.0':
+    resolution: {integrity: sha512-DoWF6j7f+PuKfWPbHVsnUve8ZECoBNtzpDOLlYu1bVt7w3UA0KpgIJe2MbHJaopQ09H1v1Vu9g3vBJ9cC/UGFg==}
 
   '@metamask/eth-json-rpc-provider@1.0.1':
     resolution: {integrity: sha512-whiUMPlAOrVGmX8aKYVPvlKyG4CpQXiNNyt74vE1xb5sPvmx5oA7B/kOi/JdBvhGQq97U1/AVdXEdk2zkP8qyA==}
@@ -20292,7 +20292,7 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
-  '@hanzo/iam@file:../../hanzo/iam-sdk(react@19.2.5)':
+  '@hanzo/iam@0.12.3(react@19.2.5)':
     dependencies:
       jose: 6.2.3
       libphonenumber-js: 1.13.7
@@ -33601,7 +33601,7 @@ snapshots:
       tiny-invariant: 1.3.1
       typed-redux-saga: 1.5.0(redux-saga@1.2.2)
       uuid: 9.0.0
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
       wagmi: 2.15.5(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(@tanstack/react-query@5.90.20(react@19.2.5))(@types/react@19.0.10)(bufferutil@4.1.0)(immer@9.0.21)(react@19.2.5)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))
       zod: '@hanzogui/zod@4.3.6-fork.1'
       zustand: 5.0.6(@types/react@19.0.10)(immer@9.0.21)(react@19.2.5)(use-sync-external-store@1.6.0(react@19.2.5))
@@ -33767,7 +33767,7 @@ snapshots:
       tiny-invariant: 1.3.1
       typed-redux-saga: 1.5.0(redux-saga@1.2.2)
       uuid: 9.0.0
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
       wagmi: 2.15.5(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(@tanstack/react-query@5.90.20(react@19.2.5))(@types/react@19.0.10)(bufferutil@4.1.0)(immer@9.0.21)(react@19.2.5)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))
       zod: '@hanzogui/zod@4.3.6-fork.1'
       zustand: 5.0.6(@types/react@19.0.10)(immer@9.0.21)(react@19.2.5)(use-sync-external-store@1.6.0(react@19.2.5))
@@ -34206,9 +34206,9 @@ snapshots:
       '@hanzogui/web': 4.4.0(45f06717636f94e91b4f67f28d45f016)
       '@l.x/utils': 1.1.3(@babel/core@7.26.0)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(expo@53.0.22(@babel/core@7.26.0)(bufferutil@4.1.0)(graphql@16.6.0)(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.26.0)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.2.5)(utf-8-validate@5.0.10))(react@19.2.5))(react-native@0.79.5(@babel/core@7.26.0)(@react-native-community/cli@18.0.1(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.2.5)(utf-8-validate@5.0.10))(react@19.2.5)(utf-8-validate@5.0.10))(graphql-ws@5.12.1(graphql@16.6.0))(react-dom@19.2.5(react@19.2.5))(utf-8-validate@5.0.10)
       '@react-native-masked-view/masked-view': 0.3.2(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
-      '@shopify/flash-list': 1.7.6(@babel/runtime@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
+      '@shopify/flash-list': 1.7.6(@babel/runtime@7.28.2)(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
       '@shopify/react-native-skia': 2.2.20(@hanzogui/react-native-reanimated@3.19.3-fork.1(@babel/core@7.26.0)(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5))(@hanzogui/react-native@0.79.5-fork.1)(react@19.2.5)
-      '@storybook/react': 8.5.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@8.6.18(bufferutil@4.1.0)(prettier@2.8.8)(utf-8-validate@5.0.10))(typescript@5.9.3)
+      '@storybook/react': 8.5.2(@storybook/test@8.5.2(storybook@8.6.18(bufferutil@4.1.0)(prettier@3.8.2)(utf-8-validate@5.0.10)))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@8.6.18(bufferutil@4.1.0)(prettier@3.8.2)(utf-8-validate@5.0.10))(typescript@5.9.3)
       '@tanstack/react-query': 5.90.20(react@19.2.5)
       '@testing-library/react': 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.6(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       ethers: 5.7.2(bufferutil@4.1.0)(utf-8-validate@5.0.10)
@@ -34619,7 +34619,7 @@ snapshots:
       - turbo
       - typescript
 
-  '@luxwallet/chains@file:../../luxwallet/sdk/packages/chains': {}
+  '@luxwallet/chains@0.1.0': {}
 
   '@metamask/eth-json-rpc-provider@1.0.1':
     dependencies:
@@ -35601,7 +35601,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/metro-config@0.79.5(@babel/core@7.26.0)':
+  '@react-native/metro-config@0.79.5(@babel/core@7.26.0)(bufferutil@4.1.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@react-native/js-polyfills': 0.79.5
       '@react-native/metro-babel-transformer': 0.79.5(@babel/core@7.26.0)
@@ -35609,7 +35609,9 @@ snapshots:
       metro-runtime: 0.82.5
     transitivePeerDependencies:
       - '@babel/core'
+      - bufferutil
       - supports-color
+      - utf-8-validate
 
   '@react-native/normalize-color@2.1.0': {}
 
@@ -35776,7 +35778,7 @@ snapshots:
     dependencies:
       big.js: 6.2.2
       dayjs: 1.11.13
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -35800,7 +35802,7 @@ snapshots:
       '@reown/appkit-wallet': 1.7.8(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@walletconnect/universal-provider': 2.21.0(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
       valtio: 1.13.2(@types/react@19.0.10)(react@19.2.5)
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -36093,7 +36095,7 @@ snapshots:
       '@walletconnect/logger': 2.1.2
       '@walletconnect/universal-provider': 2.21.0(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
       valtio: 1.13.2(@types/react@19.0.10)(react@19.2.5)
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -36185,7 +36187,7 @@ snapshots:
       '@walletconnect/universal-provider': 2.21.0(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
       bs58: 6.0.0
       valtio: 1.13.2(@types/react@19.0.10)(react@19.2.5)
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -36460,7 +36462,7 @@ snapshots:
   '@safe-global/safe-apps-sdk@9.1.0(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.23.1
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -38208,7 +38210,7 @@ snapshots:
       '@wagmi/core': 2.17.2(@types/react@19.0.10)(immer@9.0.21)(react@19.2.5)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.5))(viem@2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))
       '@walletconnect/ethereum-provider': 2.21.1(@hanzogui/zod@4.3.6-fork.1)(@react-native-async-storage/async-storage@2.1.2(@hanzogui/react-native@0.79.5-fork.1))(@types/react@19.0.10)(bufferutil@4.1.0)(react@19.2.5)(typescript@5.9.3)(utf-8-validate@5.0.10)
       cbw-sdk: '@coinbase/wallet-sdk@3.9.3'
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     optionalDependencies:
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -38298,7 +38300,7 @@ snapshots:
     dependencies:
       eventemitter3: 5.0.1
       mipd: 0.0.7(typescript@5.9.3)
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
       zustand: 5.0.0(@types/react@19.0.10)(immer@9.0.21)(react@19.2.5)(use-sync-external-store@1.4.0(react@19.2.5))
     optionalDependencies:
       typescript: 5.9.3
@@ -46116,21 +46118,6 @@ snapshots:
     transitivePeerDependencies:
       - zod
 
-  ox@0.7.1(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3):
-    dependencies:
-      '@adraffy/ens-normalize': 1.11.1
-      '@noble/ciphers': 1.3.0
-      '@noble/curves': 1.9.7
-      '@noble/hashes': 1.8.0
-      '@scure/bip32': 1.7.0
-      '@scure/bip39': 1.6.0
-      abitype: 1.2.3(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3)
-      eventemitter3: 5.0.1
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - zod
-
   ox@0.7.1(typescript@5.9.3)(zod@3.22.4):
     dependencies:
       '@adraffy/ens-normalize': 1.11.1
@@ -46140,6 +46127,21 @@ snapshots:
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
       abitype: 1.2.3(typescript@5.9.3)(zod@3.22.4)
+      eventemitter3: 5.0.1
+    optionalDependencies:
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - zod
+
+  ox@0.7.1(typescript@5.9.3)(zod@4.3.6):
+    dependencies:
+      '@adraffy/ens-normalize': 1.11.1
+      '@noble/ciphers': 1.3.0
+      '@noble/curves': 1.9.7
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.2.3(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.9.3
@@ -49509,23 +49511,6 @@ snapshots:
       - utf-8-validate
       - zod
 
-  viem@2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10):
-    dependencies:
-      '@noble/curves': 1.9.1
-      '@noble/hashes': 1.8.0
-      '@scure/bip32': 1.7.0
-      '@scure/bip39': 1.6.0
-      abitype: 1.0.8(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3)
-      isows: 1.0.7(ws@8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10))
-      ox: 0.7.1(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3)
-      ws: 8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10)
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-
   viem@2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.22.4):
     dependencies:
       '@noble/curves': 1.9.1
@@ -49535,6 +49520,23 @@ snapshots:
       abitype: 1.0.8(typescript@5.9.3)(zod@3.22.4)
       isows: 1.0.7(ws@8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10))
       ox: 0.7.1(typescript@5.9.3)(zod@3.22.4)
+      ws: 8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10)
+    optionalDependencies:
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
+
+  viem@2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6):
+    dependencies:
+      '@noble/curves': 1.9.1
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.0.8(@hanzogui/zod@4.3.6-fork.1)(typescript@5.9.3)
+      isows: 1.0.7(ws@8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10))
+      ox: 0.7.1(typescript@5.9.3)(zod@4.3.6)
       ws: 8.18.2(bufferutil@4.1.0)(utf-8-validate@5.0.10)
     optionalDependencies:
       typescript: 5.9.3
@@ -49659,7 +49661,7 @@ snapshots:
       '@wagmi/core': 2.17.2(@types/react@19.0.10)(immer@9.0.21)(react@19.2.5)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.5))(viem@2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10))
       react: 19.2.5
       use-sync-external-store: 1.4.0(react@19.2.5)
-      viem: 2.30.5(@hanzogui/zod@4.3.6-fork.1)(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)
+      viem: 2.30.5(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     optionalDependencies:
       typescript: 5.9.3
     transitivePeerDependencies:
