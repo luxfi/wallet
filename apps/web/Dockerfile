@@ -38,6 +38,13 @@ COPY pkgs/analytics/ pkgs/analytics/
 COPY pkgs/wallet/ pkgs/wallet/
 COPY apps/web/ apps/web/
 
+# Root tsconfig.base.json — the workspace packages (pkgs/*) each `extends` it.
+# Vite 8's rolldown/oxc TS transform resolves the extends chain at build time and
+# hard-fails ("Tsconfig not found /app/tsconfig.base.json") if the base is absent,
+# so it MUST be present in the build context. (Local `vite build` masks this: it
+# runs against the full repo tree where the base already exists.)
+COPY tsconfig.base.json ./
+
 # Vite build → apps/web/dist (copyBrandJson plugin writes dist/brand.json from
 # pkgs/brand/brand.json; the ConfigMap overlay replaces it at deploy time).
 RUN pnpm --filter "@luxfi/wallet-web" build
