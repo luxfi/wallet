@@ -124,20 +124,65 @@ export const Button: React.FC<any> = ({ children, onPress, onClick, ...props }) 
   )
 }
 
-export const Input: React.FC<any> = ({ ...props }) => {
+/**
+ * Text input. The auth screens speak the Tamagui / React-Native input contract
+ * (`onChangeText`, `secureTextEntry`, `multiline`, `onSubmitEditing`) — the same
+ * contract @luxfi/ui's bridged Input honors. Translate it to native web events
+ * here: without the `onChangeText -> onChange` bridge, a `value` + `onChangeText`
+ * field is controlled with no working handler, so it renders but silently drops
+ * every keystroke (dead seed-phrase / PIN entry).
+ */
+export const Input: React.FC<any> = ({
+  onChangeText,
+  onChange,
+  onSubmitEditing,
+  secureTextEntry,
+  multiline,
+  numberOfLines,
+  type,
+  ...props
+}) => {
   const { style, rest } = pickStyle(props)
+  const handleChange = (e: any) => {
+    onChange?.(e)
+    onChangeText?.(e.target.value)
+  }
+  const boxStyle: CSSish = {
+    background: "var(--surface3, #ebebeb)",
+    color: "var(--neutral1, #000)",
+    padding: "8px 12px",
+    borderRadius: "6px",
+    border: "1px solid var(--surface3, #ebebeb)",
+    fontSize: "14px",
+    fontFamily: "inherit",
+    ...style,
+  }
+  if (multiline) {
+    return (
+      <textarea
+        {...rest}
+        rows={numberOfLines ?? 4}
+        onChange={handleChange}
+        style={{ ...boxStyle, resize: "vertical" }}
+      />
+    )
+  }
   return (
     <input
       {...rest}
-      style={{
-        background: "var(--surface3, #ebebeb)",
-        color: "var(--neutral1, #000)",
-        padding: "8px 12px",
-        borderRadius: "6px",
-        border: "1px solid var(--surface3, #ebebeb)",
-        fontSize: "14px",
-        ...style,
-      }}
+      type={secureTextEntry ? "password" : type ?? "text"}
+      onChange={handleChange}
+      onKeyDown={
+        onSubmitEditing
+          ? (e: any) => {
+              if (e.key === "Enter") {
+                e.preventDefault()
+                onSubmitEditing(e)
+              }
+            }
+          : undefined
+      }
+      style={boxStyle}
     />
   )
 }
