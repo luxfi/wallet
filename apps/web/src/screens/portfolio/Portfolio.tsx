@@ -18,7 +18,7 @@
  * placeholders rather than crashing the screen.
  */
 import { lazy, Suspense, useMemo } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { mnemonicToAccount, type Address } from "viem/accounts"
 import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
@@ -65,6 +65,35 @@ function useDerivedAddress(): Address | undefined {
 /** Active chain id. Foundation will replace with a `useAppStore` selector. */
 function useActiveChainId(): number {
   return 96369
+}
+
+/**
+ * Dashboard quick actions. Each is a react-router <Link> (SPA soft-nav) — NOT
+ * an <a href>. The unlock state + plaintext mnemonic live ONLY in memory (the
+ * auth store never persists them), so a full document reload wipes them and
+ * bounces the user back to onboarding. Soft-nav keeps the session alive.
+ */
+const QUICK_ACTIONS: ReadonlyArray<{ to: string; label: string; icon: string }> = [
+  { to: "/send", label: "Send", icon: "↑" },
+  { to: "/bridge", label: "Cross-Chain", icon: "⇄" },
+  { to: "/stake", label: "Earn", icon: "%" },
+  { to: "/settings/security", label: "Manage Keys", icon: "⚿" },
+]
+
+const quickActionStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 6,
+  minWidth: 0,
+  padding: "14px 6px",
+  borderRadius: 12,
+  border: "1px solid var(--surface3, #222)",
+  background: "var(--surface2, #111)",
+  color: "var(--neutral1, #fff)",
+  textDecoration: "none",
+  textAlign: "center",
 }
 
 export default function Portfolio() {
@@ -118,6 +147,20 @@ export default function Portfolio() {
           ) : null}
         </YStack>
       </Card>
+
+      <nav
+        aria-label="Quick actions"
+        style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}
+      >
+        {QUICK_ACTIONS.map((a) => (
+          <Link key={a.to} to={a.to} style={quickActionStyle}>
+            <span aria-hidden="true" style={{ fontSize: 20, lineHeight: 1 }}>
+              {a.icon}
+            </span>
+            <span style={{ fontSize: 12, fontWeight: 600 }}>{a.label}</span>
+          </Link>
+        ))}
+      </nav>
 
       <Suspense fallback={null}>
         <ChainSwitcher />

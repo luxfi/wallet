@@ -10,7 +10,7 @@
  * GPL-3.0-or-later — inherited from the wallet monorepo.
  */
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useBrand } from "../../hooks/useBrand"
 import { useSession } from "../../store/session"
 
@@ -43,9 +43,9 @@ export default function Callback(): React.JSX.Element {
         <>
           <h1 style={title}>Sign-in failed</h1>
           <p style={msg}>{error}</p>
-          <a href="/" style={link}>
+          <Link to="/" replace style={link}>
             Back to {brand.walletName || "wallet"}
-          </a>
+          </Link>
         </>
       ) : (
         <>
