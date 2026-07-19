@@ -27,7 +27,7 @@
     "faviconUrl": "/brands/lux.svg",
     "primaryColor": "#FFFFFF",
     "defaultChainId": 96369,
-    "supportedChainIds": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114],
+    "supportedChainIds": [96369, 96368, 1, 42161, 8453, 137, 43114],
     "walletConnectProjectId": "",
     "insightsHost": "",
     "insightsApiKey": "",
@@ -46,7 +46,7 @@
   },
   "chains": {
     "defaultChainId": 96369,
-    "supported": [96369, 96368, 200200, 36963, 36911, 494949, 1, 42161, 8453, 137, 43114]
+    "supported": [96369, 96368, 1, 42161, 8453, 137, 43114]
   },
   "rpc": {
     "96369": "https://api.lux.network/mainnet/ext/bc/C/rpc",

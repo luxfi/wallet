@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Hanzo">
-  <rect width="64" height="64" rx="14" fill="currentColor" />
-  <path d="M20 18 L20 46 M44 18 L44 46 M20 32 L44 32" stroke="#000" stroke-width="6" stroke-linecap="round" />
+  <rect width="64" height="64" rx="14" fill="#111111" />
+  <g transform="translate(12 12) scale(0.6)">
+    <path d="M22.21 67V44.6369H0V67H22.21Z" fill="#FFFFFF" />
+    <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="#FFFFFF" />
+    <path d="M22.21 0H0V22.3184H22.21V0Z" fill="#FFFFFF" />
+    <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="#FFFFFF" />
+    <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="#FFFFFF" />
+  </g>
 </svg>

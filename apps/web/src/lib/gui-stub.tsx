@@ -20,7 +20,17 @@ type CSSish = React.CSSProperties & { [k: string]: any }
 function tokenize(v: any): string | undefined {
   if (v === undefined || v === null) return undefined
   if (typeof v === "number") return `${v}px`
-  if (typeof v === "string" && v.startsWith("$")) return `var(--${v.slice(1)})`
+  if (typeof v === "string" && v.startsWith("$")) {
+    const t = v.slice(1)
+    // Numeric Tamagui space/size token ($3, $6, $10, $0.5) → px on a 4px
+    // scale. These are NOT CSS vars (loadBrandConfig only sets named color
+    // vars like --accent1), so mapping them to `var(--3)` silently dropped
+    // every gap/padding/fontSize — the source of the "button blob" (no gap)
+    // and top-anchored card. Resolve them to real pixels instead.
+    if (/^-?\d*\.?\d+$/.test(t)) return `${parseFloat(t) * 4}px`
+    // Named theme token ($neutral2, $accent1) → CSS var set by loadBrandConfig.
+    return `var(--${t})`
+  }
   return String(v)
 }
 
