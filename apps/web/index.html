@@ -9,6 +9,24 @@
     <link rel="apple-touch-icon" href="/logo.svg" />
     <title>Lux Wallet</title>
     <meta name="description" content="Self-custodial wallet for the Lux Network" />
+    <style>
+      /* Base reset — the SPA styles every element inline, so this is the
+         one place a document-level reset lives. Kills the UA <body> 8px
+         margin (which pushed the layout 8px wide) and makes padded,
+         width:100% boxes (the CTA card + buttons) stay inside their parent
+         on narrow screens. No overflow-x:hidden here — it would break the
+         sticky header's position:sticky. */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

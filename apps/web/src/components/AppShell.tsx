@@ -53,7 +53,9 @@ export function AppShell(): React.JSX.Element {
       style={{
         minHeight: "100vh",
         display: "grid",
-        gridTemplateRows: "56px 1fr",
+        // minmax so the header row grows when it wraps on narrow screens
+        // instead of clipping the wrapped second line.
+        gridTemplateRows: "minmax(56px, auto) 1fr",
         background: "var(--surface1, #000)",
         color: "var(--neutral1, #fff)",
       }}
@@ -63,7 +65,12 @@ export function AppShell(): React.JSX.Element {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 16px",
+          // Wrap on narrow screens: the brand group keeps row 1, the
+          // chain+account group drops to row 2 instead of forcing the
+          // whole document wider than the viewport (mobile overflow fix).
+          flexWrap: "wrap",
+          gap: "8px 12px",
+          padding: "8px 16px",
           borderBottom: "1px solid var(--surface3, #222)",
           background: "var(--surface1, #000)",
           position: "sticky",
@@ -71,7 +78,7 @@ export function AppShell(): React.JSX.Element {
           zIndex: 10,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
           <button
             type="button"
             aria-label="Toggle navigation"
@@ -92,7 +99,16 @@ export function AppShell(): React.JSX.Element {
           ) : null}
           <strong style={{ fontSize: 16 }}>{brand.walletName || "Lux Wallet"}</strong>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            minWidth: 0,
+            flexWrap: "wrap",
+            justifyContent: "flex-end",
+          }}
+        >
           <ChainSwitcher />
           <span
             style={{
