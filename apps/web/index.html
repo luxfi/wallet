@@ -26,6 +26,25 @@
         margin: 0;
         padding: 0;
       }
+      /* Global type. The SPA ships no font files and never sets a family, so
+         without this every element falls back to the UA serif (Times) and the
+         app reads as unstyled. A system sans-serif stack renders crisp on every
+         platform with zero bundled assets. Form controls (button/select/input)
+         don't inherit font by default — force them to. */
+      html,
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+      }
     </style>
   </head>
   <body>
