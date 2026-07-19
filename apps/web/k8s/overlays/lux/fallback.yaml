@@ -49,7 +49,7 @@ spec:
         - name: ghcr-luxfi
       containers:
         - name: web
-          image: ghcr.io/luxfi/wallet-web:28974b175
+          image: ghcr.io/luxfi/wallet-web:032e091d9
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

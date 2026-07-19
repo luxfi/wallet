@@ -42,7 +42,7 @@ patches:
     patch: |
       - op: replace
         path: /spec/image/tag
-        value: "28974b175"
+        value: "032e091d9"
       - op: add
         path: /spec/ingress/hosts
         value:
