@@ -27,7 +27,7 @@
     "faviconUrl": "/brands/hanzo.svg",
     "primaryColor": "#FFFFFF",
     "defaultChainId": 36963,
-    "supportedChainIds": [36963, 36911, 96369, 200200, 1, 42161, 8453, 137],
+    "supportedChainIds": [36963, 36911, 1, 42161, 8453, 137],
     "walletConnectProjectId": "",
     "insightsHost": "",
     "insightsApiKey": "",
@@ -46,7 +46,7 @@
   },
   "chains": {
     "defaultChainId": 36963,
-    "supported": [36963, 36911, 96369, 200200, 1, 42161, 8453, 137]
+    "supported": [36963, 36911, 1, 42161, 8453, 137]
   },
   "rpc": {
     "36963": "https://api.hanzo.ai/mainnet/ext/bc/C/rpc",

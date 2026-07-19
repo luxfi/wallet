@@ -27,7 +27,7 @@
     "faviconUrl": "/brands/zoo.svg",
     "primaryColor": "#FFFFFF",
     "defaultChainId": 200200,
-    "supportedChainIds": [200200, 200201, 96369, 36963, 1, 42161, 8453, 137],
+    "supportedChainIds": [200200, 200201, 1, 42161, 8453, 137],
     "walletConnectProjectId": "",
     "insightsHost": "",
     "insightsApiKey": "",
@@ -46,7 +46,7 @@
   },
   "chains": {
     "defaultChainId": 200200,
-    "supported": [200200, 200201, 96369, 36963, 1, 42161, 8453, 137]
+    "supported": [200200, 200201, 1, 42161, 8453, 137]
   },
   "rpc": {
     "200200": "https://api.zoo.network/rpc",
