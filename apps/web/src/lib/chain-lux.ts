@@ -1,8 +1,8 @@
 /**
  * Lux P/X-Chain native send.
  *
- * Lux P/X are not EVM chains; they speak Avalanche-style PVM/AVM TXs
- * over the platform JSON-RPC. We use the `@l.x/api` thin client owned by
+ * Lux P/X are not EVM chains; they speak native PVM/XVM TXs over the
+ * platform JSON-RPC. We use the `@l.x/api` thin client owned by
  * the Lux SDK team. The build will fail until that dependency lands in
  * apps/web/package.json — which is the correct outcome (no fakes).
  *
