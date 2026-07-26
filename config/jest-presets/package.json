@@ -1,0 +1,7 @@
+{
+  "name": "config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jest presets + shared test mocks for the Lux Wallet monorepo (jest-expo base).",
+  "main": "jest/jest-preset.js"
+}

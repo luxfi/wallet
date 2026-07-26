@@ -77,10 +77,10 @@ jest.mock('@l.x/utils/src/device/locales', () => {
   return jest.requireActual('@l.x/utils/src/device/locales.native.ts')
 })
 
-// Mock getConfig to use native implementation
+// Force getConfig to the native implementation while preserving the rest of
+// the config surface (brand, getGatewayUrl, getWsUrl, …) that @l.x/api needs.
 jest.mock('@luxexchange/config', () => {
+  const actual = jest.requireActual('@luxexchange/config')
   const { getConfig } = jest.requireActual('@luxexchange/config/src/getConfig.native')
-  return {
-    getConfig
-  }
+  return { ...actual, getConfig }
 })
