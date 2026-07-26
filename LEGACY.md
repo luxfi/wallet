@@ -5,7 +5,7 @@ are superseded by this canonical monorepo (`luxfi/wallet`). They should be
 archived (move to `archive/luxfi/wallet-*` GitHub orgs or set archived=true).
 
 The canonical product is `@luxfi/wallet` (this repo, `pkgs/wallet`) consumed
-by `apps/{web,mobile,extension}`. White-label users (Liquidity, Zoo, Pars)
+by `apps/{web,mobile,extension}`. White-label users (a regulated securities L1, Zoo, Pars)
 pin a stable `UPSTREAM_REF` against `luxfi/wallet@<sha>` instead of forking.
 
 ## Status of each sibling repo
@@ -76,7 +76,7 @@ luxfi/wallet (this repo)
 White-label deployments pin `UPSTREAM_REF` to a `luxfi/wallet@<sha>`:
 
 ```dockerfile
-# In ~/work/liquidity/wallet/Dockerfile (in-flight elsewhere)
+# In ~/work/securities-l1/wallet/Dockerfile (in-flight elsewhere)
 ARG UPSTREAM_REF=<sha-from-this-repo>
 RUN git clone --depth 1 https://github.com/luxfi/wallet.git \
  && cd wallet \
@@ -84,7 +84,7 @@ RUN git clone --depth 1 https://github.com/luxfi/wallet.git \
  && git checkout "$UPSTREAM_REF"
 ```
 
-The same pattern as `~/work/liquidity/swap` shimming `luxfi/exchange`.
+The same pattern as `~/work/securities-l1/swap` shimming `luxfi/exchange`.
 
 ## Archival action items (NOT performed by this Blue)
 
