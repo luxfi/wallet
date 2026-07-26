@@ -25,11 +25,22 @@ module.exports = {
     // avoid native because wallet tests assume no .native.ts
     platforms: ['web', 'ios', 'android'],
   },
-  // Override moduleFileExtensions to NOT prioritize .web.ts for native tests
-  // This ensures wallet tests use moti animations from index.ts, not CSS from index.web.ts
+  // Native-first resolution: `.ios`/`.native` platform splits win over the base
+  // file, but `.web` is never consulted (wallet tests run against the native
+  // bundle — e.g. moti animations, not the CSS web variants). This is required
+  // so platform-split stubs like `@l.x/utils/src/environment/env.ts` resolve to
+  // their real `env.native.ts` implementation instead of throwing.
   moduleFileExtensions: [
+    'ios.ts',
+    'ios.tsx',
+    'native.ts',
+    'native.tsx',
     'ts',
     'tsx',
+    'ios.js',
+    'ios.jsx',
+    'native.js',
+    'native.jsx',
     'js',
     'jsx',
     'json',
