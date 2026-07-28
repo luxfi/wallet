@@ -18,7 +18,9 @@
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": ["src", "vite-env.d.ts", "vite.config.ts"],
