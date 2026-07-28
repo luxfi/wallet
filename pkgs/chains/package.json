@@ -1,6 +1,6 @@
 {
   "name": "@luxfi/wallet-chains",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "viem chain definitions for Lux Network and ecosystem L1s (Lux, Zoo, Hanzo, Pars, Sparkle Pony)",
   "license": "GPL-3.0-or-later",
   "private": false,

@@ -1,6 +1,6 @@
 {
   "name": "@luxfi/wallet-brand",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "license": "GPL-3.0-or-later",
   "main": "src/index.ts",

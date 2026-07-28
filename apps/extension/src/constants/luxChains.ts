@@ -37,7 +37,7 @@ export const LUX_MAINNET: ChainConfig = {
     symbol: 'LUX',
     decimals: 18,
   },
-  rpcUrls: ['https://api.lux.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.lux.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.lux.network'],
   iconUrl: 'https://lux.network/logo.svg',
   vmType: 'evm',
@@ -45,7 +45,7 @@ export const LUX_MAINNET: ChainConfig = {
 
 export const ZOO_MAINNET: ChainConfig = {
   chainId: 200200,
-  chainIdHex: '0x30da8',
+  chainIdHex: '0x30e08',
   name: 'Zoo Mainnet',
   shortName: 'ZOO',
   network: 'mainnet',
@@ -54,7 +54,7 @@ export const ZOO_MAINNET: ChainConfig = {
     symbol: 'ZOO',
     decimals: 18,
   },
-  rpcUrls: ['https://api.zoo.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.zoo.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.zoo.network'],
   iconUrl: 'https://zoo.network/logo.svg',
   vmType: 'evm',
@@ -71,7 +71,7 @@ export const SPC_MAINNET: ChainConfig = {
     symbol: 'SPC',
     decimals: 18,
   },
-  rpcUrls: ['https://api.spc.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.spc.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.spc.network'],
   vmType: 'evm',
 }
@@ -87,7 +87,7 @@ export const HANZO_MAINNET: ChainConfig = {
     symbol: 'HANZO',
     decimals: 18,
   },
-  rpcUrls: ['https://api.hanzo.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.hanzo.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.hanzo.network'],
   vmType: 'evm',
 }
@@ -107,7 +107,7 @@ export const LUX_TESTNET: ChainConfig = {
     symbol: 'LUX',
     decimals: 18,
   },
-  rpcUrls: ['https://api.lux-test.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.lux-test.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.lux-test.network'],
   iconUrl: 'https://lux.network/logo.svg',
   vmType: 'evm',
@@ -115,7 +115,7 @@ export const LUX_TESTNET: ChainConfig = {
 
 export const ZOO_TESTNET: ChainConfig = {
   chainId: 200201,
-  chainIdHex: '0x30da9',
+  chainIdHex: '0x30e09',
   name: 'Zoo Testnet',
   shortName: 'ZOO-TEST',
   network: 'testnet',
@@ -124,7 +124,7 @@ export const ZOO_TESTNET: ChainConfig = {
     symbol: 'ZOO',
     decimals: 18,
   },
-  rpcUrls: ['https://api.zoo-test.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.zoo-test.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.zoo-test.network'],
   iconUrl: 'https://zoo.network/logo.svg',
   vmType: 'evm',
@@ -141,7 +141,7 @@ export const SPC_TESTNET: ChainConfig = {
     symbol: 'SPC',
     decimals: 18,
   },
-  rpcUrls: ['https://api.spc-test.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.spc-test.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.spc-test.network'],
   vmType: 'evm',
 }
@@ -157,7 +157,7 @@ export const HANZO_TESTNET: ChainConfig = {
     symbol: 'HANZO',
     decimals: 18,
   },
-  rpcUrls: ['https://api.hanzo-test.network/ext/bc/C/rpc'],
+  rpcUrls: ['https://api.hanzo-test.network/v1/bc/C/rpc'],
   blockExplorerUrls: ['https://explore.hanzo-test.network'],
   vmType: 'evm',
 }
