@@ -26,10 +26,12 @@ module.exports = {
     '^lux/(.*)$': '@l.x/lx/$1',
     '^lx/(.*)$': '@l.x/lx/$1',
     '^ui/(.*)$': '@l.x/ui/$1',
-    // The wallet package is @luxfi/wallet == this rootDir (no self-symlink
-    // under pnpm), so route its own name and the short `wallet/` alias to src.
-    '^@luxfi/wallet/(.*)$': '<rootDir>/$1',
-    '^wallet/(.*)$': '<rootDir>/$1',
+    // The wallet package lives at pkgs/wallet. This must be an absolute path,
+    // not <rootDir>: consumers of this preset have their own rootDir (the
+    // extension's is apps/extension), where `wallet/...` resolved to nothing
+    // and every suite died in jest-setup before a single test ran.
+    '^@luxfi/wallet/(.*)$': path.resolve(__dirname, '../../../pkgs/wallet/$1'),
+    '^wallet/(.*)$': path.resolve(__dirname, '../../../pkgs/wallet/$1'),
 
     // `@luxexchange/*` is the internal scope name the `@l.x/*` packages use to
     // reference each other; alias the whole scope to the published packages.
