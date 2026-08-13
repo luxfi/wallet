@@ -14,6 +14,7 @@
   "dependencies": {
     "@hanzo/gui": "^7.0.0",
     "@hanzo/iam": "^0.12.3",
+    "@luxfi/logo": "^1.0.9",
     "@luxfi/wallet-analytics": "workspace:^",
     "@luxfi/wallet-brand": "workspace:^",
     "@luxwallet/chains": "^0.1.0",

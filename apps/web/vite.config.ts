@@ -1,28 +1,45 @@
 import { defineConfig, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
-import { copyFileSync, existsSync, mkdirSync } from "node:fs"
+import { getWordmarkAdaptiveSVG, getWordmarkSquareSVG } from "@luxfi/logo"
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 
 /**
- * Copy the canonical `brand.json` from `@luxfi/wallet-brand` into the SPA's
- * served root so `loadBrandConfig()` can fetch it. White-label deployments
- * overlay this file via a K8s ConfigMap mount — no code change required.
+ * The files the SPA serves but nobody authors here.
+ *
+ * `brand.json` is the canonical one from `@luxfi/wallet-brand`; white-label
+ * deployments overlay it via a K8s ConfigMap mount — no code change required.
+ *
+ * The Lux marks come from `@luxfi/logo`, which is where the geometry lives.
+ * They used to be committed SVGs, and the one the header drew was a purple
+ * diamond that appears in no Lux brand. Generating them means the wallet
+ * cannot drift from the mark: a new version of the package is the only way
+ * they change. Written to `public/` for the dev server and `dist/` for the
+ * build, both from the same list.
  */
-function copyBrandJson(): Plugin {
-  const src = resolve(__dirname, "../../pkgs/brand/brand.json")
-  const writeTo = (dest: string) => {
-    if (!existsSync(src)) return
-    mkdirSync(dirname(dest), { recursive: true })
-    copyFileSync(src, dest)
+function served(): Plugin {
+  const brandJson = resolve(__dirname, "../../pkgs/brand/brand.json")
+  const files = (): Record<string, string | null> => ({
+    "brand.json": existsSync(brandJson) ? readFileSync(brandJson, "utf8") : null,
+    // Horizontal for the header, squared for the tab and the home screen.
+    "brands/lux.svg": getWordmarkAdaptiveSVG(),
+    "brands/lux-square.svg": getWordmarkSquareSVG(),
+  })
+  const writeInto = (root: string) => {
+    for (const [name, body] of Object.entries(files())) {
+      if (body == null) continue
+      const dest = resolve(__dirname, root, name)
+      mkdirSync(dirname(dest), { recursive: true })
+      writeFileSync(dest, body)
+    }
   }
   return {
-    name: "luxfi-wallet-brand-json",
+    name: "luxfi-wallet-served",
     buildStart() {
-      // Ensure dev server can serve `/brand.json`.
-      writeTo(resolve(__dirname, "public/brand.json"))
+      writeInto("public")
     },
     closeBundle() {
-      writeTo(resolve(__dirname, "dist/brand.json"))
+      writeInto("dist")
     },
   }
 }
@@ -33,7 +50,7 @@ export default defineConfig({
       // `@hanzo/gui` ships React-only on web; default automatic JSX runtime.
       jsxRuntime: "automatic",
     }),
-    copyBrandJson(),
+    served(),
   ],
   resolve: {
     alias: {
