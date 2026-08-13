@@ -1,0 +1,61 @@
+name: Wallet Web Image
+
+# Builds apps/web and pushes it to ghcr.io/luxfi/wallet-web on the forge
+# runner pool (lux-build-linux-amd64), semver tags only, no :latest.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Image tag to publish, e.g. v0.3.3'
+        required: true
+        type: string
+  push:
+    tags: ['wallet/v*']
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: lux-build-linux-amd64
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container
+          driver-opts: |
+            network=host
+
+      - name: Login to GHCR
+        # Forge-side luxfi org secrets; ghcr.io rejects the forge GITHUB_TOKEN.
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Resolve image tag
+        id: tag
+        run: |
+          RAW="${{ github.event.inputs.tag || github.ref_name }}"
+          echo "value=${RAW#wallet/}" >> "$GITHUB_OUTPUT"
+
+      - name: Build & push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/web/Dockerfile
+          # The lux-k8s nodes this serves are amd64, and only an amd64 runner
+          # exists; an arm64 leg would run under QEMU — slow and OOM-prone for
+          # a pnpm+vite build. Revisit when an arm64 runner comes online.
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/luxfi/wallet-web:${{ steps.tag.outputs.value }}
+          provenance: false
+          cache-from: type=registry,ref=ghcr.io/luxfi/wallet-web:buildcache
+          cache-to: type=registry,ref=ghcr.io/luxfi/wallet-web:buildcache,mode=max
