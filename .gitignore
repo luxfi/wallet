@@ -4,6 +4,8 @@ out
 dist
 build
 apps/web/public/brand.json
+apps/web/public/brands/lux.svg
+apps/web/public/brands/lux-square.svg
 *.tsbuildinfo
 .turbo
 .env*.local

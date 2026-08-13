@@ -95,7 +95,16 @@ export function AppShell(): React.JSX.Element {
             ☰
           </button>
           {brand.logoUrl ? (
-            <img src={brand.logoUrl} alt="" width={24} height={24} aria-hidden="true" />
+            // Sized by height only. A square box fits a square mark and
+            // letterboxes a wordmark down to a few pixels of letter; letting
+            // the width follow means one rule holds for both.
+            <img
+              src={brand.logoUrl}
+              alt=""
+              height={24}
+              aria-hidden="true"
+              style={{ display: "block", height: 24, width: "auto" }}
+            />
           ) : null}
           <strong style={{ fontSize: 16 }}>{brand.walletName || "Lux Wallet"}</strong>
         </div>
