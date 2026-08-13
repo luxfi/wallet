@@ -1,6 +1,8 @@
 # wallet-web — the App(Wallet) web SPA (apps/web), the brand-aware
-# self-custodial wallet UI. Built by platform native CI (NO GitHub Actions),
-# served by the house static SPA server `ghcr.io/hanzoai/spa` (SPA fallback:
+# self-custodial wallet UI. Built on the forge runners from a wallet/v* tag
+# (.github/workflows/wallet-web-image.yml), which is where the luxfi pools and
+# the GHCR credentials live.
+# Served by the house static SPA server `ghcr.io/hanzoai/spa` (SPA fallback:
 # index.html for every route, so client-routed paths like /download work).
 # White-label brand.json is mounted over /public/brand.json by a K8s ConfigMap
 # per deployment — no source fork. Build context is the monorepo root.
