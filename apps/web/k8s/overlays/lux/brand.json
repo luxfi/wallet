@@ -24,7 +24,7 @@
     "github": "https://github.com/luxfi",
     "discord": "https://discord.gg/lux",
     "logoUrl": "/brands/lux.svg",
-    "faviconUrl": "/brands/lux-square.svg",
+    "faviconUrl": "/favicon.svg",
     "primaryColor": "#FFFFFF",
     "defaultChainId": 96369,
     "supportedChainIds": [96369, 96368, 1, 42161, 8453, 137, 43114],
