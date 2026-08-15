@@ -7,6 +7,11 @@ import { getBrand } from "../../lib/brand"
 
 export default function Security() {
   const brand = getBrand().brand
+  // A mounted brand.json replaces the bundled one outright, so a deploy that
+  // predates this field would otherwise draw an empty mailto. Falling back to
+  // the same brand's support address reaches a real inbox and never another
+  // brand's.
+  const contact = brand.securityEmail || brand.supportEmail
 
   return (
     <main style={page}>
@@ -14,8 +19,8 @@ export default function Security() {
 
       <p style={para}>
         Email{" "}
-        <a href={`mailto:${brand.securityEmail}`} style={link}>
-          {brand.securityEmail}
+        <a href={`mailto:${contact}`} style={link}>
+          {contact}
         </a>
         . Tell us what you found and how to reproduce it. Send it to us before you tell anyone else,
         and do not open a public issue.
