@@ -93,6 +93,8 @@ export interface BrandConfig {
   downloadUrl: string
   complianceEmail: string
   supportEmail: string
+  /** Where a vulnerability report goes. A white-label overlays its own. */
+  securityEmail: string
   twitter: string
   github: string
   discord: string
@@ -166,6 +168,7 @@ export const brand: BrandConfig = {
   downloadUrl: "",
   complianceEmail: "",
   supportEmail: "",
+  securityEmail: "",
   twitter: "",
   github: "",
   discord: "",
