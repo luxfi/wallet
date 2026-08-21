@@ -27,6 +27,7 @@ const DApps = lazy(() => import("./screens/dapps"))
 const Confidential = lazy(() => import("./screens/confidential"))
 const Settings = lazy(() => import("./screens/settings"))
 const Download = lazy(() => import("./screens/download"))
+const Security = lazy(() => import("./screens/security"))
 
 function ScreenFallback(): React.JSX.Element {
   return (
@@ -56,6 +57,7 @@ const SCREEN_ROUTES: RouteObject[] = [
   { path: "confidential/*", element: <Confidential /> },
   { path: "settings/*", element: <Settings /> },
   { path: "download/*", element: <Download /> },
+  { path: "security/*", element: <Security /> },
   { path: "*", element: <Navigate to="/portfolio" replace /> },
 ]
 
