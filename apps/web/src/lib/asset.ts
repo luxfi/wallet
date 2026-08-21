@@ -135,6 +135,15 @@ export const CHAINS: Record<string, Chain> = {
 
 export const CHAIN_LIST: Chain[] = Object.values(CHAINS)
 
+/**
+ * Resolve a chain by its EIP-155 id. The portfolio store keys balances by
+ * numeric chain id (96369); Send/Swap/Bridge key assets by the string id
+ * ("lux-c"). This is the one crossing between those two id spaces.
+ */
+export function chainByEvmId(evmChainId: number): Chain | undefined {
+  return CHAIN_LIST.find((c) => c.evmChainId === evmChainId)
+}
+
 export interface Asset {
   /** Stable id, e.g. `"lux-c:native"`, `"zoo-l1:0xabc…"`. */
   id: string

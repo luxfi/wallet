@@ -1,13 +1,15 @@
 /**
  * Per-chain broadcast dispatch. Returns the on-chain tx hash on success.
  *
- * Hook returns a stable async function so `useSend` can call it inside
- * its state-machine submit step. Chain-library imports stay isolated to
- * `lib/chain-*.ts`; this hook glues wagmi + Foundation's chain helpers.
+ * Hook returns a stable async function so `useSend` can call it inside its
+ * state-machine submit step. Signing is self-custodial: the unlocked mnemonic
+ * from the auth slice is the signer. Chain-library calls stay isolated to
+ * `lib/chain-*.ts`; this hook only picks the path by chain kind.
  */
 import { useCallback } from "react"
-import { useWalletClient } from "wagmi"
 import { CHAINS, type Asset } from "../../lib/asset"
+import { useAuth } from "../../store/auth"
+import { sendEvmNative } from "../../lib/chain-evm"
 import { sendLuxNative } from "../../lib/chain-lux"
 import { sendSolana } from "../../lib/chain-solana"
 
@@ -19,7 +21,7 @@ export interface SendArgs {
 }
 
 export function useSendAsync() {
-  const { data: walletClient } = useWalletClient()
+  const mnemonic = useAuth((s) => s.mnemonic)
 
   return useCallback(
     async ({ asset, to, value }: SendArgs): Promise<string> => {
@@ -28,36 +30,27 @@ export function useSendAsync() {
 
       switch (chain.kind) {
         case "evm": {
-          if (!walletClient) throw new Error("Wallet not connected")
-          if (asset.contract) {
-            // ERC-20 transfer(to,value): selector 0xa9059cbb || 32B addr || 32B value.
-            const addrPadded = to
-              .toLowerCase()
-              .replace(/^0x/, "")
-              .padStart(64, "0")
-            const valHex = value.toString(16).padStart(64, "0")
-            const data = `0xa9059cbb${addrPadded}${valHex}` as `0x${string}`
-            return await walletClient.sendTransaction({
-              to: asset.contract,
-              data,
-              chainId: chain.evmChainId,
-            })
+          if (!mnemonic) throw new Error("Wallet locked")
+          if (chain.evmChainId === undefined) {
+            throw new Error(`Chain ${chain.id} has no EVM id`)
           }
-          return await walletClient.sendTransaction({
-            to: to as `0x${string}`,
+          return sendEvmNative({
+            mnemonic,
+            evmChainId: chain.evmChainId,
+            to,
             value,
-            chainId: chain.evmChainId,
+            contract: asset.contract,
           })
         }
 
         case "lux-pchain":
         case "lux-xchain":
-          return await sendLuxNative({ chainId: chain.id, to, value })
+          return sendLuxNative({ chainId: chain.id, to, value })
 
         case "solana":
-          return await sendSolana({ to, value })
+          return sendSolana({ to, value })
       }
     },
-    [walletClient],
+    [mnemonic],
   )
 }

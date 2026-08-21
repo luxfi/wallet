@@ -19,8 +19,8 @@
  */
 import { createConfig, http, type Config } from "wagmi"
 import type { Chain, Transport } from "viem"
-import { brand, getBootnodeRpcUrl } from "@luxfi/wallet-brand"
-import { evmChainDef } from "../lib/chains"
+import { brand } from "@luxfi/wallet-brand"
+import { viemChain } from "../lib/chains"
 
 /**
  * Build the Wagmi config from the runtime brand. Call this AFTER
@@ -33,26 +33,13 @@ export function buildWagmiConfig(): Config {
   const transports: Record<number, Transport> = {}
 
   for (const id of ids) {
-    const def = evmChainDef(id)
-    if (!def) {
-      // Unknown (or non-EVM) chain — skip rather than fail. The registry
-      // (@luxwallet/chains) is the metadata source; the brand may legitimately
-      // list a chain it doesn't know yet (e.g. a white-label private network),
-      // or a non-EVM family that wagmi cannot drive.
-      continue
-    }
-    const rpc = getBootnodeRpcUrl(id)
-    if (!rpc) {
-      // No URL means no transport. Drop this chain — never construct
-      // `http("")` which silently coerces to window.location.origin.
-      continue
-    }
-    const chain: Chain = {
-      ...def,
-      rpcUrls: { default: { http: [rpc] } },
-    }
+    // Skip a chain the registry doesn't know (a white-label private network
+    // or a non-EVM family wagmi cannot drive) or one with no resolvable RPC —
+    // never construct `http("")`, which silently coerces to the page origin.
+    const chain = viemChain(id)
+    if (!chain) continue
     chains.push(chain)
-    transports[id] = http(rpc)
+    transports[id] = http(chain.rpcUrls.default.http[0])
   }
 
   if (chains.length === 0) {
