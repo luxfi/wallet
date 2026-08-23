@@ -13,11 +13,15 @@ import com.uniswap.R
 // TODO gary update for Spore changes
 @Immutable
 data class CustomTypography(
+  // Zen's axis is fitted, not nominal: the text weight is wght 497 and the
+  // emphasis weight is wght 606 (the .zen-book and .zen-medium presets). The
+  // nearest static cuts are Medium (500) and SemiBold (600), which is why the
+  // body slot takes zen_medium and every heavier slot takes zen_semibold.
   val defaultFontFamily: FontFamily = FontFamily(
-    Font(R.font.basel_grotesk_book),
-    Font(R.font.basel_grotesk_medium, FontWeight.Medium),
-    Font(R.font.basel_grotesk_medium, FontWeight.SemiBold),
-    Font(R.font.basel_grotesk_medium, FontWeight.Bold),
+    Font(R.font.zen_medium),
+    Font(R.font.zen_semibold, FontWeight.Medium),
+    Font(R.font.zen_semibold, FontWeight.SemiBold),
+    Font(R.font.zen_semibold, FontWeight.Bold),
   ),
   val defaultLetterSpacing: TextUnit = 0.sp,
   val heading1: TextStyle = TextStyle(
