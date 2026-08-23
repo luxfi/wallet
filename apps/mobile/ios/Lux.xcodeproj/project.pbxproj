@@ -154,7 +154,7 @@
 		9FCEBF042A95A99C0079EDDB /* RCTThemeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCEBF032A95A99B0079EDDB /* RCTThemeModule.m */; };
 		A0ACC9C3ABF174616E0CBCA4 /* OffRampTransactionDetails.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC48B9A573915BFA6FC6E2 /* OffRampTransactionDetails.graphql.swift */; };
 		A32F9FBD272343C9002CFCDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A32F9FBC272343C8002CFCDB /* GoogleService-Info.plist */; };
-		A3551F2CAC134AD49D40927F /* Basel-Grotesk-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6F33E8069B7B40AFB313B8B0 /* Basel-Grotesk-Book.otf */; };
+		A3551F2CAC134AD49D40927F /* Zen-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F33E8069B7B40AFB313B8B0 /* Zen-Medium.ttf */; };
 		A3EEE7EE3CC93DDBA3CE6A5C /* PortfolioValueModifier.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13150074BB66C20E7EA271A /* PortfolioValueModifier.graphql.swift */; };
 		A3F0A5B1272B1DFA00895B25 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F0A5B0272B1DFA00895B25 /* KeychainSwiftDistrib.swift */; };
 		AC0EE0982BD826E700BCCF07 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AC0EE0972BD826E700BCCF07 /* PrivacyInfo.xcprivacy */; };
@@ -163,7 +163,7 @@
 		AEA0B1AC57BB6F11F5861BCE /* Token.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B481513A2E780E6489DC4F /* Token.graphql.swift */; };
 		AF467A9F1C200706537B24E5 /* TokenBalance.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF8EE05291534B82ACC1105 /* TokenBalance.graphql.swift */; };
 		B009D229E81544EA0F47C6DD /* TransactionStatus.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D5FF8C0919083F2E333C /* TransactionStatus.graphql.swift */; };
-		B193AD315CF844A3BDC3D11D /* Basel-Grotesk-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3C606D2C81014A0A8898F38E /* Basel-Grotesk-Medium.otf */; };
+		B193AD315CF844A3BDC3D11D /* Zen-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C606D2C81014A0A8898F38E /* Zen-SemiBold.ttf */; };
 		B2692B7521F4E7767DECE974 /* NftsQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42013D777BAA40652AB28985 /* NftsQuery.graphql.swift */; };
 		B4F84A94618C5A8D4F12007E /* ContractInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957594D21A42B9D77F5AD685 /* ContractInput.graphql.swift */; };
 		B5EF58A67FC42D684B96C0F0 /* TokenProjectMarket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E638BE80543E905D072D7F /* TokenProjectMarket.graphql.swift */; };
@@ -388,7 +388,7 @@
 		3A2186B1FF7FB85663D96EA9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		3AE6A0CAEDE1DC1D2FA14DEA /* TransactionHistoryUpdaterQuery.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransactionHistoryUpdaterQuery.graphql.swift; path = WidgetsCore/MobileSchema/Operations/Queries/TransactionHistoryUpdaterQuery.graphql.swift; sourceTree = "<group>"; };
 		3BA467FB84503BB53B081C73 /* TokenProjectMarketsParts.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokenProjectMarketsParts.graphql.swift; path = WidgetsCore/MobileSchema/Fragments/TokenProjectMarketsParts.graphql.swift; sourceTree = "<group>"; };
-		3C606D2C81014A0A8898F38E /* Basel-Grotesk-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Basel-Grotesk-Medium.otf"; path = "../src/assets/fonts/Basel-Grotesk-Medium.otf"; sourceTree = "<group>"; };
+		3C606D2C81014A0A8898F38E /* Zen-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Zen-SemiBold.ttf"; path = "../src/assets/fonts/Zen-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D3112654E5722A2F862D3FC /* ConvertQuery.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConvertQuery.graphql.swift; path = WidgetsCore/MobileSchema/Operations/Queries/ConvertQuery.graphql.swift; sourceTree = "<group>"; };
 		3D8FCE4CD401350CA74DCC89 /* Pods-WidgetsCoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetsCoreTests.debug.xcconfig"; path = "Target Support Files/Pods-WidgetsCoreTests/Pods-WidgetsCoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D96819BA563CB218D29C657 /* TokenSortableField.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokenSortableField.graphql.swift; path = WidgetsCore/MobileSchema/Schema/Enums/TokenSortableField.graphql.swift; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 		6CA91BE02A95226200C4063E /* RNCloudStorageBackupsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNCloudStorageBackupsManager.swift; sourceTree = "<group>"; };
 		6DCC7E203AB163C9C2D3D789 /* Dimensions.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dimensions.graphql.swift; path = WidgetsCore/MobileSchema/Schema/Objects/Dimensions.graphql.swift; sourceTree = "<group>"; };
 		6F02DBC2C51EFC6B1AA9C1CD /* DescriptionTranslations.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DescriptionTranslations.graphql.swift; path = WidgetsCore/MobileSchema/Schema/Objects/DescriptionTranslations.graphql.swift; sourceTree = "<group>"; };
-		6F33E8069B7B40AFB313B8B0 /* Basel-Grotesk-Book.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Basel-Grotesk-Book.otf"; path = "../src/assets/fonts/Basel-Grotesk-Book.otf"; sourceTree = "<group>"; };
+		6F33E8069B7B40AFB313B8B0 /* Zen-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Zen-Medium.ttf"; path = "../src/assets/fonts/Zen-Medium.ttf"; sourceTree = "<group>"; };
 		6F3DC921A65D749C0852B10C /* Pods-Lux-LuxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lux-LuxTests.debug.xcconfig"; path = "Target Support Files/Pods-Lux-LuxTests/Pods-Lux-LuxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F7814C6D40D9C348EA1F1C7 /* Pods-OneSignalNotificationServiceExtension.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.dev.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.dev.xcconfig"; sourceTree = "<group>"; };
 		73D981A2D31B6F8822C19324 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchemaMetadata.graphql.swift; path = WidgetsCore/MobileSchema/Schema/SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
@@ -1213,8 +1213,8 @@
 			isa = PBXGroup;
 			children = (
 				1834199AFFB04D91B05FFB64 /* InputMono-Regular.ttf */,
-				6F33E8069B7B40AFB313B8B0 /* Basel-Grotesk-Book.otf */,
-				3C606D2C81014A0A8898F38E /* Basel-Grotesk-Medium.otf */,
+				6F33E8069B7B40AFB313B8B0 /* Zen-Medium.ttf */,
+				3C606D2C81014A0A8898F38E /* Zen-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1573,8 +1573,8 @@
 				AC0EE0982BD826E700BCCF07 /* PrivacyInfo.xcprivacy in Resources */,
 				D3B63ACA9B0C42F68080B080 /* InputMono-Regular.ttf in Resources */,
 				AC2EF4032C914B1600EEEFDB /* fonts in Resources */,
-				A3551F2CAC134AD49D40927F /* Basel-Grotesk-Book.otf in Resources */,
-				B193AD315CF844A3BDC3D11D /* Basel-Grotesk-Medium.otf in Resources */,
+				A3551F2CAC134AD49D40927F /* Zen-Medium.ttf in Resources */,
+				B193AD315CF844A3BDC3D11D /* Zen-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
