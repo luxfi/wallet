@@ -162,7 +162,7 @@ struct SeedPhraseTextView: UIViewRepresentable {
         let textView = UITextView()
 
         textView.delegate = context.coordinator
-        textView.font = UIFont(name: "BaselGrotesk-Book", size: 17)
+        textView.font = UIFont(name: "Zen-Medium", size: 17)
         textView.autocorrectionType = .no
         textView.autocapitalizationType = .none
         textView.backgroundColor = UIColor.clear
@@ -188,10 +188,10 @@ struct SeedPhraseTextView: UIViewRepresentable {
 struct SeedPhraseInput: View {
   @ObservedObject var viewModel = SeedPhraseInputViewModel()
 
-  private var font = Font(UIFont(name: "BaselGrotesk-Book", size: 17)!)
-  private var subtitleFont = Font(UIFont(name: "BaselGrotesk-Book", size: 17)!)
-  private var labelFont = Font(UIFont(name: "BaselGrotesk-Book", size: 15)!)
-  private var buttonFont = Font(UIFont(name: "BaselGrotesk-Medium", size: 15)!)
+  private var font = Font(UIFont(name: "Zen-Medium", size: 17)!)
+  private var subtitleFont = Font(UIFont(name: "Zen-Medium", size: 17)!)
+  private var labelFont = Font(UIFont(name: "Zen-Medium", size: 15)!)
+  private var buttonFont = Font(UIFont(name: "Zen-SemiBold", size: 15)!)
 
   func focusInput() {
     viewModel.isFocused = true
