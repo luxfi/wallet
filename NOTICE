@@ -1,0 +1,35 @@
+Lux Wallet
+Copyright (c) 2024-2026 Lux Industries Inc.
+
+This repository is derived from the Uniswap wallet and interface work
+published by Uniswap Labs (https://github.com/Uniswap/universe).
+
+    Copyright (c) 2023 Uniswap Labs
+
+--------------------------------------------------------------------------
+
+Licensing — which licence governs which file
+
+The root LICENSE file is the Lux Ecosystem License v1.2. **It does not, and
+cannot, govern the GPL-licensed packages in this repository.**
+
+Packages whose package.json declares GPL-3.0-or-later are licensed under the
+GNU General Public License v3.0 or later, and are distributed under those
+terms alone. The GPL text is included at apps/mobile/LICENSE.
+
+GPL-3.0 §10 forbids imposing further restrictions on the rights it grants.
+The Ecosystem Licence's limits — including its restriction of commercial use
+to Authorized Networks — therefore do not apply to those packages, and any
+reading of the root LICENSE that would apply them to GPL code is wrong. Where
+the two conflict on a GPL-licensed file, the GPL governs.
+
+The Ecosystem Licence governs Lux-authored files that are not GPL-derived.
+The per-package license field and any per-file SPDX header are authoritative
+for what covers a given file.
+
+--------------------------------------------------------------------------
+
+GPL-3.0 §5(a) requires a modified work to carry prominent notices stating
+that it is modified and when. This repository is a modified fork of Uniswap
+Labs' work; the modifications are Lux's and are recorded in the git history.
+This NOTICE preserves the upstream attribution at the repository level.
