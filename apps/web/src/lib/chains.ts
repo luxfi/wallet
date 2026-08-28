@@ -26,6 +26,7 @@
  * is consumed as an MIT dependency (compatible).
  */
 import { allChains, getChain, type ChainEntry } from "@luxwallet/chains"
+import { getBootnodeRpcUrl } from "@luxfi/wallet-brand"
 import type { Chain } from "viem"
 
 /** Block-explorer overlay, keyed by EIP-155 id. UI-only; not in the registry. */
@@ -81,4 +82,18 @@ export function evmChainDef(id: number): (Omit<Chain, "rpcUrls">) | undefined {
     testnet: entry.testnet,
     ...(explorer ? { blockExplorers: { default: explorer } } : {}),
   }
+}
+
+/**
+ * A fully-resolved viem `Chain` — registry metadata merged with the brand
+ * gateway RPC. Returns undefined when the id is not an EVM chain the registry
+ * knows, or when no RPC resolves (never emit `http("")`). The wagmi config and
+ * the send path both build their clients from this one function.
+ */
+export function viemChain(id: number): Chain | undefined {
+  const def = evmChainDef(id)
+  if (!def) return undefined
+  const rpc = getBootnodeRpcUrl(id)
+  if (!rpc) return undefined
+  return { ...def, rpcUrls: { default: { http: [rpc] } } }
 }
