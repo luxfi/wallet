@@ -19,6 +19,9 @@ import { buildWagmiConfig } from "./config/wagmi"
 import { queryClient } from "./config/queryClient"
 import { router } from "./router"
 import { useSession } from "./store/session"
+import { useAuth } from "./store/auth"
+import { useAppStore } from "./store"
+import { evmAccount } from "./lib/chain-evm"
 
 // Lazy-load the signing modal so the auth/portfolio bootstrap path doesn't
 // pull abi.ts + prices.ts into the initial bundle. The modal mounts at
@@ -36,6 +39,24 @@ export default function App(): React.JSX.Element {
   useEffect(() => {
     void useSession.getState().hydrate()
   }, [])
+
+  // Reflect the unlocked in-app account into the store so `useAccount()` and
+  // every screen see the self-custodial address. There is no injected
+  // connector; the mnemonic-derived EVM account IS the active account. Cleared
+  // on lock, when the mnemonic leaves memory.
+  const mnemonic = useAuth((s) => s.mnemonic)
+  useEffect(() => {
+    const { setAddress } = useAppStore.getState()
+    if (!mnemonic) {
+      setAddress(null)
+      return
+    }
+    try {
+      setAddress(evmAccount(mnemonic).address)
+    } catch {
+      setAddress(null)
+    }
+  }, [mnemonic])
 
   return (
     <GuiProvider>

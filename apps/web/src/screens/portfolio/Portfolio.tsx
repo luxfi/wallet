@@ -19,9 +19,10 @@
  */
 import { lazy, Suspense, useMemo } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { mnemonicToAccount, type Address } from "viem/accounts"
+import { type Address } from "viem/accounts"
 import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
+import { evmAccount } from "../../lib/chain-evm"
 import { CHAINS, useChainBalances } from "./useChainBalances"
 import { useTotalUSD } from "./useTotalUSD"
 import { usePerLLMTokens } from "./usePerLLMTokens"
@@ -54,8 +55,7 @@ function useDerivedAddress(): Address | undefined {
   return useMemo(() => {
     if (!mnemonic) return undefined
     try {
-      const account = mnemonicToAccount(mnemonic, { path: "m/44'/60'/0'/0/0" })
-      return account.address
+      return evmAccount(mnemonic).address
     } catch {
       return undefined
     }
