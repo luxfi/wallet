@@ -1,5 +1,5 @@
 # wallet-backend — the canonical App(Wallet) custody server. Static Go binary,
-# distroless runtime. No plaintext keys: custody is MPC (mpc.lux.network).
+# distroless runtime. No plaintext keys: custody is MPC (M-Chain).
 # Built by platform native CI (NO GitHub Actions).
 FROM golang:1.26-alpine AS build
 WORKDIR /src

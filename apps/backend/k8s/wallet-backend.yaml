@@ -1,6 +1,6 @@
 # wallet-backend — the App(Wallet) custody server, deployed by the unified lux
 # web3 operator (group lux.cloud) as a Service CR. Custody is MPC
-# (mpc.lux.network); the only secret is the MPC service token, synced from Lux
+# (M-Chain); the only secret is the MPC service token, synced from Lux
 # KMS via the KMSSecret below — NEVER in this manifest, NEVER plaintext.
 ---
 apiVersion: secrets.lux.network/v1alpha1
@@ -60,7 +60,8 @@ spec:
     - name: IAM_AUDIENCE
       value: lux-wallet
     - name: MPC_ENDPOINT
-      value: https://mpc.lux.network
+      # M-Chain. Centralized or BYO MPC points this at mpc.lux.cloud.
+      value: https://api.lux.network/v1/bc/M
   resources:
     requests:
       cpu: "100m"

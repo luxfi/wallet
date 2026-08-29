@@ -2,7 +2,7 @@
 //
 // Config is env-only (12-factor); secrets arrive from KMS via the operator
 // Service CR, never hardcoded. White-label is per-tenant: IAM_ISSUER (lux →
-// lux.id) and MPC_ENDPOINT (lux → mpc.lux.network) are injected, so the same
+// lux.id) and MPC_ENDPOINT (M-Chain by default) are injected, so the same
 // binary serves any brand against their own IAM + MPC.
 package main
 
@@ -45,7 +45,16 @@ func loadConfig() config {
 		addr:        env("LISTEN_ADDR", ":8080"),
 		iamIssuer:   env("IAM_ISSUER", "https://lux.id"),
 		iamAudience: env("IAM_AUDIENCE", "lux-wallet"),
-		mpcEndpoint: env("MPC_ENDPOINT", "https://mpc.lux.network"),
+		// M-Chain, which is where threshold custody lives. The ceremony runs
+		// natively across the chain's own validators — leaderless, the
+		// committee IS the validator set — rather than on a REST cluster of
+		// its own. mpcvm/transport.go calls that cluster "the old off-chain
+		// REST cluster" in as many words; M-Chain is what replaced it.
+		//
+		// MPC_ENDPOINT still overrides, because a tenant running centralized
+		// or bring-your-own MPC points at mpc.lux.cloud instead. That is the
+		// exception, and it is now the one that has to be asked for.
+		mpcEndpoint: env("MPC_ENDPOINT", "https://api.lux.network/v1/bc/M"),
 		mpcToken:    os.Getenv("MPC_SERVICE_TOKEN"),
 	}
 }
