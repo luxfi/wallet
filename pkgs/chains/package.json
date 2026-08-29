@@ -25,12 +25,12 @@
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
-    "viem": "^2.30.0"
+    "viem": ">=2"
   },
   "devDependencies": {
-    "tsup": "^8.0.0",
-    "typescript": "^5.7.0",
-    "viem": "^2.30.0"
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "viem": "catalog:"
   },
   "repository": {
     "type": "git",
