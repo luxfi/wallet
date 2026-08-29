@@ -81,7 +81,7 @@ function mockFetch(
 
 beforeEach(() => {
   sessionStorage.clear()
-  brand.walletApi = "https://wallet-api.test"
+  brand.walletApi = "https://api.test"
   brand.iamIssuer = "https://lux.id"
   brand.iamClientId = "lux-wallet"
   seedToken()
@@ -118,7 +118,7 @@ test("createWallet: POST /v1/wallets, NO body (org from token), validates result
   const w = await createWallet(mockFetch(201, wallet, captured))
 
   assert.equal(captured.length, 1)
-  assert.equal(captured[0]!.url, "https://wallet-api.test/v1/wallets")
+  assert.equal(captured[0]!.url, "https://api.test/v1/wallets")
   assert.equal(captured[0]!.init.method, "POST")
   // Org/owner/tenant must NEVER be sent — the server derives it from the JWT.
   assert.equal(captured[0]!.init.body, undefined, "create must send no body")
@@ -152,7 +152,7 @@ test("listWallets: GET /v1/wallets, unwraps { wallets }", async () => {
     { walletId: "w-2", addresses: {} },
   ]
   const out = await listWallets(mockFetch(200, { wallets }, captured))
-  assert.equal(captured[0]!.url, "https://wallet-api.test/v1/wallets")
+  assert.equal(captured[0]!.url, "https://api.test/v1/wallets")
   assert.equal(captured[0]!.init.method, "GET")
   assert.equal(out.length, 2)
   assert.equal(out[1]!.walletId, "w-2")
@@ -162,7 +162,7 @@ test("getWallet: GET /v1/wallets/{id} with URL-encoded id", async () => {
   const captured: Captured[] = []
   const wallet = { walletId: "w/1", addresses: {} }
   await getWallet("w/1", mockFetch(200, wallet, captured))
-  assert.equal(captured[0]!.url, "https://wallet-api.test/v1/wallets/w%2F1")
+  assert.equal(captured[0]!.url, "https://api.test/v1/wallets/w%2F1")
   assert.equal(captured[0]!.init.method, "GET")
 })
 
@@ -189,7 +189,7 @@ test("signPayload: POST /v1/wallets/{id}/sign with exact body, returns signature
     { scheme: "secp256k1", chainId: 96369, payloadHash: "0xabc123", idempotencyKey: "idem-1" },
     mockFetch(200, { signature: "0xdeadbeef", sessionId: "s-9" }, captured),
   )
-  assert.equal(captured[0]!.url, "https://wallet-api.test/v1/wallets/w-1/sign")
+  assert.equal(captured[0]!.url, "https://api.test/v1/wallets/w-1/sign")
   assert.equal(captured[0]!.init.method, "POST")
   const sent = JSON.parse(String(captured[0]!.init.body))
   // Exact wire shape per backend signBody — and NO org field.

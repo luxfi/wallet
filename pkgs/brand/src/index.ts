@@ -107,7 +107,7 @@ export interface BrandConfig {
   insightsHost: string
   insightsApiKey: string
   /**
-   * Custody backend base URL (apps/backend). lux → https://wallet-api.lux.network.
+   * Custody backend base URL (apps/backend). lux → https://api.lux.network.
    * One explicit, white-labelable config value — the custody client reads it
    * via `getWalletApiUrl()`. Never trailing-slashed.
    */
@@ -254,7 +254,7 @@ export async function loadBrandConfig(overrides?: Partial<RuntimeConfig>): Promi
   // wallet-api host here; iamIssuer/iamClientId must be set explicitly.
   if (!brand.walletApi && brand.gatewayDomain) {
     const root = brand.gatewayDomain.replace(/^api\./, "")
-    brand.walletApi = `https://wallet-api.${root}`
+    brand.walletApi = `https://api.${root}`
   }
   // Strip any accidental trailing slash — the custody client joins paths raw.
   if (brand.walletApi) {
@@ -359,7 +359,7 @@ export function getApiUrl(key: keyof RuntimeConfig["api"]): string {
 
 /**
  * Custody backend base URL for this brand — the ONLY way the web app resolves
- * `apps/backend`. lux → `https://wallet-api.lux.network`. White-labels set
+ * `apps/backend`. lux → `https://api.lux.network`. White-labels set
  * `brand.json:brand.walletApi`; absent, it is derived from `gatewayDomain`.
  * Returns "" only when neither is configured (caller must guard).
  */

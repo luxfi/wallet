@@ -51,7 +51,7 @@ const EXPECTED: Record<string, Expected> = {
     walletName: "Lux Wallet",
     defaultChainId: 96369,
     logoUrl: "/brands/lux.svg",
-    walletApi: "https://wallet-api.lux.network",
+    walletApi: "https://api.lux.network",
     iamIssuer: "https://lux.id",
     iamClientId: "lux-wallet",
   },
@@ -60,7 +60,7 @@ const EXPECTED: Record<string, Expected> = {
     walletName: "Hanzo Wallet",
     defaultChainId: 36963,
     logoUrl: "/brands/hanzo.svg",
-    walletApi: "https://wallet-api.hanzo.ai",
+    walletApi: "https://api.hanzo.ai",
     iamIssuer: "https://hanzo.id",
     iamClientId: "hanzo-wallet",
   },
@@ -69,7 +69,7 @@ const EXPECTED: Record<string, Expected> = {
     walletName: "Zoo Wallet",
     defaultChainId: 200200,
     logoUrl: "/brands/zoo.svg",
-    walletApi: "https://wallet-api.zoo.ngo",
+    walletApi: "https://api.zoo.ngo",
     iamIssuer: "https://zoo.id",
     iamClientId: "zoo-wallet",
   },
@@ -113,7 +113,7 @@ test("brand swap is total: loading zoo after lux replaces every field", async ()
   assert.equal(brand.name, "Zoo")
   assert.equal(brand.logoUrl, "/brands/zoo.svg")
   assert.equal(getIamConfig().issuer, "https://zoo.id")
-  assert.equal(getWalletApiUrl(), "https://wallet-api.zoo.ngo")
+  assert.equal(getWalletApiUrl(), "https://api.zoo.ngo")
 })
 
 test("brand overlay: downloads manifest present per brand", async () => {

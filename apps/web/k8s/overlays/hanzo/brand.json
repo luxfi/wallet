@@ -15,7 +15,7 @@
     "termsUrl": "https://hanzo.ai/terms",
     "privacyUrl": "https://hanzo.ai/privacy",
     "downloadUrl": "https://wallet.hanzo.ai/download",
-    "walletApi": "https://wallet-api.hanzo.ai",
+    "walletApi": "https://api.hanzo.ai",
     "iamIssuer": "https://hanzo.id",
     "iamClientId": "hanzo-wallet",
     "complianceEmail": "compliance@hanzo.ai",

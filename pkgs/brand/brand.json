@@ -15,7 +15,7 @@
     "termsUrl": "https://lux.network/terms",
     "privacyUrl": "https://lux.network/privacy",
     "downloadUrl": "https://wallet.lux.network/download",
-    "walletApi": "https://wallet-api.lux.network",
+    "walletApi": "https://api.lux.network",
     "iamIssuer": "https://lux.id",
     "iamClientId": "lux-wallet",
     "complianceEmail": "compliance@lux.network",
