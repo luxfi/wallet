@@ -1,6 +1,12 @@
 /**
- * Custody API client — the web app's typed seam to `apps/backend`
- * (`wallet-api.<brand>`), the MPC custody server.
+ * Custody API client — the web app's typed seam to `apps/backend`, the MPC
+ * custody server, served from the brand's ONE api host.
+ *
+ * Not a host of its own. `wallet-api.<brand>` was a second API hostname beside
+ * `api.<brand>`, needing its own DNS, its own certificate and its own route —
+ * and `wallet-api.lux.network` never got the first of those, so sign-in worked
+ * and nothing behind it did. One host, versioned paths: `api.lux.network`
+ * already serves `/v1/bc/*`, and custody is `/v1/wallets`.
  *
  * Contract (must match `apps/backend/internal/api/api.go` exactly):
  *   POST   /v1/wallets            → 201 Wallet

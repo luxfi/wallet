@@ -15,7 +15,7 @@
     "termsUrl": "https://zoo.ngo/terms",
     "privacyUrl": "https://zoo.ngo/privacy",
     "downloadUrl": "https://wallet.zoo.ngo/download",
-    "walletApi": "https://wallet-api.zoo.ngo",
+    "walletApi": "https://api.zoo.ngo",
     "iamIssuer": "https://zoo.id",
     "iamClientId": "zoo-wallet",
     "complianceEmail": "compliance@zoo.ngo",
