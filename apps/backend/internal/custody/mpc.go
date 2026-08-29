@@ -1,13 +1,14 @@
-// MPC custody adapter — speaks the lux/mpc HTTP wire (mpc.lux.network).
+// MPC custody adapter — speaks the MPC wire (M-Chain by default).
 //
 // Wallet creation calls MPC `POST /keygen {org_id, wallet_id}` (the verified
 // contract: returns ecdsa/eddsa pubkeys + evm/btc/sol addresses, never a
 // private key). Signing calls `POST /sign` with the org-scoped wallet + payload
 // hash and idempotency key, conforming to the MPC client's Sign contract.
 //
-// The MPC endpoint is per-tenant (shared hanzo-mpc or BYOMPC; lux →
-// mpc.lux.network) — the URL is injected, so a tenant points custody at their
-// own MPC without a code change. Auth to MPC is a service token (the MPC nodes'
+// The MPC endpoint is per-tenant and injected. The default is M-Chain
+// (api.lux.network/v1/bc/M), where the ceremony runs across the chain's own
+// validators. A tenant running centralized or bring-your-own MPC points at
+// mpc.lux.cloud instead — the exception, asked for rather than assumed. Auth to MPC is a service token (the MPC nodes'
 // internalAuth); user identity/org is carried in the body and re-derived by MPC
 // from its own bearer claims at the consensus layer.
 package custody
