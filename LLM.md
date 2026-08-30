@@ -75,8 +75,9 @@ placeholder so the build is clean and merges are pure file replacements.
 
 ## Custody + lux.id auth wiring (apps/web)
 
-The web app talks to the MPC custody backend (`apps/backend`, `wallet-api.<brand>`)
-authenticated via lux.id. One way, three thin layers:
+The web app talks to the MPC custody backend (`apps/backend`) at `/v1/wallets`
+on the brand's one api host, authenticated via lux.id. One way, three thin
+layers:
 
 - `src/lib/iam.ts` — lux.id OIDC Authorization-Code + **PKCE** (Web Crypto only,
   no dep). Issuer + clientId come from the brand (`getIamConfig()`); the
@@ -230,6 +231,20 @@ Run: `cd apps/backend && go test ./...` (17 tests). Build standalone with
 Deploy: build-only `.platform.yml` (repo root) → `ghcr.io/luxfi/wallet-backend`;
 the lux operator rolls `apps/backend/k8s/wallet-backend.yaml` (lux.cloud/v1
 Service + KMSSecret for `MPC_SERVICE_TOKEN`), ingress `wallet-api.lux.network`.
+
+That ingress host has no DNS record — `dig wallet-api.lux.network` is empty,
+while `api.lux.network` (Cloudflare) and the `bridge-api`/`mpc-api` hosts
+(134.199.138.27) all resolve. All three brand.json files point custody at
+`api.<brand>` instead, which is the decision `apps/web/src/lib/custody.ts`
+records. The manifest still declares the dead host.
+
+Whether `api.lux.network` forwards `/v1/wallets` to this Service is not
+established. From outside, an unauthenticated request to any path answers 404
+and any path with a bearer answers 401, so the edge's response does not
+distinguish a routed path from an unrouted one; and the gateway's live route
+table is not in this tree, so grepping for a `/v1/wallets` declaration finds
+nothing whether or not one exists. Settle it with a kubectl read of the
+gateway config, not with a curl.
 
 White-label is per-tenant + per-env injection — `IAM_ISSUER` (lux → lux.id),
 `IAM_AUDIENCE` (`<org>-wallet`), `MPC_ENDPOINT` (lux → mpc.lux.network; shared
