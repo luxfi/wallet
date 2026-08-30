@@ -249,9 +249,15 @@ export async function loadBrandConfig(overrides?: Partial<RuntimeConfig>): Promi
 
   // Custody backend + IAM are explicit per-brand values, but derive sane
   // defaults from the gateway domain so a minimal brand.json still works.
-  // `api.lux.network` → wallet-api host `wallet-api.lux.network`, issuer
-  // `https://<rootDomain>.id` style is brand-specific so we only derive the
-  // wallet-api host here; iamIssuer/iamClientId must be set explicitly.
+  //
+  // Custody has no host of its own. It is a path on the brand's one api host
+  // — `api.lux.network/v1/wallets` — beside the RPC the same host already
+  // serves at `/v1/bc/*`. A second hostname needs its own DNS record, its own
+  // certificate and its own route, and `wallet-api.lux.network` never got the
+  // first of those: it does not resolve.
+  //
+  // The issuer is brand-specific (`lux.id`, `hanzo.id`, `zoo.ngo`), so only
+  // the api host is derived here; iamIssuer/iamClientId must be set.
   if (!brand.walletApi && brand.gatewayDomain) {
     const root = brand.gatewayDomain.replace(/^api\./, "")
     brand.walletApi = `https://api.${root}`
