@@ -57,7 +57,7 @@
     "42161": "https://arb1.arbitrum.io/rpc",
     "8453": "https://mainnet.base.org",
     "137": "https://polygon-rpc.com",
-    "43114": "https://api.avax.network/v1/chain/C/rpc"
+    "43114": "https://api.avax.network/ext/bc/C/rpc"
   },
   "api": { "gateway": "https://api.lux.network", "insights": "" },
   "walletConnect": { "projectId": "" }
