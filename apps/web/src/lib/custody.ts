@@ -6,7 +6,7 @@
  * `api.<brand>`, needing its own DNS, its own certificate and its own route —
  * and `wallet-api.lux.network` never got the first of those, so sign-in worked
  * and nothing behind it did. One host, versioned paths: `api.lux.network`
- * already serves `/v1/bc/*`, and custody is `/v1/wallets`.
+ * already serves `/v1/chain/*`, and custody is `/v1/wallets`.
  *
  * Contract (must match `apps/backend/internal/api/api.go` exactly):
  *   POST   /v1/wallets            → 201 Wallet

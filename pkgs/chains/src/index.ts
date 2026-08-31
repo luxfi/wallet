@@ -24,7 +24,7 @@ export const lux = defineChain({
   name: "Lux",
   nativeCurrency: { decimals: 18, name: "Lux", symbol: "LUX" },
   rpcUrls: {
-    default: { http: ["https://api.lux.network/v1/bc/C/rpc"] },
+    default: { http: ["https://api.lux.network/v1/chain/C/rpc"] },
   },
   blockExplorers: {
     default: { name: "Lux Explorer", url: "https://explore.lux.network" },
@@ -37,7 +37,7 @@ export const luxTestnet = defineChain({
   name: "Lux Testnet",
   nativeCurrency: { decimals: 18, name: "Lux", symbol: "LUX" },
   rpcUrls: {
-    default: { http: ["https://api.lux-test.network/v1/bc/C/rpc"] },
+    default: { http: ["https://api.lux-test.network/v1/chain/C/rpc"] },
   },
   blockExplorers: {
     default: { name: "Lux Testnet Explorer", url: "https://explore.lux-test.network" },
@@ -51,7 +51,7 @@ export const luxDex = defineChain({
   name: "Lux DEX",
   nativeCurrency: { decimals: 18, name: "Lux", symbol: "LUX" },
   rpcUrls: {
-    default: { http: ["https://api.dex.lux.network/v1/bc/C/rpc"] },
+    default: { http: ["https://api.dex.lux.network/v1/chain/C/rpc"] },
   },
   blockExplorers: {
     default: { name: "DEX Explorer", url: "https://explorer.dex.lux.network" },

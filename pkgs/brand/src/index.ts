@@ -252,7 +252,7 @@ export async function loadBrandConfig(overrides?: Partial<RuntimeConfig>): Promi
   //
   // Custody has no host of its own. It is a path on the brand's one api host
   // — `api.lux.network/v1/wallets` — beside the RPC the same host already
-  // serves at `/v1/bc/*`. A second hostname needs its own DNS record, its own
+  // serves at `/v1/chain/*`. A second hostname needs its own DNS record, its own
   // certificate and its own route, and `wallet-api.lux.network` never got the
   // first of those: it does not resolve.
   //

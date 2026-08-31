@@ -6,7 +6,7 @@
 // hash and idempotency key, conforming to the MPC client's Sign contract.
 //
 // The MPC endpoint is per-tenant and injected. The default is M-Chain
-// (api.lux.network/v1/bc/M), where the ceremony runs across the chain's own
+// (api.lux.network/v1/chain/M), where the ceremony runs across the chain's own
 // validators. A tenant running centralized or bring-your-own MPC points at
 // mpc.lux.cloud instead — the exception, asked for rather than assumed. Auth to MPC is a service token (the MPC nodes'
 // internalAuth); user identity/org is carried in the body and re-derived by MPC

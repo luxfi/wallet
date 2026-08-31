@@ -5,12 +5,12 @@ import { AVALANCHE_MAINNET, LUX_CHAINS } from 'src/constants/luxChains'
 // is a chain the user cannot transact on until the extension is republished.
 //
 // luxd serves exactly one prefix, /v1 (node/server/http/server.go), and the
-// `bc/` segment is required: /v1/C/rpc 404s just like the retired /ext form.
-const CANONICAL = /^https:\/\/api\.[a-z-]+\.network\/v1\/bc\/C\/rpc$/
+// `chain/` segment is required: /v1/C/rpc 404s just like the retired /ext form.
+const CANONICAL = /^https:\/\/api\.[a-z-]+\.network\/v1\/chain\/C\/rpc$/
 
 describe('LUX_CHAINS rpc urls', () => {
   it.each(LUX_CHAINS.map((c) => [c.chainName, c] as const))(
-    '%s uses the canonical /v1/bc/C/rpc form on its own sovereign host',
+    '%s uses the canonical /v1/chain/C/rpc form on its own sovereign host',
     (_name, chain) => {
       expect(chain.rpcUrls).toHaveLength(1)
       expect(chain.rpcUrls[0]).toMatch(CANONICAL)
