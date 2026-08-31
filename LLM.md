@@ -319,13 +319,13 @@ apps/web/k8s/overlays/<b>`. Serving = house `ghcr.io/hanzoai/spa` (scratch,
 (a signed installer is immutable, so brand = logo + `chainDefault` is BAKED at
 build, unlike the web app's runtime brand.json). Each `luxwallet/*` shell has a
 canonical `.github/workflows/release.yml` (tag `v*` / dispatch) that builds on
-the arcd fleet (NO GHA) with a `BRAND` matrix axis (lux|hanzo|zoo, brand data
+the self-hosted fleet with a `BRAND` matrix axis (lux|hanzo|zoo, brand data
 resolved from `@luxwallet/brand` → `@luxwallet/chains`), then hands the unsigned
 artifact to the `hanzoai/ci-signing/.github/workflows/sign-<plat>.yml@v1`
 reusable workflow and publishes the signed artifact + checksum to a GitHub
-Release. Platform → arcd pool → signer:
+Release. Platform → pool → signer:
 
-| Platform | shell | arcd pool | ci-signing | artifact |
+| Platform | shell | pool | ci-signing | artifact |
 |----------|-------|-----------|------------|----------|
 | macOS | desktop (Electron) | `luxfi-macos-arm64` | `sign-macos` | notarized `.dmg` |
 | Windows | desktop | `luxfi-windows-amd64` | `sign-windows` | Authenticode `.exe` |
