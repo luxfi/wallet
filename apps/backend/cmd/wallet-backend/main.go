@@ -54,7 +54,7 @@ func loadConfig() config {
 		// MPC_ENDPOINT still overrides, because a tenant running centralized
 		// or bring-your-own MPC points at mpc.lux.cloud instead. That is the
 		// exception, and it is now the one that has to be asked for.
-		mpcEndpoint: env("MPC_ENDPOINT", "https://api.lux.network/v1/bc/M"),
+		mpcEndpoint: env("MPC_ENDPOINT", "https://api.lux.network/v1/chain/M"),
 		mpcToken:    os.Getenv("MPC_SERVICE_TOKEN"),
 	}
 }

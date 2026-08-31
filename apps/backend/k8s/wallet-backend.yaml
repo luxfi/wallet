@@ -61,7 +61,7 @@ spec:
       value: lux-wallet
     - name: MPC_ENDPOINT
       # M-Chain. Centralized or BYO MPC points this at mpc.lux.cloud.
-      value: https://api.lux.network/v1/bc/M
+      value: https://api.lux.network/v1/chain/M
   resources:
     requests:
       cpu: "100m"
