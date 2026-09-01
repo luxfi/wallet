@@ -180,7 +180,6 @@ export const FiatOnRampAmountSection = forwardRef<FiatOnRampAmountSectionRef, Fi
       : `${derivedAmount}${currency.currencyInfo?.currency.symbol}`
 
     // Workaround to avoid incorrect input width calculations by react-native
-    // Decimal numbers were manually calculated for Basel Grotesk fonts and will
     // require an adjustment when the font is changed
     const calculatedInputWidth = [...value].reduce(
       (acc, numStr) => {
