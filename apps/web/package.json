@@ -12,8 +12,8 @@
     "test": "node --import ./tools/ts-resolve.mjs --test 'src/lib/**/*.test.ts' 'src/store/**/*.test.ts' 'src/screens/dapps/**/*.test.ts'"
   },
   "dependencies": {
-    "@hanzo/gui": "^7.0.0",
-    "@hanzo/iam": "^0.12.3",
+    "@hanzo/gui": "^8.3.1",
+    "@hanzo/iam": "^0.21.18",
     "@luxfi/logo": "^1.0.9",
     "@luxfi/wallet-analytics": "workspace:^",
     "@luxfi/wallet-brand": "workspace:^",
