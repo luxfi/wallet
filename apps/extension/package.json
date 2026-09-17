@@ -90,7 +90,7 @@
     "serve": "14.2.4",
     "style-loader": "3.3.2",
     "swc-loader": "0.2.6",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vite-plugin-commonjs": "^0.10.4",
     "vite-plugin-node-polyfills": "^0.24.0",
     "vite-plugin-svgr": "^4.3.0",

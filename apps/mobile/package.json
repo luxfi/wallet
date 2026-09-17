@@ -247,6 +247,6 @@
     "reactotron-react-native-mmkv": "0.2.8",
     "reactotron-redux": "3.2.0",
     "redux-saga-test-plan": "4.0.4",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

@@ -93,7 +93,7 @@
     "jest-chrome": "0.8.0",
     "jest-extended": "4.0.2",
     "react-test-renderer": "19.0.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "main": "src/index.ts",
   "types": "src/index.ts",
