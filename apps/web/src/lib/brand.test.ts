@@ -70,7 +70,7 @@ const EXPECTED: Record<string, Expected> = {
     defaultChainId: 200200,
     logoUrl: "/brands/zoo.svg",
     walletApi: "https://api.zoo.ngo",
-    iamIssuer: "https://zoo.id",
+    iamIssuer: "https://zoolabs.id",
     iamClientId: "zoo-wallet",
   },
 }
@@ -112,7 +112,7 @@ test("brand swap is total: loading zoo after lux replaces every field", async ()
   // No Lux residue after switching to Zoo.
   assert.equal(brand.name, "Zoo")
   assert.equal(brand.logoUrl, "/brands/zoo.svg")
-  assert.equal(getIamConfig().issuer, "https://zoo.id")
+  assert.equal(getIamConfig().issuer, "https://zoolabs.id")
   assert.equal(getWalletApiUrl(), "https://api.zoo.ngo")
 })
 
