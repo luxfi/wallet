@@ -8,6 +8,7 @@
  * consistent.
  */
 import { brand as runtimeBrand, type BrandConfig } from "@luxfi/wallet-brand"
+import { CHAINS } from "./asset"
 import { chainLabel as registryChainLabel } from "./chains"
 
 /** Compatibility shape for stash code that called `getBrand().brand`. */
@@ -29,3 +30,12 @@ export const brand = runtimeBrand
  * name. Re-exported here for the screens that already import it from `brand`.
  */
 export const chainLabel = registryChainLabel
+
+/** The brand's own coin: the native symbol of its default chain. Staking and
+ *  balances name it, so a Zoo wallet says ZOO where a Lux wallet says LUX. */
+export function coinSymbol(): string {
+  return (
+    Object.values(CHAINS).find((c) => c.evmChainId === runtimeBrand.defaultChainId)?.nativeSymbol ??
+    runtimeBrand.shortName
+  )
+}

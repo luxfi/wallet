@@ -31,7 +31,7 @@ export default function Receive() {
     if (typeof navigator.share === "function") {
       try {
         await navigator.share({
-          title: "Lux address",
+          title: "Wallet address",
           text: address,
           url: qrUri,
         })

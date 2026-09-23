@@ -18,6 +18,7 @@
 import { useMemo, useState } from "react"
 import { useStakeStore, type Validator } from "../../store/stake"
 import { useValidators } from "./useValidators"
+import { coinSymbol } from "../../lib/brand"
 
 export type SortKey = "apy" | "uptime" | "stake"
 
@@ -150,7 +151,7 @@ export function ValidatorList({
         <thead>
           <tr>
             <th style={{ textAlign: "left", padding: "0.5rem" }}>Validator</th>
-            <th style={{ textAlign: "right", padding: "0.5rem" }}>Stake (LUX)</th>
+            <th style={{ textAlign: "right", padding: "0.5rem" }}>Stake ({coinSymbol()})</th>
             <th style={{ textAlign: "right", padding: "0.5rem" }}>APY</th>
             <th style={{ textAlign: "right", padding: "0.5rem" }}>Uptime</th>
             <th style={{ textAlign: "right", padding: "0.5rem" }}>Fee</th>

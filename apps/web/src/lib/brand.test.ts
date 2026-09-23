@@ -26,6 +26,7 @@ import {
   getBootnodeRpcUrl,
   type RuntimeConfig,
 } from "@luxfi/wallet-brand"
+import { coinSymbol } from "./brand"
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 // Canonical per-brand overlay = the kustomize ConfigMap source for that brand.
@@ -121,4 +122,13 @@ test("brand overlay: downloads manifest present per brand", async () => {
   assert.ok(brand.downloads, "downloads present")
   assert.ok(brand.downloads?.mac?.url?.includes("lux.network"), "mac url branded")
   assert.ok(brand.downloads?.ios?.storeUrl, "ios store link present")
+})
+
+// Staking and balances name the brand's coin. The stake screen said "Delegate
+// LUX" on wallet.zoo.network.
+test("each brand names its own coin", async () => {
+  await loadBrandConfig(overlay("lux"))
+  assert.equal(coinSymbol(), "LUX")
+  await loadBrandConfig(overlay("zoo"))
+  assert.equal(coinSymbol(), "ZOO")
 })

@@ -23,6 +23,7 @@ import {
   type Validator,
 } from "../../store/stake"
 import { useStake } from "./useStake"
+import { coinSymbol } from "../../lib/brand"
 import { useValidators } from "./useValidators"
 import { ValidatorList } from "./ValidatorList"
 
@@ -87,7 +88,7 @@ export function StakeForm() {
     if (selected?.jailed) return "Validator is jailed"
     if (!amountNLux) return "Enter an amount"
     if (amountNLux < PCHAIN_MIN_DELEGATOR_STAKE_NLUX) {
-      return `Minimum stake is 25 LUX`
+      return `Minimum stake is 25 ${coinSymbol()}`
     }
     if (durationSeconds < PCHAIN_MIN_STAKE_DURATION_SECONDS) {
       return "Lock period must be at least 14 days"
@@ -118,7 +119,7 @@ export function StakeForm() {
     return (
       <section aria-labelledby="stake-success" style={{ padding: "1rem" }}>
         <h2 id="stake-success">Delegation submitted</h2>
-        <p>Your delegation is broadcasting to the Lux P-Chain.</p>
+        <p>Your delegation is broadcasting to the P-Chain.</p>
         <p style={{ fontFamily: "monospace", wordBreak: "break-all" }}>
           Tx ID: {success.txID}
         </p>
@@ -137,7 +138,7 @@ export function StakeForm() {
     >
       <header>
         <Link to="/stake">← Back</Link>
-        <h2 style={{ margin: "0.5rem 0" }}>Delegate LUX</h2>
+        <h2 style={{ margin: "0.5rem 0" }}>Delegate {coinSymbol()}</h2>
       </header>
 
       <fieldset style={{ border: "1px solid rgba(127,127,127,0.3)", padding: "0.75rem" }}>
@@ -168,7 +169,7 @@ export function StakeForm() {
       </fieldset>
 
       <label style={{ display: "grid", gap: "0.25rem" }}>
-        <span>Amount (LUX)</span>
+        <span>Amount ({coinSymbol()})</span>
         <input
           type="text"
           inputMode="decimal"
@@ -179,11 +180,11 @@ export function StakeForm() {
             const v = e.target.value.replace(",", ".")
             if (v === "" || AMOUNT_RE.test(v)) setAmount(v)
           }}
-          aria-label="Stake amount in LUX"
+          aria-label={`Stake amount in ${coinSymbol()}`}
           style={{ padding: "0.5rem 0.75rem", borderRadius: 8 }}
           required
         />
-        <small style={{ opacity: 0.7 }}>Minimum 25 LUX. 9 decimal places.</small>
+        <small style={{ opacity: 0.7 }}>Minimum 25 {coinSymbol()}. 9 decimal places.</small>
       </label>
 
       <label style={{ display: "grid", gap: "0.25rem" }}>

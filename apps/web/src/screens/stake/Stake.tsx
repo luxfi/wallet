@@ -10,6 +10,7 @@ import { Link } from "react-router-dom"
 import { useStakeStore, type ActiveStake } from "../../store/stake"
 import { useValidators } from "./useValidators"
 import { ValidatorList } from "./ValidatorList"
+import { coinSymbol } from "../../lib/brand"
 
 const luxFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 4,
@@ -32,10 +33,10 @@ function StakeRow({ stake }: { stake: ActiveStake }) {
         {stake.nodeID.slice(0, 12)}…
       </td>
       <td style={{ padding: "0.5rem", textAlign: "right" }}>
-        {formatLux(stake.amountNLux)} LUX
+        {formatLux(stake.amountNLux)} {coinSymbol()}
       </td>
       <td style={{ padding: "0.5rem", textAlign: "right" }}>
-        {formatLux(stake.pendingRewardNLux)} LUX
+        {formatLux(stake.pendingRewardNLux)} {coinSymbol()}
       </td>
       <td style={{ padding: "0.5rem", textAlign: "right" }}>
         {new Date(stake.endTime * 1000).toLocaleDateString()}
@@ -79,7 +80,7 @@ export function Stake() {
       <header>
         <h1 style={{ margin: 0 }}>Staking</h1>
         <p style={{ margin: "0.25rem 0", opacity: 0.7 }}>
-          Delegate LUX to a P-Chain validator and earn staking rewards.
+          Delegate {coinSymbol()} to a P-Chain validator and earn staking rewards.
         </p>
       </header>
 
@@ -99,7 +100,7 @@ export function Stake() {
         >
           <div style={{ fontSize: 12, opacity: 0.7 }}>Total staked</div>
           <div style={{ fontSize: 22, fontWeight: 600 }}>
-            {formatLux(totalStaked)} LUX
+            {formatLux(totalStaked)} {coinSymbol()}
           </div>
         </div>
         <div
@@ -111,7 +112,7 @@ export function Stake() {
         >
           <div style={{ fontSize: 12, opacity: 0.7 }}>Claimable rewards</div>
           <div style={{ fontSize: 22, fontWeight: 600 }}>
-            {formatLux(totalClaimable)} LUX
+            {formatLux(totalClaimable)} {coinSymbol()}
           </div>
           <button
             type="button"

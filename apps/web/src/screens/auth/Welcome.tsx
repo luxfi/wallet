@@ -90,7 +90,7 @@ export default function Welcome() {
           color: "var(--neutral2, #666)",
         }}
       >
-        {brand.description || "Self-custodial wallet for the Lux ecosystem."}
+        {brand.description || "Self-custodial wallet."}
       </p>
 
       <div style={card}>

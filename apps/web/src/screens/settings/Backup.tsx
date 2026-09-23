@@ -116,7 +116,7 @@ export default function Backup() {
       <section style={warnCard} role="note">
         <ul style={warnList}>
           <li>Write it down on paper — never screenshot, never type into anything online.</li>
-          <li>Lux will never ask for your phrase. Anyone who does is trying to steal your funds.</li>
+          <li>We will never ask for your phrase. Anyone who does is trying to steal your funds.</li>
           <li>The phrase auto-redacts after 30 seconds.</li>
         </ul>
       </section>

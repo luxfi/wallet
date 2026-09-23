@@ -32,7 +32,7 @@ export default function CreateMnemonic() {
       </Text>
       <Text col="$neutral2">
         Write down these 12 words in order and keep them somewhere safe. Anyone
-        with this phrase controls your wallet. Lux cannot recover it for you.
+        with this phrase controls your wallet. No one can recover it for you.
       </Text>
 
       <Card p="$4">
