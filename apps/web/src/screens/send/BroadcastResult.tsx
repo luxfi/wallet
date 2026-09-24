@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useWaitForTransactionReceipt } from "wagmi"
 import { useSendStore } from "../../store/send"
 import { CHAINS } from "../../lib/asset"
+import { evmChainDef } from "../../lib/chains"
 
 type Phase = "pending" | "confirmed" | "failed" | "timeout"
 
@@ -170,41 +171,19 @@ function PhaseIcon({ phase }: { phase: Phase }) {
   )
 }
 
+/** The transaction on its chain's explorer: the brand's own explorer for its
+ *  chains (`brand.json:explorer`), the public one for an external chain. */
 function explorerUrlFor(
   hash: string | undefined,
   chainId: string | undefined,
 ): string | null {
   if (!hash || !chainId) return null
-  switch (chainId) {
-    case "lux-c":
-      return `https://explorer.lux.network/tx/${hash}`
-    case "lux-p":
-      return `https://explorer.lux.network/p/tx/${hash}`
-    case "lux-x":
-      return `https://explorer.lux.network/x/tx/${hash}`
-    case "lux-b":
-      return `https://explorer.lux.network/b/tx/${hash}`
-    case "lux-z":
-      return `https://explorer.lux.network/z/tx/${hash}`
-    case "lux-f":
-      return `https://explorer.lux.network/f/tx/${hash}`
-    case "zoo-l1":
-      return `https://explorer.zoo.network/tx/${hash}`
-    case "ethereum":
-      return `https://etherscan.io/tx/${hash}`
-    case "arbitrum":
-      return `https://arbiscan.io/tx/${hash}`
-    case "base":
-      return `https://basescan.org/tx/${hash}`
-    case "polygon":
-      return `https://polygonscan.com/tx/${hash}`
-    case "avalanche":
-      return `https://snowtrace.io/tx/${hash}`
-    case "solana":
-      return `https://solscan.io/tx/${hash}`
-    default:
-      return null
-  }
+  const chain = CHAINS[chainId]
+  if (chain?.kind === "solana") return `https://solscan.io/tx/${hash}`
+  const base = chain?.evmChainId !== undefined
+    ? evmChainDef(chain.evmChainId)?.blockExplorers?.default.url
+    : undefined
+  return base ? `${base}/tx/${hash}` : null
 }
 
 const btnPrimary: React.CSSProperties = {

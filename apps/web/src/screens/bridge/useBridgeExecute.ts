@@ -32,6 +32,7 @@ import { erc20Abi, maxUint256, type Address } from "viem"
 import { brand } from "@luxfi/wallet-brand"
 import { useBridgeStore } from "../../store/bridge"
 import { CHAINS, parseUnits } from "../../lib/asset"
+import { assertAvailable } from "../../lib/networks"
 import { TELEPORT_LOCK_ABI, getTeleportLockAddress } from "../swap/contracts"
 
 const CEREMONY_POLL_INTERVAL_MS = 2_000
@@ -78,6 +79,14 @@ export function useBridgeExecute() {
       setStatus("error")
       setError(`Bridging from ${fromChain.label} not supported in web yet`)
       throw new Error(`bridging from ${fromChain.label} not supported`)
+    }
+    try {
+      assertAvailable(fromChain.evmChainId)
+      assertAvailable(toChain.evmChainId)
+    } catch (err) {
+      setStatus("error")
+      setError((err as Error).message)
+      throw err
     }
 
     let amountWei: bigint

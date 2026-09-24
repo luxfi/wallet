@@ -21,6 +21,7 @@ import {
   type Asset,
 } from "../../lib/asset"
 import { validateAddress } from "../../lib/address"
+import { getUnavailableReason } from "@luxfi/wallet-brand"
 
 export interface SendProps {
   /** Asset list from portfolio. Foundation Blue wires this from a context. */
@@ -49,6 +50,9 @@ export default function Send({ assets }: SendProps) {
   const [pickerOpen, setPickerOpen] = useState(false)
 
   const chain = asset ? CHAINS[asset.chainId] : null
+  // A chain that is not producing blocks: its balance reads, nothing sends.
+  const unavailable =
+    chain?.evmChainId !== undefined ? getUnavailableReason(chain.evmChainId) : undefined
 
   const addressValidation = useMemo(() => {
     if (!chain || !to) return { ok: false as const, reason: "" }
@@ -78,7 +82,7 @@ export default function Send({ assets }: SendProps) {
   }, [asset, amount])
 
   const canSubmit =
-    asset !== null && addressValidation.ok && amountValidation.ok
+    asset !== null && !unavailable && addressValidation.ok && amountValidation.ok
 
   const usdQuote = useMemo(() => {
     if (!asset?.usdPrice || !amount) return null
@@ -123,6 +127,11 @@ export default function Send({ assets }: SendProps) {
           <Hint>
             Balance: {formatUnits(asset.balance, asset.decimals)} {asset.symbol}
           </Hint>
+        ) : null}
+        {unavailable ? (
+          <Error>
+            {chain?.label} is unavailable. {unavailable}
+          </Error>
         ) : null}
       </Field>
 

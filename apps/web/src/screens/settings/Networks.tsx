@@ -1,27 +1,27 @@
 /**
- * Networks — list `brand.supportedChainIds`, allow per-chain RPC override.
+ * Networks — the chains the brand serves, each with its state and a per-chain
+ * RPC override.
  *
  * RPC override flows user funds, so we enforce HTTPS and never persist an
- * empty string. Empty input clears the override (falls back to
- * `getBootnodeRpcUrl(chainId)`).
+ * empty string. Empty input clears the override (falls back to the brand's
+ * declared RPC, `getBootnodeRpcUrl(chainId)`).
  *
- * The list is sourced from `brand.supportedChainIds` so white-label
- * deployments narrow the surface automatically — Liquidity won't show
- * Lux mainnet, Lux won't show Liquidity, etc.
+ * The list is the brand's declared networks (`lib/networks`), so a white-label
+ * shows its own chains only. Each says whether its RPC answers and, when it is
+ * not producing blocks, that it is unavailable and why.
  */
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { brand, chainLabel } from "../../lib/brand"
 import { useSettingsStore, validateRpcUrl } from "../../store/settings"
 import { getBootnodeRpcUrl } from "@luxfi/wallet-brand"
+import { declaredNetworks } from "../../lib/networks"
+import { useNetworks } from "../../hooks/useNetworks"
 
 export default function Networks() {
   const networks = useSettingsStore((s) => s.networks)
   const setNetworkRpc = useSettingsStore((s) => s.setNetworkRpc)
 
-  const ids = brand.supportedChainIds.length
-    ? brand.supportedChainIds
-    : [brand.defaultChainId]
+  const offered = useNetworks()
 
   return (
     <main style={page}>
@@ -32,21 +32,27 @@ export default function Networks() {
         <h1 style={title}>Networks</h1>
         <p style={subtitle}>
           Override the default RPC endpoint for each network. Leave blank
-          to use the brand gateway.
+          to use the default.
         </p>
       </header>
       <ul style={list}>
-        {ids.map((id) => {
-          const override = networks[id]?.rpcOverride
-          const fallback = getBootnodeRpcUrl(id) ?? "(no default)"
+        {declaredNetworks().map((n) => {
+          const override = networks[n.id]?.rpcOverride
+          const fallback = getBootnodeRpcUrl(n.id) ?? "(no default)"
+          const state = n.unavailable
+            ? `unavailable: ${n.unavailable}`
+            : offered.some((o) => o.id === n.id)
+              ? undefined
+              : "its RPC does not answer"
           return (
             <NetworkRow
-              key={id}
-              chainId={id}
-              label={chainLabel(id)}
+              key={n.id}
+              chainId={n.id}
+              label={n.label}
+              state={state}
               fallback={fallback}
               override={override}
-              onSave={(url) => setNetworkRpc(id, url)}
+              onSave={(url) => setNetworkRpc(n.id, url)}
             />
           )
         })}
@@ -58,12 +64,14 @@ export default function Networks() {
 interface NetworkRowProps {
   chainId: number
   label: string
+  /** Why the chain cannot be used now; undefined when it can. */
+  state?: string
   fallback: string
   override?: string
   onSave: (url: string | undefined) => void
 }
 
-function NetworkRow({ chainId, label, fallback, override, onSave }: NetworkRowProps) {
+function NetworkRow({ chainId, label, state, fallback, override, onSave }: NetworkRowProps) {
   const [draft, setDraft] = useState(override ?? "")
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState(false)
@@ -90,6 +98,7 @@ function NetworkRow({ chainId, label, fallback, override, onSave }: NetworkRowPr
       <form onSubmit={onSubmit} style={row}>
         <div style={col}>
           <span style={lbl}>{label}</span>
+          {state && <span style={errStyle}>{state}</span>}
           <span style={hint}>
             id {chainId} · default {fallback}
           </span>

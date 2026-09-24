@@ -8,6 +8,7 @@
  */
 import { useCallback } from "react"
 import { CHAINS, type Asset } from "../../lib/asset"
+import { assertAvailable } from "../../lib/networks"
 import { useAuth } from "../../store/auth"
 import { sendEvmNative } from "../../lib/chain-evm"
 import { sendLuxNative } from "../../lib/chain-lux"
@@ -27,6 +28,7 @@ export function useSendAsync() {
     async ({ asset, to, value }: SendArgs): Promise<string> => {
       const chain = CHAINS[asset.chainId]
       if (!chain) throw new Error(`Unknown chain: ${asset.chainId}`)
+      assertAvailable(chain.evmChainId)
 
       switch (chain.kind) {
         case "evm": {

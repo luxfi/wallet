@@ -189,9 +189,10 @@ export function useValidators(): void {
             lastErr = err
           }
         }
-        if (validators.length === 0) {
+        const rpc = pchainRpc(cfg)
+        if (validators.length === 0 && rpc) {
           try {
-            validators = await fetchFromRpc(pchainRpc(cfg), ac.signal)
+            validators = await fetchFromRpc(rpc, ac.signal)
           } catch (err) {
             lastErr = err
           }

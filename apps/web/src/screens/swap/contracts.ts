@@ -129,8 +129,6 @@ const ROUTERS: Record<number, Address> = {
  */
 const TELEPORT_LOCKS: Record<string, Address> = {
   "lux-c": ZERO,
-  "lux-b": ZERO,
-  "lux-z": ZERO,
   "zoo-l1": ZERO,
   ethereum: ZERO,
   polygon: ZERO,

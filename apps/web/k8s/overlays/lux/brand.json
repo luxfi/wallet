@@ -47,17 +47,24 @@
   },
   "chains": {
     "defaultChainId": 96369,
-    "supported": [96369, 96368, 1, 42161, 8453, 137, 43114]
+    "supported": [96369, 96368, 1, 42161, 8453, 137, 43114],
+    "unavailable": {
+      "96369": "Not producing blocks. Balances are as of its last block, and nothing sent to it would be mined.",
+      "96368": "Not producing blocks. Balances are as of its last block, and nothing sent to it would be mined."
+    }
   },
   "rpc": {
     "96369": "https://api.lux.network/v1/chain/C/rpc",
     "96368": "https://api.lux-test.network/v1/chain/C/rpc",
-    "200200": "https://api.zoo.network/v1/chain/C/rpc",
     "1": "https://eth.llamarpc.com",
     "42161": "https://arb1.arbitrum.io/rpc",
     "8453": "https://mainnet.base.org",
     "137": "https://polygon-rpc.com",
     "43114": "https://api.avax.network/ext/bc/C/rpc"
+  },
+  "explorer": {
+    "96369": "https://explore.lux.network",
+    "96368": "https://explore-test.lux.network"
   },
   "api": { "gateway": "https://api.lux.network", "insights": "" },
   "walletConnect": { "projectId": "" }

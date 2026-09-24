@@ -26,10 +26,14 @@
  * is consumed as an MIT dependency (compatible).
  */
 import { allChains, getChain, type ChainEntry } from "@luxwallet/chains"
-import { getBootnodeRpcUrl } from "@luxfi/wallet-brand"
+import { getBootnodeRpcUrl, getExplorerUrl } from "@luxfi/wallet-brand"
 import type { Chain } from "viem"
 
-/** Block-explorer overlay, keyed by EIP-155 id. UI-only; not in the registry. */
+/**
+ * Block explorers of the external chains, keyed by EIP-155 id. UI-only; not in
+ * the registry. A brand's own chains name theirs in `brand.json:explorer`,
+ * which wins.
+ */
 const EXPLORERS: Record<number, { name: string; url: string }> = {
   1: { name: "Etherscan", url: "https://etherscan.io" },
   137: { name: "Polygonscan", url: "https://polygonscan.com" },
@@ -70,7 +74,8 @@ export function chainLabel(id: number): string {
 export function evmChainDef(id: number): (Omit<Chain, "rpcUrls">) | undefined {
   const entry = getChain(id)
   if (!entry || entry.evmChainId === undefined) return undefined
-  const explorer = EXPLORERS[id]
+  const own = getExplorerUrl(id)
+  const explorer = own ? { name: "Explorer", url: own } : EXPLORERS[id]
   return {
     id: entry.evmChainId,
     name: entry.name,

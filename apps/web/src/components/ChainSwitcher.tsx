@@ -1,9 +1,12 @@
 /**
- * ChainSwitcher — dropdown over `brand.supportedChainIds`.
+ * ChainSwitcher — dropdown over the offered networks (`useNetworks`): the
+ * chains the brand serves whose RPC answers. A chain that is not producing
+ * blocks is listed, marked unavailable and not selectable; the notice under
+ * the header says why.
  *
  * Drives `useAppStore.chainId`. Wagmi's `useSwitchChain` is invoked too
- * when the active address is an EVM account, so wagmi-rooted hooks get
- * the same chain. Non-EVM (P/X/Solana) ids set the store only.
+ * when wagmi has a config for the chain, so wagmi-rooted hooks get the same
+ * chain.
  *
  * Renders as a native `<select>` for now — deliberately minimal.
  * @hanzo/gui's `Select` will replace this once the v7 dist artifact ships;
@@ -12,19 +15,18 @@
 import { useId } from "react"
 import { useSwitchChain } from "wagmi"
 import { useAppStore } from "../store"
-import { useBrand } from "../hooks/useBrand"
-import { chainLabel } from "../lib/chains"
+import { useActiveNetwork, useNetworks } from "../hooks/useNetworks"
 
 export function ChainSwitcher(): React.JSX.Element {
   const id = useId()
-  const brand = useBrand()
   const chainId = useAppStore((s) => s.chainId)
   const setChainId = useAppStore((s) => s.setChainId)
   const { switchChain, chains } = useSwitchChain()
-
-  const supported = brand.supportedChainIds.length
-    ? brand.supportedChainIds
-    : [brand.defaultChainId]
+  const networks = useNetworks()
+  const active = useActiveNetwork(chainId)
+  // The active chain is always an option, so the select shows what the store
+  // holds even after its RPC stopped answering.
+  const options = networks.some((n) => n.id === chainId) ? networks : [...networks, active]
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const next = Number(e.target.value)
@@ -51,9 +53,9 @@ export function ChainSwitcher(): React.JSX.Element {
           fontSize: 14,
         }}
       >
-        {supported.map((cid) => (
-          <option key={cid} value={cid}>
-            {chainLabel(cid)}
+        {options.map((n) => (
+          <option key={n.id} value={n.id} disabled={!!n.unavailable}>
+            {n.unavailable ? `${n.label} — unavailable` : n.label}
           </option>
         ))}
       </select>

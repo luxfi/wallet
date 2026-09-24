@@ -13,6 +13,7 @@
 import { NavLink, Outlet } from "react-router-dom"
 import { useAccount } from "../hooks/useAccount"
 import { useBrand } from "../hooks/useBrand"
+import { useActiveNetwork } from "../hooks/useNetworks"
 import { useAppStore } from "../store"
 import { ChainSwitcher } from "./ChainSwitcher"
 
@@ -47,6 +48,7 @@ export function AppShell(): React.JSX.Element {
   const account = useAccount()
   const sidebarOpen = useAppStore((s) => s.sidebarOpen)
   const setSidebarOpen = useAppStore((s) => s.setSidebarOpen)
+  const active = useActiveNetwork(useAppStore((s) => s.chainId))
 
   return (
     <div
@@ -173,6 +175,22 @@ export function AppShell(): React.JSX.Element {
         </nav>
 
         <main style={{ padding: 24, minWidth: 0 }}>
+          {active.unavailable ? (
+            <p
+              role="status"
+              style={{
+                margin: "0 0 16px",
+                padding: "10px 14px",
+                borderRadius: 8,
+                border: "1px solid var(--statusWarning, #8a6d1f)",
+                background: "var(--surface2, #111)",
+                fontSize: 14,
+                lineHeight: 1.4,
+              }}
+            >
+              <strong>{active.label} is unavailable.</strong> {active.unavailable}
+            </p>
+          ) : null}
           <Outlet />
         </main>
       </div>

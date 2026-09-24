@@ -27,6 +27,7 @@ import { useAccount, useWriteContract } from "wagmi"
 import { erc20Abi, maxUint256, type Address } from "viem"
 import { useSwapStore } from "../../store/swap"
 import { CHAINS } from "../../lib/asset"
+import { assertAvailable } from "../../lib/networks"
 import { SWAP_ROUTER_ABI } from "./contracts"
 
 const QUOTE_STALENESS_MS = 30_000
@@ -66,6 +67,13 @@ export function useSwapExecute() {
       setStatus("error")
       setError("Source chain not EVM-compatible")
       throw new Error("non-evm not supported")
+    }
+    try {
+      assertAvailable(fromChain.evmChainId)
+    } catch (err) {
+      setStatus("error")
+      setError((err as Error).message)
+      throw err
     }
 
     const amountIn = BigInt(quote.amountIn)

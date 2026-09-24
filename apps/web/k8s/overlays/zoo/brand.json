@@ -50,14 +50,16 @@
     "supported": [200200, 200201, 1, 42161, 8453, 137]
   },
   "rpc": {
-    "200200": "https://api.zoo.network/v1/chain/C/rpc",
-    "200201": "https://api.zoo-test.network/v1/chain/C/rpc",
-    "96369": "https://api.lux.network/v1/chain/C/rpc",
-    "36963": "https://api.hanzo.network/v1/chain/C/rpc",
+    "200200": "https://api.zoo.network/v1/chain/zoo/rpc",
+    "200201": "https://api.zoo-test.network/v1/chain/zoo/rpc",
     "1": "https://eth.llamarpc.com",
     "42161": "https://arb1.arbitrum.io/rpc",
     "8453": "https://mainnet.base.org",
     "137": "https://polygon-rpc.com"
+  },
+  "explorer": {
+    "200200": "https://explore.zoo.network",
+    "200201": "https://explore.zoo-test.network"
   },
   "api": { "gateway": "https://api.zoo.network", "insights": "" },
   "walletConnect": { "projectId": "" }

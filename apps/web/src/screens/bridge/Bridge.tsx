@@ -19,35 +19,33 @@
 import { useEffect, useMemo, useState } from "react"
 import { useAccount } from "wagmi"
 import { useBridgeStore, type BridgeQuote } from "../../store/bridge"
-import { CHAINS, formatUnits, type Asset } from "../../lib/asset"
+import { CHAINS, formatUnits, offeredChains, type Asset } from "../../lib/asset"
+import { useNetworks } from "../../hooks/useNetworks"
 import { useBridgeQuote } from "./useBridgeQuote"
 import { useBridgeExecute } from "./useBridgeExecute"
 
 interface Props {
   /** Asset list from portfolio. Same shape Send/Swap consume. */
   assets: Asset[]
-  /**
-   * Chain ids exposed in the bridge selector. Must match keys in `CHAINS`.
-   * Defaults to the canonical Teleport-supported set (per SCREENS.md §5).
-   */
-  bridgeChains?: string[]
 }
 
-const DEFAULT_BRIDGE_CHAINS = [
-  "lux-c",
-  "lux-x",
-  "lux-b",
-  "lux-z",
-  "zoo-l1",
-  "ethereum",
-  "polygon",
-  "arbitrum",
-  "base",
-  "avalanche",
-]
+/** A bridge endpoint: a catalog chain id, its label, and why it is unavailable. */
+interface BridgeChain {
+  id: string
+  label: string
+  unavailable?: string
+}
 
-export function Bridge({ assets, bridgeChains = DEFAULT_BRIDGE_CHAINS }: Props) {
+export function Bridge({ assets }: Props) {
   const { address } = useAccount()
+  // The networks this brand serves. One that is not producing blocks is
+  // listed and not selectable.
+  const networks = useNetworks()
+  const bridgeChains: BridgeChain[] = offeredChains(networks).map((c) => ({
+    id: c.id,
+    label: c.label,
+    unavailable: networks.find((n) => n.id === c.evmChainId)?.unavailable,
+  }))
   const {
     fromChainId,
     toChainId,
@@ -69,6 +67,19 @@ export function Bridge({ assets, bridgeChains = DEFAULT_BRIDGE_CHAINS }: Props) 
   const { execute } = useBridgeExecute()
 
   const [recipientMode, setRecipientMode] = useState<"self" | "other">("self")
+
+  // Keep both ends on a usable offered chain: the store's defaults name
+  // chains a brand may not serve.
+  const usable = bridgeChains.filter((c) => !c.unavailable).map((c) => c.id)
+  const usableKey = usable.join(",")
+  useEffect(() => {
+    if (usable.length < 2) return
+    const from = usable.includes(fromChainId) ? fromChainId : usable[0]
+    if (from !== fromChainId) setFromChainId(from)
+    if (!usable.includes(toChainId) || toChainId === from) {
+      setToChainId(usable.find((id) => id !== from) ?? usable[0])
+    }
+  }, [usableKey, fromChainId, toChainId])
 
   // Default the asset to the first portfolio asset that lives on the source
   // chain when the source flips (or on first mount). Stays sticky if the user
@@ -216,7 +227,7 @@ export function Bridge({ assets, bridgeChains = DEFAULT_BRIDGE_CHAINS }: Props) 
 interface ChainPairProps {
   fromChainId: string
   toChainId: string
-  chains: string[]
+  chains: BridgeChain[]
   onFromChange: (id: string) => void
   onToChange: (id: string) => void
   onFlip: () => void
@@ -250,7 +261,7 @@ function ChainPair({ fromChainId, toChainId, chains, onFromChange, onToChange, o
 interface ChainSelectProps {
   label: string
   value: string
-  chains: string[]
+  chains: BridgeChain[]
   exclude: string
   onChange: (id: string) => void
 }
@@ -271,14 +282,11 @@ function ChainSelect({ label, value, chains, exclude, onChange }: ChainSelectPro
           fontSize: 13,
         }}
       >
-        {chains.map((id) => {
-          const c = CHAINS[id]
-          return (
-            <option key={id} value={id} disabled={id === exclude}>
-              {c?.label ?? id}
-            </option>
-          )
-        })}
+        {chains.map((c) => (
+          <option key={c.id} value={c.id} disabled={c.id === exclude || !!c.unavailable}>
+            {c.unavailable ? `${c.label} — unavailable` : c.label}
+          </option>
+        ))}
       </select>
     </label>
   )

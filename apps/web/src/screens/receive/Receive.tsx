@@ -11,11 +11,23 @@
  */
 import { useState } from "react"
 import { QRCodeSVG } from "qrcode.react"
-import { CHAIN_LIST, CHAINS } from "../../lib/asset"
+import { CHAINS, offeredChains } from "../../lib/asset"
+import { useNetworks } from "../../hooks/useNetworks"
+import { useAppStore } from "../../store"
 import { useReceiveAddress } from "./useReceiveAddress"
 
 export default function Receive() {
-  const [chainId, setChainId] = useState<string>("lux-c")
+  // Only the networks this brand serves. A chain that is not producing blocks
+  // is listed but not selectable: a payment sent to it would never be mined.
+  const networks = useNetworks()
+  const unavailable = (evmChainId?: number) =>
+    networks.find((n) => n.id === evmChainId)?.unavailable
+  const chains = offeredChains(networks)
+  const usable = chains.filter((c) => !unavailable(c.evmChainId))
+  const activeId = useAppStore((s) => s.chainId)
+  const [picked, setChainId] = useState<string | null>(null)
+  const chainId =
+    picked ?? (usable.find((c) => c.evmChainId === activeId) ?? usable[0] ?? chains[0])?.id ?? ""
   const { address, qrUri, locked, error } = useReceiveAddress(chainId)
   const [copied, setCopied] = useState(false)
 
@@ -74,9 +86,9 @@ export default function Receive() {
             fontSize: "1rem",
           }}
         >
-          {CHAIN_LIST.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.label}
+          {chains.map((c) => (
+            <option key={c.id} value={c.id} disabled={!!unavailable(c.evmChainId)}>
+              {unavailable(c.evmChainId) ? `${c.label} — unavailable` : c.label}
             </option>
           ))}
         </select>

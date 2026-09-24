@@ -5,8 +5,7 @@
  *   - Header: total USD value + chain switcher (foundation-owned).
  *   - Active-chain assets: native + tokens.
  *   - Per-LLM tokens (Zoo only).
- *   - Other-chain native rollup, with confidential rows hidden behind
- *     "Hidden 🔒 / Reveal".
+ *   - Other-chain native rollup.
  *
  * Foundation contract:
  *   - `useAccount()` from `../../hooks/useAccount` — single source of truth
@@ -23,7 +22,8 @@ import { type Address } from "viem/accounts"
 import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
 import { evmAccount } from "../../lib/chain-evm"
-import { CHAINS, useChainBalances } from "./useChainBalances"
+import { useChainBalances } from "./useChainBalances"
+import { useAppStore } from "../../store"
 import { useTotalUSD } from "./useTotalUSD"
 import { usePerLLMTokens } from "./usePerLLMTokens"
 import AssetRow from "./AssetRow"
@@ -62,9 +62,9 @@ function useDerivedAddress(): Address | undefined {
   }, [mnemonic])
 }
 
-/** Active chain id. Foundation will replace with a `useAppStore` selector. */
+/** The chain the header's switcher selected. */
 function useActiveChainId(): number {
-  return 96369
+  return useAppStore((s) => s.chainId)
 }
 
 /**
@@ -121,7 +121,6 @@ export default function Portfolio() {
   const otherChains = perChain.filter((c) => c.chainId !== chainId)
 
   const onRowPress = (assetAddr: string) => navigate(`/portfolio/${assetAddr}`)
-  const onRevealConfidential = () => navigate("/confidential")
 
   return (
     <YStack flex={1} p="$5" gap="$5" maxWidth={520} mx="auto">
@@ -196,17 +195,9 @@ export default function Portfolio() {
           <Text fontSize="$5" fontWeight="600">
             Other chains
           </Text>
-          {otherChains.map((c) => {
-            const isHidden = CHAINS.find((e) => e.chainId === c.chainId)?.kind === "fhe"
-            return (
-              <AssetRow
-                key={c.chainId}
-                asset={c.native}
-                onPress={() => onRowPress(c.native.address)}
-                onReveal={isHidden ? onRevealConfidential : undefined}
-              />
-            )
-          })}
+          {otherChains.map((c) => (
+            <AssetRow key={c.chainId} asset={c.native} onPress={() => onRowPress(c.native.address)} />
+          ))}
         </YStack>
       ) : null}
     </YStack>

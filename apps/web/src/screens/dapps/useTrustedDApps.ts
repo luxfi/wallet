@@ -39,13 +39,6 @@ const FALLBACK_LUX: TrustedDApp[] = [
     chainIds: [200200],
     category: "exchange",
   },
-  {
-    name: "Pars Market",
-    url: "https://pars.market",
-    description: "Marketplace.",
-    chainIds: [96369],
-    category: "nft",
-  },
 ]
 
 // Tenant-specific fallbacks live in the tenant's wallet build, not in the
@@ -124,8 +117,13 @@ export function useTrustedDApps(): {
         const fromBrand = sanitiseEntries(
           (cfg.brand as { trustedDApps?: unknown }).trustedDApps,
         )
-        const dapps =
+        // Only dApps on a chain this brand serves: a Zoo dApp is not offered
+        // on the Lux wallet, and one on a network that is gone is not offered
+        // anywhere.
+        const served = cfg.chains.supported
+        const dapps = (
           fromBrand.length > 0 ? fromBrand : selectFallback(cfg.brand.appDomain)
+        ).filter((d) => d.chainIds.some((id) => served.includes(id)))
         setState({ dapps, loading: false, error: null })
       })
       .catch((err) => {

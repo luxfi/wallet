@@ -9,6 +9,8 @@
  * module (one obvious way).
  */
 
+import { evmChainDef } from "./chains"
+
 export type ChainKind = "evm" | "lux-pchain" | "lux-xchain" | "solana"
 
 export interface Chain {
@@ -27,15 +29,31 @@ export interface Chain {
   bech32Hrp?: string
 }
 
-export const CHAINS: Record<string, Chain> = {
-  "lux-c": {
-    id: "lux-c",
-    label: "Lux C-Chain",
+/**
+ * An EVM chain, named from the canonical registry (`@luxwallet/chains`) by its
+ * EIP-155 id, so its label and native symbol are the ones that id carries.
+ */
+function evm(id: string, evmChainId: number): Chain {
+  const def = evmChainDef(evmChainId)
+  return {
+    id,
+    label: def?.name ?? `Chain ${evmChainId}`,
     kind: "evm",
-    evmChainId: 96369,
-    nativeSymbol: "LUX",
+    evmChainId,
+    nativeSymbol: def?.nativeCurrency.symbol ?? "",
     bip44Coin: 60,
-  },
+  }
+}
+
+/**
+ * Every chain the wallet can derive an address for and sign on. This is the
+ * catalog, not what a person is offered — `offeredChains()` narrows it to the
+ * networks the brand serves. The Lux P/X-Chain and Solana entries stay for
+ * derivation; no brand serves them, so no screen lists them.
+ */
+export const CHAINS: Record<string, Chain> = {
+  "lux-c": evm("lux-c", 96369),
+  "lux-c-testnet": evm("lux-c-testnet", 96368),
   "lux-p": {
     id: "lux-p",
     label: "Lux P-Chain",
@@ -52,78 +70,14 @@ export const CHAINS: Record<string, Chain> = {
     bip44Coin: 9000,
     bech32Hrp: "lux",
   },
-  "lux-b": {
-    id: "lux-b",
-    label: "Lux B-Chain",
-    kind: "evm",
-    evmChainId: 36963,
-    nativeSymbol: "LUX",
-    bip44Coin: 60,
-  },
-  "lux-z": {
-    id: "lux-z",
-    label: "Lux Z-Chain",
-    kind: "evm",
-    evmChainId: 36911,
-    nativeSymbol: "LUX",
-    bip44Coin: 60,
-  },
-  "lux-f": {
-    id: "lux-f",
-    label: "Lux F-Chain",
-    kind: "evm",
-    evmChainId: 494949,
-    nativeSymbol: "LUX",
-    bip44Coin: 60,
-  },
-  "zoo-l1": {
-    id: "zoo-l1",
-    label: "Zoo L1",
-    kind: "evm",
-    evmChainId: 200200,
-    nativeSymbol: "ZOO",
-    bip44Coin: 60,
-  },
-  ethereum: {
-    id: "ethereum",
-    label: "Ethereum",
-    kind: "evm",
-    evmChainId: 1,
-    nativeSymbol: "ETH",
-    bip44Coin: 60,
-  },
-  arbitrum: {
-    id: "arbitrum",
-    label: "Arbitrum",
-    kind: "evm",
-    evmChainId: 42161,
-    nativeSymbol: "ETH",
-    bip44Coin: 60,
-  },
-  base: {
-    id: "base",
-    label: "Base",
-    kind: "evm",
-    evmChainId: 8453,
-    nativeSymbol: "ETH",
-    bip44Coin: 60,
-  },
-  polygon: {
-    id: "polygon",
-    label: "Polygon",
-    kind: "evm",
-    evmChainId: 137,
-    nativeSymbol: "MATIC",
-    bip44Coin: 60,
-  },
-  avalanche: {
-    id: "avalanche",
-    label: "Avalanche C-Chain",
-    kind: "evm",
-    evmChainId: 43114,
-    nativeSymbol: "AVAX",
-    bip44Coin: 60,
-  },
+  "zoo-l1": evm("zoo-l1", 200200),
+  "zoo-testnet": evm("zoo-testnet", 200201),
+  hanzo: evm("hanzo", 36963),
+  ethereum: evm("ethereum", 1),
+  arbitrum: evm("arbitrum", 42161),
+  base: evm("base", 8453),
+  polygon: evm("polygon", 137),
+  avalanche: evm("avalanche", 43114),
   solana: {
     id: "solana",
     label: "Solana",
@@ -142,6 +96,14 @@ export const CHAIN_LIST: Chain[] = Object.values(CHAINS)
  */
 export function chainByEvmId(evmChainId: number): Chain | undefined {
   return CHAIN_LIST.find((c) => c.evmChainId === evmChainId)
+}
+
+/** The catalog chains among `networks` (the offered list), in its order. */
+export function offeredChains(networks: ReadonlyArray<{ id: number }>): Chain[] {
+  return networks.flatMap((n) => {
+    const c = chainByEvmId(n.id)
+    return c ? [c] : []
+  })
 }
 
 export interface Asset {

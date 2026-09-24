@@ -12,6 +12,7 @@ import {
   decodeLocal,
 } from "../../lib/abi"
 import { chainLabel } from "../../lib/brand"
+import { evmChainDef } from "../../lib/chains"
 import { useSettingsStore } from "../../store/settings"
 import { fetchPrices } from "../../lib/prices"
 import type { UnsignedTx } from "../../store/signing"
@@ -252,26 +253,7 @@ function formatFiat(n: number, currency: string): string {
 }
 
 function nativeSymbol(chainId: number): string {
-  switch (chainId) {
-    case 96369:
-    case 96368:
-    case 36963:
-    case 36911:
-    case 494949:
-      return "LUX"
-    case 200200:
-      return "ZOO"
-    case 1:
-    case 42161:
-    case 8453:
-      return "ETH"
-    case 137:
-      return "MATIC"
-    case 43114:
-      return "AVAX"
-    default:
-      return "—"
-  }
+  return evmChainDef(chainId)?.nativeCurrency.symbol ?? "—"
 }
 
 const wrap: React.CSSProperties = { display: "flex", flexDirection: "column", gap: 4 }

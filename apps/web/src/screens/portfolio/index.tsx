@@ -25,6 +25,6 @@ export default function PortfolioRoutes() {
 }
 
 export { Portfolio, AssetDetail }
-export { useChainBalances, CHAINS } from "./useChainBalances"
+export { useChainBalances } from "./useChainBalances"
 export { useTotalUSD } from "./useTotalUSD"
 export { usePerLLMTokens } from "./usePerLLMTokens"

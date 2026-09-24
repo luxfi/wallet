@@ -7,9 +7,8 @@
  * `lib/chains.evmChainDef` shapes it into viem `Chain`s. White-labels narrow
  * the active list at runtime via `/brand.json`.
  *
- * RPC endpoints: `getBootnodeRpcUrl(chainId)` — pulls `runtimeConfig.rpc[id]`
- * overrides first, then falls back to `https://<gatewayDomain>/v1/rpc/<id>`.
- * Never empty-string. Chains without a resolvable RPC are dropped from the
+ * RPC endpoints: `getBootnodeRpcUrl(chainId)` — the RPC `brand.json:rpc[id]`
+ * declares, never derived. Never empty-string. Chains without a resolvable RPC are dropped from the
  * config (they cannot be queried anyway, and emitting `http("")` would
  * silently coerce to the bundler's origin which is wrong).
  *

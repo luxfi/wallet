@@ -76,15 +76,10 @@ export function getRuntimeConfigSync(): RuntimeConfig | null {
 }
 
 /**
- * P-Chain RPC endpoint resolution. Prefer brand.rpc.platform; fall back to the
- * brand's gateway host. luxd has exactly one route prefix — `/v1` — so the
- * P-Chain lives at `/v1/chain/P` on whichever host the brand points at. The env
- * is chosen by the hostname, never by a path segment.
+ * The P-Chain RPC, when the brand serves one: `brand.json:rpc.platform`. It is
+ * never derived from the gateway host: a brand serves a P-Chain only when it
+ * names one.
  */
-export function pchainRpc(cfg: RuntimeConfig): string {
-  const explicit = cfg.rpc["platform"] || cfg.rpc["P"] || cfg.rpc["p-chain"]
-  if (explicit) return explicit
-  const gateway = cfg.brand.gatewayDomain || cfg.api.gateway
-  const host = gateway.replace(/^https?:\/\//, "").replace(/\/$/, "")
-  return `https://${host}/v1/chain/P`
+export function pchainRpc(cfg: RuntimeConfig): string | undefined {
+  return cfg.rpc["platform"] || undefined
 }
