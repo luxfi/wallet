@@ -1,27 +1,16 @@
 /**
- * Networks — the chains the brand serves, each with its state and a per-chain
- * RPC override.
- *
- * RPC override flows user funds, so we enforce HTTPS and never persist an
- * empty string. Empty input clears the override (falls back to the brand's
- * declared RPC, `getBootnodeRpcUrl(chainId)`).
- *
- * The list is the brand's declared networks (`lib/networks`), so a white-label
- * shows its own chains only. Each says whether its RPC answers and, when it is
- * not producing blocks, that it is unavailable and why.
+ * Networks — the chains this wallet reaches: the same measured list the chain
+ * switcher, portfolio, receive and bridge read (`useMeasuredNetworks`). Each
+ * shows the RPC and explorer it uses and, when it is not producing blocks,
+ * that it is unavailable and why. A chain whose RPC does not answer is not
+ * listed here either.
  */
-import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useSettingsStore, validateRpcUrl } from "../../store/settings"
-import { getBootnodeRpcUrl } from "@luxfi/wallet-brand"
-import { declaredNetworks } from "../../lib/networks"
-import { useNetworks } from "../../hooks/useNetworks"
+import { getBootnodeRpcUrl, getExplorerUrl } from "@luxfi/wallet-brand"
+import { useMeasuredNetworks } from "../../hooks/useNetworks"
 
 export default function Networks() {
-  const networks = useSettingsStore((s) => s.networks)
-  const setNetworkRpc = useSettingsStore((s) => s.setNetworkRpc)
-
-  const offered = useNetworks()
+  const { list, settled } = useMeasuredNetworks()
 
   return (
     <main style={page}>
@@ -31,100 +20,29 @@ export default function Networks() {
         </Link>
         <h1 style={title}>Networks</h1>
         <p style={subtitle}>
-          Override the default RPC endpoint for each network. Leave blank
-          to use the default.
+          The chains this wallet reaches. A chain is listed once its RPC answers.
         </p>
       </header>
-      <ul style={list}>
-        {declaredNetworks().map((n) => {
-          const override = networks[n.id]?.rpcOverride
-          const fallback = getBootnodeRpcUrl(n.id) ?? "(no default)"
-          const state = n.unavailable
-            ? `unavailable: ${n.unavailable}`
-            : offered.some((o) => o.id === n.id)
-              ? undefined
-              : "its RPC does not answer"
-          return (
-            <NetworkRow
-              key={n.id}
-              chainId={n.id}
-              label={n.label}
-              state={state}
-              fallback={fallback}
-              override={override}
-              onSave={(url) => setNetworkRpc(n.id, url)}
-            />
-          )
-        })}
+      <ul style={rows}>
+        {list.map((n) => (
+          <li key={n.id} style={li}>
+            <div style={col}>
+              <span style={lbl}>{n.label}</span>
+              {n.unavailable && <span style={errStyle}>Unavailable. {n.unavailable}</span>}
+              <span style={hint}>
+                id {n.id} · {getBootnodeRpcUrl(n.id)}
+              </span>
+              {getExplorerUrl(n.id) && <span style={hint}>explorer {getExplorerUrl(n.id)}</span>}
+            </div>
+          </li>
+        ))}
+        {!settled && (
+          <li style={li} role="status">
+            <span style={hint}>Asking the remaining chains…</span>
+          </li>
+        )}
       </ul>
     </main>
-  )
-}
-
-interface NetworkRowProps {
-  chainId: number
-  label: string
-  /** Why the chain cannot be used now; undefined when it can. */
-  state?: string
-  fallback: string
-  override?: string
-  onSave: (url: string | undefined) => void
-}
-
-function NetworkRow({ chainId, label, state, fallback, override, onSave }: NetworkRowProps) {
-  const [draft, setDraft] = useState(override ?? "")
-  const [error, setError] = useState<string | null>(null)
-  const [saved, setSaved] = useState(false)
-
-  const onChange = (v: string) => {
-    setDraft(v)
-    setSaved(false)
-    setError(validateRpcUrl(v))
-  }
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const err = validateRpcUrl(draft)
-    if (err) {
-      setError(err)
-      return
-    }
-    onSave(draft.trim() || undefined)
-    setSaved(true)
-  }
-
-  return (
-    <li style={li}>
-      <form onSubmit={onSubmit} style={row}>
-        <div style={col}>
-          <span style={lbl}>{label}</span>
-          {state && <span style={errStyle}>{state}</span>}
-          <span style={hint}>
-            id {chainId} · default {fallback}
-          </span>
-          <input
-            type="url"
-            inputMode="url"
-            placeholder="https://my-rpc.example.com"
-            value={draft}
-            onChange={(e) => onChange(e.target.value)}
-            style={input}
-            aria-invalid={!!error}
-            aria-label={`RPC URL for ${label}`}
-          />
-          {error && <span style={errStyle}>{error}</span>}
-          {saved && !error && <span style={savedStyle}>Saved.</span>}
-        </div>
-        <button
-          type="submit"
-          style={save}
-          disabled={!!error}
-          aria-label={`Save RPC for ${label}`}
-        >
-          Save
-        </button>
-      </form>
-    </li>
   )
 }
 
@@ -148,7 +66,7 @@ const subtitle: React.CSSProperties = {
   color: "rgba(255,255,255,0.5)",
   margin: 0,
 }
-const list: React.CSSProperties = {
+const rows: React.CSSProperties = {
   listStyle: "none",
   padding: 0,
   margin: 0,
@@ -156,40 +74,12 @@ const list: React.CSSProperties = {
   borderRadius: 12,
   overflow: "hidden",
 }
-const li: React.CSSProperties = { borderBottom: "1px solid #1a1a1a" }
-const row: React.CSSProperties = {
-  display: "flex",
-  alignItems: "flex-end",
-  gap: 12,
-  padding: "14px 16px",
-}
+const li: React.CSSProperties = { borderBottom: "1px solid #1a1a1a", padding: "14px 16px" }
 const col: React.CSSProperties = { flex: 1, display: "flex", flexDirection: "column", gap: 4 }
 const lbl: React.CSSProperties = { fontWeight: 500, fontSize: 14 }
 const hint: React.CSSProperties = {
   fontSize: 12,
   color: "rgba(255,255,255,0.5)",
-}
-const input: React.CSSProperties = {
-  marginTop: 6,
-  background: "#0a0a0a",
-  color: "#fff",
-  border: "1px solid #2a2a2a",
-  borderRadius: 6,
-  padding: "8px 10px",
-  fontSize: 13,
-  fontFamily: "ui-monospace, SFMono-Regular, monospace",
+  overflowWrap: "anywhere",
 }
 const errStyle: React.CSSProperties = { color: "#ff6b6b", fontSize: 12 }
-const savedStyle: React.CSSProperties = { color: "#3fb950", fontSize: 12 }
-const save: React.CSSProperties = {
-  alignSelf: "flex-start",
-  marginTop: 22,
-  padding: "8px 14px",
-  background: "#fff",
-  color: "#000",
-  border: "none",
-  borderRadius: 6,
-  fontSize: 13,
-  fontWeight: 600,
-  cursor: "pointer",
-}

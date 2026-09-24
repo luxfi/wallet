@@ -13,6 +13,7 @@
 
 import { useCallback, useState } from "react"
 import { Link } from "react-router-dom"
+import { coinSymbol } from "../../lib/brand"
 import { colors, layout, text } from "./styles"
 import type { FHERecipient } from "./types"
 import { useFHETransfer } from "./useFHETransfer"
@@ -31,7 +32,7 @@ export function ConfidentialTransfer({ fromAddress }: Props) {
 
   const [to, setTo] = useState("")
   const [amount, setAmount] = useState("")
-  const [symbol, setSymbol] = useState("LUX")
+  const [symbol, setSymbol] = useState(coinSymbol)
   const [recipient, setRecipient] = useState<FHERecipient | undefined>()
   const [lookupErr, setLookupErr] = useState<string | undefined>()
   const [lookingUp, setLookingUp] = useState(false)
@@ -156,9 +157,7 @@ export function ConfidentialTransfer({ fromAddress }: Props) {
                 value={symbol}
                 onChange={(e) => setSymbol(e.target.value)}
               >
-                <option value="LUX">LUX</option>
-                <option value="ZOO">ZOO</option>
-                <option value="AI">AI</option>
+                <option value={coinSymbol()}>{coinSymbol()}</option>
               </select>
             </div>
             <div style={{ ...text.muted, marginTop: 8 }}>

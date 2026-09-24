@@ -20,6 +20,7 @@ import { lazy, Suspense, useMemo } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { type Address } from "viem/accounts"
 import { Button, Card, Text, XStack, YStack } from "@hanzo/gui"
+import { getPlatformRpcUrl } from "@luxfi/wallet-brand"
 import { useAuth } from "../../store/auth"
 import { evmAccount } from "../../lib/chain-evm"
 import { useChainBalances } from "./useChainBalances"
@@ -73,10 +74,11 @@ function useActiveChainId(): number {
  * auth store never persists them), so a full document reload wipes them and
  * bounces the user back to onboarding. Soft-nav keeps the session alive.
  */
-const QUICK_ACTIONS: ReadonlyArray<{ to: string; label: string; icon: string }> = [
+const QUICK_ACTIONS: ReadonlyArray<{ to: string; label: string; icon: string; served?: () => boolean }> = [
   { to: "/send", label: "Send", icon: "↑" },
   { to: "/bridge", label: "Cross-Chain", icon: "⇄" },
-  { to: "/stake", label: "Earn", icon: "%" },
+  // Staking is a P-Chain operation: offered only when the brand serves one.
+  { to: "/stake", label: "Earn", icon: "%", served: () => !!getPlatformRpcUrl() },
   { to: "/settings/security", label: "Manage Keys", icon: "⚿" },
 ]
 
@@ -98,6 +100,7 @@ const quickActionStyle: React.CSSProperties = {
 
 export default function Portfolio() {
   const navigate = useNavigate()
+  const actions = QUICK_ACTIONS.filter((a) => a.served?.() ?? true)
   const isUnlocked = useAuth((s) => s.isUnlocked)
   const hasCreds = useAuth((s) => s.encryptedMnemonic !== null)
   const address = useDerivedAddress()
@@ -149,9 +152,9 @@ export default function Portfolio() {
 
       <nav
         aria-label="Quick actions"
-        style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}
+        style={{ display: "grid", gridTemplateColumns: `repeat(${actions.length}, 1fr)`, gap: 8 }}
       >
-        {QUICK_ACTIONS.map((a) => (
+        {actions.map((a) => (
           <Link key={a.to} to={a.to} style={quickActionStyle}>
             <span aria-hidden="true" style={{ fontSize: 20, lineHeight: 1 }}>
               {a.icon}

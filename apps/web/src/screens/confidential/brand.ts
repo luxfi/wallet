@@ -1,32 +1,20 @@
 /**
- * Brand seam — the Foundation owns @luxfi/wallet-brand. Until that ships,
- * read window.__BRAND__ if injected by the host (via `/brand.json`), else
- * fall back to a Lux-default gateway domain.
- *
- * This is the ONLY place in the Confidential slice that reaches outside
- * for runtime config. When Foundation lands `@luxfi/wallet-brand`, swap
- * the import here in one place.
+ * Where the Confidential slice sends its calls: the gateway `brand.json`
+ * names in `api.confidential`, which serves `/v1/fhe/*` and `/v1/zkp/*`.
+ * There is no fallback host. A brand that names none serves no confidential
+ * transfers or proofs, and the wallet offers neither: the nav item is hidden
+ * and the route says so.
  */
+import { getApiUrl } from "@luxfi/wallet-brand"
 
-interface MinimalBrand {
-  gatewayDomain: string
-}
-
-declare global {
-  interface Window {
-    __BRAND__?: Partial<MinimalBrand>
-  }
-}
-
-export function getGatewayDomain(): string {
-  if (typeof window !== "undefined" && window.__BRAND__?.gatewayDomain) {
-    return window.__BRAND__.gatewayDomain
-  }
-  return "api.lux.network"
+/** True when this brand serves confidential transfers and proofs. */
+export function confidentialServed(): boolean {
+  return getApiUrl("confidential") !== ""
 }
 
 export function gatewayUrl(path: string): string {
-  const domain = getGatewayDomain()
+  const base = getApiUrl("confidential")
+  if (!base) throw new Error("Confidential transfers are not served on this network.")
   const clean = path.startsWith("/") ? path : `/${path}`
-  return `https://${domain}${clean}`
+  return `${base}${clean}`
 }

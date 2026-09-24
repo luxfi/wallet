@@ -9,7 +9,7 @@
 export interface FHEBalance {
   /** Owner address (0x-prefixed). */
   address: string
-  /** Asset symbol (LUX, ZOO, AI, ...). */
+  /** Asset symbol: the brand's own coin. */
   symbol: string
   /** F-Chain chain ID (always F-Chain for now). */
   chainId: number

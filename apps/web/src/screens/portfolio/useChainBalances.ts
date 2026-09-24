@@ -1,20 +1,22 @@
 /**
  * Per-chain balance fetcher for the portfolio view.
  *
- * The chains are the brand's served networks (`lib/networks`), every one an
- * EVM chain with a declared RPC: a native balance read through viem. A chain
- * whose RPC does not answer returns no row. The list is not written here, so
- * the portfolio asks exactly the chains the brand serves.
+ * The chains are the offered networks (`useMeasuredNetworks`): the brand's
+ * declared chains whose RPC answered with their own id. Each is read through
+ * viem once it has answered; a chain that did not answer is never asked, so
+ * the portfolio sends nothing to an RPC that is down.
  *
  * A chain that is not producing blocks still answers reads, so its balance is
  * shown, named as unavailable.
  */
 import { useEffect, useState } from "react"
+import { useQueries } from "@tanstack/react-query"
 import { createPublicClient, http, formatUnits, type Address, erc20Abi } from "viem"
 import { getBootnodeRpcUrl } from "@luxfi/wallet-brand"
 import { usePortfolio, type ChainPortfolio } from "../../store/portfolio"
 import { evmChainDef } from "../../lib/chains"
-import { declaredNetworks, type Network } from "../../lib/networks"
+import { type Network } from "../../lib/networks"
+import { useMeasuredNetworks } from "../../hooks/useNetworks"
 
 async function fetchBalance(n: Network, address: Address): Promise<ChainPortfolio | null> {
   const url = getBootnodeRpcUrl(n.id)
@@ -46,27 +48,37 @@ export function useChainBalances(address: Address | undefined): {
   refresh: () => void
 } {
   const setPortfolio = usePortfolio((s) => s.setPortfolio)
-  const setLoading = usePortfolio((s) => s.setLoading)
   const perChain = usePortfolio((s) => s.perChain)
-  const isLoading = usePortfolio((s) => s.isLoading)
+  const { list, settled } = useMeasuredNetworks()
   const [tick, setTick] = useState(0)
 
-  useEffect(() => {
-    if (!address) return
-    let cancelled = false
-    setLoading(true)
-    Promise.all(declaredNetworks().map((n) => fetchBalance(n, address))).then((results) => {
-      if (cancelled) return
-      const filled = results.filter((r): r is ChainPortfolio => r !== null)
-      // Total USD wired up in useTotalUSD; here we only commit balances.
-      setPortfolio(filled, 0)
-    })
-    return () => {
-      cancelled = true
-    }
-  }, [address, tick, setPortfolio, setLoading])
+  // One read per offered chain, started as soon as that chain has answered.
+  const { rows, fetching } = useQueries({
+    queries: list.map((n) => ({
+      queryKey: ["balance", n.id, n.unavailable ?? "", address, tick],
+      queryFn: () => fetchBalance(n, address as Address),
+      enabled: !!address,
+      staleTime: 30_000,
+      retry: false,
+    })),
+    combine: (results) => ({
+      rows: results.flatMap((r) => (r.data ? [r.data] : [])),
+      fetching: results.some((r) => r.isFetching),
+    }),
+  })
 
-  return { perChain, isLoading, refresh: () => setTick((t) => t + 1) }
+  const key = rows.map((r) => `${r.chainId}:${r.native.balance}:${r.native.name}`).join("|")
+  useEffect(() => {
+    // Total USD wired up in useTotalUSD; here we only commit balances.
+    setPortfolio(rows, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, setPortfolio])
+
+  return {
+    perChain,
+    isLoading: !!address && (!settled || fetching),
+    refresh: () => setTick((t) => t + 1),
+  }
 }
 
 export const ERC20_ABI = erc20Abi

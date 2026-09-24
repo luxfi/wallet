@@ -69,7 +69,7 @@ export function useSwapExecute() {
       throw new Error("non-evm not supported")
     }
     try {
-      assertAvailable(fromChain.evmChainId)
+      await assertAvailable(fromChain.evmChainId)
     } catch (err) {
       setStatus("error")
       setError((err as Error).message)

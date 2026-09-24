@@ -1,22 +1,13 @@
 /**
  * Confidential slice — public exports.
  *
- * `<ConfidentialRoutes />` is the route block to mount under the app router.
- * Foundation can mount it as a child of any parent layout:
- *
- *     <Routes>
- *       <Route path="/*" element={<AppShell />}>
- *         {/ * other routes * /}
- *         {ConfidentialRouteElements()}
- *       </Route>
- *     </Routes>
- *
- * Or, if Foundation prefers a sub-router pattern:
- *
- *     <Route path="/confidential/*" element={<ConfidentialRoutes />} />
+ * `<ConfidentialRoutes />` mounts under `/confidential/*`. It renders only
+ * when the brand names a confidential gateway (`brand.json:api.confidential`);
+ * otherwise it says the network does not serve it.
  */
 
 import { Route, Routes } from "react-router-dom"
+import { confidentialServed } from "./brand"
 import { Confidential } from "./Confidential"
 import { ConfidentialTransfer } from "./ConfidentialTransfer"
 import { ZKProofGenerator } from "./ZKProofGenerator"
@@ -43,6 +34,19 @@ export type {
   FHERecipient,
 } from "./types"
 
+/** A brand that serves no confidential gateway says so, and nothing below is mounted. */
+function ConfidentialUnavailable() {
+  return (
+    <section style={{ padding: "1rem", display: "grid", gap: "0.5rem" }}>
+      <h1 style={{ margin: 0 }}>Confidential</h1>
+      <p role="status" style={{ margin: 0, opacity: 0.8 }}>
+        Confidential transfers are unavailable: this network does not serve them.
+      </p>
+    </section>
+  )
+}
+
+
 /**
  * Root routes for the Confidential slice. Mount under any parent path; the
  * child paths are relative.
@@ -54,6 +58,7 @@ export type {
  *   /confidential/zk/:claimType    → ZK generator for a specific claim
  */
 export function ConfidentialRoutes() {
+  if (!confidentialServed()) return <ConfidentialUnavailable />
   return (
     <Routes>
       <Route index element={<Confidential />} />
@@ -64,20 +69,5 @@ export function ConfidentialRoutes() {
     </Routes>
   )
 }
-
-/**
- * Alternate: explicit Route elements suitable for inlining into a parent
- * `<Routes>` block. Use whichever pattern Foundation prefers.
- */
-export function confidentialRouteElements() {
-  return [
-    <Route key="confidential-index" path="/confidential" element={<Confidential />} />,
-    <Route key="confidential-transfer" path="/confidential/transfer" element={<ConfidentialTransfer />} />,
-    <Route key="confidential-zk" path="/confidential/zk" element={<ZKProofGenerator />} />,
-    <Route key="confidential-zk-share" path="/confidential/zk/share/:id" element={<ZKProofShare />} />,
-    <Route key="confidential-zk-claim" path="/confidential/zk/:claimType" element={<ZKProofGenerator />} />,
-  ]
-}
-
 
 export default ConfidentialRoutes

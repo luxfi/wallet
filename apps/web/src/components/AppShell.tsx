@@ -11,6 +11,8 @@
  * full string for non-EVM (P-Chain bech32 already short).
  */
 import { NavLink, Outlet } from "react-router-dom"
+import { getPlatformRpcUrl } from "@luxfi/wallet-brand"
+import { confidentialServed } from "../screens/confidential/brand"
 import { useAccount } from "../hooks/useAccount"
 import { useBrand } from "../hooks/useBrand"
 import { useActiveNetwork } from "../hooks/useNetworks"
@@ -20,6 +22,8 @@ import { ChainSwitcher } from "./ChainSwitcher"
 interface NavItem {
   to: string
   label: string
+  /** Shown only when this brand serves what the screen needs. */
+  served?: () => boolean
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -28,9 +32,9 @@ const NAV_ITEMS: NavItem[] = [
   { to: "/receive", label: "Receive" },
   { to: "/swap", label: "Swap" },
   { to: "/bridge", label: "Bridge" },
-  { to: "/stake", label: "Stake" },
+  { to: "/stake", label: "Stake", served: () => !!getPlatformRpcUrl() },
   { to: "/dapps", label: "DApps" },
-  { to: "/confidential", label: "Confidential" },
+  { to: "/confidential", label: "Confidential", served: confidentialServed },
   { to: "/settings", label: "Settings" },
 ]
 
@@ -108,7 +112,7 @@ export function AppShell(): React.JSX.Element {
               style={{ display: "block", height: 24, width: "auto" }}
             />
           ) : null}
-          <strong style={{ fontSize: 16 }}>{brand.walletName || "Lux Wallet"}</strong>
+          <strong style={{ fontSize: 16 }}>{brand.walletName}</strong>
         </div>
         <div
           style={{
@@ -153,7 +157,7 @@ export function AppShell(): React.JSX.Element {
           }}
         >
           <ul style={{ listStyle: "none", padding: 12, margin: 0, display: "grid", gap: 4 }}>
-            {NAV_ITEMS.map((item) => (
+            {NAV_ITEMS.filter((item) => item.served?.() ?? true).map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}

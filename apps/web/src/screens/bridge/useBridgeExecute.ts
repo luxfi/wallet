@@ -81,8 +81,7 @@ export function useBridgeExecute() {
       throw new Error(`bridging from ${fromChain.label} not supported`)
     }
     try {
-      assertAvailable(fromChain.evmChainId)
-      assertAvailable(toChain.evmChainId)
+      await Promise.all([assertAvailable(fromChain.evmChainId), assertAvailable(toChain.evmChainId)])
     } catch (err) {
       setStatus("error")
       setError((err as Error).message)

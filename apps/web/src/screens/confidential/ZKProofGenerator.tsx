@@ -15,6 +15,7 @@
 
 import { useCallback, useMemo, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { coinSymbol } from "../../lib/brand"
 import { colors, layout, text } from "./styles"
 import type { ClaimParams, ClaimType } from "./types"
 import { useZKProof } from "./useZKProof"
@@ -71,7 +72,7 @@ export function ZKProofGenerator() {
 
   // BalanceGT params.
   const [threshold, setThreshold] = useState("100")
-  const [symbol, setSymbol] = useState("LUX")
+  const [symbol, setSymbol] = useState(coinSymbol)
 
   const onGenerate = useCallback(async () => {
     if (!meta) return
@@ -183,9 +184,7 @@ export function ZKProofGenerator() {
                   value={symbol}
                   onChange={(e) => setSymbol(e.target.value)}
                 >
-                  <option value="LUX">LUX</option>
-                  <option value="ZOO">ZOO</option>
-                  <option value="AI">AI</option>
+                  <option value={coinSymbol()}>{coinSymbol()}</option>
                 </select>
               </div>
             </div>

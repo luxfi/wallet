@@ -67,11 +67,7 @@
       8453,
       137,
       43114
-    ],
-    "unavailable": {
-      "96369": "Not producing blocks. Balances are as of its last block, and nothing sent to it would be mined.",
-      "96368": "Not producing blocks. Balances are as of its last block, and nothing sent to it would be mined."
-    }
+    ]
   },
   "rpc": {
     "96369": "https://api.lux.network/v1/chain/C/rpc",

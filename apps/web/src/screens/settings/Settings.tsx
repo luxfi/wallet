@@ -14,7 +14,7 @@ interface MenuItem {
 }
 
 const ITEMS: MenuItem[] = [
-  { to: "networks", label: "Networks", hint: "Custom RPC endpoints" },
+  { to: "networks", label: "Networks", hint: "The chains this wallet reaches" },
   { to: "security", label: "Security", hint: "PIN, biometrics, auto-lock" },
   { to: "backup", label: "Backup", hint: "Reveal recovery phrase" },
   { to: "language", label: "Language", hint: "App language" },

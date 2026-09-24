@@ -136,13 +136,6 @@ export interface RuntimeConfig {
   chains: {
     defaultChainId: number
     supported: number[]
-    /**
-     * Served chains that take no transaction right now, keyed by chain id,
-     * each with the reason a person reads. Its RPC still answers reads, so
-     * balances show; sending is refused with this text instead of a
-     * transaction that is never mined.
-     */
-    unavailable?: Record<string, string>
   }
   /** The RPC each served chain answers on, keyed by chain id. `platform`
    *  is the P-Chain; without it the brand serves no staking. */
@@ -152,6 +145,12 @@ export interface RuntimeConfig {
   api: {
     gateway: string
     insights: string
+    /**
+     * The gateway that serves confidential transfers and proofs
+     * (`/v1/fhe/*`, `/v1/zkp/*`). Absent when the brand serves none, and then
+     * the wallet offers neither.
+     */
+    confidential?: string
   }
   walletConnect: {
     projectId: string
@@ -369,18 +368,13 @@ export function getPlatformRpcUrl(): string | undefined {
   return runtimeConfig?.rpc?.platform || undefined
 }
 
-/** Why a served chain takes no transaction now, or undefined when it does. */
-export function getUnavailableReason(chainId: number): string | undefined {
-  return runtimeConfig?.chains?.unavailable?.[String(chainId)] || undefined
-}
-
 /** The block explorer a chain has in this brand, when brand.json names one. */
 export function getExplorerUrl(chainId: number): string | undefined {
   return runtimeConfig?.explorer?.[String(chainId)]?.replace(/\/+$/, "") || undefined
 }
 
 export function getApiUrl(key: keyof RuntimeConfig["api"]): string {
-  return runtimeConfig?.api?.[key] ?? ""
+  return runtimeConfig?.api?.[key]?.replace(/\/+$/, "") ?? ""
 }
 
 /**

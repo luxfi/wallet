@@ -14,6 +14,7 @@
 
 import { Link } from "react-router-dom"
 import { ConfidentialBalanceRow } from "./ConfidentialBalanceRow"
+import { coinSymbol } from "../../lib/brand"
 import { colors, layout, text } from "./styles"
 import { useConfidentialStore } from "./useConfidentialStore"
 import { confidentialStore } from "../../store/confidential"
@@ -25,7 +26,7 @@ interface Props {
 
 export function Confidential({
   addresses = [],
-  symbols = ["LUX", "ZOO", "AI"],
+  symbols = [coinSymbol()],
 }: Props) {
   // Subscribe so the active proof count updates live.
   useConfidentialStore()

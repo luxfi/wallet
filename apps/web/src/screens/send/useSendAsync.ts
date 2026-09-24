@@ -28,7 +28,7 @@ export function useSendAsync() {
     async ({ asset, to, value }: SendArgs): Promise<string> => {
       const chain = CHAINS[asset.chainId]
       if (!chain) throw new Error(`Unknown chain: ${asset.chainId}`)
-      assertAvailable(chain.evmChainId)
+      await assertAvailable(chain.evmChainId)
 
       switch (chain.kind) {
         case "evm": {

@@ -21,7 +21,7 @@ import {
   type Asset,
 } from "../../lib/asset"
 import { validateAddress } from "../../lib/address"
-import { getUnavailableReason } from "@luxfi/wallet-brand"
+import { useActiveNetwork } from "../../hooks/useNetworks"
 
 export interface SendProps {
   /** Asset list from portfolio. Foundation Blue wires this from a context. */
@@ -51,8 +51,7 @@ export default function Send({ assets }: SendProps) {
 
   const chain = asset ? CHAINS[asset.chainId] : null
   // A chain that is not producing blocks: its balance reads, nothing sends.
-  const unavailable =
-    chain?.evmChainId !== undefined ? getUnavailableReason(chain.evmChainId) : undefined
+  const unavailable = useActiveNetwork(chain?.evmChainId ?? 0).unavailable
 
   const addressValidation = useMemo(() => {
     if (!chain || !to) return { ok: false as const, reason: "" }

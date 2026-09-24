@@ -2,11 +2,13 @@
  * Set a 6-digit PIN, hashed with scrypt. Two-step: enter, then confirm.
  * Storing fails closed if either entry is not exactly 6 digits.
  *
- * On success, encrypts the draft mnemonic, stores credentials, clears the
- * draft, and routes to /portfolio.
+ * On success, encrypts the draft mnemonic, stores credentials and clears the
+ * draft. With no draft the screen leaves: to /portfolio once a wallet is
+ * stored, to /auth when there is none. That one guard is the only exit, so
+ * clearing the draft cannot race a second navigation back to /auth.
  */
 import { useState } from "react"
-import { useNavigate, Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { Button, Card, Input, YStack, Text } from "@hanzo/gui"
 import { useAuth } from "../../store/auth"
 import { useMnemonicDraft } from "./mnemonicDraft"
@@ -14,17 +16,17 @@ import { useMnemonicDraft } from "./mnemonicDraft"
 const PIN_RE = /^\d{6}$/
 
 export default function SetPIN() {
-  const navigate = useNavigate()
   const draft = useMnemonicDraft((s) => s.mnemonic)
   const clearDraft = useMnemonicDraft((s) => s.clear)
   const setCredentials = useAuth((s) => s.setCredentials)
+  const stored = useAuth((s) => s.encryptedMnemonic !== null)
 
   const [pin, setPin] = useState("")
   const [confirm, setConfirm] = useState("")
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  if (!draft) return <Navigate to="/auth" replace />
+  if (!draft) return <Navigate to={stored ? "/portfolio" : "/auth"} replace />
 
   const valid = PIN_RE.test(pin) && pin === confirm
 
@@ -35,7 +37,6 @@ export default function SetPIN() {
     try {
       await setCredentials(draft, pin)
       clearDraft()
-      navigate("/portfolio", { replace: true })
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to save credentials")
       setBusy(false)
